@@ -1,0 +1,70 @@
+.circle {
+    width: 125px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    }
+    
+    
+    
+    .display-center {
+    display: flex;
+    align-items: center;
+    }
+    
+    
+    
+    .prof-btns {
+    margin-top: 20px;
+    }
+    
+    
+    
+    .prof-btns .user-cancel {
+    margin-right: 10px;
+    width: 78px;
+    height: 40px;
+    background-color: #ffff;
+    font-size: 12px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    color: #008ad2;
+    letter-spacing: 1px;
+    border: 2px solid #008ad2;
+    cursor: pointer;
+    }
+    
+    
+    
+    .prof-btns .user-cancel:hover {
+    color: #fff;
+    background-color: #008ad2;
+    }
+    
+    
+    
+    .prof-btns .user-save {
+    width: 78px;
+    height: 40px;
+    background-color: #008ad2;
+    font-size: 12px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+    border: 2px solid #008ad2;
+    cursor: pointer;
+    }
+    
+    
+    
+    .prof-btns .user-save:hover {
+    color: #008ad2;
+    background-color: #fff;
+    }

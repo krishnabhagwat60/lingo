@@ -1,0 +1,191 @@
+<div id="dasboard-header" style="padding-bottom: 0;">
+    <div class="header-menu">
+        <div class="col-md-2 dashboard-logo">
+            <a routerLink="/dashboard/studentDashboard"><img src="assets/images/logo.png" alt="Logo"></a>
+        </div>
+        <div class="col-md-8 dashborad-menu-right">
+            <div class="header-top-menu hd-search-rp">
+                <form [formGroup]="searchform">
+                <div role="search" class="dashboard-search-header">
+                    <input type="text" placeholder="SEARCH" formControlName="searchData" class="form-control " id="search" >
+                    <i class="fa fa-search" (click)="searchDatas()"></i>
+                </div>
+            </form>
+            </div>
+            </div>
+            <div class="col-md-2" style="padding: 0;">
+              <ul class="user-area">
+                <li class="markus">
+                    <a >{{user | titlecase}}</a>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16" style="fill:#000000; font-weight: bold;">
+                     <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/> </svg> -->
+                     <!-- <p><span>{{wallet}} cent</span></p>                               -->               
+                 </li>
+                  <li>
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar" src="assets/images/student-profile.jpg">
+                      </a>
+                 </li>
+                 <li>
+                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
+                    </a>
+                 </li>
+              </ul>                
+        </div>
+    </div>
+</div>
+<app-sidebar></app-sidebar>
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-6">
+            <div class="page-header float-left">
+                <div class="page-title-left">
+                   <img src="assets/images/icons/student-icon.png">
+                    <h2>Student Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header float-right">
+                <div class="page-title-right">
+                    <h2>Welcome Back  <span>{{user | titlecase}}!</span></h2> 
+                </div>
+            </div>
+        </div>
+    </div>
+  <div class="main main-height">
+
+       <div class="dashboard">   
+               <div class="my-course-heading">
+                    <h1>My Course</h1>
+                    <hr>
+                </div>
+                <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder ">
+                    <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
+                </div>
+            <p *ngIf="errMsg" style="color: red;text-align: center;"><b>{{errMsg}}</b></p>
+
+              <ng-container *ngFor="let data of courseData">
+                 <div class="right-content text-right">
+                   <p>{{data.date}}</p>
+                 </div>              
+                <div class="course-process" *ngIf="!mainpageLoder && !errMsg">               
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="course-process-1">
+                               <h3>Course Name: A2 <span>{{data.title}}</span></h3>
+                               <h4><span>Approximate</span> Duration :{{data.time_duration}}</h4>  
+                               <button type="button" id="start-course" *ngIf="data.button == '1'" style="background-color: #6DB0D9;cursor: none;">Start Course</button>
+                               <button type="button" id="start-course" *ngIf="data.button == '0'" (click)="viewDetail(data.id)" data-target="#summary" data-toggle="modal">Start Course</button>
+                             </div> 
+                        </div>
+                         <div class="col-md-4">
+                            <div class="course-process-1">
+                              <h3>Teacher Name <span>: {{data.teacher_name}}</span></h3>
+                              <h4>Current Enroll : <span>{{data.total_enroll}}</span></h4>
+                             </div> 
+                        </div>
+                         <div class="col-md-4">
+                            <div class="course-process-2">
+                               <p>Course Fees: <span style="border-radius: 5px; padding: 4px; background-color: #008ad2; color: #fff; font-size: 12px;">{{data.field_course_fees}}</span></p>
+                              <span id="star" *ngIf="data.rating != '0'">{{data.rating}}</span>  
+                              <ng-container *ngIf="data?.rating === '1'">
+                                <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+                            </ng-container>
+                            <!-- <ng-container *ngIf="data?.rating === '0'">
+                                <i class="fa fa-star-half-o" style="color:#ff4545 !important;"></i>
+                            </ng-container> -->
+                            <ng-container *ngIf="data?.rating === '1.5'">
+                                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '2'">
+                                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '2.5'">
+                                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '3'">
+                                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '3.5'">
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '4'">
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '4.5'">
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+                            </ng-container>
+                            <ng-container *ngIf="data?.rating === '5'">
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                            </ng-container>
+                            <a style="color: grey;" *ngIf="data.review_count != '0'">({{data.review_count}})</a>
+                         </div>
+                     </div>
+                  </div> 
+                </div>            
+                    <div class="progress"  *ngIf="!mainpageLoder ">
+                       <div class="progress-bar" role="progressbar" aria-valuenow="{{data.completed}}" aria-valuemin="{{data.completed}}" aria-valuemax="{{data.completed}}"
+                         [ngStyle]="{'width': (data.completed) + '%'}">
+                        <span> {{data.completed}}% Complete</span>
+                       </div>
+                     </div>
+                    </ng-container>
+
+                    <div class="container-fluid">
+                        <div class="pages">
+                            <div class="row" *ngIf="buttonShow">
+                                <div class="col-md-2" >
+                                    <div class="prev-btn" [class.gray]="questionButton" [disabled]="questionButton">
+                                        <a (click)="direction(0)" style="color: #fff;">PREV</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination justify-content-center">
+                                            <li class="page-item disabled">
+                                            </li>
+                                            <li class="page-item" *ngFor="let data of totalPages; index as i"><a
+                                                    (click)="getCourseData(data,i);enableDisableRule()" class="page-link"
+                                                    style="color: #fff;"
+                                                    [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
+                                            </li>
+                                            <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="next-button"  [class.grays]="questionButtons" [disabled]="questionButtons">
+                                        <a (click)="direction(1)" style="color: #fff;">NEXT</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+        </div>
+   
+
+    </div>
+</div>

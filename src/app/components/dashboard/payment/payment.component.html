@@ -1,0 +1,140 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-6">
+            <div class="page-header float-left">
+                <div class="page-title-left">
+                    <img src="assets/images/icons/student-icon.png">
+                    <h2>Student Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header float-right">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-height">
+        <div class="container-fluid">
+            <div class="dashboard">
+                <div class="passage-section">
+                    <div class="pa-courset">
+                        <h2>{{courseDetail?.title}}</h2>
+                    </div>
+                    <div class="sumry-sectn">
+                        <div class="summry-detl">
+                            <h4>Summary of Course</h4>
+                            <ul>
+                                <li>
+                                    <p>Course Name :</p>
+                                    <span>{{courseDetail?.title}}</span>
+                                </li>
+                                <li>
+                                    <p>Course Fees :</p>
+                                    <span>{{courseDetail?.field_course_fees}}</span>
+                                </li>
+                                <li>
+                                    <p>Tax :</p>
+                                    <span>€0.00</span>
+                                </li>
+                                <li class="btn-totl">
+                                    <p class="totl-text">Total Amount :</p>
+                                    <span class="totl-text-2">{{courseDetail?.field_course_fees}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="enroll-detl">
+                            <h4>Enroll Details</h4>
+                            <ul>
+                                <li class="subj-names">
+                                    <p class="subj-t">{{courseDetail?.title}}</p>
+                                    <p class="subj-star">
+                                        <ng-container *ngIf="courseDetail?.rating === '1'">
+                                            <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '1.5'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '2'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '2.5'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '3'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '3.5'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '4'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '4.5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseDetail?.rating === '5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Course ID :</p>
+                                    <span>{{courseDetail?.course_id}}</span>
+                                </li>
+                                <li>
+                                    <p>Created by :</p>
+                                    <span>{{courseDetail?.teacher_name}}</span>
+                                </li>
+                                <li>
+                                    <p>Currently Enrolled :</p>
+                                    <span>{{courseDetail?.total_enroll}}</span>
+                                </li>
+                                <li>
+                                    <p>Duration :</p>
+                                    <span>{{courseDetail?.time_duration}}</span>
+                                </li>
+                                <li>
+                                    <p>Last Time Updated :</p>
+                                    <span>{{courseDetail.date}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="paypl-btns">
+                        <figure>
+                            <div class="mt-2">
+                                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                            </div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

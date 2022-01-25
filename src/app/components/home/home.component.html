@@ -1,0 +1,697 @@
+<div class="main-header">
+  <div class="container-fluid d-flex">
+    <div id="main-header">
+      <input id="nav-toggle" type="checkbox">
+      <div class="logo"><a href="index.html">
+        <img src="assets/img/logo.png">
+      </a></div>
+      <ul class="links">
+        <li><a routerLink="/register"><i class="fa fa-user"></i>Register</a></li>
+        <li class="active"><a routerLink="/login" style="background-color: #008ad2;"><i class="fa fa-user"></i>Login</a>
+        </li>
+      </ul>
+      <label for="nav-toggle" class="icon-burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </label>
+    </div>
+  </div>
+</div>
+
+
+<section class="banner">
+  <div class="banner-bg-right" *ngIf="!loding">
+    <img src="{{banner?.banner3}}" style="width: 65%;margin-left: 35%; height:100%;margin-top: -70px;position: absolute;">
+  </div>
+  <img src="{{banner?.banner2}}" *ngIf="!loding">
+  <div class="loader" *ngIf="loding">Loading...</div>
+
+  <div class="container-fluid px-5" *ngIf="!loding">
+    <div class="row">
+      <div class="col-md-6" data-aos="fade-up">
+
+        <div class="banner-left">
+          <p>{{banner?.title}}</p>
+          <h3 [innerHtml]="banner?.sub_tittle"></h3>
+          <h1 [innerHtml]="banner?.desc"></h1>
+          <div class="banner-btn">
+            <button type="button" id="banner-btn" routerLink="/register">Create Free Account</button>
+          </div>
+        </div>
+       
+      </div>
+
+
+      <div class="col-md-6" *ngIf="!loding">
+        <div class="banner-right">
+          <img src="{{banner?.banner}}"
+            style="width: 100%;margin-left: -20px;height: auto; z-index: 1; margin-top: -40px;">
+          <div class="vector">
+            <img src="{{banner?.banner1}}">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- ======= Features Section ======= -->
+<section id="features" class="features">
+  <div class="container">
+
+    <h1>Powerfull Features</h1>
+    <p>Online Task Exercises Courses</p>
+    <div class="row">
+      <ul class="nav row d-flex">
+        <li class="nav-item col-md-3" data-aos="zoom-in">
+          <a class="nav-link" data-toggle="tab" href="#tab-1">
+            <i style="background-color: #008ad217;">
+              
+
+<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="20pt" height="20pt" x="0" y="0" viewBox="0
+  0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g>
+<g xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<g>
+			<polygon points="416,160 416,192 480,192 480,480 192,480 192,416 160,416 160,512 512,512 512,160    " fill="#008ad2" data-original="#000000" class=""/>
+		
+			<path d="M254.288,387.296L295.76,428.8l147.088-147.088l-42.592-42.576L377.6,171.2l-78.064-78.064l-157.808,64.992   
+        c-24.517,10.085-36.216,38.135-26.131,62.651c0.336,0.817,0.694,1.624,1.075,2.421l-1.92,1.936   
+          c-24.994,24.993-24.995,65.515-0.002,90.51c0.001,0.001,0.002,0.002,0.002,0.002l60.32,60.336L254.288,387.296z M128,270.4  
+             c-0.023-8.491,3.353-16.638,9.376-22.624l56.576,56.576l22.624-22.64l-67.888-67.888c-6.251-6.246-6.254-16.377-0.008-22.627  
+                c1.494-1.495,3.27-2.68,5.224-3.485L292,130.864l57.6,57.6l22.624,67.888l25.312,25.296l-101.84,101.84l-26.4-26.4  
+                   l-79.184-11.312l-52.8-52.8C131.32,286.994,127.968,278.866,128,270.4z" fill="#008ad2" data-original="#000000"
+                    />
+		</g>
+	</g>
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+<g xmlns="http://www.w3.org/2000/svg">
+</g>
+</g></svg>
+
+            </i>
+            <h4>Image Drag <br>and Drop Order</h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="100">
+          <a class="nav-link" data-toggle="tab" href="#tab-2">
+            <i  style="background-color: #09b7012b;">
+              <svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" height="20pt" viewBox="-1 1 511 511.999" width="20pt">
+                <path
+                  d="m15.5 162h39.328125c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-39.328125c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15zm0 0" />
+                <path
+                  d="m15.5 261.996094c8.285156 0 15-6.714844 15-15v-39.328125c0-8.285157-6.714844-15-15-15s-15 6.714843-15 15v39.328125c0 8.285156 6.714844 15 15 15zm0 0" />
+                <path
+                  d="m15.5 361.335938c8.285156 0 15-6.714844 15-15v-39.328126c0-8.285156-6.714844-15-15-15s-15 6.714844-15 15v39.328126c0 8.285156 6.714844 15 15 15zm0 0" />
+                <path
+                  d="m30.5 446.335938v-39.328126c0-8.285156-6.714844-15-15-15s-15 6.714844-15 15v39.328126c0 8.285156 6.714844 15 15 15s15-6.714844 15-15zm0 0" />
+                <path
+                  d="m65.160156 482h-39.328125c-8.285156 0-15 6.714844-15 15 0 8.28125 6.714844 15 15 15h39.328125c8.285156 0 15-6.71875 15-15 0-8.285156-6.714844-15-15-15zm0 0" />
+                <path
+                  d="m165.15625 482h-39.332031c-8.28125 0-15 6.714844-15 15 0 8.28125 6.71875 15 15 15h39.332031c8.28125 0 15-6.71875 15-15 0-8.285156-6.714844-15-15-15zm0 0" />
+                <path
+                  d="m265.277344 482h-39.328125c-8.285157 0-15 6.714844-15 15 0 8.28125 6.714843 14.996094 15 14.996094h39.328125c8.285156 0 15-6.714844 15-14.996094 0-8.285156-6.714844-15-15-15zm0 0" />
+                <path
+                  d="m365.152344 482h-39.332032c-8.28125 0-15 6.714844-15 15 0 8.28125 6.71875 14.996094 15 14.996094h39.332032c8.28125 0 15-6.714844 15-14.996094 0-8.285156-6.71875-15-15-15zm0 0" />
+                <path
+                  d="m495.488281 90c8.285157 0 15-6.714844 15-15v-60c0-8.285156-6.714843-15-15-15h-60c-8.285156 0-15 6.714844-15 15v15h-260v-15c0-8.285156-6.714843-15-15-15h-60c-8.28125 0-15 6.714844-15 15v60c0 8.285156 6.71875 15 15 15h15v260h-15c-8.28125 0-15 6.714844-15 15v60c0 8.28125 6.71875 15 15 15h60c8.285157 0 15-6.71875 15-15v-15h190.011719v27.171875c0 8.285156 6.714844 15 15 15 8.28125 0 14.996094-6.714844 14.996094-15v-27.171875h39.992187v15c0 8.28125 6.714844 15 15 15h60c8.285157 0 15-6.71875 15-15v-60c0-8.285156-6.714843-15-15-15h-15v-260zm-45-60h30v30h-30zm-350 0h30v30h-30zm30 380h-30v-30h30zm350 0h-30v-30h30zm-30-60h-15c-8.285156 0-15 6.714844-15 15v15h-260v-15c0-8.285156-6.714843-15-15-15h-15v-260h15c8.285157 0 15-6.714844 15-15v-15h260v15c0 8.285156 6.714844 15 15 15h15zm0 0" />
+                <path
+                  d="m376.488281 106h-174c-8.28125 0-15 6.714844-15 15v36c0 8.285156 6.71875 15 15 15 8.285157 0 15-6.714844 15-15v-21h57v168h-10c-8.28125 0-15 6.714844-15 15 0 8.28125 6.71875 15 15 15h50c8.285157 0 15-6.71875 15-15 0-8.285156-6.714843-15-15-15h-10v-168h57v21c0 8.285156 6.714844 15 15 15 8.285157 0 15-6.714844 15-15v-36c0-8.285156-6.714843-15-15-15zm0 0" />
+              </svg>
+            </i>
+
+            <h4>Text with <br> Drag Drop Order</h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="200">
+          <a class="nav-link" data-toggle="tab" href="#tab-3">
+            <i style="background-color: #1369801f;">
+              <svg version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                style="width: 20pt; height: 20pt;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M476.828,302.249c-10.794,0-19.542,8.748-19.542,19.542v151.125H39.087V54.718h151.125
+      c10.794,0,19.542-8.748,19.542-19.542c0-10.794-8.748-19.542-19.542-19.542H19.545c-10.794,0-19.542,8.748-19.542,19.542v457.282
+      C0.003,503.252,8.752,512,19.545,512h457.282c10.794,0,19.542-8.748,19.542-19.542V321.791
+      C496.37,310.998,487.621,302.249,476.828,302.249z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path d="M506.271,75.426l-69.693-69.7C432.917,2.058,427.947,0,422.762,0c-5.185,0-10.149,2.058-13.816,5.726L178.35,236.321
+      c-2.371,2.365-4.084,5.296-4.996,8.514l-27.359,97.059c-1.915,6.807-0.006,14.116,4.996,19.119
+      c3.713,3.713,8.703,5.726,13.816,5.726c1.765,0,3.55-0.241,5.296-0.73l97.059-27.359c3.224-0.912,6.156-2.632,8.52-4.996
+      l230.589-230.595C513.905,95.43,513.905,83.053,506.271,75.426z M251.658,302.412l-58.58,16.506l16.513-58.567L422.762,47.181
+      l42.061,42.061L251.658,302.412z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+
+                    <rect x="208.103" y="235.027" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -134.3583 244.2405)"
+                      width="39.084" height="98.556" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+
+            </i>
+            <h4>Fill In <br>The Blanks</h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <a class="nav-link" data-toggle="tab" href="#tab-4">
+            <i style="background-color: #e414242b;">
+              <svg version="1.1" id="Capa_4" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20pt" height="20pt"
+                viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
+                <g>
+                  <g id="check-box-outline">
+                    <path d="M124.95,181.05l-35.7,35.7L204,331.5l255-255l-35.7-35.7L204,260.1L124.95,181.05z M408,408H51V51h255V0H51
+      C22.95,0,0,22.95,0,51v357c0,28.05,22.95,51,51,51h357c28.05,0,51-22.95,51-51V204h-51V408z" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+
+            </i>
+            <h4>Pick the <br>right words</h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <a class="nav-link" data-toggle="tab" href="#tab-4">
+            <i style="background-color: #ff960036;">
+              <svg version="1.1" id="Capa_5" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667"
+                style="width: 20pt; height: 20pt;" xml:space="preserve">
+                <g>
+                  <g>
+                    <g>
+                      <path d="M213.333,0C95.68,0,0,95.68,0,213.333s95.68,213.333,213.333,213.333s213.333-95.68,213.333-213.333S330.987,0,213.333,0
+        z M213.333,384c-94.08,0-170.667-76.587-170.667-170.667S119.253,42.667,213.333,42.667S384,119.253,384,213.333
+        S307.413,384,213.333,384z" />
+                      <path
+                        d="M213.333,149.333c-35.307,0-64,28.693-64,64s28.693,64,64,64s64-28.693,64-64S248.64,149.333,213.333,149.333z" />
+                    </g>
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+
+            </i>
+            <h4>Questions With<br> Radio Button </h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <a class="nav-link" data-toggle="tab" href="#tab-4">
+            <i style="background-color: #a8216924;">
+              <svg version="1.1" id="Capa_6" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.011 512.011"
+                style="width: 20pt; height: 20pt;" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M505.755,123.592c-8.341-8.341-21.824-8.341-30.165,0L256.005,343.176L36.421,123.592c-8.341-8.341-21.824-8.341-30.165,0
+      s-8.341,21.824,0,30.165l234.667,234.667c4.16,4.16,9.621,6.251,15.083,6.251c5.462,0,10.923-2.091,15.083-6.251l234.667-234.667
+      C514.096,145.416,514.096,131.933,505.755,123.592z" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+
+            </i>
+            <h4>Questions With <br>Dropdown </h4>
+          </a>
+        </li>
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <a class="nav-link" data-toggle="tab" href="#tab-4">
+            <i style="background-color: #8c40f738;">
+
+              <svg id="Capa_7" height="20pt" viewBox="0 0 512.00533 512" width="20pt"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m10.671875 170.667969c-5.886719 0-10.66796875-4.777344-10.66796875-10.664063v-149.335937c0-5.886719 4.78124975-10.66406275 10.66796875-10.66406275h149.332031c5.890625 0 10.667969 4.77734375 10.667969 10.66406275 0 5.890625-4.777344 10.667969-10.667969 10.667969h-138.664062v138.667968c0 5.886719-4.78125 10.664063-10.667969 10.664063zm0 0" />
+                <path
+                  d="m501.339844 170.667969c-5.890625 0-10.667969-4.777344-10.667969-10.664063v-138.667968h-138.667969c-5.886718 0-10.664062-4.777344-10.664062-10.667969 0-5.886719 4.777344-10.66406275 10.664062-10.66406275h149.335938c5.886718 0 10.664062 4.77734375 10.664062 10.66406275v149.335937c0 5.886719-4.777344 10.664063-10.664062 10.664063zm0 0" />
+                <path
+                  d="m160.003906 512.003906h-149.332031c-5.886719 0-10.66796875-4.78125-10.66796875-10.667968v-149.332032c0-5.890625 4.78124975-10.667968 10.66796875-10.667968s10.667969 4.777343 10.667969 10.667968v138.664063h138.664062c5.890625 0 10.667969 4.78125 10.667969 10.667969 0 5.886718-4.777344 10.667968-10.667969 10.667968zm0 0" />
+                <path
+                  d="m501.339844 512.003906h-149.335938c-5.886718 0-10.664062-4.78125-10.664062-10.667968 0-5.886719 4.777344-10.667969 10.664062-10.667969h138.667969v-138.664063c0-5.890625 4.777344-10.667968 10.667969-10.667968 5.886718 0 10.664062 4.777343 10.664062 10.667968v149.332032c0 5.886718-4.777344 10.667968-10.664062 10.667968zm0 0" />
+                <path
+                  d="m181.339844 192.003906c-2.730469 0-5.460938-1.046875-7.554688-3.117187l-170.664062-170.664063c-4.160156-4.160156-4.160156-10.925781 0-15.085937 4.160156-4.15625 10.921875-4.15625 15.082031 0l170.667969 170.667969c4.160156 4.160156 4.160156 10.921874 0 15.082031-2.070313 2.070312-4.800782 3.117187-7.53125 3.117187zm0 0" />
+                <path
+                  d="m330.671875 192.003906c-2.730469 0-5.460937-1.046875-7.550781-3.117187-4.160156-4.160157-4.160156-10.921875 0-15.082031l170.664062-170.667969c4.160156-4.15625 10.925782-4.15625 15.085938 0 4.160156 4.160156 4.160156 10.925781 0 15.085937l-170.667969 170.664063c-2.070313 2.070312-4.800781 3.117187-7.53125 3.117187zm0 0" />
+                <path
+                  d="m501.339844 512.003906c-2.730469 0-5.460938-1.046875-7.554688-3.117187l-170.664062-170.664063c-4.160156-4.160156-4.160156-10.925781 0-15.085937 4.160156-4.15625 10.921875-4.15625 15.082031 0l170.667969 170.667969c4.160156 4.160156 4.160156 10.921874 0 15.082031-2.070313 2.070312-4.800782 3.117187-7.53125 3.117187zm0 0" />
+                <path
+                  d="m10.671875 512.003906c-2.730469 0-5.460937-1.046875-7.550781-3.117187-4.160156-4.160157-4.160156-10.921875 0-15.082031l170.664062-170.667969c4.160156-4.15625 10.925782-4.15625 15.085938 0 4.160156 4.160156 4.160156 10.925781 0 15.085937l-170.667969 170.664063c-2.070313 2.070312-4.800781 3.117187-7.53125 3.117187zm0 0" />
+              </svg>
+            </i>
+
+            <h4>Afiliation</h4>
+          </a>
+
+        </li>
+
+        <li class="nav-item col-md-3" data-aos="zoom-in" data-aos-delay="300">
+          <a class="nav-link" data-toggle="tab" href="#tab-4">
+            <i style="background-color: #79cd1f45;">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                id="Capa_8" x="0px" y="0px" viewBox="0 0 343.5 343.5" style="width: 20pt; height: 20pt;"
+                xml:space="preserve">
+                <g>
+                  <g>
+                    <path
+                      d="M322.05,161.8h-182.6c-5.5,0-10,4.5-10,10s4.5,10,10,10h182.6c5.5,0,10-4.5,10-10C332.05,166.3,327.65,161.8,322.05,161.8    z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M57.95,125.3c-25.7,0-46.5,20.8-46.5,46.5s20.8,46.5,46.5,46.5s46.5-20.8,46.5-46.5S83.65,125.3,57.95,125.3z     M57.95,198.3c-14.7,0-26.5-11.9-26.5-26.5c0-14.7,11.9-26.5,26.5-26.5c14.6,0,26.5,11.9,26.5,26.5S72.55,198.3,57.95,198.3z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M322.05,36.8h-182.6c-5.5,0-10,4.5-10,10s4.5,10,10,10h182.6c5.5,0,10-4.5,10-10C332.05,41.3,327.65,36.8,322.05,36.8z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M57.95,0c-25.7,0-46.5,20.8-46.5,46.5c0,25.7,20.8,46.5,46.5,46.5s46.5-20.8,46.5-46.5C104.45,20.9,83.65,0.1,57.95,0z     M57.95,73.1c-14.7,0-26.5-11.9-26.5-26.5c0-14.6,11.9-26.5,26.5-26.5c14.7,0,26.5,11.9,26.5,26.5    C84.45,61.2,72.55,73.1,57.95,73.1z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M322.05,286.8h-182.6c-5.5,0-10,4.5-10,10s4.5,10,10,10h182.6c5.5,0,10-4.5,10-10S327.65,286.8,322.05,286.8z" />
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <path
+                      d="M57.95,250.5c-25.7,0-46.5,20.8-46.5,46.5c0,25.7,20.8,46.5,46.5,46.5s46.5-20.8,46.5-46.5    C104.45,271.4,83.65,250.5,57.95,250.5z M57.95,323.6c-14.7,0-26.5-11.9-26.5-26.5c0-14.7,11.9-26.5,26.5-26.5    c14.7,0,26.5,11.9,26.5,26.5S72.55,323.6,57.95,323.6z" />
+                  </g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+                <g>
+                </g>
+              </svg>
+            </i>
+            <h4>Accordion</h4>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div id="carouselsingleControls" class="carousel slide" data-ride="carousel">
+  <div class="container">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{banner?.slider1}}">
+      </div>
+      <div class="carousel-item">
+        <img src="{{banner?.slider2}}">
+      </div>
+      <div class="carousel-item">
+        <img src="{{banner?.slider3}}">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselsingleControls" role="button" data-slide="prev">
+      <span class="fa fa-angle-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselsingleControls" role="button" data-slide="next">
+      <span class="fa fa-angle-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+
+
+
+<section class="education-detail">
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-md-6 pt-5">
+        <div class="left-content">
+          <h1>For Teachers </h1>
+          <span>Top Educators Teachers</span>
+          <hr>
+          <p [innerHtml]="teacherData?.desc">
+
+          </p>
+          <ul>
+            <li><img src="assets/images/icons/check-icon.png">Create Language Course</li>
+            <li><img src="assets/images/icons/check-icon.png">Create Exercises</li><br>
+            <li><img src="assets/images/icons/check-icon.png">Earn Money</li>
+            <li><img src="assets/images/icons/check-icon.png"> Wallet</li>
+          </ul>
+         
+        </div>
+        <div class="create-teacher-btn">
+          <button type="button" id="create-teacher-btn" routerLink="/register">Create Teacher Account</button>
+        </div>
+      </div>
+      <div class="col-md-6 detail-image-section">
+        <div class="details-top-image">
+          <img src="{{teacherData?.image1}}">
+        </div>
+        <div class="details-right">
+                    <img src="{{teacherData?.image}}">
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6 student-image-section">
+        <div class="student-top-image">
+          <img src="{{studentData?.image1}}">
+        </div>
+       
+        <div class="student-img">
+          <img src="{{studentData?.image}}">
+
+        </div>
+
+      </div>
+      <div class="col-md-6" data-aos="fade-up">
+        <div class="student-right">
+          <h1>For Students</h1>
+          <span>Find Best Language Course</span>
+          <hr>
+
+          <p [innerHtml]="studentData?.desc">
+          </p>
+          <ul>
+            <li><img src="assets/images/icons/check-icon.png">Create Language Course</li>
+            <li><img src="assets/images/icons/check-icon.png">Create Exercises</li><br>
+            <li><img src="assets/images/icons/check-icon.png">Earn Money</li>
+            <li><img src="assets/images/icons/check-icon.png">Wallet</li>
+          </ul>
+        
+        </div>
+        <div class="create-student-btn">
+          <button type="button" id="create-student-btn" routerLink="/register">Create Student Account</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="faq" class="faq">
+  <div class="container"> 
+    <h1>Frequently Asked Questions</h1>
+    <span>Online Task Exercises Courses</span>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="faq-tab">
+          <ul class="faq-list">
+            <ng-container *ngFor="let data of question; let i = index">
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a data-toggle="collapse" class="" [attr.data-target]="'#collapesDetail' + i"> {{data.question}} <i
+                    class="icofont-simple-right"></i></a>
+                <div [attr.id]="'collapesDetail' + i" class="collapse" data-parent=".faq-list"> 
+                  <p>
+                    {{data.answer}}
+                  </p>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="our-blog">
+  <div class="container">
+    <h1>Newest Course</h1>
+    <p style="text-transform: uppercase; text-align: center;letter-spacing: 6px; font-size: 14px; font-weight: 400;">Update New and Latest Course</p>
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li data-target="#multi-item-example" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="row">
+            <ng-container *ngFor="let data of courseData | slice:0:3">
+              <div class="col-md-4">
+                <div class="card mb-2">
+
+                  <div class="card-body">
+                    <div class="date-box">
+                      <span>{{data.date}}</span><br>
+                      <small>{{data.month}}</small>
+                    </div>
+                    <h3 class="card-title">{{data.title}}</h3>
+                    <!-- <h4>{{data.title}}</h4> -->
+                    <p class="card-text" [innerHtml]="(data.field_course_description.length>200)? (data.field_course_description | slice:0:200)+'..':(data.field_course_description) "> </p>
+                    <h5 style="margin-bottom: 25px;">By :{{data.teacher_name}}</h5>
+                    <a routerLink="/login">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+        <div class="carousel-item">
+
+          <div class="row">
+            <ng-container *ngFor="let data of courseData | slice:3:7">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <div class="card-body">
+                    <div class="date-box">
+                      <span>{{data.date}}</span><br>
+                      <small>{{data.month}}</small>
+                    </div>
+                    <h3 class="card-title">{{data.title}}</h3>
+                    <p class="card-text" [innerHtml]="(data.field_course_description.length>200)? (data.field_course_description | slice:0:200)+'..':(data.field_course_description) "> </p>
+                    <h5 style="margin-bottom: 25px;">{{data.teacher_name}}</h5>
+                    <a routerLink="/login">Read More</a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="free-button">
+          <button type="button" id="free-button" routerLink="/register">Create Free Account</button>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <div class="controls-top">
+    <a class="btn-left" href="#multi-item-example" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+    <a class="btn-right" href="#multi-item-example" data-slide="next"><i class="fa fa-angle-right"></i></a>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

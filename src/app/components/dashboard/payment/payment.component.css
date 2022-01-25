@@ -1,0 +1,182 @@
+.passage-section {
+    margin-top: 20px;
+    padding: 0 50px;
+  }
+  
+  .pa-courset {
+    border: 1px solid #A4C7D0;
+    border-radius: 20px;
+    padding: 13px 10px;
+    background-color: #fff;
+  }
+  
+  .pa-courset h2 {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    color: #136980;
+  }
+  
+  .sumry-sectn {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .sumry-sectn .summry-detl {
+    width: 430px;
+    border: 1px solid #A4C7D0;
+    border-radius: 10px;
+    padding: 10px 30px;
+    background-color: #fff;
+  }
+  
+  .sumry-sectn .enroll-detl {
+    width: 430px;
+    border: 1px solid #A4C7D0;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background-color: #fff;
+  }
+  
+  .sumry-sectn .summry-detl h4 {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: #136980;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+  
+  .sumry-sectn .enroll-detl h4 {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    color: #136980;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    margin-top: 15px;
+  }
+  
+  .sumry-sectn .summry-detl ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sumry-sectn .enroll-detl ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sumry-sectn .summry-detl ul li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .sumry-sectn .enroll-detl ul li {
+    margin-bottom: -5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .sumry-sectn .summry-detl ul li p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #136980;
+    text-align: right;
+    width: 30%;
+  }
+  
+  .sumry-sectn .enroll-detl ul li p {
+    font-size: 12px;
+    font-weight: 600;
+    color: #136980;
+  }
+  
+  .sumry-sectn .summry-detl ul li span {
+    width: 66%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #136980;
+    text-align: left;
+  }
+  
+  .sumry-sectn .summry-detl ul .btn-totl {
+    width: 100%;
+    height: 46px;
+    background-color: #136980;
+    border: 2px solid #136980;
+    border-radius: 25px;
+    padding: 10px 0px;
+  }
+  
+  .sumry-sectn .summry-detl ul .btn-totl .totl-text {
+    color: #fff !important;
+    font-size: 14px;
+  }
+  
+  .sumry-sectn .summry-detl ul .btn-totl .totl-text-2 {
+    color: #fff !important;
+  }
+  
+  .sumry-sectn .enroll-detl ul .subj-t {
+    font-size: 15px !important;
+  }
+  
+  .sumry-sectn .enroll-detl ul .subj-star span {
+    background-color: #ff7e00;
+    padding: 2px 10px;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  .sumry-sectn .enroll-detl ul .subj-star i {
+    font-size: 15px;
+  }
+  
+  .sumry-sectn .enroll-detl ul li span {
+    width: 70%;
+    font-size: 12px;
+    font-weight: 600;
+    color: #136980;
+    text-align: left;
+  }
+  
+  .sumry-sectn .enroll-detl ul li span {
+    width: 70%;
+    font-size: 12px;
+    font-weight: 600;
+    color: #136980;
+    text-align: left;
+  }
+  
+  .paypl-btns {
+    width: 325px;
+    height: 56px;
+    border: 3px solid #136980;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: #fff;
+    display: flex;
+justify-content: center;
+align-items: center;
+
+
+  }
+  
+  .paypl-btns figure {
+    padding: 0;
+    width: 290px;
+    margin: 0;
+  }
+  
+  .paypl-btns figure img {
+    width: 100%;
+    height: 100%;
+  }

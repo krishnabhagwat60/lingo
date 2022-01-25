@@ -1,0 +1,159 @@
+<app-header></app-header>
+
+<section class="banner">
+  <div class="banner-bg-right" *ngIf="!loding">
+    <img src="{{banner?.banner3}}" style="width: 65%;margin-left: 35%; height:100%;margin-top: -70px;position: absolute;">
+  </div>
+  <img src="{{banner?.banner2}}" *ngIf="!loding">
+  <div class="loader" *ngIf="loding">Loading...</div>
+
+  <div class="container-fluid px-5" *ngIf="!loding">
+    <div class="row">
+      <div class="col-md-6" data-aos="fade-up">
+
+        <div class="banner-left">
+          <p>{{banner?.title}}</p>
+          <h3 [innerHtml]="banner?.sub_tittle"></h3>
+          <h1 [innerHtml]="banner?.desc"></h1>
+          <div class="banner-btn">
+            <button type="button" id="banner-btn" routerLink="/register">Create Free Account</button>
+          </div>
+        </div>
+       
+      </div>
+
+
+      <div class="col-md-6" *ngIf="!loding">
+        <div class="banner-right">
+          <img src="{{banner?.banner}}"
+            style="width: 100%;margin-left: -20px;height: auto; z-index: 1; margin-top: -40px;">
+          <div class="vector">
+            <img src="{{banner?.banner1}}">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+  <section class="term-condition">
+      <div class="container">
+       <h2>{{termsData?.tittle}}</h2>
+      <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+      <div class="term-tab">
+        <ul class="term-list">
+            <ng-container *ngFor="let data of question; let i = index">
+          <li>
+            <a data-toggle="collapse" class="" [attr.data-target]="'#collapesDetail' + i">{{data.question}} <i class="icofont-simple-right"></i></a>
+            <div [attr.id]="'collapesDetail' + i" class="collapse" data-parent=".term-list">
+              <p>
+                {{data.answer}}
+              </p>
+            </div>
+          </li>
+          </ng-container>
+          <!-- <ng-container *ngFor="let data of question; let i = index">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a data-toggle="collapse" class="" [attr.data-target]="'#collapesDetail' + i"> {{data.question}} <i
+                  class="icofont-simple-right"></i></a>
+              <div [attr.id]="'collapesDetail' + i" class="collapse" data-parent="term-list"> 
+                <p>
+                  {{data.answer}}
+                </p>
+              </div>
+            </li>
+          </ng-container> -->
+<!-- 
+          <li >
+            <a data-toggle="collapse" href="#term2" class="collapsed">Excepteur sint occaecat cupidatat non proident<i class="icofont-simple-right"></i></a>
+            <div id="term2" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#term3" class="collapsed">Duis aute irure dolor in reprehenderit<i class="icofont-simple-right"></i></a>
+            <div id="term3" class="collapse" data-parent=".term-list">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-toggle="collapse" href="#term4" class="collapsed">Ut enim ad minim veniam<i class="icofont-simple-right"></i></a>
+            <div id="term4" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            </div>
+          </li> -->
+<!-- 
+          <li>
+            <a data-toggle="collapse" href="#term5" class="collapsed">Excepteur sint occaecat cupidatat non proident<i class="icofont-simple-right"></i></a>
+            <div id="term5" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="600">
+            <a data-toggle="collapse" href="#term6" class="collapsed">Ut enim ad minim veniam<i class="icofont-simple-right"></i></a>
+            <div id="term6" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              
+              </p>
+            </div>
+          </li>
+           <li>
+            <a data-toggle="collapse" href="#term7" class="collapsed">Duis aute irure dolor in reprehenderit<i class="icofont-simple-right"></i></a>
+            <div id="term7" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              
+              </p>
+            </div>
+          </li>
+
+        <li>
+            <a data-toggle="collapse" href="#term8" class="collapsed">Lorem ipsum dolor sit amet<i class="icofont-simple-right"></i></a>
+            <div id="term8" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            </div>
+          </li>
+           <li>
+            <a data-toggle="collapse" href="#term9" class="collapsed">Duis aute irure dolor in reprehenderit<i class="icofont-simple-right"></i></a>
+            <div id="term9" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+             
+            </div>
+          </li>
+           <li>
+            <a data-toggle="collapse" href="#term10" class="collapsed">Excepteur sint occaecat cupidatat non proident<i class="icofont-simple-right"></i></a>
+            <div id="term10" class="collapse" data-parent=".term-list">
+               <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              </p>
+            
+            </div> -->
+        </ul>
+      </div>
+      </div>
+      <div class="col-md-1"></div>
+        </div>
+
+      </div>
+    </section>
+<app-footer></app-footer>

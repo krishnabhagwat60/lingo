@@ -1,0 +1,49 @@
+<app-header></app-header>
+<section class="banner">
+  <div class="banner-bg-right" *ngIf="!loding">
+    <img src="{{banner?.banner3}}" style="width: 65%;margin-left: 35%; height:100%;margin-top: -70px;position: absolute;">
+  </div>
+  <img src="{{banner?.banner2}}" *ngIf="!loding">
+  <div class="loader" *ngIf="loding">Loading...</div>
+
+  <div class="container-fluid px-5" *ngIf="!loding">
+    <div class="row">
+      <div class="col-md-6" data-aos="fade-up">
+
+        <div class="banner-left">
+          <p>{{banner?.title}}</p>
+          <h3 [innerHtml]="banner?.sub_tittle"></h3>
+          <h1 [innerHtml]="banner?.desc"></h1>
+          <div class="banner-btn">
+            <button type="button" id="banner-btn" routerLink="/register">Create Free Account</button>
+          </div>
+        </div>
+       
+      </div>
+
+
+      <div class="col-md-6" *ngIf="!loding">
+        <div class="banner-right">
+          <img src="{{banner?.banner}}"
+            style="width: 100%;margin-left: -20px;height: auto; z-index: 1; margin-top: -40px;">
+          <div class="vector">
+            <img src="{{banner?.banner1}}">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="privacy-policy">
+  <div class="container">
+    <h1>{{privacyData?.tittle}}</h1>
+    <hr>
+    <div class="policy-content" [innerHtml] = "privacyData?.content">
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

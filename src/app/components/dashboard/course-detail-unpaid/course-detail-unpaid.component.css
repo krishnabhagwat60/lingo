@@ -1,0 +1,63 @@
+.row-accordian .acordian-detail-heading h1 {
+    text-align: left;
+    font-size: 33px;
+    line-height: 35px;
+    color: #136980;
+    font-family: 'Poppins Bold';
+    font-weight: 700;
+}
+
+.row-accordian .acordian-detail-heading hr {
+    width: 90px;
+    background-color: #008ad2;
+    border-radius: 8px;
+    height: 9px;
+    margin-left: 0px;
+}
+
+.row-accordian .faq-box {
+    margin-bottom: 20px;
+}
+
+.row-accordian .faq-box .faq-wrap {
+    background-color: #f2fbff;
+}
+
+.row-accordian .faq-box .faq-wrap .card-header {
+    margin-bottom: 5px;
+    border: 2px solid #d2dfe2;
+    width: 50%;
+}
+
+.row-accordian .faq-box .faq-wrap .card-header h5 a .accord-content {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.row-accordian .faq-box .faq-wrap .card-header h5 a .accord-content {
+    color: #000;
+}
+
+.row-accordian .faq-box .card-block {
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid #d2dfe2;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+.row-accordian .faq-box .faq-wrap2{
+    background-color: #f2fbff;
+    }
+    .row-accordian .faq-box .faq-wrap2 .card-header{
+    margin-bottom: 5px;
+    border: 2px solid #d2dfe2;
+    width: 100%;
+    }
+    .row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        color: #000;
+        }

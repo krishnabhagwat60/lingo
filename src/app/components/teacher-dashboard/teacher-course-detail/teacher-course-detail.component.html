@@ -1,0 +1,275 @@
+<app-side-nav></app-side-nav>
+<app-task-editor></app-task-editor>
+<!-- Start Welcome area -->
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-left">
+                    <img src="assets/images/teacher/teacher-icon.png">
+                    <h2>Teacher Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-height">
+
+        <div class="container-fluid">
+            <div class="dashboard">
+                <div class="row">
+                    <div class="col-md-9 course-detail-heading">
+                        <h1>{{courseData?.title}}</h1>
+                        <hr>
+                    </div>
+                    <!-- <div class="col-md-3">
+                                <button type="button" id="course-detail-enroll-btn" data-target="#enroll" data-toggle="modal">Enroll Now</button>
+                            </div>  -->
+                </div>
+                <div class="right-content text-right">
+                    <p>{{courseData?.date}}</p>
+                </div>
+                <div class="course-table">
+
+                    <table>
+                        <tr class="table-1">
+                            <th>Language: <span>{{courseData?.field_language}}</span></th>
+                            <td>Teaching Language : <span>{{courseData?.teaching_language}}</span></td>
+
+                        </tr>
+                        <tr class="table-1" style="background-color: #fff;">
+                            <th>Level : <span>{{courseData?.field_level}}</span></th>
+                            <td>Approximated Duration : <span>{{courseData?.time_duration}}</span></td>
+                        </tr>
+                        <tr>
+                            <th class="table-1">Course Type : <span>{{courseData?.course_type}}</span>
+                            </th>
+                            <td><span
+                                    style="font-size:14px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
+                                    Fees:</span>
+                                <p>{{courseData?.field_course_fees}}</p> <span>per month</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="course-content">
+                    <!-- <p [innerHtml]="courseData?.field_course_description"></p> -->
+                    <p [innerHTML]="getHtml(courseData?.field_course_description)"></p>
+                </div>
+                <div class="row-accordian">
+                    <div class="faq-box">
+                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="faq-wrap" *ngFor="let data of courseSubdata;let i = index">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                            [attr.data-target]="'#collapesDetails' + i" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            <div class="accord-content">{{data.title}}
+                                                <i class="fa fa-angle-down"></i>
+                                            </div>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
+                                    [attr.id]="'collapesDetails' + i">
+                                    <div class="card-block" *ngFor="let data1 of data.submenu">{{data1.name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-accordian" *ngIf="fqButton">
+                    <div class="acordian-detail-heading">
+                        <h1>FAQ</h1>
+                        <hr>
+                    </div>
+                    <div class="faq-box">
+                        <div id="faq" role="tablist" aria-multiselectable="true">
+                            <div class="faq-wrap" *ngFor="let data of courseFaqdata;let j = index">
+                                <div class="card-header" role="tab" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" data-parent="#faq"
+                                            [attr.data-target]="'#collapesDetail' + j" aria-expanded="true"
+                                            aria-controls="collapseTwo+ j">
+                                            <div class="accord-content">{{data.title}}
+                                                <i class="fa fa-angle-down"></i>
+                                            </div>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                                    [attr.id]="'collapesDetail' + j">
+                                    <div class="card-block">{{data.text}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="enroll" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="enroll-popup">
+                        <h3>Enroll</h3>
+                        <hr>
+                        <!-- <p>Get Unlimited Access To Course</p> -->
+                    </div>
+                </div>
+                <div class="enroll-box">
+                    <table>
+
+                        <tr>
+                            <td><span>{{courseData?.title}}</span></td>
+                            <td style="text-transform: uppercase;border-right: transparent;">Course Id :
+                                <span>{{courseData?.course_id}}</span></td>
+
+                        </tr>
+                        <tr>
+                            <td>Currently Enrolled <span>{{courseData?.total_enroll}}</span></td>
+                            <td style="border-right: transparent;">Last Time Updated : <span>{{courseData?.date}}</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="border-bottom:transparent">Approximated Duration
+                                <span>{{courseData?.time_duration}}</span></td>
+                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
+                                    style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
+                                    USD</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="pay-form">
+                    <span>
+                        <img src="assets/images/icons/pay.png">Bill monthly
+                    </span>
+                    <strong class="text-right"
+                        style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
+                            months</span></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- summary modal -->
+<div id="summary" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button data-dismiss="modal" class="close">&times;</button>
+            <div class="modal-body">
+                <div class="summary-popup">
+                    <div class="row">
+
+                        <div class="summary-1">
+                            <h3>Summary of Course</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="summary-2">
+                                <p>{{courseData?.title}}</p>
+                                <ul *ngIf ="courseData?.review_count != '0'">
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
+                                        {{courseData?.teacher_name}} </li>
+                                    <li style="border-bottom: transparent;"><span>{{courseData?.course_id}}</span></li>
+                                    <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                        <strong>{{courseData?.rating}}</strong>
+                                        <ng-container *ngIf="courseData?.rating === '1'">
+                                            <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '0'">
+                                            <i class="fa fa-star-half-o" style="color:#ff4545 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '1.5'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '2'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '2.5'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '3'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '3.5'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '4'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '4.5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="courseData?.rating === '5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                      <a style="color: grey;" *ngIf ="courseData?.review_count != '0'">({{courseData?.review_count}})</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="summary-3">
+                                <div class="vl"></div>
+                                <p>Payment Review</p>
+                                <ul>
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
+                                        Course fees : <span>{{courseData?.field_course_fees}}</span></li>
+                                    <li style="border-bottom: transparent;">Tax <span>€2.00</span></li>
+                                    <li
+                                        style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                        Total <span>{{courseData?.field_course_fees}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-btn">
+                    <a (click)="confirmPayment()" data-dismiss="modal" style="color: #fff;">Confirm Payment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,623 @@
+<div id="dasboard-header" style="padding-bottom: 0;">
+  <div class="header-menu">
+    <div class="col-md-2 dashboard-logo">
+      <a><img src="assets/images/logo.png" alt="Logo"></a>
+    </div>
+    <div class="col-md-8 dashborad-menu-right">
+      <div class="header-top-menu hd-search-rp">
+        <form role="search" class="dashboard-search-header">
+          <input type="text" placeholder="SEARCH" class="form-control " id="search">
+          <i class="fa fa-search"></i>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-2" style="padding: 0;">
+      <ul class="user-area">
+        <li class="markus">
+          <a>{{user | titlecase}}</a>
+        </li>
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="user-avatar" [src]="images">
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<app-task-editor *ngIf="!courses"></app-task-editor>
+<aside id="left-panel" class="left-panel" *ngIf="courses">
+  <nav class="navbar-expand-sm navbar-default">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+        aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+
+    </div>
+    <div id="main-menu" class="navbar" style="z-index: 9999;">
+      <div style="display: grid;">
+        <h3 class="menu-title mt-3">
+          <a routerLink="/dashboard/myCourse">My Course</a>
+        </h3>
+      </div>
+      <div class="dummy-for-height">
+        <div class="sidenav left-panel-1">
+          <button class="dropdown-btn active" style="font-size: 18px; background-color: #0a576c !important;">My Course
+            <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="for-scroll">
+            <ng-container *ngFor="let data of sidebarData2 ; index as j">
+              <button class="title-dropdown" (click)="toggleAccordian2($event, j,data.course_name,data.course_id)">
+                {{ (data.course_name.length>13)? (data.course_name | slice:0:13)+'..':(data.course_name)
+                }}
+                <i class="fa fa-angle-down"></i>
+              </button>
+              <div *ngIf="data.isActive">
+                <ng-container *ngFor="let data1 of data?.title; index as k">
+                  <button class="subt-dropdown"
+                    (click)="toggleSubTitle2($event,k,data1.titleid);getSubTitle(data1?.titleid)">
+                    <span>{{k+1}}.</span>
+                    {{data1?.title}}
+                    <i class="fa fa-angle-down"></i>
+                  </button>
+                  <div *ngIf="data1.isActive" class="dashboard-custom">
+                    <ng-container *ngFor="let data2 of data1?.submenu">
+                      <a (click)="getChildSData(data2.id,data.course_id,data.teacher_name,data.rating)"
+                        style="color: #fff; padding-left: 28px; font-size: 12px !important; border-radius: 0;"><span>{{data2.s_no}})</span>
+                        {{data2.name}}</a>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="sidenav left-panel">
+          <button class="dropdown-btn active" routerLink="/dashboard/studentDashboard"
+            style="font-size: 18px; background-color: #0a576c !important;">Dashboard
+          </button>
+        </div>
+        <div class="sidenav left-panel">
+          <button class="dropdown-btn" routerLink="/dashboard/studentProfile"
+            style="font-size: 18px; background-color: #0a576c !important;">Profile
+          </button>
+        </div>
+        <div class="sidenav left-panel">
+          <button class="dropdown-btn" routerLink="/dashboard/wallet"
+            style="font-size: 18px; background-color: #0a576c !important;">Transaction
+          </button>
+        </div>
+        <div class="sidenav left-panel">
+          <button class="dropdown-btn" routerLink="/dashboard/subscriptionPlan"
+            style="font-size: 18px; background-color: #0a576c !important;">Subscription Plan
+          </button>
+        </div>
+
+        <div class="sidenav left-panel">
+          <button class="dropdown-btn" routerLink="/dashboard/support"
+            style="font-size: 18px; background-color: #0a576c !important;">Support
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</aside>
+<div id="right-panel" class="right-panel">
+  <div class="breadcrumbs" *ngIf="!courses">
+    <div class="col-sm-6">
+      <div class="page-header">
+        <div class="page-title-left">
+          <img src="assets/images/teacher/teacher-icon.png">
+          <h2>Teacher Account</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="page-header">
+        <div class="page-title-right">
+          <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="breadcrumbs" *ngIf="courses">
+    <div class="col-sm-6">
+      <div class="page-header float-left">
+        <div class="page-title-left">
+          <img src="assets/images/icons/student-icon.png">
+          <h2>Student Account</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="page-header float-right">
+        <div class="page-title-right">
+          <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-height">
+    <div class="dashboard" style="padding: 10px;">
+      <div class="excercises-view">
+        <div class="excercises-left-data"></div>
+        <!-- <div class="col-md-4" > -->
+        <div class="excercises-right-table" *ngIf="courses">
+          <ul>
+            <li style=" border-top-left-radius: 8px; border-top-right-radius: 8px;">Created By : &nbsp;&nbsp;<p>
+                {{teacherName}}</p>
+            </li>
+            <li style="text-transform:uppercase;">Course ID : &nbsp;&nbsp;<p>{{courseId}}</p>
+            </li>
+            <li style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;"><span>{{ratings}}</span>
+              <ng-container *ngIf="ratings === '1'">
+                <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '0'">
+                <i class="fa fa-star-half-o" style="color:#ff4545 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '1.5'">
+                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '2'">
+                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '2.5'">
+                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '3'">
+                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '3.5'">
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+
+              </ng-container>
+              <ng-container *ngIf="ratings === '4'">
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '4.5'">
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+              </ng-container>
+              <ng-container *ngIf="ratings === '5'">
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                <i class="fa fa-star" style="color:#57e32c !important;"></i>
+              </ng-container>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" id="back-btn" (click)="gotoBack()">Back</button>
+      <!-- </div> -->
+      <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
+        <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
+      </div>
+      <p *ngIf="errMsg" style="text-align: center;color: red;"><b>{{errMsg}}</b></p>
+      <ng-container *ngIf="!mainpageLoder ">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="excercises-heading" *ngIf="courseNameData">
+              <h1>{{courseNameData}}</h1>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <!-- <hr style="width: 100%;height: 2px;background-color: #efeef4;"> -->
+        <div *ngFor="let data of fillTheBlanksData;let i = index">
+          <div [ngSwitch]="data.type">
+            <ng-container *ngSwitchCase="'afiliation'">
+              <section class="affilition-view">
+                <div class="save-content-view">
+                  <!-- <ng-container *ngFor="let data of affiliationData"> -->
+
+                  <div class="mid-title" *ngIf="data.title">
+                    <h1>{{data.title}}</h1>
+                    <!-- <hr> -->
+                  </div>
+                  <div class="save-content-view-table" style="padding-left: 10px;">
+                    <div class="row">
+                      <ng-container *ngFor="let data1 of data.data; index as i">
+                        <div class="col-sm-1 sn">
+                          <p>S.No</p>
+                          <input type="" name="" value="{{i+1}}" disabled>
+                        </div>
+                        <div class="col-sm-3 pos">
+                          <p>Animation</p>
+                          <input type="" name="" value="{{data1.antonym}}" disabled>
+                        </div>
+                        <div class="col-sm-5"></div>
+                        <div class="col-sm-3 sp">
+                          <p>Matching</p>
+                          <div class="select-dropdown-question" style="width: 100%;">
+                            <select
+                              (change)="onChange($event.target.value, data1);getDropDownValue($event.target.value,data1.p_id)"
+                              name="" id="" [(ngModel)]="data1.key">
+                              <option>Select Right Answer</option>
+                              <option *ngFor="let optionData of data.dropdown | departure : [selected1, data1.key]">
+                                {{optionData.value}}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+                  <div class="show-button">
+                    <button type="button" *ngIf="!courses" id="show-button"
+                      (click)="showAffiliationData();showResult(data.title_id,data.title);"><img
+                        src="assets/images/icons/show.png">Show
+                      Result</button>
+                    <button type="button" *ngIf="courses" id="show-button"
+                      (click)="showAffiliationData();showResult(data.title_id,data.title);getAffilitionData(data.title_id)"><img
+                        src="assets/images/icons/show.png">Show
+                      Result</button>
+                  </div>
+                  <!-- </ng-container> -->
+                </div>
+
+              </section>
+            </ng-container>
+            <ng-container *ngSwitchCase="'fill_in_the_blanks'">
+              <section class="fill-in-blanks-view">
+                <!-- <ng-container *ngFor="let data of fillTheBlanksData"> -->
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <div class="fill-in-blanks-content">
+                  <p [innerHtml]="data.question"></p>
+                </div>
+                <!-- </ng-container> -->
+                <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+                <div class="show-button">
+                  <button type="button" id="show-button" *ngIf="!courses"
+                    (click)="fillResult(data.p_id,data.title);sub(data.p_id);"><img
+                      src="assets/images/icons/show.png">Show
+                    Result</button>
+                  <button type="button" id="show-button" *ngIf="courses"
+                    (click)="fillResult(data.p_id,data.title);sub(data.p_id);getFillData(data.p_id)"><img
+                      src="assets/images/icons/show.png">Show
+                    Result</button>
+                </div>
+              </section>
+            </ng-container>
+            <div class="image-drag-section" *ngSwitchCase="'image_drag_and_drop'">
+              <!-- <ng-container *ngFor="let data of imageDrag"> -->
+              <div class="image-drag-edit-view">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <div class="for-final-img">
+                  <div class="col-lg-12" style="display: block; padding: 0;">
+                    <div class="col-md-3 mr-3" style="padding: 0;" *ngFor="let data1 of data.data">
+                      <ul *ngIf="data1.image">
+                        <li class="dragging-img">
+                          <img [src]="data1.image" data-toggle="modal" data-target="#fullimg" (click)="getImage(data1.image)">
+                        </li>
+                        <li class="final-for-select">
+                          <select (change)="getImageValue($event.target.value,data1.p_id)">
+                            <option value="" disabled selected>Select Answer</option>
+                            <option *ngFor="let data2 of data1.worngAnswer">{{data2.worngAnswerImage}}</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="final-for-audio">
+                  <div class="col-lg-12" style="display: block; padding: 0;">
+                    <div class="col-md-3 mr-3 audio-square" *ngFor="let data1 of data.data">
+                      <ul *ngIf="data1.audio">
+                        <li class="audio-file-section">
+                          <audio id="myAudio" controls="controls" preload="metadata">
+                            <source [src]="data1.audio" type="audio/ogg">
+                          </audio>
+                        </li>
+                        <li class="final-for-select">
+                          <select (change)="getImageValue($event.target.value,data1.p_id)">
+                            <option value="" disabled selected>Select Answer</option>
+                            <option *ngFor="let data2 of data1.worngAnswer">{{data2.worngAnswerImage}}</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+              <!-- </ng-container> -->
+              <div class="show-button">
+                <button type="button" id="show-button" *ngIf="!courses"
+                  (click)="imageShowResult(data.title_id,data.title);showImageData();"><img
+                    src="assets/images/icons/show.png">Show
+                  Result</button>
+                <button type="button" id="show-button" *ngIf="courses"
+                  (click)="imageShowResult(data.title_id,data.title);showImageData();getDragDropData(data.title_id)"><img
+                    src="assets/images/icons/show.png">Show
+                  Result</button>
+              </div>
+
+            </div>
+            <ng-container *ngSwitchCase="'pick_up_right_word'">
+              <section class="pick-the-right-view">
+                <div class="right-pick-student-content">
+                  <div class="mid-title" *ngIf="data.title">
+                    <h1>{{data.title}}</h1>
+                    <!-- <hr> -->
+                  </div>
+                  
+                  <div style="margin:0;display:inline;float:left"
+                    *ngFor="let hero of data.question.split(' '); let i = index">
+                    <p style="margin-left:4px;margin-top:0px;margin-bottom:0px;margin-right:0px;" [innerHTML]="hero"
+                      (dblclick)="highlight(hero,i,data);"></p>
+                      
+                  </div>
+                </div>
+                <div class="pick-bbtn">
+                <div class="show-button">
+                  <button type="button" id="show-button" *ngIf="!courses"
+                    (click)="pickRightWord(data.p_id,data.title);showPickData(data.p_id)"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                  <button type="button" id="show-button" *ngIf="courses"
+                    (click)="pickRightWord(data.p_id,data.title);showPickData(data.p_id);getPickData(data.p_id);"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                </div>
+              </div>
+              </section>
+            </ng-container>
+            <ng-container *ngSwitchCase="'radio_button'">
+              <section class="question-with-radio-view">
+                <div class="result-option">
+                  <div class="mid-title" *ngIf="data.title">
+                    <h1>{{data.title}}</h1>
+                    <!-- <hr> -->
+                  </div>
+                  <div class="question-radio-button">
+                    <form>
+                      <div class="question-radio" *ngFor="let data1 of data.data;index as j">
+                        <h4
+                          style="width: 100%; background:#fff!important; padding: 10px!important;border: 1px solid rgba(51,42,124,0.08); border-radius:5px;">
+                          Q - {{data1.question}}</h4>
+                        <label class="checkbox-inline" *ngFor="let data2 of data1.option;index as k">
+                          <input type="radio" name="{{j}}" value="option1"
+                            (click)="getRadioValue($event.target.value,data1.p_id)">
+                          <p>
+                            {{data2.option1}}</p>
+                        </label>
+                        <label class="checkbox-inline" *ngFor="let data2 of data1.option">
+                          <input type="radio" name="{{j}}" value="option2"
+                            (click)="getRadioValue($event.target.value,data1.p_id)">
+                          <p>
+                            {{data2.option2}}</p>
+                        </label>
+                        <label class="checkbox-inline" *ngFor="let data2 of data1.option">
+                          <input type="radio" name="{{j}}" value="option3"
+                            (click)="getRadioValue($event.target.value,data1.p_id)">
+                          <p>
+                            {{data2.option3}}</p>
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="show-button">
+                  <button type="button" id="show-button" *ngIf="!courses"
+                    (click)="showRadioResult(data.title_id,data.title);showRadioData()"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                  <button type="button" id="show-button" *ngIf="courses"
+                    (click)="showRadioResult(data.title_id,data.title);showRadioData();getRadioData(data.title_id)"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                </div>
+              </section>
+            </ng-container>
+            <ng-container *ngSwitchCase="'questions_with_dropdown'">
+              <section class="question-with-dropdown-view">
+
+                <div class="insert-question-view">
+                  <div class="row">
+
+                    <div class="mid-title" style="padding-left: 18px;">
+                      <h1>{{data.title}}</h1>
+                      <!-- <hr> -->
+                    </div>
+
+                  </div>
+                  <ng-container *ngFor="let questionData of data.data">
+                    <input type="" name="" value="{{questionData.question}}" disabled>
+                    <div class="select-dropdown-question-view">
+                      <select (change)="getQuestionValue($event.target.value,questionData.p_id)">
+                        <option disabled selected>Answer</option>
+                        <option *ngFor="let data1 of questionData.worng_answer">{{(data1.wrong.length>20)? (data1.wrong| slice:0:13)+'..':(data1.wrong)}}</option>
+                      </select>
+                    </div>
+                  </ng-container>
+                </div>
+                <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+                <div class="show-button">
+                  <button type="button" id="show-button" *ngIf="!courses"
+                    (click)="questionRadioDropdown(data.title_id,data.title);showQuestionData();"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                  <button type="button" id="show-button" *ngIf="courses"
+                    (click)="questionRadioDropdown(data.title_id,data.title);showQuestionData();getQuesDropdownData(data.title_id)"><img
+                      src="assets/images/icons/show.png">Show Result</button>
+                </div>
+
+
+              </section>
+
+            </ng-container>
+            <ng-container *ngIf="dragText">
+              <section class="drag-word-view">
+                <div class="drag-word">
+                  <ng-container *ngFor="let data of textDrag">
+                    <div class="drag-word-box">
+                      <div class="row">
+                        <div class="col-md-8">
+                          <div class="mid-title" *ngIf="data.title">
+                            <h1>{{data.title}}</h1>
+                            <!-- <hr> -->
+                          </div>
+                        </div>
+                      </div>
+                      <ng-container>
+                        <ng-container *ngFor="let data1 of data.data">
+                          <input type="" name="" disabled>
+                          <label>{{data1.question}}</label>
+                        </ng-container>
+                        <div class="drag-word-button">
+                          <button type="button" id="drag-word-1" *ngFor="let data2 of data.answer"
+                            cdkDrag>{{data2}}</button>
+                        </div>
+                      </ng-container>
+                    </div>
+
+                  </ng-container>
+                </div>
+                <!-- <hr style="margin-top: 100px; width: 100%; height: 1px;  background-color: #efeef4;"> -->
+                <div class="show-button">
+                  <button type="button" id="show-button" (click)="dragShowResult(data.title_id,data.title)"><img
+                      src="assets/images/icons/show.png">Show
+                    Result</button>
+                </div>
+
+              </section>
+            </ng-container>
+            <div class="insert-content" *ngSwitchCase="'text'">
+              <div class="mid-title" *ngIf="data.title">
+                <h1>{{data.title}}</h1>
+                <!-- <hr> -->
+              </div>
+              <p [innerHtml]="getHtmlText(data.text)"></p>
+            </div>
+            <ng-container *ngSwitchCase="'image'">
+              <div class="picture" style="padding: 0!important;">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <div class="bigg-imgs">
+                  <img [src]="data.image" data-toggle="modal" data-target="#fullimg" (click)="getImage(data.image)">
+                </div>
+              </div>
+            </ng-container>
+            <div *ngSwitchCase="'Accordion'" class="accordion-student-view">
+              <div class="mid-title" *ngIf="data.title">
+                <h1>{{data.title}}</h1>
+                <!-- <hr> -->
+              </div>
+              <div id="accordion-one" *ngFor="let data2 of data.data;let k = index">
+                <div class="card-create-accrdn">
+                  <div class="card-header">
+                    <a class="card-link text-dark" data-toggle="collapse" data-target="#accordions"
+                      [attr.data-target]="'#collapesDetails' + k +data2.id" aria-controls="swapOne"><span
+                        class="float-right"><i class="fa fa-angle-down"></i></span>
+                      {{data2.title}}
+                    </a>
+                  </div>
+                  <div id="swapOne" class="collapse" data-parent="#accordion-one"
+                    [attr.id]="'collapesDetails' + k +data2.id">
+                    <div class="card-body">
+                      {{data2.text}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- </ng-container> -->
+            </div>
+            <ng-container *ngSwitchCase="'audio'">
+              <div class="audio-1">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <audio id="myAudio" controls="controls" preload="metadata">
+                  <source [src]="data.audio" type="audio/ogg">
+                </audio>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'youtube'">
+              <div class="youtube-video">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <iframe width="100%" height="300px" [src]="sanitizer.bypassSecurityTrustResourceUrl(data.youtube)"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'otherlink'">
+              <div class="other-link">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <div class="other-links-image-section">
+                  <p [innerHTML]="getHtml(data.otherlink)"></p>
+                  <p [innerHTML]="getHtml(data.other_link_url)"></p>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'pdf'">
+              <div class="pdf">
+                <div class="mid-title" *ngIf="data.title">
+                  <h1>{{data.title}}</h1>
+                  <!-- <hr> -->
+                </div>
+                <img src="assets/images/pdf.png" (click)="pdfData(data.pdf)">
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div id="fullimg" class="modal fade" role="dialog">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content modal-img">
+
+      <button data-dismiss="modal" class="close">&times;</button>
+
+      <div class="modal-body zoom-pop">
+
+        <img [src]="this.image">
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

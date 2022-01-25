@@ -1,0 +1,174 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceService } from '../../service.service';
+
+@Component({
+  selector: 'app-image-drag-word',
+  templateUrl: './image-drag-word.component.html',
+  styleUrls: ['./image-drag-word.component.css']
+})
+export class ImageDragWordComponent implements OnInit {
+  sidebarData: any;
+  textDrag: any;
+  id: string;
+  courseNameData: string;
+  title: string;
+  profileShow: boolean = false;
+  dashboardShow: boolean = false;
+  ismenusub: boolean = false;
+  ismenu: boolean = false;
+  ismenuShow: boolean = false;
+  subTitle: any;
+  authenticate: string;
+  courses: boolean = false;
+  sidebarData2: any;
+  coursesName: void;
+
+  constructor(private service: ServiceService,private route: ActivatedRoute,private router: Router) { 
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.id = queryParams.get("id");
+    })
+    this.courseNameData= sessionStorage.getItem('course_name')
+  }
+
+  ngOnInit(): void {
+    this.sidebar();
+    this.affiliationList();
+    this.titleName();
+    this.courseName();
+    this.authenticateName();
+    this.studentSideBar();
+  }
+  studentSideBar() {
+    const data={
+      user_id:sessionStorage.getItem('uid')
+    }
+    this.service.post('student_sidebar',data, 1).subscribe(res => {
+      this.sidebarData2 = res.body.result;
+    })
+  }
+  toggleAccordian2(event, index) {
+    const element = event.target;
+    element.classList.toggle('active');
+    if (this.sidebarData2[index].isActive) {
+      this.sidebarData2[index].isActive = false;
+    } else {
+      this.sidebarData2[index].isActive = true;
+    }
+  }
+  toggleSubTitle2(event, index, data) {
+    for (let i = 0; i < this.sidebarData2.length; i++) {
+      const title = this.sidebarData2[i].title;
+      for (let j = 0; j < title.length; j++) {
+        const id = title[j].titleid
+        if (data === id) {
+          const element = event.target;
+          element.classList.toggle('active');
+          if (title[j].isActive) {
+            title[j].isActive = false;
+          } else {
+            title[j].isActive = true;
+          }
+        }
+      }
+    }
+  }
+
+  authenticateName() {
+    this.authenticate = sessionStorage.getItem('student')
+    if (this.authenticate) {
+      this.courses = true;
+    }
+  }
+  getSubTitle(parent) {
+    const data = {
+      "title_id": parent,
+      user_id: sessionStorage.getItem('uid')
+    }
+    this.service.post('submenu-listing', data, 1).subscribe(res => {
+      // console.log(res);
+      this.subTitle = res.body.result
+    })
+  }
+  getChildData(child) {
+    sessionStorage.setItem('subId', child);
+    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+  }
+  showshubmenu(){
+    this.ismenuShow=!this.ismenuShow
+  }
+
+  showsubmenu(){
+    this.ismenu=!this.ismenu
+  }
+
+  showsub(){
+    this.ismenusub=!this.ismenusub
+  }
+
+  dashboardShow1(){
+    this.dashboardShow=!this.dashboardShow
+  }
+
+  profileShow1(){
+    this.profileShow=!this.profileShow
+  }
+  // sidebar api
+  sidebar() {
+    const data ={
+      user_id : sessionStorage.getItem('uid')
+    }
+    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
+      this.sidebarData = res.body.result;
+      //  console.log(this.sidebarData);
+    })
+  }
+    // get multimedia data api
+    affiliationList() {
+      const data = {
+        "subtitle_id": this.id 
+      }
+      this.service.post('allexercises-get', data, 1).subscribe(res => {
+        this.textDrag = res.body.result.text_drag_drop;
+      })
+    }
+    courseName() {
+      this.courseNameData = sessionStorage.getItem('course_name')
+    }
+    titleName(){
+      this.title = sessionStorage.getItem('text_title')
+    }
+      //sidebar accordion
+  toggleAccordian(event, index,name,id) {
+    this.coursesName = localStorage.setItem('coursename',name)
+   this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+    const element = event.target;
+    element.classList.toggle('active');
+    if (this.sidebarData[index].isActive) {
+      this.sidebarData[index].isActive = false;
+    } else {
+      this.sidebarData[index].isActive = true;
+    }
+  }
+  toggleSubTitle(event, index, data) {
+    for (let i = 0; i < this.sidebarData.length; i++) {
+      const title = this.sidebarData[i].title;
+      for (let j = 0; j < title.length; j++) {
+        const id = title[j].titleid
+        if (data === id) {
+          const element = event.target;
+          element.classList.toggle('active');
+          if (title[j].isActive) {
+            title[j].isActive = false;
+          } else {
+            title[j].isActive = true;
+          }
+        }
+      }
+    }
+  }
+  getChildSData(child) {
+    sessionStorage.setItem('subId', child);
+    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+  }
+}

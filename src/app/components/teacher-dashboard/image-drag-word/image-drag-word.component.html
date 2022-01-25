@@ -1,0 +1,87 @@
+<app-side-nav></app-side-nav>
+<app-task-editor *ngIf="!courses"></app-task-editor>
+  <app-student-header *ngIf="courses"></app-student-header>
+
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs" *ngIf="!courses">
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-left">
+                <img src="assets/images/teacher/teacher-icon.png">
+                    <h2>Teacher Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{user | titlecase}}!</span></h2> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs" *ngIf="courses">
+        <div class="col-sm-6">
+            <div class="page-header float-left">
+                <div class="page-title-left">
+                   <img src="assets/images/icons/student-icon.png">
+                    <h2>Student Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header float-right">
+                <div class="page-title-right">
+                    <h2>Welcome Back  <span>{{username | titlecase}}!</span></h2> 
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="main main-height">
+             <div class="dashboard">
+
+              <div class="save-heading">
+                            <div class="row">
+                                 <div class="col-md-9 text-left">
+                                   <h1>{{courseNameData}}</h1>
+                                   <hr>
+                              
+                             </div>   
+                            <!-- <div class="col-md-3 edit-course-btn">
+                                <button type="button" id="edit-course-btn"><i class="fa fa-cog"></i>Edit Course Exercise </button>
+                                
+                            </div>  -->
+
+                           </div>                     
+                            
+                        </div>                
+                        <section class="drag-word-result">
+                          <div class="drag-word-content">
+                            <h5>{{title}}</h5>
+                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptat.e velit esse cillum dolore eu fugiat nulla pariatur. </p> -->
+                         </div>
+                            
+                         <div class="country-box" *ngFor="let data of textDrag">
+                            <div class="row">
+                                <input type="" name="" value="{{data.answer}}">
+                                  <i class="fa fa-check"></i>
+                                <div class="country-box-content">
+                                   <p>{{data.question}}</p>
+                                </div>
+                            </div>
+                         </div>     
+</section>
+                       </div>     
+                     <hr style="width: 100%; height: 1px; background-color: #efeef4;">  
+                     <div class="rating-point">          
+                         <p>You Got <strong style="color: #18af14;font-weight: 700;">1</strong> of <span style="font-weight: 700; color: #000000;"></span> Points.</p>
+                             <div class="range">
+                                <input type="range"  value="100" class="rating"><span>1/<strong style="font-weight: 700; color: #000000;">1</strong></span>
+                            </div>
+                             <button type="button" id="retry-btn"><span class="fa fa-repeat"></span>Retry</button>
+                              <button type="button" id="solution-btn" routerLink="/teacherDashboard/textDragSolution"><span class="fa fa-check"></span>Solution</button>
+               
+                    </div>
+        
+</div>
+</div>

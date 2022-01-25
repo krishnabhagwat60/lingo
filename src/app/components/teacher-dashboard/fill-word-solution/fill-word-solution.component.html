@@ -1,0 +1,59 @@
+<app-side-nav></app-side-nav>
+<app-task-editor *ngIf="!courses"></app-task-editor>
+<app-student-header *ngIf="courses"></app-student-header>
+
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs" *ngIf="!courses">
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-left">
+                    <img src="assets/images/teacher/teacher-icon.png">
+                    <h2>Teacher Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs" *ngIf="courses">
+        <div class="col-sm-6">
+            <div class="page-header float-left">
+                <div class="page-title-left">
+                    <img src="assets/images/icons/student-icon.png">
+                    <h2>Student Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header float-right">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{username | titlecase}}!</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-height">
+        <button type="button" id="back-btn" (click)="gotoBack()">Back</button>
+        <div class="dashboard" style="padding: 0px 10px;">
+            <div class="fill-in-blanks-result">
+                <ng-container *ngFor="let data of fillData">
+                    <div class="save-heading">
+                        <h1>{{courseNameData}}</h1>
+                        <hr>
+                    </div>
+                    <div class="fill-in-blanks">
+                        <div class="fill-in-blanks-content">
+                            <h5>{{title}}</h5>
+                            <p [innerHtml]="data.question"></p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

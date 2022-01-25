@@ -1,0 +1,34 @@
+<div id="dasboard-header" style="padding-bottom: 0;">
+    <div class="header-menu">
+        <div class="col-md-2 dashboard-logo">
+            <a routerLink="/teacherDashboard/teachersDashboard"><img src="assets/images/logo.png" alt="Logo"></a>
+        </div>
+        <div class="col-md-8 dashborad-menu-right">
+            <div class="header-top-menu hd-search-rp">
+                <form role="search" class="dashboard-search-header">
+                    <input type="text" placeholder="SEARCH" class="form-control " id="search">
+                    <i class="fa fa-search"></i>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding:0;">
+            <ul class="user-area">
+                <li class="markus">
+                    <a>{{user | titlecase}}</a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" [src]="image">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

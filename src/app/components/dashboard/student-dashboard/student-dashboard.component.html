@@ -1,0 +1,425 @@
+<div id="dasboard-header" style="padding-bottom: 0;">
+    <div class="header-menu">
+        <div class="col-md-2 dashboard-logo">
+            <a routerLink="/dashboard/studentDashboard"><img src="assets/images/logo.png" alt="Logo"></a>
+        </div>
+        <div class="col-md-8 dashborad-menu-right">
+            <div class="header-top-menu hd-search-rp">
+                <form [formGroup]="searchform">
+                    <div role="search" class="dashboard-search-header">
+                        <input type="text" (keyup.enter)="searchDatas()" placeholder="SEARCH"
+                            formControlName="searchData" class="form-control " id="search">
+                        <i class="fa fa-search" (click)="searchDatas()"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2" style="padding: 0;">
+            <ul class="user-area">
+                <li class="markus">
+                    <a>{{user | titlecase}}</a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" src="assets/images/student-profile.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-sidebar></app-sidebar>
+<div id="right-panel" class="right-panel">
+    <div class="breadcrumbs">
+        <div class="col-sm-6">
+            <div class="page-header float-left">
+                <div class="page-title-left">
+                    <img src="assets/images/icons/student-icon.png">
+                    <h2>Student Account</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="page-header float-right">
+                <div class="page-title-right">
+                    <h2>Welcome Back <span>{{user | titlecase}}!</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main main-height">
+        <div class="dashboard">
+            <!-- <button type="submit" class="btn-success" *ngIf="searchDataBtn" (click)="reset()">Reset</button> -->
+            <div class="student-dashboard-heading">
+                <h1>Dashboard</h1>
+                <hr>
+
+                <div class="reset-btns1">
+                    <button _ngcontent-brx-c67="" type="submit" class="reset-dash" *ngIf="searchDataBtn"
+                        (click)="reset()">Reset</button>
+                </div>
+
+
+            </div>
+            <div class="dashboard-search">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <form [formGroup]="searchform">
+                            <div class="student-search">
+                                <!-- <p>Search</p> -->
+                                <input type="text" class="search-dropdown" formControlName="searchData"
+                                    (keyup.enter)="searchDatas()" placeholder="Search Here">
+                                <a class="fa fa-search" (click)="searchDatas()"></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form [formGroup]="searchForm">
+                        <div class="col-md-4">
+                            <div class="search-1">
+                                <p>Teaching Language</p>
+                                <div class="select-dropdown">
+                                    <!-- <p>Teaching Language</p> -->
+                                    <select formControlName="teacherLanguage">
+                                        <option value="" disabled>TEACHER LANGUAGE</option>
+                                        <option *ngFor="let data of language" value="{{data.key}}">
+                                            {{data.value}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="search-1">
+                                <p>Course Language</p>
+                                <div class="select-dropdown">
+                                    <select formControlName="courseLanguage">
+                                        <option value="" disabled>COURSE LANGUAGE</option>
+                                        <option *ngFor="let data of language" value="{{data.key}}">
+                                            {{data.value}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="search-2">
+                                <p>Course</p>
+                                <div class="select-dropdown">
+                                    <select formControlName="course">
+                                        <option value="" disabled>COURSE</option>
+                                        <option *ngFor="let data of courseDetail" value="{{data.title}}">
+                                            {{data.title}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="search-2">
+                                <p>Teacher</p>
+                                <div class="select-dropdown">
+                                    <select formControlName="teacher">
+                                        <option value="">Teacher</option>
+                                        <option *ngFor="let data of teacherData" value="{{data.id}}">
+                                            {{data.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="search-2">
+                                <p>Level</p>
+                                <div class="select-dropdown">
+                                    <!-- <p>Teaching Language</p> -->
+                                    <select formControlName="level">
+                                        <option value="" disabled>LEVEL</option>
+                                        <option *ngFor="let data of level" value="{{data.id}}">
+                                            {{data.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="search-rating">
+                                <p>Rating</p>
+                                <div class="select-dropdown">
+                                    <select formControlName="rating">
+                                        <option value="">Rating</option>
+                                        <option value="0">0</option>
+                                        <option value="0.5">0.5</option>
+                                        <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
+                                        <option value="2">2</option>
+                                        <option value="2.5">2.5</option>
+                                        <option value="3">3</option>
+                                        <option value="3.5">3.5</option>
+                                        <option value="4">4</option>
+                                        <option value="4.5">4.5</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="search-3">
+                                <a (click)="search()" style="color: #fff;">Search</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
+                <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
+            </div>
+
+            <p *ngIf="errMsg" style="color: red;text-align: center;"><b>{{errMsg}}</b></p>
+
+            <ng-container *ngFor="let data of courseDetail | filter:term">
+                <div class="right-content text-right" *ngIf="!mainpageLoder">
+                    <p>{{data.date}}</p>
+                </div>
+
+                <div class="course-detail-2" *ngIf="!mainpageLoder && !errMsg">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <div class="course-detail">
+                                <h3>Course Name: <span>{{data.title}}</span></h3>
+                                <h4><span>Approximate</span> Duration: {{data.time_duration}}</h4>
+                                <button type="button" id="view-course-btn" (click)="viewDetail(data.id)">View Course
+                                    Details</button>
+                                <button type="" id="das-enroll" *ngIf="data.student_enroll  == '1'"
+                                    style="color: #fff; background-color: #3c96ccbf;">Enrolled
+                                </button>
+                                <button type="button" id="das-enroll-btn" *ngIf="data.student_enroll  == '0'"
+                                    (click)="enrollId(data,i)" style="color: #fff;">Enroll Now
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="course-detail">
+                                <h3>Teacher Name <span>: {{data.teacher_name}}</span></h3>
+                                <h3>Current Enroll <span>:&nbsp; {{data.total_enroll}}</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="course-detail-1">
+                                <p>Course Fees: <span *ngIf="data.field_course_fees != '50 cent'"
+                                        style="border-radius: 5px; padding: 4px; background-color: #008ad2; color: #fff; font-size: 12px; ">{{data.field_course_fees}}</span>
+                                    <span *ngIf="data.field_course_fees == '50 cent'"
+                                        style="border-radius: 5px; padding: 4px; background-color: #008ad2; color: #fff; font-size: 12px; ">Free</span>
+                                </p>
+                                <span style="color: #fff;" *ngIf="data.rating != '0'">{{data.rating}}</span>
+                                <ng-container *ngIf="data?.rating === '1'">
+                                    <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '1.5'">
+                                    <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                    <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '2'">
+                                    <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                    <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '2.5'">
+                                    <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                    <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                    <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '3'">
+                                    <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                    <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                    <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '3.5'">
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '4'">
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                    <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '4.5'">
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+                                </ng-container>
+                                <ng-container *ngIf="data?.rating === '5'">
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                    <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                </ng-container>
+                                <a style="color: grey;" *ngIf="data.review_count != '0'">({{data.review_count}})</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="container-fluid">
+                <div class="pages">
+                    <div class="row" *ngIf="buttonShow">
+                        <div class="col-md-2">
+                            <div class="prev-btn" [class.gray]="questionButton" [disabled]="questionButton">
+                                <a (click)="direction(0)" style="color: #fff;">PREV</a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                    </li>
+                                    <li class="page-item" *ngFor="let data of totalPages; index as i"
+                                        (click)="studentCourseDetail(data,i)"><a class="page-link" style="color: #fff;"
+                                            [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="next-button" [class.grays]="questionButtons" [disabled]="questionButtons">
+                                <a (click)="direction(1)" style="color: #fff;">NEXT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- enroll modal -->
+
+<!-- summary modal -->
+<div class="modal fade" id="summary" role="dialog" #closeModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button data-dismiss="modal" class="close" (click)="closeMenu()">&times;</button>
+            <div class="modal-body">
+                <div class="summary-popup">
+                    <div class="row">
+                        <div class="summary-1">
+                            <h3>Summary of Course</h3>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="summary-2">
+                                <p>{{enrollID?.title}}</p>
+                                <ul>
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
+                                        {{enrollID?.teacher_name}} </li>
+                                    <li style="border-bottom: transparent;">
+                                        <span>{{enrollID?.course_id}}</span>
+                                    </li>
+                                    <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;"
+                                        *ngIf="enrollID?.rating != '0'">
+                                        <strong *ngIf="enrollID?.rating != '0'">{{enrollID?.rating}}</strong>
+                                        <ng-container *ngIf="enrollID?.rating === '1'">
+                                            <i class="fa fa-star" style="color:#ff4545 !important;"></i>
+                                        </ng-container>
+                                        <!-- <ng-container *ngIf="enrollID?.rating === '0'">
+                                            <i class="fa fa-star-half-o" style="color:#ff4545 !important;"></i>
+                                        </ng-container> -->
+                                        <ng-container *ngIf="enrollID?.rating === '1.5'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '2'">
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffa534 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '2.5'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '3'">
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                            <i class="fa fa-star" style="color:#ffe234 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '3.5'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
+
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '4'">
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                            <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '4.5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                        <ng-container *ngIf="enrollID?.rating === '5'">
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                        </ng-container>
+                                        <a style="color: grey;"
+                                            *ngIf="enrollID?.review_count != '0'">({{enrollID?.review_count}})</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="summary-3">
+                                <div class="vl"></div>
+                                <p>Payment Review</p>
+                                <ul>
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
+                                        Course fees : <span>{{enrollID?.field_course_fees}}</span></li>
+                                    <li style="border-bottom: transparent;">Tax <span>€0.00</span></li>
+                                    <li
+                                        style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                        Total <span>{{enrollID?.field_course_fees}}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="summary-btn" *ngIf="enrollID?.field_course_fees != 'Free'">
+
+                    <a (click)="confirmPayment()" data-dismiss="modal" style="color: #fff;">Confirm Payment</a>
+                </div>
+                <div class="summary-btn" *ngIf="enrollID?.field_course_fees == 'Free'">
+                    <a (click)="confirmPayments()" data-dismiss="modal" style="color: #fff;">Confirm Payment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

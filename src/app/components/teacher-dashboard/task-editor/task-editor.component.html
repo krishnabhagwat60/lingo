@@ -1,0 +1,149 @@
+<!-- <aside id="left-panel" class="left-panel">
+    <nav class="navbar-expand-sm navbar-default">
+  
+      <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+          aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+  
+      </div>
+      <div id="main-menu" class="navbar" style="z-index: 9999;">
+        <div style="display: grid;">
+          <h3 class="menu-title mt-3">
+            <a routerLink="/teacherDashboard/addNewCourse">Add Course</a>
+          </h3>
+        </div>
+  
+        <div class="dummy-for-height">
+          <div class="sidenav left-panel-1">
+            <button class="dropdown-btn active" style="font-size: 18px; background-color: #0a576c !important;"
+              >View Course
+              <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="for-scroll" style="background-color: #0187d0;">
+              <ng-container *ngFor="let data of sidebarData; index as j">
+                <button class="dropdown-btn" (click)="toggleAccordian($event, j,data.course_name,data.course_id)"
+                  style="font-size: 18px;margin-bottom: .4em !important; background-color: #007abb !important;">{{data.course_name}}
+
+                </button>
+ 
+              </ng-container>
+            </div>
+          </div>
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn active" 
+              routerLink="/teacherDashboard/teachersDashboard"
+              style="font-size: 18px; background-color: #0a576c !important;">Dashboard
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn" routerLink="/teacherDashboard/accept_details"
+              style="font-size: 18px; background-color: #0a576c !important;">Accept Course
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn"  routerLink="/teacherDashboard/teacherProfile"
+              style="font-size: 18px; background-color: #0a576c !important;">Profile
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn" routerLink="/teacherDashboard/teacherWallet"
+              style="font-size: 18px; background-color: #0a576c !important;">Transaction
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn" routerLink="/teacherDashboard/review"
+              style="font-size: 18px; background-color: #0a576c !important;">Review
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+  
+          <div class="sidenav left-panel">
+            <button class="dropdown-btn" routerLink="/teacherDashboard/teacherSupport"
+              style="font-size: 18px; background-color: #0a576c !important;">Support
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </aside> -->
+
+  <aside id="left-panel" class="left-panel">
+    <nav class="navbar-expand-sm navbar-default">
+  
+      <div class="navbar-header">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
+          aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars"></i>
+        </button>
+  
+      </div>
+      <div id="main-menu" class="navbar" style="z-index: 9999;">
+        <div style="display: grid;">
+          <h3 class="menu-title mt-3">
+            <a routerLink="teacherDashboard/addCourse">Add Course</a>
+          </h3>
+        </div>
+  
+        <div class="dummy-for-height">
+          <div class="teacher-sidebar left-panel-1">
+            <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important;"
+              >View Course
+              <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="for-scroll">
+              <ng-container *ngFor="let data of sidebarData; index as j">
+                <button class="sidebar-dropdown hov-drop-down"hov-drop-down (click)="toggleAccordian($event, j,data.course_name,data.course_id)"
+              >{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
+                </button>
+              </ng-container>
+            </div>
+          </div>
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown active" 
+              routerLink="/teacherDashboard/teachersDashboard"
+              style="font-size: 18px; background-color: #0a576c !important;">Dashboard
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown" routerLink="/teacherDashboard/accept_details"
+              style="font-size: 18px; background-color: #0a576c !important;">Accept Course
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown"  routerLink="/teacherDashboard/teacherProfile"
+              style="font-size: 18px; background-color: #0a576c !important;">Profile
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown" routerLink="/teacherDashboard/teacherWallet"
+              style="font-size: 18px; background-color: #0a576c !important;">Transaction
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown" routerLink="/teacherDashboard/review"
+              style="font-size: 18px; background-color: #0a576c !important;">Review
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+  
+          <div class="teacher-sidebar left-panel">
+            <button class="sidebar-dropdown" routerLink="/teacherDashboard/teacherSupport"
+              style="font-size: 18px; background-color: #0a576c !important;">Support
+              <i class="fa fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </aside>

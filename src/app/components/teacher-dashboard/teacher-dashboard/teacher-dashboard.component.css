@@ -1,0 +1,51 @@
+.button-actives{
+    background-color:#136980;
+}
+.button-standard{
+    background-color: gray;
+}
+
+.dummy-for-height {
+    height: 26.5em !important;
+    overflow: auto;
+}
+
+.dummy-for-height::-webkit-scrollbar {
+	width: 6px;
+	height: 1px;
+    background-color:transparent;
+}
+
+.dummy-for-height::-webkit-scrollbar-thumb {
+    background:#3893ab ;
+	border: 0px none #ffffff;
+	border-radius: 5px;
+}
+
+.green {
+    background-color: gray;
+    margin-top: 20px;
+    width: 100px;
+    cursor: pointer;
+    height: 45px;
+    margin-left: -10px;
+    border-radius: 5px;
+}
+
+.red {
+    background-color: #008ad2;
+    margin-top: 20px;
+    width: 100px;
+    cursor: pointer;
+    height: 45px;
+    margin-left: -10px;
+    border-radius: 5px;
+}
+.gray {
+	background-color: #008ad2;
+	border: #008ad2;
+   }
+   .grays{
+    background-color: grey;
+	border: grey; 
+   }

@@ -1,0 +1,38 @@
+.sidenav .dropdown-btn i{
+    display: none;
+}
+
+.sidenav .subt-dropdown{
+ padding: 6px 8px 6px 16px;
+ text-decoration: none;
+ font-size: 14px!important;
+ color: #fff;
+ display: block;
+ border-radius: 5px;
+ font-family: 'Poppins Medium';
+ background: none;
+ background-color: transparent !important;
+ border: none !important;
+ width: 100%;
+ text-align: left;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+ overflow: hidden;
+}
+
+.sidenav .title-dropdown{
+ padding: 6px 8px 6px 16px;
+ text-decoration: none;
+ font-size: 14px!important;
+ color: #fff;
+ display: block;
+ border-radius: 5px;
+ font-family: 'Poppins Medium';
+ background: none;
+ background-color: transparent !important;
+ border: none !important;
+ width: 100%;
+ text-align: left;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
