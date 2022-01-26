@@ -482,14 +482,13 @@
     background-color: #3c96cc;
 }
  
-.sidenav .title-dropdown:hover{
+/* .sidenav .title-dropdown:hover{
     color: #ffff;
     background-color: #3c96cc;
-}
+} */
  
 .dashboard-custom a {
     color: #fff !important;
-    background-color: #739CB2 !important;
     border-radius: 0;
     padding-left: 28px;
     font-size: 12px !important;
@@ -503,13 +502,9 @@
     overflow: hidden;
 }
  
-.dashboard-custom a:active {
-    color: #fff;
-    background-color: #3c96cc !important;
-}
  
-.dashboard-custom a:hover {
-    background-color: #3c96cc !important;
+.dashboard-custom a:visited {
+  background-color: #739CB2 !important;
 }
 .bigg-imgs {
   width: 700px;

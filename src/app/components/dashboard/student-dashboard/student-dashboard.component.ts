@@ -233,7 +233,7 @@ export class StudentDashboardComponent implements OnInit {
       "teacher_id": this.searchForm.value.teacher,
       "level_id": this.searchForm.value.level,
       "rating": this.searchForm.value.rating,
-      "page": this.pages,
+      "page": 1,
     }
     // this.buttonColor = i;
     this.service.post('course-filter', data, 1).subscribe(res => {

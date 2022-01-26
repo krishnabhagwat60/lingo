@@ -183,7 +183,6 @@ a{
   padding: 35px 20px;
   background-color: #f2fbff;
  border-top-left-radius: 45px;
- height:calc(500px + 74px) !important;
  position: relative;
 }
 
@@ -7688,13 +7687,15 @@ font-family: 'FontAwesome';
     overflow: hidden;
 }
  
-.dashboard-custom a:active {
+/* .dashboard-custom a:active {
     background-color: #3c96cc !important;
-}
+} */
  
 .dashboard-custom a:hover {
     background-color: #3c96cc !important;
 }
+
+
 
 #view-course-btn:hover {
     transform: scale(1.05);
