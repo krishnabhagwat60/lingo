@@ -167,7 +167,7 @@ export class PickWordSolutionComponent implements OnInit {
       var rightAnswer = index[i]
       var userAnswer =  array1[array1.length -1]
       var tag = ''
-      tag = '<span class="fib" role="textbox" contenteditable = false/> ' + rightAnswer + '"' + '<i class="fa fa-check" style="margin-top: 10px; color: #18af14;"></i>' + '</span>'
+      tag = '<span class="fib" role="textbox" contenteditable = false/> ' + rightAnswer + '' + '<i class="fa fa-check" style="margin-top: 10px; color: #18af14;"></i>' + '</span>'
       // tag ='<input type="text" class="answer" value="' + rightAnswer + '"' + ' disabled/><i class="fa fa-check" style="margin-left: -30px;margin-top: 10px; color: #18af14;"></i>'
       this.replaceData = word1.replace(/\*(.*?)\*/, tag)
       word1 = this.replaceData;
@@ -215,6 +215,7 @@ titleName(){
   }
 
   editFillBlanks() {
+    debugger
     // this.resetPickModalData();
     const data = {
       // "subtitle_id": localStorage.getItem('subId')

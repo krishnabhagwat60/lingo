@@ -145,8 +145,13 @@
                                                 formControlName="image" class="ng-valid ng-touched ng-dirty"
                                                 style="display: none;">
                                         </label>
+                                        
                                     </div>
                                 </div>
+                                
+                            </div>
+                            <div class="save-btn" *ngIf="!passwordShow">
+                                <button (click)="studentImage()" type="button" id="save">Update Image</button>
                             </div>
                         </div>
                         

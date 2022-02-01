@@ -67,6 +67,10 @@ export class StudentsDashboardComponent implements OnInit {
     this.getTeacher();
     this.languageData();
     this.username();
+    if(this.images=="")
+    {
+      this.images='assets/images/student-profile.jpg';
+    }
   }
 
   logout() {

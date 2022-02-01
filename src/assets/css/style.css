@@ -7691,7 +7691,8 @@ font-family: 'FontAwesome';
     background-color: #3c96cc !important;
 } */
  
-.dashboard-custom a:hover {
+.dashboard-custom a:hover,
+.dashboard-custom a.visited {
     background-color: #3c96cc !important;
 }
 
