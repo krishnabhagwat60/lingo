@@ -10,9 +10,10 @@ import { TeacherProfileComponent } from '../teacher-dashboard/teacher-profile/te
 import { TeacherSupportComponent } from '../teacher-dashboard/teacher-support/teacher-support.component';
 import { TeacherWalletComponent } from '../teacher-dashboard/teacher-wallet/teacher-wallet.component';
 import { HttpClientModule } from '@angular/common/http';
-import {TeacherRoutingModule} from '../teacher-dashboard/teacher-routing.module';
+import { TeacherRoutingModule } from '../teacher-dashboard/teacher-routing.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { PlansAndPricingComponent } from './plans-and-pricing/plans-and-pricing.component';
 import { CreatCourseDashboardComponent } from './creat-course-dashboard/creat-course-dashboard.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { TeacherCourseDetailComponent } from './teacher-course-detail/teacher-course-detail.component';
@@ -49,7 +50,7 @@ import { StudentHeaderComponent } from './student-header/student-header.componen
         Ng2SearchPipeModule,
         TeacherRoutingModule,
         HttpClientModule,
-        CKEditorModule ,
+        CKEditorModule,
         NgMultiSelectDropDownModule.forRoot(),
         TagInputModule,
         NgSelectModule,
@@ -66,6 +67,7 @@ import { StudentHeaderComponent } from './student-header/student-header.componen
         TeacherWalletComponent,
         SideNavComponent,
         EditProfileComponent,
+        PlansAndPricingComponent,
         CreatCourseDashboardComponent,
         AddCourseComponent,
         TeacherCourseDetailComponent,
@@ -88,7 +90,7 @@ import { StudentHeaderComponent } from './student-header/student-header.componen
         TextDragSolutionComponent,
         ImageDragSolutionComponent,
         StudentPipe,
-        StudentHeaderComponent
+        StudentHeaderComponent,
     ]
 })
 export class TeacherModule { }

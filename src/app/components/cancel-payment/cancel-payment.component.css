@@ -5,178 +5,159 @@
     color: #136980;
     font-family: 'Poppins Light';
     margin-top: 15px;
-    }
-    .success-page figure {
+}
 
-        width: 700px;
-      
-        height: auto;
-      
-        margin: 0 auto;
-      
-      }
-      
-      
-      
-      .success-page figure img {
-      
-        width: 100%;
-      
-        height: 100%;
-      
-      }
-      
-      
-      
-      .success-page h4 {
-      
-       text-align: center;
-      
-       font-size: 24px;
-      
-       font-weight: 600;
-      
-       color: #136980;
-       font-family: 'Poppins Light';
-       margin-top: 20px;
-      
-      }
-      .button-actives{
-        background-color:#136980;
-        /* color: white; */
-    }
-    .button-standard{
-        background-color: gray;
-        /* color: #fff;  */
-    }
-    
-    .dummy-for-height {
-        height: 26.5em !important;
-        overflow: auto;
-    }
-    
-    .dummy-for-height::-webkit-scrollbar {
-        width: 6px;
-        height: 1px;
-        background-color:transparent ;
-    }
-    
-    .dummy-for-height::-webkit-scrollbar-thumb {
-        background:#3893ab ;
-        border: 0px none #fff5f5;
-        border-radius: 5px;
-    }
-    .gray {
-        background-color: #008ad2;
-        border: #008ad2;
-       }
-       .grays{
-        background-color: grey;
-        border: grey; 
-       }
-       #das-enroll {
-    
-        width: 130px;
-      
-        height: 32px;
-      
-        font-size: 12px;
-      
-        margin-top: 10px;
-      
-        text-align: center;
-      
-        text-transform: uppercase;
-      
-        border-radius: 16px;
-      
-        background-color: #008ad2;
-      
-        cursor: auto;
-      
-      }
-      .sidenav .dropdown-btn i{
-        display: none;
-    }
-     
-    .sidenav .subt-dropdown{
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 14px!important;
-        color: #fff;
-        display: block;
-        border-radius: 0;
-        font-family: 'Poppins Medium';
-        background: none;
-        background-color: #1C72A1;
-        border: none !important;
-        width: 100%;
-        text-align: left;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        padding-left: 28px;
-    }
-     
-    .sidenav .subt-dropdown:active{
-        color: #ffff;
-        background-color: #3c96cc;
-    }
-     
-    .sidenav .subt-dropdown:hover{
-        color: #ffff;
-        background-color: #3c96cc;
-    }
-     
-    .sidenav .title-dropdown{
-     padding: 6px 8px 6px 16px;
-     text-decoration: none;
-     font-size: 14px!important;
-     color: #fff;
-     display: block;
-     border-radius: 0;
-     font-family: 'Poppins Medium';
-     background: none;
-     background-color: #0a576c;
-     border: none !important;
-     width: 100%;
-     text-align: left;
-     text-overflow: ellipsis;
-     overflow: hidden;
-     margin-top: .4em;
-    }
-     
-    .sidenav .title-dropdown:active{
-        color: #ffff;
-        background-color: #3c96cc;
-    }
-     
-    .sidenav .title-dropdown:hover{
-        color: #ffff;
-        background-color: #3c96cc;
-    }
-     
-    .dashboard-custom a {
-        color: #fff !important;
-        background-color: #739CB2 !important;
-        border-radius: 0;
-        padding-left: 28px;
-        font-size: 12px !important;
-        font-family: 'Poppins Medium';
-        border: none !important;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-     
-    .dashboard-custom a:active {
-        color: #fff;
-        background-color: #3c96cc !important;
-    }
-     
-    .dashboard-custom a:hover {
-        background-color: #3c96cc !important;
-    }
+.success-page figure {
+    width: 700px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.success-page figure img {
+    width: 100%;
+    height: 100%;
+}
+
+.success-page h4 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #136980;
+    font-family: 'Poppins Light';
+    margin-top: 20px;
+}
+
+.button-actives {
+    background-color: #136980;
+    /* color: white; */
+}
+
+.button-standard {
+    background-color: gray;
+    /* color: #fff;  */
+}
+
+.dummy-for-height {
+    height: 26.5em !important;
+    overflow: auto;
+}
+
+.dummy-for-height::-webkit-scrollbar {
+    width: 6px;
+    height: 1px;
+    background-color: transparent;
+}
+
+.dummy-for-height::-webkit-scrollbar-thumb {
+    background: #3893ab;
+    border: 0px none #fff5f5;
+    border-radius: 5px;
+}
+
+.gray {
+    background-color: #008ad2;
+    border: #008ad2;
+}
+
+.grays {
+    background-color: grey;
+    border: grey;
+}
+
+#das-enroll {
+    width: 130px;
+    height: 32px;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 16px;
+    background-color: #008ad2;
+    cursor: auto;
+}
+
+.sidenav .dropdown-btn i {
+    display: none;
+}
+
+.sidenav .subt-dropdown {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px !important;
+    color: #fff;
+    display: block;
+    border-radius: 0;
+    font-family: 'Poppins Medium';
+    background: none;
+    background-color: #1C72A1;
+    border: none !important;
+    width: 100%;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 28px;
+}
+
+.sidenav .subt-dropdown:active {
+    color: #ffff;
+    background-color: #3c96cc;
+}
+
+.sidenav .subt-dropdown:hover {
+    color: #ffff;
+    background-color: #3c96cc;
+}
+
+.sidenav .title-dropdown {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px !important;
+    color: #fff;
+    display: block;
+    border-radius: 0;
+    font-family: 'Poppins Medium';
+    background: none;
+    background-color: #0a576c;
+    border: none !important;
+    width: 100%;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: .4em;
+}
+
+.sidenav .title-dropdown:active {
+    color: #ffff;
+    background-color: #3c96cc;
+}
+
+.sidenav .title-dropdown:hover {
+    color: #ffff;
+    background-color: #3c96cc;
+}
+
+.dashboard-custom a {
+    color: #fff !important;
+    background-color: #739CB2 !important;
+    border-radius: 0;
+    padding-left: 28px;
+    font-size: 12px !important;
+    font-family: 'Poppins Medium';
+    border: none !important;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.dashboard-custom a:active {
+    color: #fff;
+    background-color: #3c96cc !important;
+}
+
+.dashboard-custom a:hover {
+    background-color: #3c96cc !important;
+}

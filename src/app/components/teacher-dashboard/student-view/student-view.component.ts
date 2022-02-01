@@ -3,8 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import $ from 'jquery';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { FormControl, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { SocialAuthService } from 'angularx-social-login';
 
@@ -108,7 +107,7 @@ export class StudentViewComponent implements OnInit {
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
     })
-     this.images = localStorage.getItem('image')
+    this.images = localStorage.getItem('image')
   }
 
   ngOnInit(): void {
@@ -723,7 +722,7 @@ export class StudentViewComponent implements OnInit {
     } else {
       this.sidebarData2.forEach(element => {
         element.isActive = false;
-     });
+      });
       this.sidebarData2[index].isActive = true;
     }
   }
@@ -837,9 +836,7 @@ export class StudentViewComponent implements OnInit {
 
     })
   }
-  getImage(data){
+  getImage(data) {
     this.image = data
   }
 }
-
-
