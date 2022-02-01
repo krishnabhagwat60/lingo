@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { AcceptCourseComponent } from '../teacher-dashboard/accept-course/accept-course.component';
 import { AddNewCourseIntroComponent } from '../teacher-dashboard/add-new-course-intro/add-new-course-intro.component';
 import { ReviewComponent } from '../teacher-dashboard/review/review.component';
@@ -9,6 +9,7 @@ import { TeacherProfileComponent } from '../teacher-dashboard/teacher-profile/te
 import { TeacherSupportComponent } from '../teacher-dashboard/teacher-support/teacher-support.component';
 import { TeacherWalletComponent } from '../teacher-dashboard/teacher-wallet/teacher-wallet.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component'
+import { PlansAndPricingComponent } from './plans-and-pricing/plans-and-pricing.component';
 import { CreatCourseDashboardComponent } from './creat-course-dashboard/creat-course-dashboard.component'
 import { AddCourseComponent } from './add-course/add-course.component'
 import { TeacherCourseDetailComponent } from './teacher-course-detail/teacher-course-detail.component';
@@ -32,125 +33,125 @@ import { TextDragSolutionComponent } from './text-drag-solution/text-drag-soluti
 import { ImageDragSolutionComponent } from './image-drag-solution/image-drag-solution.component';
 const routes: Routes = [
 
-    {
-      path: 'accept_details',
-      component: AcceptCourseComponent,
-      data: {
-        title: 'AcceptCourseComponent'
-      }
-    },
-    {
-      path: 'affiliationSolution',
-      component: SolutionAffiliationComponent,
-    },
-    {
-      path: 'pickTheWordSolution',
-      component: PickWordSolutionComponent,
-    },
-    {
-      path: 'fillWordSolution',
-      component: FillWordSolutionComponent,
-    },
-    {
-      path: 'questionDropSolution',
-      component: QuestionDropdownSolutionComponent,
-    },
-    {
-      path: 'questionRadioSolution',
-      component: QuesRadioSolutionComponent,
-    },
-    {
-      path: 'textDragSolution',
-      component: TextDragSolutionComponent,
-    },
-    {
-      path: 'imageDragSolution',
-      component: ImageDragSolutionComponent,
-    },
-    {
-      path: 'fill-result',
-      component: FillTheResultComponent,
-      data: {
-        title: 'FillTheResultComponent'
-      }
-    },
-    {
-      path: 'questionradio-result',
-      component: QuestionRadioResultComponent,
-      data: {
-        title: 'QuestionRadioResultComponent'
-      }
-    },
-    {
-      path: 'pick-right-word-result',
-      component: PickRightResultComponent,
-      data: {
-        title: 'PickRightResultComponent'
-      }
-    },
-    {
-      path: 'question-dropDown-result',
-      component: QuestionDropdownResultComponent,
-      data: {
-        title: 'QuestionDropdownResultComponent'
-      }
-    },
-    {
-      path: 'student-view',
-      component: StudentViewComponent,
-      data: {
-        title: 'StudentViewComponent'
-      }
-    },
-    {
-      path: 'image-drag-result',
-      component: ImageDragResultComponent,
-      data: {
-        title: 'ImageDragResultComponent'
-      }
-    },
-    {
-      path: 'affiliation-retry',
-      component: AffiliationRetryComponent,
-      data: {
-        title: 'AffiliationRetryComponent'
-      }
-    },
-    {
-      path: 'drag-word',
-      component: ImageDragWordComponent,
-      data: {
-        title: 'ImageDragWordComponent'
-      }
-    },
-    {
-      path: 'affiliation-result',
-      component: AffiliationResultComponent,
-      data: {
-        title: 'AffiliationResultComponent'
-      }
-    },
-    {
-      path: 'previous_support',
-      component: PreviousSupportComponent,
-      data: {
-        title: 'PreviousSupportComponent'
-      }
-    },
-    {
-      path: 'view-student',
-      component: TeacherViewStudentComponent,
-      data: {
-        title: 'TeacherViewStudentComponent'
-      }
-    },
-    {
-      path: 'editCourse',
-      component: AddNewCourseIntroComponent,
-      data: {
-        title: 'AddNewCourseIntroComponent'
-      }
-    },
+  {
+    path: 'accept_details',
+    component: AcceptCourseComponent,
+    data: {
+      title: 'AcceptCourseComponent'
+    }
+  },
+  {
+    path: 'affiliationSolution',
+    component: SolutionAffiliationComponent,
+  },
+  {
+    path: 'pickTheWordSolution',
+    component: PickWordSolutionComponent,
+  },
+  {
+    path: 'fillWordSolution',
+    component: FillWordSolutionComponent,
+  },
+  {
+    path: 'questionDropSolution',
+    component: QuestionDropdownSolutionComponent,
+  },
+  {
+    path: 'questionRadioSolution',
+    component: QuesRadioSolutionComponent,
+  },
+  {
+    path: 'textDragSolution',
+    component: TextDragSolutionComponent,
+  },
+  {
+    path: 'imageDragSolution',
+    component: ImageDragSolutionComponent,
+  },
+  {
+    path: 'fill-result',
+    component: FillTheResultComponent,
+    data: {
+      title: 'FillTheResultComponent'
+    }
+  },
+  {
+    path: 'questionradio-result',
+    component: QuestionRadioResultComponent,
+    data: {
+      title: 'QuestionRadioResultComponent'
+    }
+  },
+  {
+    path: 'pick-right-word-result',
+    component: PickRightResultComponent,
+    data: {
+      title: 'PickRightResultComponent'
+    }
+  },
+  {
+    path: 'question-dropDown-result',
+    component: QuestionDropdownResultComponent,
+    data: {
+      title: 'QuestionDropdownResultComponent'
+    }
+  },
+  {
+    path: 'student-view',
+    component: StudentViewComponent,
+    data: {
+      title: 'StudentViewComponent'
+    }
+  },
+  {
+    path: 'image-drag-result',
+    component: ImageDragResultComponent,
+    data: {
+      title: 'ImageDragResultComponent'
+    }
+  },
+  {
+    path: 'affiliation-retry',
+    component: AffiliationRetryComponent,
+    data: {
+      title: 'AffiliationRetryComponent'
+    }
+  },
+  {
+    path: 'drag-word',
+    component: ImageDragWordComponent,
+    data: {
+      title: 'ImageDragWordComponent'
+    }
+  },
+  {
+    path: 'affiliation-result',
+    component: AffiliationResultComponent,
+    data: {
+      title: 'AffiliationResultComponent'
+    }
+  },
+  {
+    path: 'previous_support',
+    component: PreviousSupportComponent,
+    data: {
+      title: 'PreviousSupportComponent'
+    }
+  },
+  {
+    path: 'view-student',
+    component: TeacherViewStudentComponent,
+    data: {
+      title: 'TeacherViewStudentComponent'
+    }
+  },
+  {
+    path: 'editCourse',
+    component: AddNewCourseIntroComponent,
+    data: {
+      title: 'AddNewCourseIntroComponent'
+    }
+  },
   {
     path: 'review',
     component: ReviewComponent,
@@ -158,71 +159,78 @@ const routes: Routes = [
       title: 'ReviewComponent'
     }
   },
-    {
-      path: 'taskEditor',
-      component: TaskEditorComponent,
-      data: {
-        title: 'TaskEditorComponent'
-      }
-    },
-    {
-        path: 'teacherProfile',
-        component: TeacherProfileComponent,
-        data: {
-          title: 'TeacherProfileComponent'
-        }
-      },
-      {
-        path: 'teachersDashboard',
-        component: TeacherDashboardComponent,
-        data: {
-          title: 'TeacherDashboardComponent'
-        }
-      },
-      {
-      path: 'teacherSupport',
-      component: TeacherSupportComponent,
-      data: {
-        title: 'TeacherSupportComponent'
-      }
-    },
-    {
-      path: 'teacherCourseDetail',
-      component: TeacherCourseDetailComponent,
-      data: {
-        title: 'TeacherCourseDetailComponent'
-      }
-    },
-    {
-      path: 'addCourse',
-      component: AddCourseComponent,
-      data: {
-        title: 'AddCourseComponent'
-      }
-    },
-    {
-      path: 'teacherWallet',
-      component: TeacherWalletComponent,
-      data: {
-        title: 'StudentProfileComponent'
-      }
-    },
-    {
-      path: 'editProfile',
-      component: EditProfileComponent,
-      data: {
-        title: 'EditProfileComponent'
-      }
-    },
-    {
-      path: 'creatCourseDashboard',
-      component: CreatCourseDashboardComponent,
-      data: {
-        title: 'CreatCourseDashboardComponent'
-      }
-    },
-  ]
-;
+  {
+    path: 'taskEditor',
+    component: TaskEditorComponent,
+    data: {
+      title: 'TaskEditorComponent'
+    }
+  },
+  {
+    path: 'teacherProfile',
+    component: TeacherProfileComponent,
+    data: {
+      title: 'TeacherProfileComponent'
+    }
+  },
+  {
+    path: 'teachersDashboard',
+    component: TeacherDashboardComponent,
+    data: {
+      title: 'TeacherDashboardComponent'
+    }
+  },
+  {
+    path: 'teacherSupport',
+    component: TeacherSupportComponent,
+    data: {
+      title: 'TeacherSupportComponent'
+    }
+  },
+  {
+    path: 'teacherCourseDetail',
+    component: TeacherCourseDetailComponent,
+    data: {
+      title: 'TeacherCourseDetailComponent'
+    }
+  },
+  {
+    path: 'addCourse',
+    component: AddCourseComponent,
+    data: {
+      title: 'AddCourseComponent'
+    }
+  },
+  {
+    path: 'teacherWallet',
+    component: TeacherWalletComponent,
+    data: {
+      title: 'StudentProfileComponent'
+    }
+  },
+  {
+    path: 'editProfile',
+    component: EditProfileComponent,
+    data: {
+      title: 'EditProfileComponent'
+    }
+  },
+  {
+    path: 'plansAndPricing',
+    component: PlansAndPricingComponent,
+    data: {
+      title: 'PlansAndPricingComponent'
+    }
+  },
+  {
+    path: 'creatCourseDashboard',
+    component: CreatCourseDashboardComponent,
+    data: {
+      title: 'CreatCourseDashboardComponent'
+    }
+  },
+]
+  ;
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
@@ -231,4 +239,4 @@ const routes: Routes = [
 export class TeacherRoutingModule {
 }
 
-export const routedComponents = [ ];
+export const routedComponents = [];

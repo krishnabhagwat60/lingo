@@ -17,11 +17,11 @@ export class CancelPaymentComponent implements OnInit {
   name: void;
   studentRating: void;
   courseName: string;
-  constructor(private service: ServiceService,private route: ActivatedRoute,private router: Router) {
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.url = params['url'];
     });
-   }
+  }
 
   ngOnInit(): void {
     this.studentSideBar()
@@ -91,11 +91,11 @@ export class CancelPaymentComponent implements OnInit {
       this.subTitle = res.body.result
     })
   }
-   submitEnroll() {
+  submitEnroll() {
     const data = {
       "course_id": localStorage.getItem('enrollId'),
       "user_id": sessionStorage.getItem('uid'),
-      order_id : this.url
+      order_id: this.url
     }
     this.service.post('course-enroll', data, 1).subscribe(res => {
 
@@ -103,3 +103,4 @@ export class CancelPaymentComponent implements OnInit {
     )
   }
 }
+

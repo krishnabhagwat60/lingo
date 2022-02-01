@@ -2,8 +2,7 @@
     <nav class="navbar-expand-sm navbar-default">
 
         <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu"
-                aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
 
@@ -16,30 +15,26 @@
             </div>
             <div class="dummy-for-height">
                 <div class="sidenav left-panel-1">
-                    <button class="dropdown-btn active"
-                        style="font-size: 18px; background-color: #0a576c !important;">My Course
+                    <button class="dropdown-btn active" style="font-size: 18px; background-color: #0a576c !important;">My Course
                         <i class="fa fa-angle-down"></i>
                     </button>
                     <div class="for-scroll">
                         <ng-container *ngFor="let data of sidebarData ; index as j">
-                            <button class="title-dropdown"
-                                (click)="toggleAccordian($event, j,data.course_name,data.course_id)">
+                            <button class="title-dropdown" (click)="toggleAccordian($event, j,data.course_name,data.course_id)">
                                 {{ (data.course_name.length>13)? (data.course_name | slice:0:13)+'..':(data.course_name)
                                 }}
                                 <i class="fa fa-angle-down"></i>
                             </button>
                             <div *ngIf="data.isActive">
                                 <ng-container *ngFor="let data1 of data?.title; index as k">
-                                    <button class="subt-dropdown"
-                                        (click)="toggleSubTitle($event,k,data1.titleid);getSubTitle(data1?.titleid)">
+                                    <button class="subt-dropdown" (click)="toggleSubTitle($event,k,data1.titleid);getSubTitle(data1?.titleid)">
                                         <span>{{k+1}}.</span>
                                         {{data1?.title}}
                                         <i class="fa fa-angle-down"></i>
                                     </button>
                                     <div *ngIf="data1.isActive" class="dashboard-custom">
                                         <ng-container *ngFor="let data2 of data1?.submenu">
-                                            <a (click)="getChildSData(data2.id,data.course_id,data.teacher_name,data.rating)"
-                                                style="color: #fff; padding-left: 28px; font-size: 12px !important; border-radius: 0;"><span>{{data2.s_no}})</span>
+                                            <a (click)="getChildSData(data2.id,data.course_id,data.teacher_name,data.rating)" style="color: #fff; padding-left: 28px; font-size: 12px !important; border-radius: 0;"><span>{{data2.s_no}})</span>
                                                 {{data2.name}}</a>
                                         </ng-container>
                                     </div>
@@ -49,29 +44,24 @@
                     </div>
                 </div>
                 <div class="sidenav left-panel">
-                    <button class="dropdown-btn active" routerLink="/dashboard/studentDashboard"
-                        style="font-size: 18px; background-color: #0a576c !important;">Dashboard
+                    <button class="dropdown-btn active" routerLink="/dashboard/studentDashboard" style="font-size: 18px; background-color: #0a576c !important;">Dashboard
                     </button>
                 </div>
                 <div class="sidenav left-panel">
-                    <button class="dropdown-btn" routerLink="/dashboard/studentProfile"
-                        style="font-size: 18px; background-color: #0a576c !important;">Profile
+                    <button class="dropdown-btn" routerLink="/dashboard/studentProfile" style="font-size: 18px; background-color: #0a576c !important;">Profile
                     </button>
                 </div>
                 <div class="sidenav left-panel">
-                    <button class="dropdown-btn" routerLink="/dashboard/wallet"
-                        style="font-size: 18px; background-color: #0a576c !important;">Transaction
+                    <button class="dropdown-btn" routerLink="/dashboard/wallet" style="font-size: 18px; background-color: #0a576c !important;">Transaction
                     </button>
                 </div>
                 <div class="sidenav left-panel">
-                    <button class="dropdown-btn" routerLink="/dashboard/subscriptionPlan"
-                        style="font-size: 18px; background-color: #0a576c !important;">Subscription Plan
+                    <button class="dropdown-btn" routerLink="/dashboard/subscriptionPlan" style="font-size: 18px; background-color: #0a576c !important;">Subscription Plan
                     </button>
                 </div>
 
                 <div class="sidenav left-panel">
-                    <button class="dropdown-btn" routerLink="/dashboard/support"
-                        style="font-size: 18px; background-color: #0a576c !important;">Support
+                    <button class="dropdown-btn" routerLink="/dashboard/support" style="font-size: 18px; background-color: #0a576c !important;">Support
                     </button>
                 </div>
             </div>

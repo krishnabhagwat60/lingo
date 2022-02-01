@@ -175,7 +175,8 @@ a {
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    height: calc(500px + 74px) !important;
+    /* height: calc(500px + 74px) !important; */
+    height: 804px;
     position: relative;
 }
 

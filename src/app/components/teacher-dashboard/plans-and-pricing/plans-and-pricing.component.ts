@@ -3,11 +3,13 @@ import { Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 
 @Component({
-  selector: 'app-creat-course-dashboard',
-  templateUrl: './creat-course-dashboard.component.html',
-  styleUrls: ['./creat-course-dashboard.component.css']
+  selector: 'app-plans-and-pricing',
+  templateUrl: './plans-and-pricing.component.html',
+  styleUrls: ['./plans-and-pricing.component.css']
 })
-export class CreatCourseDashboardComponent implements OnInit {
+
+
+export class PlansAndPricingComponent implements OnInit {
   sidebarData: any;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
@@ -20,6 +22,7 @@ export class CreatCourseDashboardComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
+    debugger
     this.sidebar();
     this.username();
   }
@@ -81,8 +84,5 @@ export class CreatCourseDashboardComponent implements OnInit {
     sessionStorage.setItem('subId', child);
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
-  // btnClick(){
-  //   debugger
-  //   this.router.navigateByUrl('/teacherDashboard/plansAndPricing');
-  // };
 }
+
