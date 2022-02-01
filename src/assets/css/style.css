@@ -159,9 +159,6 @@ textarea{
     font-size: 13px;
     outline: 0;
 }
-section{
-    padding: 0!important;
-}
 
 h1, h2, h3, h4, h5, h6 {
    font-family:'Poppins Bold';
@@ -179,136 +176,148 @@ a{
     font-family: 'Poppins Medium';
 }
 .main{
-  width: 100%;
+  width: 97.8%;
+  margin-left: 25px;
   padding: 35px 20px;
   background-color: #f2fbff;
  border-top-left-radius: 45px;
- position: relative;
+ height: 100%;
+}
+@media(max-width: 767px){
+  .main{
+    width: 375px;
+    margin-left: 0px;
+  }
 }
 
+@media(max-width: 767px){
+  .main{
+    height: auto;
+    width: 250px;
+  }
+}
 .dashboard{
     width: 100%;
-    height: auto;  
-    position: relative; 
+    height: auto;   
 }
 .student-dashboard-heading h1{
     text-align: left;
-    font-size: 30px;
-    line-height: 35px;
-    color: #136980;
-    font-weight: 700;
-    padding-left: 10px;
+    font-size: 36px;
+line-height: 27px;
+color: #136980;
+font-weight: 700;
+padding-left: 10px;
 }
 
 .student-dashboard-heading hr{
-width: 90px;
-background-color: #008ad2;
-border-radius: 8px;
+    width: 90px;
+    background-color: #008ad2;
+   border-radius: 8px;
 margin-left: 10px;
-height: 9px;
-}
-.dashboard-search{
-    width: 100%;
-    height: auto;
-    padding: 5px;
-}  
-.student-search{
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-.student-search a{
-    float: right;
-    margin-top: 13px;
-    margin-left: -30px;
-    font-size: 18px;
-    position: absolute;
-    color: #8b8b8b;
-}
-.student-search a:hover{
-    color: #8b8b8b;
-}
+    height: 9px;
+    }
+    .dashboard-search{
+        width: 100%;
+        height: auto;
+        padding: 5px;
+    }  
+    .student-search{
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .student-search a{
+       float: right;
+       margin-top: 13px;
+       margin-left: -30px;
+       font-size: 18px;
+       position: absolute;
+       color: #8b8b8b;
+    }
+    .student-search a:hover{
+        color: #8b8b8b;
+    }
 
-.search-1{
-    max-width: 100%;
-    height: auto;
-}
+    .search-1{
+        max-width: 100%;
+        height: auto;
+    }
 
-.course-language-dropdown p{
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 1px;
-line-height: 30px;
-margin-block-end: auto;
-color: #65696b;
-font-weight:600;
-padding-bottom: 3px;
-}
-.dashboard-search p{
-font-size: 13px;
-text-transform: uppercase;
-letter-spacing: 1px;
-line-height: 27px;
-margin-block-end: auto;
-color: #65696b;
-font-weight:700;
-}
+    .course-language-dropdown p{
+        font-size: 12px;
+        text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 30px;
+    margin-block-end: auto;
+    color: #65696b;
+    font-weight:600;
+    padding-bottom: 3px;
+    }
+    .dashboard-search p{
+      font-size: 13px;
+      text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 27px;
+  margin-block-end: auto;
+  color: #65696b;
+  font-weight:700;
+    }
 
 
-.search-dropdown{
-width: 100%;
-height: 45px;
-padding-left: 8px;
-border: 1px solid #fff;
-border-radius: 6px;
-font-size: 14px;
-text-transform: uppercase;
-margin-bottom: 15px;
-color: #aaaaaa;
-}
-
-.search-2{
-width: 100%;
-height: auto;
-
-}
-.search-2 h3{
-font-size: 14px;
-text-transform: uppercase;
-}
-
-.search-3{
-    cursor: pointer;
-width: 89px;
-margin-left: 10px;
-border-radius: 4px;
-text-align: center;
-height: 40px;
-top: 29px;
-position: absolute;
-margin-bottom: 36px;
-background-color: #008ad2;
-display: inline-block;
-
-}
-.search-rating{
-width:100%;
-height: 35px;
-display: inline-block;
-}
-.rating-dropdown{
-    width: 225px;
-    display: inline-block;
+    .search-dropdown{
+        width: 100%;
     height: 45px;
     padding-left: 8px;
-    border-radius: 4;
-    border:  1px solid #fff;
-    text-transform: uppercase;
-    outline: 0;
-    color: #aaaaaa;
-    margin-bottom: 10px;
+    border: 1px solid #fff;
+    border-radius: 6px;
     font-size: 14px;
-}
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #aaaaaa;
+    }
+
+    .search-2{
+        width: 100%;
+        height: auto;
+       
+    }
+    .search-2 h3{
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    
+    .search-3{
+        width: 89px;
+        margin-left: 10px;
+        border-radius: 4px;
+        text-align: center;
+        height: 40px;
+        top: 29px;
+        position: absolute;
+        margin-bottom: 36px;
+        background-color: #008ad2;
+        display: inline-block;
+       
+    }
+    .search-rating{
+        width: 225px;
+        height: 35px;
+        display: inline-block;
+
+    }
+    .rating-dropdown{
+        width: 225px;
+        display: inline-block;
+        height: 45px;
+        padding-left: 8px;
+        border-radius: 4;
+        border:  1px solid #fff;
+        text-transform: uppercase;
+        outline: 0;
+        color: #aaaaaa;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
     .search-3 a{
         display: inline-block;
         color: #fff;
@@ -321,7 +330,7 @@ display: inline-block;
     border: 2px solid rgba(51,42,124,0.08);
     height: auto;
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     background-color: #fff;
     margin-top: 7px;
@@ -344,12 +353,12 @@ color: #136980;
 font-family: 'Poppins Bold';
 font-weight: 600;
 margin-block-end: auto;
+
 }
 .course-detail span{
     font-size: 13px;
     color: #4c4c4c;
     font-weight: 500;
-    word-break: break-all;
 }
 @media(max-width: 767px){
   .course-detail-1{
@@ -414,7 +423,29 @@ font-weight: 700;
     color: #ff7e00;
 }
 
+.pages{
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
 
+.pages ul{
+    margin-top: 10px;
+}
+.pages ul li a
+{
+     background-color: gray;
+    padding: 10px 16px;
+    color: #fff;
+    margin: 10px;
+    border-radius: 6px;
+     font-family: 'Poppins Medium';}
+
+.pages ul li a:hover
+{
+    background-color: #136980;
+   color: #fff;
+}
 
 /*---- student-profile--*/
 
@@ -429,14 +460,15 @@ font-weight: 700;
 }
 .student-profile-top h1{
     text-align: left;
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-family: 'poppins Bold';
 font-weight: 700;
 }
 
 .student-profile-top hr{
+   
     width: 90px;
     margin-left: 0px;
     height:9px;
@@ -487,8 +519,8 @@ font-weight: 400;
 }
 .my-wallet-top h1{
     text-align: left;
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-weight: 700;
 }
@@ -788,7 +820,7 @@ margin-top: 20px;
 }
 .successfully a{
 font-size: 13px;
-letter-spacing: 0px;
+letter-spacing: 1px;
 line-height: 27px;
 color: #fff;
 font-weight: 400;
@@ -840,21 +872,16 @@ font-weight: 400;
 
 .course-detail{
     width: 100%;
-    height:auto;
-}
-.course-detail-top{
-    width: 100%;
     height: auto;
-    display: flex;
 }
 .course-detail-heading{
-   float: left;
-   width: 80%;
+   width: 100%;
+   height: auto;
 }
 .course-detail-heading h1{
     text-align: left;
-    font-size: 33px;
-    line-height: 35px;
+    font-size: 36px;
+    line-height: 27px;
     color: #136980;
       font-family: 'Poppins Bold';
     font-weight: 700;
@@ -868,67 +895,66 @@ font-weight: 400;
   margin-left: 0px;
     }
 
-.course-detail-right{
-    width: 20%;
-    height: auto;
-}
+
+
     #course-detail-enroll-btn {
         border-radius: 5px;
         width: 125px;
-        float: right;
         height: 40px;
         top:8px;
-        font-family: 'Poppins Medium';
         text-align: center;
         background-color: #008ad2;
         color: #fff;
+        line-height: 40px;
         font-size: 13px;
         text-transform: uppercase;
+        font-weight: 500;
+        right: 10px;
+        position: absolute;
 
     }
     #enroll-btn-bottom{
         border-radius: 5px;
         width: 125px;
         height: 40px;
-    
-        font-family: 'Poppins Medium';
         margin-top: 10px;
         text-align: center;
         background-color: #008ad2;
         color: #fff;
+        line-height: 40px;
         font-size: 13px;
-        text-transform: uppercase;      
+        text-transform: uppercase;
+        font-weight: 500;
+      
     }
    
 
     .course-table{
         width: 100%;
         height: auto;
-        border-radius: 6px;
-        display: table;
-        border: 1px solid #d2dfe2;
-        border-radius: 5px;
+        margin-top: 10px;
+        border-radius: 10px;
+       
     }
 .course-table table{
   width: 100%;
   height: auto;
   background-color: #ffffff;
-
 }
-.table-1{
-    padding: 10px;
-    border-bottom: 1px solid #d2dfe2;
-
-}
-.course-table td{
-width: 50%;
-padding-left: 20px;
-font-size: 13px;
-
-color: #4c4c4c;
-letter-spacing: 1px;
-font-weight: 400;
-}
+    .table-1{
+        padding: 10px;
+        border-bottom: 1px solid #d2dfe2;
+    
+    }
+    .course-table td{
+        width: 50%;
+        padding-left: 20px;
+        font-size: 13px;
+        
+        color: #4c4c4c;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
     .course-table th{
         font-size: 13px;
         color: #4c4c4c;
@@ -949,6 +975,7 @@ font-weight: 700;
 
     .course-table p{
         background-color: #008ad2;
+       
         text-align: center;
         font-size: 10px;
         padding: 3px 8px;
@@ -961,23 +988,27 @@ font-weight: 700;
 
     }
 
+
     .course-content{
     width: 100%;
     height: auto;
     padding-top: 25px;
     }
 
-.course-content p{
-    font-size: 14px;
+    .course-content p{
+        font-size: 14px;
 letter-spacing: 1px;
 line-height: 27px;
 color: #8b8b8b;
-}
+    }
 
 
 .course-details{
     width: 100%;
-    height: auto; 
+    height: auto;
+    margin-top: 22px;
+  
+   
 }
 .course-details ul
 {
@@ -985,7 +1016,7 @@ color: #8b8b8b;
 }
 .course-details ul li{
     list-style: none;
-    border: 2px solid #d2dfe2;
+    border: 1px solid #ccc;
     padding: 10px;
     font-size: 13px;
 letter-spacing: 1px;
@@ -1025,8 +1056,8 @@ background-color: #008ad2;
     padding-left: 10px;
 }
 .my-course-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-weight: 700;
 font-family: 'Poppins Bold';
@@ -1044,7 +1075,6 @@ font-family: 'Poppins Bold';
     width: 100%;
     height: auto;
     margin-top: 13px;
-    margin: 0 auto;
     
 }
 .right-content p{
@@ -1053,7 +1083,7 @@ letter-spacing: 1px;
 color: #000000;
 position: relative;
 margin-right: 10px;
-padding-bottom: 3px;
+padding-bottom: 5px;
 margin-block-end: auto;
 text-transform: uppercase;
 font-weight: 400;
@@ -1088,10 +1118,8 @@ font-weight: 400;
      font-family: 'Poppins Medium';    padding-bottom: 10px;
 }
 #start-course{
-    line-height: 30px;
     width: 135px;
-    height: 30px;
-    padding: 0;
+    height: 35px;
     font-size: 13px;
     letter-spacing: 1px;
     margin-top: 10px;
@@ -1166,8 +1194,8 @@ font-weight: 400;
     padding-left: 15px;
 }
 .subcription-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 30px;
 color: #136980;
 font-family: 'Poppins Bold';
 font-weight: 700;
@@ -1211,8 +1239,8 @@ text-transform: uppercase;
     border-radius: 8px;
 background-color: #ffffff;
 border: 1px solid #d2dfe2;
+/* margin-bottom: 20px; */
 margin-top: 20px;
-
 }
 #active-plan-data{
   width: 100%;
@@ -1224,11 +1252,11 @@ margin-top: 20px;
 .active-plan-data tr th {
     font-size: 13px;
     border-bottom: 1px solid #ddd;
+    width: 500px;
 }
 .active-plan-data td{
     padding-left: 20px;
     font-size: 13px;
-    width: 700px;
 }
 .active-plan-data span{
     font-size: 13px;
@@ -1245,7 +1273,7 @@ text-transform: uppercase;
     border-radius: 5px;
     background-color: #008ad2;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
     /* margin-bottom: 20px; */
     font-size: 13px;
 letter-spacing: 1px;
@@ -1269,8 +1297,8 @@ text-transform: uppercase;
 }
 
 .course-paid-heading h1{
-  font-size: 30px;
-line-height: 35px;
+  font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-weight: 700;
 text-align: left;
@@ -1410,10 +1438,10 @@ padding-left: 10px;
 
 }
 .excercises-heading h1{
-    font-size: 25px;
-line-height: 35px;
-width: 95%;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
+padding-left: 5px;
 font-family: 'Poppins Bold';
 font-weight: 700;
 
@@ -1423,7 +1451,7 @@ font-weight: 700;
     height: 9px;
     border-radius: 8px;
     background-color: #008ad2;
-    margin-left: 0px
+    margin-left: 5px;
 }
 .excercises-heading h4{
     font-size: 22px;
@@ -1434,17 +1462,8 @@ padding-top: 10px;
 padding-left: 5px;
 font-family: 'Poppins Bold';
 }
-.excercises-view{
-display: block;
-position: relative;
-}
-.excercises-left-data{
-    width: 66%;
-    flex: 0 0 66%;
-}
 .excercises-right-table{
-    width: 33.333333%;
-    flex: 0 0 33%;
+    width: 98%;
     height: auto;
     margin-block-end: auto;
 }
@@ -1502,8 +1521,6 @@ color: #4a4d4e;
     max-width: 100%;
     height: auto;
     position: relative;
-    padding-top: 20px;
-    display: flex;
 }
 .task-images ul{
     margin-left: -35px;
@@ -1511,46 +1528,41 @@ color: #4a4d4e;
 }
 .task-images ul li{
     list-style: none;
-    display: flex;
-    width: 280px;
-    align-items: center;
-    height: 225px;
+    display: inline-block;
+    width: 235px;
+    height: 175px;
+    text-align: center;
     background-color: #ffffff;
     border:1px solid #f1f1f1;
     border-radius: 4px;
 }
 .task-images ul li img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    margin: 0 auto;
+    width: 110px;
+    height: 110px;
+    margin-top: 25px;
+    display: inline-block;  
 }
 .task-images ul li span{
     background-color: #18af14;
-    width: 180px;
+    width: 135px;
     height: 40px;
     border-radius: 2px;
     position: absolute;
+    margin-top:65px;
+    text-align: center;
+    margin-left: -125px;
     z-index: 1;
-    padding: 0px 15px;
-    margin-left: 50px;
-    font-size: 13px;
+       font-size: 13px;
     letter-spacing: 1px;
     line-height: 40px;
-    font-family: 'Poppins Medium';
     color: #ffffff;
     font-weight: 400; 
+    
     color: #fff;
-    bottom: 30px;
-}
-
-.task-images ul li #worng-drag{
-    background-color: #ed3c0c;
 }
 .task-images ul li i{
-   float: right;
-   margin: 12px 0px;
-   font-size: 13px;
+   margin-left: 50px;
+    font-size: 13px;
 }
 .task-name{
     width: 90%;
@@ -1706,9 +1718,9 @@ font-family: 'Poppins-Bold';
 }
 .show-button{
   width: 100%;
-  height: auto;
-  margin-bottom: 25px;
-  display: inline-block;
+  max-height: 50px;
+  padding-top: 25px;
+  
 }
 .excercises-side-bar-1{
   padding: 10px;
@@ -1724,20 +1736,20 @@ font-family: 'Poppins-Bold';
     font-size: 13px;
   text-align: center;
   color: #ffffff;
-  margin: 15px 0;
+  margin-top: -6px;
   font-weight: 500;
   text-transform: uppercase;
   background-color: #008ad2;
   font-family: 'Poppins Medium';
-  padding: 10px 20px 10px 45px;
-  border-radius: 30px;
+  padding: 10px 30px 10px 45px;
+  border-radius: 25px;
   }
   #show-button img{
-    margin-top: -7px;
+    margin-top: -8px;
     width: 35px;
     height: 33px;
     position: absolute;
-    margin-left: -40px;
+    margin-left: -43px;
   }
 
 .round-1 {
@@ -1830,15 +1842,14 @@ text-transform: uppercase;
 
 .support{
     max-width: 100%;
-    padding: 0px 15px;
-    position: relative;
+    padding: 10px;
 }
 .support h1{
-    font-size: 30px;
-    line-height: 35px;
-    color: #136980;
-    font-family: 'Poppins Bold';
-    font-weight: 700;
+    font-size: 36px;
+line-height: 27px;
+color: #136980;
+font-family: 'Poppins Bold';
+font-weight: 700;
 }
 
 .support-box{
@@ -1969,27 +1980,21 @@ text-align: left;
 
 
 .enrollnow{
-   text-align: center; 
+  width: 100%;
+  height: 45px;
+  margin-top: 20px;
+  background-color: #008ad2;
+  border-radius: 26px;
+   text-align: center;
+   
 }
-.enrollnow a:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #008ad2;
-    }
 .enrollnow a{
     font-size: 16px;
     line-height: 45px;
     color: #ffffff;
-    cursor: pointer;
     font-weight: 500;
     letter-spacing: 1px;
-    width: 100%;
-    height: 44px;
-    margin-top: 20px;
-    background-color: #008ad2;
-    border-radius: 26px;
-    text-align: center;
-    padding: 10px 235px;
+
 }
 .enrollnow a:hover{
   text-decoration: none;
@@ -2048,7 +2053,7 @@ color: #055589;
 font-weight: 700;
 margin-block-end: auto;
 }
-/* 
+
 .rating-box  i{
     padding: 8px;
     background-color: #f0f0f0;
@@ -2056,7 +2061,7 @@ margin-block-end: auto;
     margin-top: 5px;
     height: 30px;
     border-radius: 3px;
-    } */
+    }
     
 .arrow-left {
   width: 100%;
@@ -2185,11 +2190,10 @@ padding: 8px;
     margin-top: -70px;
   }
  .summary-2 p{
-   font-size: 20px;
+   font-size: 24px;
  line-height: 27px;
  color: #327e92;
  font-weight: 500;
- padding-left: 5px;
  text-align: left;
  }
  .summary-2 ul{
@@ -2237,10 +2241,9 @@ padding: 8px;
    
  }
  .summary-3 p{
-   font-size: 20px;
+   font-size: 24px;
  line-height: 27px;
  color: #414344;
- padding-left: 5px;
  font-weight: 500;
  text-align:left;
  }
@@ -2269,19 +2272,15 @@ padding: 8px;
     background-color: #008ad2;
     text-align: center;
     border-radius: 5px;
-    cursor: pointer;
  }
- .summary-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #008ad2;
-    }
  .summary-btn a{
+   
     color: #fff;
     font-size: 12px;
     letter-spacing: 1px;
-    cursor: pointer;
+  
     text-transform: uppercase;
+  
  }
  
  .summary-btn a:hover{
@@ -2322,14 +2321,13 @@ font-weight: 300;
 
 
 .range{
-    height: 40px;
+    height: 35px;
     display: inline-block;
-    padding: 3px 10px;
-    border-radius: 25px;
+padding-left: 10px;
+    border-radius: 20px;
     background-color: #fff;
     border:1px solid #ccc;
 }
-
 @media (max-width: 767px){
     
     .range{
@@ -2418,7 +2416,7 @@ border-radius: 25px;
 }
 .teacher-dasboard-heading-top h1{
     font-size: 30px;
-    line-height: 35px;
+    line-height: 27px;
     color: #136980;
     font-weight: 700;
     font-family: 'Poppins Bold';
@@ -2505,10 +2503,9 @@ text-transform: uppercase;
     border: 1px solid rgba(51,42,124,0.08);
     height: auto;
     margin-bottom: 20px;
-    position: relative;
     border-radius: 10px;
     background-color: #fff;
-    padding: 15px;
+    padding: 10px 15px 20px;
     
 }
 
@@ -2564,14 +2561,14 @@ font-family: 'poppins Medium';
 font-weight: 700;
 }
 #view-student-btn{
-    width: 160px;
+    width: 140px;
        border-radius: 30px;
    background-color: #0082da;
    text-align: center;
    height: 30px;
    margin-top: 8px;
-   /* position: absolute; */
-   right:86px;
+   position: absolute;
+   right:20px;
    bottom: 0px;
    font-size: 12px;
    letter-spacing: 1px;
@@ -2587,7 +2584,7 @@ font-weight: 700;
 height: 30px;
 border-radius: 30px;
 background-color: #136980;
-    margin-top:8px;
+    margin-top:20px;
     text-align: center;
     font-size: 12px;
    letter-spacing: 1px;
@@ -2600,9 +2597,8 @@ background-color: #136980;
 .right-btn{
     height: auto;
     width:50px;
-    position: absolute;
-    right: 5px;
-    top:0;
+    float:right;
+    margin-top: -85px;
 }
 #edit-button{
     background-color: #136980;
@@ -2629,15 +2625,10 @@ background-color: #136980;
     width: 30px;
     height:auto;
 }
-#share-btn:hover .dropdown-menu{
-    display: block;
-}
-
 
 .right-btn ul{
-    margin-left: 135px;
-    margin-top: -37px;
-    width: 150px;
+    margin-left: -80px;
+    margin-top: 130px;
     background-color: #fff;
     padding-bottom: 10px;
     border: 2px solid rgba(51,42,124,0.08);
@@ -2697,44 +2688,18 @@ background-color: #136980;
 .right-btn ul li a:hover{
     text-decoration: none;
 }
-.pages{
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .pages ul{
-      margin-top: 10px;
-  }
-.pages ul li a
-{
-    background-color: gray;
-    padding: 10px 16px;
-    color: #fff;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 6px;
-    font-family: 'Poppins Medium';
-}
-  
-.pages ul li a:hover
-{
-    background-color: #136980;
-    color: #fff;
-}
 .prev-btn{
-background-color: gray; 
-margin-top: 20px;
-width: 100px;
-cursor: pointer;
-height: 45px;
-margin-left: -10px;
-border-radius: 5px;
+    background-color: gray; 
+    margin-top: 20px;
+    width: 100px;
+    height: 45px;
+  margin-left: -10px;
+    border-radius: 5px;
 }
 .prev-btn a{
-font-size: 14px;
-color: #fff;
-line-height: 45px;
+  font-size: 14px;
+   color: #fff;
+   line-height: 45px;
 }
 .prev-btn a:hover{
     color: #fff;
@@ -2744,7 +2709,6 @@ line-height: 45px;
     background-color: #008ad2; 
     width: 100px;
     height: 45px;
-    cursor: pointer;
     position: absolute;
     right: 0px;
     margin-top: 20px;
@@ -2812,33 +2776,28 @@ border:1px solid #fff;
 text-transform: uppercase;
 }
 .invite-btn{
-margin-top: 20px;
-
-}
-.invite-btn a:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #008ad9;
-    }
-     
-.invite-btn a{
-     font-size: 14px;
-letter-spacing: 1px;
-line-height: 45px;
-color: #ffffff;
-font-weight: 600;
-text-align: center;
-text-transform: uppercase;
-width: 125px;
+    width: 125px;
 height: 45px;
 border-radius: 5px;
 background-color: #008ad2;
-cursor: pointer;
-padding: 10px 30px;
-
+margin-top: 20px;
+text-align: center;
 
 }
+.invite-btn a{
+    font-size: 14px;
+letter-spacing: 1px;
+line-height: 45px;
 
+color: #ffffff;
+font-weight: 600;
+text-align: center;
+
+text-transform: uppercase;
+}
+.invite-btn a:hover{
+    text-decoration: none;
+}
 /*teacher-dashboard-without--*/
 
 .left-custom-menu-adp-wrap h4{
@@ -2883,7 +2842,7 @@ text-transform: uppercase;
 }
 .new-course img{
     width:100%;
-    height: auto;
+    height: 500px;
     margin-top: 20px;
 }
 
@@ -2985,8 +2944,8 @@ text-align: left;
 
 }
 .teacher-profile-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-family: 'Poppins Bold';
 margin-left: 10px;
@@ -3221,8 +3180,8 @@ font-style: italic;
 }
 .teacher-profile-edit-top h1{
     text-align: left;
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 font-family: 'Poppins Bold';
 color: #136980;
 font-weight: 700;
@@ -3236,7 +3195,11 @@ font-weight: 700;
     margin-left: 0px;
     }
 
- 
+
+.change-pass{
+    width: 100%;
+    padding-top: 10px;
+}   
 
 #change-pass-btn {
 font-size: 12px;
@@ -3475,8 +3438,8 @@ text-transform: uppercase;
     margin-top: 20px;
 }
 .teacher-wallet h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 font-family: 'Poppins Bold';
 color: #136980;
 font-weight: 700;
@@ -3602,8 +3565,8 @@ margin-left: 100px;
     padding-left: 8px;
    }
    .accept-course-top h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 font-family: 'Poppins Bold';
 color: #136980;
 width: 100%;
@@ -3732,16 +3695,16 @@ border-radius: 4px;
 .component-heading{
     width: 100%;
     height: auto;
-    display: flex; 
-    justify-content: space-between;
+    padding-left: 10px;
+   
 }
 .component-heading-top{
-    float: left;
-    width: 80%;
+    padding-left: 10px;
+    width: 100%;
 }
 .component-heading-top h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-family: 'Poppins Bold';
 font-weight: 700;
@@ -3754,9 +3717,7 @@ font-weight: 700;
     margin-left: 0px;
     }
 .student-view-btn{
-    float: right;
-    width: 20%;
-    display: flex;
+    width: 100%;
 }
 .component-heading-top p{
     font-size: 13px;
@@ -3774,29 +3735,32 @@ font-weight: 700;
     margin-top: 10px;
 }
 #student-view-btn{
-    width: 110px;
+    width: 125px;
     height: 40px;
     background-color: #565656;
     font-size: 12px;
-    margin-right:10px;
     text-align: center;
     margin-bottom: 10px;
     font-weight: 500;
+    margin-left: 10px;
+    letter-spacing: 1px;
     color: #fff;
     text-transform: uppercase;
+    margin-right:10px;
     border-radius: 5px;
 }
 #save-btn{
-    width: 78px;
+    width: 80px;
     height: 40px;
     background-color: #008ad2;
     font-size: 12px;
     border-radius: 5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     text-align: center;
     font-weight: 500;
     color: #fff;
-    letter-spacing: 1px;
+    margin-left: 10px;
 }
 
 .component-images{
@@ -3807,10 +3771,10 @@ font-weight: 700;
     justify-content: space-between;
     }
     #exescise-btn{
-        padding: 25px 45px;
+        padding: 20px 35px;
         background-color: #fff;
         border: 2px solid #efeef4;
-        align-items: center;
+     align-items: center;
         border-radius: 6px;
         display: flex;
     }
@@ -3826,6 +3790,7 @@ font-weight: 700;
     height: auto;
     margin-top: 20px
 }
+
 
 .work-sheet-edit{
     width: 100%;
@@ -3897,6 +3862,7 @@ line-height: 21px;
 color: #000000;
 font-weight: 400;
 }
+
 .create-btn-1{
     
     width: 225px;
@@ -3943,18 +3909,18 @@ font-weight: 400;
 .afiliation ul li input{
     text-transform: uppercase;
     font-size: 13px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #000000;
-    font-weight: 700;
-    padding-left: 10px;
+letter-spacing: 1px;
+line-height: 27px;
+color: #000000;
+font-weight: 700;
+padding-left: 10px;
 }
 .afiliation ul li span{
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 21px;
-    color: #000000;
-    font-weight: 600;
+font-size: 12px;
+letter-spacing: 1px;
+line-height: 21px;
+color: #000000;
+font-weight: 600;
 }
 .afiliation #hour{
     width: 128px;
@@ -4015,6 +3981,7 @@ font-style: italic;
     margin-top: 20px;
 }
 .data-sheet-table #position{
+        
         height: 40px;
          border-radius:5px;
         border: 2px solid rgba(51,42,124,0.08);
@@ -4024,12 +3991,13 @@ font-style: italic;
 }
 
 .data-sheet-table #speed{
-    height: 40px;
-    padding: 10px;
-    margin-top: 20px;
-    border: 2px solid rgba(51,42,124,0.08);
-     border-radius:5px;
-    margin-left: 125px;
+   
+        height: 40px;
+        padding: 10px;
+        margin-top: 20px;
+        border: 2px solid rgba(51,42,124,0.08);
+         border-radius:5px;
+        margin-left: 125px;
 }
 @media(max-width:767px){
     #sno{
@@ -4134,7 +4102,7 @@ text-transform: uppercase;
     width: 125px;
     background-color: #fff;
     padding: 8px;
-    border: 2px solid rgba(51,42,124,0.08);
+     border: 2px solid rgba(51,42,124,0.08);
 }
 .size{
     width: 60px;
@@ -4167,11 +4135,11 @@ text-transform: uppercase;
 }
 .multimedia-content p{
     font-size: 15px;
-    line-height: 27px;
-    color: #ffffff;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding-top: 22px;
+line-height: 27px;
+color: #ffffff;
+font-weight: 600;
+text-transform: uppercase;
+padding-top: 22px;
 }
 .multimedia-content ul{
     margin-left: -40px;
@@ -4206,44 +4174,41 @@ border-radius: 4px;
     background-color: #e51424;
     border-radius: 4px;
     
- }
-.color-3{
-    padding: 3px 14px;
-    margin-left: 5px;
-    background-color: #136980;
-    border-radius: 4px;
-}
-.color-4{
-    padding: 3px 14px;
-    margin-left: 5px;
-    background-color: #008ad2;
-    border-radius: 4px;
-}
-.color-5{
-    padding: 3px 14px;
-    margin-left: 5px;
-    background-color: #565656;
-    border-radius: 4px;
-}
+    }
+    .color-3{
+        padding: 3px 14px;
+        margin-left: 5px;
+        background-color: #136980;
+        border-radius: 4px;
+        }
+        .color-4{
+            padding: 3px 14px;
+            margin-left: 5px;
+            background-color: #008ad2;
+            border-radius: 4px;
+            }
+            .color-5{
+                padding: 3px 14px;
+                margin-left: 5px;
+                background-color: #565656;
+                border-radius: 4px;
+                }
                  
 .multimedia-content  #multimediamenu-btn {
     width:100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 40px;
-    background-color: #0a576c;
-    margin-top: 15px;
-    padding: 5px;
-    border-radius: 5px;
-    text-align:left;
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    padding-left: 14px;
-    color: #dee9eb;
-    font-family: 'Poppins Medium';
-    text-transform: uppercase;
+   height: 40px;
+background-color: #0a576c;
+margin-top: 15px;
+padding: 5px;
+border-radius: 5px;
+text-align:left;
+font-size: 11px;
+letter-spacing: 1px;
+line-height: 27px;
+padding-left: 14px;
+color: #dee9eb;
+font-weight: 400;
+text-transform: uppercase;
 }
 #multimediamenu-btn:hover{
     background-color: #008ad2;
@@ -4262,8 +4227,8 @@ border-radius: 4px;
     height: auto;
    }
    .add-new-course-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-family: 'Poppins Bold';
 
@@ -4357,40 +4322,41 @@ text-transform: uppercase;
     height: auto;
 }
 .time-du p{
-    font-size: 13px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #65696b;
-    font-weight: 600;
-    margin-block-end: auto;
-    text-transform: uppercase;
+     font-size: 13px;
+letter-spacing: 1px;
+line-height: 27px;
+color: #65696b;
+font-weight: 600;
+margin-block-end: auto;
+text-transform: uppercase;
 }
 
    
-.course-description{
+   .course-description{
     width: 100%;
     height: auto;
-
-}
-.course-description p{
+    
+   }
+   .course-description p{
     font-size: 13px;
     letter-spacing: 1px;
     line-height: 27px;
     color: #65696b;
     font-weight: 600;
     margin-block-end: auto;
-}
-
-.course-description strong{
-    font-size: 13px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #65696b;
-    font-weight: 600;
     text-transform: uppercase;
    }
 
-.course-des-content{
+   .course-description strong{
+    font-size: 13px;
+letter-spacing: 1px;
+line-height: 27px;
+color: #65696b;
+font-weight: 600;
+text-transform: uppercase;
+   }
+
+   .course-des-content{
     padding: 10px;
     border:1px solid #ffff;
     border-radius:5px;
@@ -4459,18 +4425,17 @@ text-transform: uppercase;
    
    
 
-#addmore-btn{
+   #addmore-btn{
     width: 160px;
     height: 40px;
-    border-radius: 27px;
-    text-align: left;
-    margin-top: 25px;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 13px;
-    background-color: #136980;
-    padding-left: 21px;
-}
+border-radius: 27px;
+text-align: center;
+margin-top: 25px;
+color: #fff;
+text-transform: uppercase;
+font-size: 13px;
+background-color: #136980;
+   }
    #addmore-btn span{
     font-size: 16px;
     color: #fff;
@@ -4573,8 +4538,8 @@ text-transform: uppercase;
 
 }
 .teacher-support-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-weight: 700; font-family: 'Poppins Bold';
 }
@@ -4608,8 +4573,8 @@ text-transform: uppercase;
     height: auto;
 }
 .review-heading h1{
-font-size: 35px;
-line-height: 30px;
+        font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-weight: 700;
 font-family: 'Poppins Bold';
@@ -4690,9 +4655,8 @@ font-weight: 700;
 /*insert */
 
 .insert-content{
-    padding: 10px;
-    width: 100%;
-    height: auto;
+    margin-top: 20px;
+
 }
 
 .insert-content p{
@@ -4731,12 +4695,14 @@ color: #8b8b8b;
 .picture {
     width: 100%;
     height: auto;
-    padding: 10px;
+   padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 2px solid rgba(51,42,124,0.08);
 }
 .picture img{
     width: 100%;
     height: auto;
-    object-fit: fill;
 }
 /*picture upload */
 
@@ -4760,36 +4726,17 @@ font-weight: 600;
 .picture-section{
 position: relative;
 }
-.upload-audio-section p{
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #868686;
-    margin: 0 auto;
-    font-family:'poppins medium';
-    text-transform: uppercase;
-}
 .picture-section p{
     font-size: 12px;
     letter-spacing: 1px;
     line-height: 27px;
-    color: #868686;
-    margin: 0 auto;
-    font-family:'poppins medium';
-    text-transform: uppercase;
-}
-.upload-accordion-title p{
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #868686;
-    padding-left: 15px;
+    color: #8b8b8b;
     margin: 0 auto;
     font-family:'poppins medium';
     text-transform: uppercase;
 }
 #picture-input{
-    width: 100%;
+    width: 98%;
     height: 45px;
     border-radius: 5px;
     border: 2px solid #efeef4;
@@ -4861,8 +4808,9 @@ letter-spacing: 1px;
 line-height: 27px;
 margin-block-end: auto;
 padding-bottom: 5px;
-color: #868686;
+color: #555555;
 font-weight: 400;
+text-transform: uppercase;
 }
 
 /*youtube-popup */
@@ -4888,11 +4836,11 @@ font-weight: 400;
  .youtube-text{
    width: 100%;
    height: auto;
+   margin-top: 10px;
  }
  .youtube-text textarea{
    height: auto;
-   width: 100%;
-   border: 2px solid #efeef4;
+   width: 595px;
  }
 
 
@@ -4934,13 +4882,15 @@ font-weight: 600;
 /*pdf */
 .pdf{
     width: 100%;
+    background-color: #fff;
     height: auto;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .pdf img{
     width: 100px;
-    height: 100px;
+    hyphens: 100px;
 }
 
 .pdf p{
@@ -4981,20 +4931,13 @@ font-weight: 600;
     width: 100%;
     height: auto;
     padding-bottom: 25px;
+    background-color: #fff;
    
-}
-
-.accordion-view{
-   padding:10px;
-   display: block;
 }
 #heading{
  position: relative;
- margin-bottom: 10px;
- margin-top: 10px;
- border: 2px solid rgba(51,42,124,0.08);
+ padding-top: 20px;
 }
-
 #heading a{
   font-size: 16px;
 line-height: 27px;
@@ -5004,8 +4947,8 @@ font-weight: 600;
 #heading  i{
     font-size: 25px;
     position: absolute;
-    margin-top: 3px;
-    right: 10px;
+    margin-top: 10px;
+    right: 15px;
 }
 .accordion-popup-heading{
     width: 100%;
@@ -5028,7 +4971,7 @@ font-weight: 600;
 .accordions-card-input{
     width: 100%;
     height: 40px;
-    border: 2px solid rgba(51,42,124,0.08);
+    border: 1px solid #fff;
 }
 .accordian-card a{
   border-radius: 6px; 
@@ -5154,7 +5097,10 @@ text-transform: uppercase;
 .add-more a:hover{
     text-decoration: none;
 }
-
+#heading{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #heading a{
   font-size: 16px;
 line-height: 27px;
@@ -5302,13 +5248,13 @@ padding-left: 10px;
 /*affilition */
 
 
-.save-heading h1{
-    font-size: 25px;
-    line-height: 35px;
-    font-family: 'Poppins Bold';
-    color: #136980;
 
-    font-weight: 600;
+.save-heading h1{
+    font-size: 30px;
+line-height: 27px;
+font-family: 'Poppins Bold';
+color: #136980;
+font-weight: 700;
 }
 .save-heading hr{
     width: 90px;
@@ -5339,30 +5285,25 @@ text-transform: uppercase;
 .sn input{
 width: 50px;
 height: 40px;
-padding: 8px;
+padding: 10px;
 border: 2px solid rgba(51,42,124,0.08);
 border-radius: 5px;
-background-color: #fff;
 margin-bottom: 10px;
-}
-.pos{
-    margin-left: -25px;
 }
 .pos input{
     width: 100%;
     height: 40px;
     border-radius: 5px;
-    padding: 8px;
-    background-color: #fff;
- border: 2px solid rgba(51,42,124,0.08);
+    padding: 10px;
+       border: 2px solid rgba(51,42,124,0.08);
     margin-bottom: 10px;
 }
 .sp input{
     width: 80%;
     height: 40px;
     border-radius: 5px;
-    padding: 8px;
-    border: 2px solid rgba(51,42,124,0.08);
+    padding: 10px;
+       border: 2px solid rgba(51,42,124,0.08);
     margin-bottom: 10px;
 }
 .sp span{
@@ -5477,17 +5418,17 @@ border: 1px dotted #099c05;
 
 }
 #retry-btn{
-    width: 110px;
+    width: 125px;
     height: 40px;
     position: absolute;
-    border-radius: 25px;
+    border-radius: 26px;
+    margin-top: -4px;
     margin-left: 20px;
-    font-size: 14px;
+    font-size: 13px;
     background-color: #008ad2;
     text-align: center;
     font-family: 'Poppins Medium';
     color: #fff;
-    text-transform: uppercase;
    display: inline-block;
 }
 #retry-btn span{
@@ -5495,17 +5436,16 @@ border: 1px dotted #099c05;
     font-size: 20px;
 }
 #solution-btn{
-    width: 130px;
-    border-radius: 25px;
+    width: 160px;
+    border-radius: 26px;
     height: 40px;
+    margin-top: -4px;
    position: absolute;
-   right: 35px;
-   font-size: 14px;
-    background-color: #18af14;
-     text-align: center;
+   right: 15px;
+    background-color: #4CAF50;
+  text-align: center;
     font-family: 'Poppins Medium';
     color: #fff;
-    text-transform: uppercase;
    display: inline-block;
 }
 
@@ -5527,8 +5467,8 @@ border: 1px dotted #099c05;
     height: auto;
 }
 .studnent-view-heading h1{
-    font-size: 30px;
-line-height: 35px;
+    font-size: 36px;
+line-height: 27px;
 color: #136980;
 font-family: 'Poppins Bold';
 font-weight: 700;
@@ -5552,13 +5492,12 @@ font-weight: 700;
 .pick-the-right{
     width: 100%;
     height: auto;
-    padding: 15px 10px 20px;
+    padding: 15px 15px 50px;
     background-color: #fff;
 }
-.Question-with-dropdown-insert{
-    padding: 10px;
+.pick-the-right-content{
+    width: 85%;
 }
-
 .pick-the-right-content h4{
     font-size: 18px;
 line-height: 27px;
@@ -5570,7 +5509,6 @@ font-weight: 600;
 line-height: 24px;
 color: #8b8b8b;
 font-weight: 400;
-font-family: 'Poppins Medium';
 }
 
 .pick-the-right-content-save h4{
@@ -5591,8 +5529,8 @@ font-weight: 300;
 
 .right-pick-student-content{
     width: 100%;
-    padding-bottom: 115px;
 
+    padding-bottom:50px;
 }
 .right-pick-student-content p{
     font-size: 14px;
@@ -5677,34 +5615,15 @@ font-weight: 600;
     width: 100%;
     height: auto;
     margin-top: 20px;
-    display: flex;
-
 }
 .insert-question input{
-    width:70%;
+    width:77%;
     height: 45px;
     padding: 10px;
     font-size: 14px;
-    margin-right: 10px;
-    font-weight: 600;
-    border-radius: 5px;
-    border: 2px solid rgba(51,42,124,0.08);
-    color: #000;
-}
-.insert-question-view{
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-}
-.insert-question-view input{
-    width:75%;
-    height: 45px;
-    padding: 10px;
-    font-size: 14px;
-    margin-right: 10px;
-    font-weight: 600;
-    border-radius: 5px;
-    border: 2px solid rgba(51,42,124,0.08);
+font-weight: 600;
+border-radius: 5px;
+   border: 2px solid rgba(51,42,124,0.08);
     color: #000;
 }
 
@@ -5739,6 +5658,9 @@ border: 2px solid rgba(51,42,124,0.08);
     justify-content: center;
  }
  .question-radio h4{
+     border-radius: 5px;
+     border: 1px solid rgba(51,42,124,0.08);
+     padding: 10px;
      font-size: 18px;
  line-height: 27px;
  color: #000000;
@@ -5749,55 +5671,52 @@ border: 2px solid rgba(51,42,124,0.08);
  
  }
  .question-radio label{ 
-    display: flex;
-    padding-bottom: 20px;
-   width: 100%;  
-    float: none!important;
+     display: flex;
+         padding-bottom: 20px;
+       width: 100%;  
+ border-bottom: 1px solid #ddd;
   }
  .question-radio input[type=radio]{ 
      margin-right: 10px;
      width: 50px;
-    height: 25px;
-    margin-top: 3px;
-    display: inline-block;
-    border-radius: 15px;
-    background-color: #ffffff;
-    border: 2px solid #cccccc;
+ height: 25px;
+ display: inline-block;
+ border-radius: 15px;
+ background-color: #ffffff;
+ border: 2px solid #cccccc;
  }
  .question-radio p{
    display: inline-block;
    font-size: 16px;
  color: #8b8b8b;
- width: 100%;
  }
 .question-radio-button{
     width: 100%;
-    padding: 15px 10px 20px;
-    height: auto;
+    height: 300px;
 }
 .question{
    justify-content: center;
-   padding-bottom: 10px;
 }
 .question p{
     border-radius: 5px;
     border: 2px solid rgba(51,42,124,0.08);
     padding: 10px;
     font-size: 18px;
-    line-height: 27px;
-    color: #000000;
-    font-weight: 600;
-    background-color: #fff;
+line-height: 27px;
+color: #000000;
+font-weight: 600;
+background-color: #fff;
+
 }
-.question label{
-    display: block;
-    width:100%;
-    font-size: 14px;
-    letter-spacing: 1px;
-    line-height: 21px;
-    color: #8b8b8b;
-    font-weight: 500;
-    text-align: justify'
+.question label{ display: block;
+        font-size: 14px;
+letter-spacing: 1px;
+line-height: 21px;
+color: #8b8b8b;
+font-weight: 500;
+height: 65px;
+text-align: justify;
+border-bottom: 1px solid #ddd;
  }
 .question input[type=radio]{ 
     margin-right: 10px;
@@ -5814,6 +5733,7 @@ border: 2px solid #cccccc;
    padding: 5px;
    color: red;
    float: right;
+   margin-top: -20px;
 border-radius: 4px;
 text-align: center;
 background-color: #f2dcdd;
@@ -6065,13 +5985,15 @@ font-family: 'Poppins Medium';
     
 }
 
+
+
+
 /*fill in the blanks */
 
 
 .fill-in-blanks{
     width: 100%;
     height: auto;
-    padding: 10px;
 }
 .fill-in-blanks img{
     width: 100%;
@@ -6080,9 +6002,8 @@ font-family: 'Poppins Medium';
     margin-top: 15px;
 }
 .fill-in-blanks-content {
+    padding-bottom: 50px;
     width: 100%;
-    height: auto;
-    padding: 5px;
 }
 .fill-in-blanks-content h5{
     font-size: 18px;
@@ -6096,7 +6017,6 @@ font-family: 'Poppins bold';
     font-size: 13px;
     font-family: 'poppins Medium';
     color: #8b8b8b;
-    line-height: 2.5;
 }
 #create-btn{
     width: 235px;
@@ -6135,18 +6055,14 @@ color:  #8b8b8b;
 font-weight: 300;
 }
 .fill-in-blanks-content input{
-    width: auto;
+    width: 100px;
     height: 30px;
     border-radius: 5px;
-    margin: 5px 10px 5px 6px;
+    margin: 0px 10px;
+    margin-top: 5px;
     border: 2px solid rgba(51,42,124,0.08);
-    padding: 5px 33px 5px 5px;
+    padding: 5px;
 }
-.fill-in-blanks-content i {
-    margin-right: 12px;
-    /* margin-left: -30px; */
-}
-
 .fill-in-blank-input{
     width: 59%;
 }
@@ -6468,6 +6384,7 @@ font-weight: 600;
     width: 100%;
     height: auto;
     border-radius: 5px;
+    background-color: #fff;
 }
 .image-drag-section h5{
     font-size: 18px;
@@ -6489,17 +6406,14 @@ font-style: italic;
 }
 
 .image-drag-edit img{
-    width: 212px;
-    object-fit: contain;
+    width: 170px;
     height: 150px;
     border: 2px solid rgba(51,42,124,0.08);
     padding: 15px;
     display: inline-block;
 }
 .image-drag-text{
-    padding: 10px 10px 10px 0px;
-    display: inline-block;
-    position: relative;
+    padding: 10px;
 }
 .image-drag-text strong{
     width: 162px;
@@ -6673,7 +6587,6 @@ font-weight: 300;
   padding: 0;
   position: relative;
   box-sizing: border-box;
-  text-transform: uppercase;
 }
 .select-dropdown {
   position: relative;
@@ -6718,10 +6631,10 @@ font-weight: 300;
 }
 #add-support{
     position: absolute;
-    right: 15px;
+    right: 20px;
     width: 120px;
     background-color: #008ad2;
-    top: 5px;
+    top: 180px;
     border-radius: 5px;
     height: 45px;
     text-transform: uppercase;
@@ -6732,10 +6645,10 @@ font-weight: 300;
 }
 #pre-support{
     position: absolute;
-    right: 0px;
-    width: auto;
+    right: 20px;
+    width: 150px;
     background-color: #008ad2;
-    top: 0px;
+    top: 180px;
     border-radius: 5px;
     height: 45px;
     text-transform: uppercase;
@@ -6833,7 +6746,7 @@ font-weight: 500;
   position: relative;
   background-color: #fff;
   display: inline-block;
-  width: 25%;
+  width: 20%;margin-left: 3%;
   margin-bottom: 20px;
 }
 .select-dropdown-question select {
@@ -6841,8 +6754,7 @@ font-weight: 500;
   width: 100%;
   font-size: 13px;
  height:45px;
- padding: 10px 20px 10px 10px;
- text-overflow: ellipsis;
+ padding: 10px;
  outline: 0;
  display: inline-block;
  border-radius: 6px;
@@ -6861,53 +6773,6 @@ font-weight: 500;
   content: "";
   position: absolute;
   top: 50%;
-  right: 10px;
-  width: 0;
-  height: 0;
-  margin-top: -2px;
-  border-top: 5px solid #008ad2;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-}
-
-.select-dropdown-question-view,
-.select-dropdown-question-view * {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-}
-.select-dropdown-question-view {
-  position: relative;
-  background-color: #fff;
-  display: inline-block;
-  width: 220px;
-  margin-bottom: 20px;
-}
-.select-dropdown-question-view select {
-  font-weight: normal;
-  width: 100%;
-  font-size: 13px;
- height:45px;
- padding: 10px;
- outline: 0;
- display: inline-block;
- border-radius: 6px;
- border: 2px solid rgba(51,42,124,0.08);
-  color: #aaaaaa;
-  background-color: transparent;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  appearance: none;
-}
-.select-dropdown-question-view select:active, .select-dropdown-question-view select:focus {
-  outline: none;
-  box-shadow: none;
-}
-.select-dropdown-question-view:after {
-  content: "";
-  position: absolute;
-  top: 50%;
   right: 20px;
   width: 0;
   height: 0;
@@ -6917,10 +6782,10 @@ font-weight: 500;
   border-left: 5px solid transparent;
 }
 
-
 .affilition-view{
     width: 100%;
     height: auto;
+    padding: 0px 0px 25px;
 }
 .image-drag-view{
     width: 100%;
@@ -6949,14 +6814,12 @@ font-weight: 500;
     padding-bottom: 25px;
 }
 .dropdown-input{
-    width: 210px;
+    width: 20%;
     display: inline-block;
 }
 .dropdown-input select {
     width: 100%;
-    height: 40px;
-    outline: 0;
-    padding-left: 10px;
+    height: 42px;
     -webkit-appearance:none;
     border-radius: 5px;
     border:2px solid #18af14;
@@ -6969,9 +6832,9 @@ font-weight: 500;
     font-family: 'Poppins Medium';
 }
 .dropdown-input span{
-    margin-top: 12px;
-    margin-left: -25px;
+    margin-top: 15px;
     position: absolute;
+    right: 35px;
     color: #18af14;
 }
 #pick-word-right-result{
@@ -6992,7 +6855,6 @@ font-weight: 500;
     align-items: center;
     font-size: 13px;
     margin: 0 auto;
-    display: flex;
     letter-spacing: 1px;
     position: relative;
     margin-right: 0;
@@ -7003,83 +6865,83 @@ font-weight: 500;
     text-transform: uppercase;
     }
     
-#edit-btn span{
-    margin: 4px 5px 0px;
+    #edit-btn span{
+       margin: 4px;
     font-size: 20px;
     color: #fff;
-}
-#edit-btn img{
-    width: 25px;
-    height: 25px;    
-}
-
-.afiliation-table{
-    width: 100%;
-    height: auto; 
-}
-.afiliation-table table{
-    width: 100%; 
-}
-
-.afiliation-table-head{
-    width: 100%;
-}
-.afiliation-table th{
-    font-size: 13px;
-    font-family: 'Poppins Medium';
-}
-.afiliation-value{
-    width: 20%;
-    height: auto;
-    display: inline-block;
-}
-.afiliation-value input{
-    width: 50px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-.afiliation-fix{
-    width: 100%;
-
-}
-.afiliation-head-1{
-    padding-left: 5px;
-}
-.afiliation-head-2{
-    padding-left: 23px;
-}
-.afiliation-fix input{
-    width: 200px;
+    }
+    #edit-btn img{
+        width: 25px;
+        height: 25px;    
+    
+    }
+    
+    
+    .afiliation-table{
+       width: 100%;
+       height: auto; 
+    }
+    .afiliation-table table{
+       width: 100%; 
+    }
+    
+    .afiliation-table-head{
+        width: 100%;
+    }
+    .afiliation-table th{
+        font-size: 13px;
+        font-family: 'Poppins Medium';
+    }
+    .afiliation-value{
+        width: 20%;
+        height: auto;
+        display: inline-block;
+    }
+    .afiliation-value input{
+        width: 50px;
         border-radius: 5px;
-        margin-left: 20px;
         margin-bottom: 10px;
-}
-.afiliation-speed input{
-    width: 225px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+    }
+    .afiliation-fix{
+        width: 100%;
+    
+    }
+    .afiliation-head-1{
+        padding-left: 5px;
+    }
+    .afiliation-head-2{
+        padding-left: 23px;
+    }
+    .afiliation-fix input{
+        width: 200px;
+         border-radius: 5px;
+          margin-left: 20px;
+          margin-bottom: 10px;
+    }
+    .afiliation-speed input{
+        width: 225px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 
 
 .youtube-video{
     width: 100%;
-    height: auto;
-    padding: 25px 10px 35px;
+    height: 315px;
+    padding-bottom: 25px;
 }
 .audio-1{
     width: 100%;
     height: auto;
-   padding: 25px 10px 35px;
+    padding-bottom: 25px;
 }
 .other-link{
     width: 100%;
     height: auto;
-    padding: 10px 10px 20px;
+    padding-bottom: 25px;
 }
 .other-links-image-section{
-    height: 100%;
-    background-color: transparent;
-    width: 100%;
+    background-color: #efeef5;
 }
 .other-links-image-section img{
     width: 100%;
@@ -7088,13 +6950,13 @@ font-weight: 500;
     object-fit: contain;
 }
 .edit-btn-1{
-    /* width: 100%; */
+    width: 100%;
     height: auto;
     display:flex;
     justify-content: space-between;
     position: relative;
     left: 12px;
-    /* margin-top: -70px; */
+    margin-top: -70px;
 }
 #delete-btn{
     width: 40px;
@@ -7140,22 +7002,17 @@ font-weight: 500;
     }
     
     #cancel-popup-btn{
-        width: 100px;
-        line-height: 35px;
-        height: 35px;
-   margin: 0 10px;
-   border-radius: 4px;
-   background-color: #0082da;
-   color: #fff;
-   font-size: 14px;
-   text-transform: uppercase;
-   font-weight: 400;
-   text-align: center;
+        padding: 12px 20px;
+    border-radius: 4px;
+    background-color: #008ad2;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
     }
     #delete-popup-btn{
-         width: 100px;
-         line-height: 35px;
-         height: 35px;
+          padding: 8px 20px;
     margin: 0 10px;
     border-radius: 4px;
     background-color: red;
@@ -7182,11 +7039,11 @@ font-weight: 500;
     height: 45px;
     border-radius: 5px;
     border: 2px solid #efeef4;
-margin-left: 14px;
+
    }
    
    #accordian-add-btn{
-    margin-top: -57px;
+    margin-top: -45px;
     width: 45px;
     height: 45px;
     position: absolute;
@@ -7213,7 +7070,7 @@ margin-left: 14px;
     font-size: 13px;
     color: #fff;
     text-transform: uppercase;
-    margin-top: 27px;
+    margin-top: 10px;
     background-color: #6f6f6f;
 }
 #sub-title-remove-btn span{
@@ -7222,436 +7079,9 @@ margin-left: 14px;
     margin-top: 5px;
 }
 
-.afiliation-speed{
- position: relative;
-  background-color: #fff;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-.afiliation-speed select {
-    font-weight: normal;
-    width: 200px;
-    font-size: 13px;
-   height:45px;
-   padding: 10px;
-   outline: 0;
-   display: inline-block;
-   border-radius: 6px;
-   border: 2px solid rgba(51,42,124,0.08);
-    color: #aaaaaa;
-    background-color: transparent;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-    appearance: none;
-  }
-  .afiliation-speed select:active, .afiliation-speed select:focus {
-    outline: none;
-    box-shadow: none;
-  }
-  .afiliation-speed:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    width: 0;
-    height: 0;
-    margin-top: -2px;
-    border-top: 5px solid #008ad2;
-    border-right: 5px solid transparent;
-    border-left: 5px solid transparent;
-  }
-
-.select-dropdown-images,
-.select-dropdown-images * {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-}
-.select-dropdown-images {
-    position: absolute;
-    background-color: #fff;
-    width: 200px;
-    margin-left: -200px;
-    top: 175px;
-}
-.select-dropdown-images select {
-  font-weight: normal;
-  width: 100%;
-  font-size: 13px;
- height:45px;
- padding: 10px;
- outline: 0;
- display: inline-block;
- background-color: #d6dde7;
- font-family: 'Poppins SemiBold';
- color: #000;
- border-radius: 5px;
- border: 2px solid rgba(51,42,124,0.08);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  appearance: none;
-}
-.select-dropdown-images select:active, .select-dropdown-images select:focus {
-  outline: none;
-  box-shadow: none;
-}
-.select-dropdown-images:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  width: 0;
-  height: 0;
-  margin-top: -2px;
-  border-top: 5px solid #008ad2;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-}
-.image-audio-blog{
-    max-width: 100%;
-    height: auto;
-    display: flex;
-
-}
-.audio-upload-view {
-    width: 25%;
-    height: 150px;
-    border: 2px solid rgba(51,42,124,0.08);
-    padding: 10px;
-    display: inline-block;
-}
-.audio-upload-view #myAudio {
-    width: 100%;
-    height: 45px;
-    margin: 40px 0px;
-}
-
-.other-links-checkeditor p{
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 27px;
-    color: #868686;
-    text-transform: uppercase;
-    font-family: 'poppins medium';
-    margin: auto;
-    padding-bottom: 3px;
-}
-.selected-item{
-    max-width: 100%!important;
-}
-
-
-.image-drag-edit-view{
-    max-width: 100%;
-    padding: 10px 10px 100px;
-    height: auto;
-}
-.image-drag-edit-view .audio-upload-view{
-    width: 300px;
-    height: 225px;
-    border: 2px solid rgba(51,42,124,0.08);
-    padding: 10px;
-    display: inline-block;
-}
-.image-drag-edit-view #myAudio {
-    width: 100%;
-    height: 50px;
-    margin: 80px 0px;
-}
-.image-drag-edit-view img{
-    width: 300px;
-    height: 225px;
-    border: 2px solid rgba(51,42,124,0.08);
-    padding: 15px;
-    display: inline-block;
-}
-.image-drag-text-view{
-    padding: 10px 10px 10px 0px;
-    display: inline-block;
-    position: relative;
-}
-
-.select-dropdown-images-view,
-.select-dropdown-images-view * {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-}
-.select-dropdown-images-view {
-    position: absolute;
-    background-color: #fff;
-    width: 290px;
-    margin-top: 15px;
-    top: 225px;
-    margin-left: -300px;
-}
-.select-dropdown-images-view select {
-  font-weight: normal;
-  width: 100%;
-  font-size: 13px;
- height:45px;
- padding: 10px;
- outline: 0;
- display: inline-block;
- border-radius: 5px;
- background-color: #d6dde7;
- font-family: 'Poppins SemiBold';
- color: #000;
- border: 2px solid rgba(51,42,124,0.08);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  appearance: none;
-}
-.select-dropdown-images-view select:active, .select-dropdown-images select:focus {
-  outline: none;
-  box-shadow: none;
-}
-.select-dropdown-images-view:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  width: 0;
-  height: 0;
-  margin-top: -2px;
-  border-top: 5px solid #008ad2;
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-}
-
-.question-with-radio-view{
-    margin-bottom: 20px;
-}
-
-.accordion-student-view{
-    padding: 25px 10px;
-}
-.dropdown-multiselect__caret{
-    display: none!important;
-}
-.view-student-data{
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border:2px solid #efeef4;
-}
-.view-student-data table{
-    width: 100%;
-}
-.view-student-data table tr{
-    width: 50%;
-    height: 45px;
-    border-bottom:2px solid #efeef4;   
-}
-.view-student-data table tr td{
-    border-right:2px solid #efeef4;
-    padding: 10px;
-}
-.radio-result-view{
-    width: 100%;
-    display: flex;
-    padding: 10px 0px;
-    border-bottom: 2px solid #efeef4;
-}
-#radio-check{
-    width:40px;
-    height: 35px;
-    border-radius: 5px;
-    padding: 7px 10px;
-    background-color: #ade4ac;
-    border: 2px dotted #088a05; 
-    color: green;
-}
-
-.question-radio-result{
-    width: 100%;
-    height: auto;
-}
-.radio-heading{
-    width: 100%;
-    height: auto;
-    padding: 8px;
-    background: #fff;
-    border-radius: 3px;
-    border: 2px solid #dae6e9;
-}
-.radio-heading p{
-    font-size: 18px;
-    font-family: 'Poppins SemiBold';
-    color: #000000;
-    line-height: 28px;
-    text-align: left;
-}
-.radio-solution{
-    display: flex;
-    padding: 10px 0px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #dae6e9;
-}
-.radio-solution p{
-    width: 95%;
-    padding-left: 15px;
-    display: flex;
-    padding-top: 4px;
-    align-items: center;
-}
-.radio-solution .radio-result-icon{
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-}
-.radio-solution .radio-retry-icon{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
-.fieldRequired{
-    position: fixed;
-}
-.sub-title-remove .x-button{
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    position: absolute;
-    right: 10px;
-    top: -35px;
-}
-#affiliation-retry-answer{
-    border: 1px solid #18af14;
-    float:right;
-    width: 100%;
-    height: 40px;
-}
-#affiliation-retry-wrong{
-    border:1px solid red;
-    float: right;
-    width: 100%;
-    height: 40px;
-}
-.item1{
-    display: none!important;
-}
-
-.multimedia-top-heading{
-    max-width: 100%;
-    /* height: 60px; */
-    display: block;
-    margin-bottom: 20px;
-}
-.multimedia-top-heading .save-heading{
-   float: left;
-
-}
-.multimedia-top-heading .edit-btn-multimedia{
-    display:flex;
-    float: right;
-    justify-content: space-between;
-    position: relative;
-}
-.fa-star-half-o {
-    margin-left: 5px;
-}
-#back-btn{
-    border-radius: 5px;
-    right: 30px;
-    padding: 10px 20px;
-    background-color: #0082da;
-    color: #fff;
-    font-size: 14px;
-    position: absolute;
-    top: 10px;
-    font-family: 'poppins medium';
-}
-
-progress {
-            
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-
-    width: 100ppx;
-    height: 10px;
-    border-radius: 20px;
-    background-color: #777;
-    color: rgb(3, 3, 3);
-}
-
-progress::-webkit-progress-bar {
-    background-color: #777;
-    border-radius: 20px;
-}
-
-progress::-webkit-progress-value {
-    background-color: rgb(20, 240, 221);
-    border-radius: 20px;
-}
-
-progress::-moz-progress-bar {
-    background-color: rgb(20, 240, 221);
-    border-radius: 20px;
-}
-.modal-backdrop {
-    display: none !important;
-}
-
-.image-audio-section{
-    display: flex; 
-    align-items: center; 
-  }
-  .image-audio-section .select-dropdown-imgs {
-    margin-top: 15px;
-  }
-
-  .audio-sound-view {
-    width: 100%;
-    height: 150px;
-    border: 2px solid rgba(51,42,124,0.08);
-    padding: 10px;
-}
-
-.audio-sound-view #myAudio {
-  width: 100%;
-  height: 45px;
-  margin: 40px 0px;
-}
-
-.select-dropdown-imgs select{
-appearance: none !important;
-position: relative !important;
-border: 2px solid rgba(51,42,124,0.08) !important;
-height: 45px !important;
-padding: 10px !important;
-width: 100% !important; 
-border-radius: 5px !important;
-background-color: #d6dde7 !important;
-outline: 0 !important;
-}
-
-.select-dropdown-imgs::after { 
-content: "\f0d7" !important;
-position: absolute !important;
-top: 176px !important;
-right: 39px !important;
-color: #008ad2 !important;
-font-family: 'FontAwesome';
-}
-
-.modal-open{
-    overflow: visible !important;
-}
-.drag-word-result .result-content i {
-    margin-right: 12px;
-}
-.result-content input {
-    width: auto;
-    height: 30px;
-    border-radius: 5px;
-    margin: 5px 10px 5px 6px;
-    border: 2px solid rgba(51,42,124,0.08);
-    padding: 5px 33px 5px 5px;
+.main-height {
+    height:calc(500px + 74px) !important;
+    overflow: auto !important;
     }
 /* .sidenav .title-dropdown:hover{
     color: #ffff;
@@ -7698,202 +7128,18 @@ font-family: 'FontAwesome';
 
 
 
-#view-course-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #136980;
-}
-
-#das-enroll-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-}
-
-.select-dropdown select:active, .select-dropdown select:focus {
-    outline: none;
-    box-shadow: 0 0 6px 0px #2196f3;
-    border: 1px solid rgba(51,42,124,0.08);
-}
-
-.search-3:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-.prev-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-.next-button:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-.show-button #show-button:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#back-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#re-sub:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#add-support:hover{
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#pre-support:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-.submit-btn a:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#save:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#reset:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #6f6f6f;
-    cursor: pointer;
-}
-
-#create-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#view-student-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #2196f3;
-    cursor: pointer;
-}
-
-#view-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #136980;
-    cursor: pointer;
-}
-
-#t-btn:hover {
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0 0 5px 0px #9dd0e7;
-    cursor: pointer;
-}
-/* .hov-drop-down:hover {
-    color: #ffff;
-    transform: scale(1.05);
-    transition: .5s ease-in-out;
-    box-shadow: 0px 0px 5px 0px #fff;
-    margin-bottom: 10px !important;
-    margin-top: 10px !important;
-} */
-
-.course-content p iframe {
-    height: 400px !important;
-}
 
 
-.teacher-sidebar .hov-drop-down{
-    padding-left: 28px;
-    margin-bottom: .4em !important;
-    background-color: #007abb !important;
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 16px!important;
-    color: #fff;
-    display: block;
-    border-radius: 5px;
-    font-family: 'Poppins Medium';
-    background: none;
-    border: none !important;
-    width: 100%;
-    text-align: left;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
- 
-.hov-drop-down:active {
-    color: #ffff;
-    background-color: #3c96cc !important;
-}
- 
-.hov-drop-down:hover {
-    color: #ffff;
-    background-color: #3c96cc !important;
-}
-#faq-accordn {
-    position: relative;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      border: 2px solid rgba(51,42,124,0.08);
-  }
-   
-  #faq-accordn a {
-    font-size: 16px;
-    line-height: 27px;
-    color: #000000;
-    font-weight: 600;
-  }
-   
-  #faq-accordn i {
-    font-size: 25px;
-      position: absolute;
-      margin-top: -38px;
-      right: 10px;
-  }
-  .fib {
-    border: 1px solid #ccc;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 1px 6px;
-    min-width: 50px;
-    max-width: 100%;
-    margin-top: 20px;
-    /* border:1px solid #000; */
-    padding: 5px;
-    /* color: #000000; */
-    }
+
+
+
+
+
+
+
+
+
+
 
 
 

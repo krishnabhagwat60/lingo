@@ -2,14 +2,235 @@
 # Pricing
 --------------------------------------------------------------*/
 
+.main {
+    width: 100%;
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    /* height: calc(500px + 100%) !important; */
+    height: 804px;
+    position: relative;
+}
+
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+
+.pricing {
+    width: 100%;
+    min-height: 60vh;
+    padding: 0;
+    background: var(--color-black);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 0 60px 0;
+}
+
+@media (max-width: 640px) {
+    .pricing .container {
+        padding: 0 60px;
+    }
+}
+
+.pricing .carousel-control-prev {
+    justify-content: start;
+}
+
+@media (min-width: 640px) {
+    .pricing .carousel-control-prev {
+        padding-left: 15px;
+    }
+}
+
+.pricing .carousel-control-next {
+    justify-content: end;
+}
+
+@media (min-width: 640px) {
+    .pricing .carousel-control-next {
+        padding-right: 15px;
+    }
+}
+
+.pricing .carousel-control-next-icon,
+.pricing .carousel-control-prev-icon {
+    background: none;
+    font-size: 26px;
+    line-height: 0;
+    background: rgba(var(--color-secondary-rgb), 0.4);
+    color: rgba(var(--color-white-rgb), 0.98);
+    border-radius: 50px;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pricing .carousel-control-next-icon {
+    padding-left: 3px;
+}
+
+.pricing .carousel-control-prev-icon {
+    padding-right: 3px;
+}
+
+.pricing .carousel-indicators li {
+    cursor: pointer;
+    background: rgba(var(--color-secondary-rgb), 0.5);
+    overflow: hidden;
+    border: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.pricing .carousel-indicators li.active {
+    opacity: 1;
+    background: var(--color-primary);
+}
+
+.pricing .service-item {
+    padding: 30px;
+    transition: all ease-in-out 0.4s;
+    background: var(--color-white);
+    height: 100%;
+    box-shadow: 0px 0 60px 0 rgba(var(--color-secondary-rgb), 0.1);
+}
+
+.pricing .service-item .icon {
+    margin-bottom: 10px;
+}
+
+.pricing .service-item .icon i {
+    color: var(--color-primary);
+    font-size: 36px;
+    transition: 0.3s;
+}
+
+.pricing .service-item h4 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.pricing .service-item h4 a {
+    color: var(--color-secondary);
+    transition: ease-in-out 0.3s;
+}
+
+.pricing .service-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.carousel-control-prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: #0a576c !important;
+    margin-top: 207px;
+    margin-left: 38px;
+}
+
+.carousel-control-prev span {
+    color: #008ad2;
+    font-size: 30px;
+}
+
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: #0a576c;
+    margin-top: 205px;
+    margin-right: 104px;
+}
+
+.carousel-control-next span {
+    color: #008ad2;
+    font-size: 30px;
+}
+
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+
+section {
+    padding: 30px !important;
+}
+
+.section-header {
+    text-align: center;
+    padding-bottom: 40px;
+    color: #0a576c;
+    margin-left: -70px;
+}
+
+.section-header h2 {
+    font-size: 38px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0;
+    color: #0a576c;
+}
+
+.section-header p {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 30px;
+    line-height: 42px;
+    font-weight: 700;
+    color: #0a576c;
+}
+
+@media (max-width: 768px) {
+    .section-header p {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# Pricing
+--------------------------------------------------------------*/
+
+.main {
+    width: 100%;
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    /* height: calc(500px + 100%) !important; */
+    height: 804px;
+    position: relative;
+}
+
 .pricing .box {
     padding: 20px;
-    background: #fff !important;
+    background: #f7f7f7 !important;
     text-align: center;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
     border-radius: 5px;
     position: relative;
     overflow: hidden;
+    border: 1px solid #c8dadf;
+    width: 110%;
+}
+
+.pricing .box h4 .back {
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .pricing .boxing {
@@ -20,6 +241,7 @@
     border-radius: 5px;
     position: relative;
     overflow: hidden;
+    width: 110%;
 }
 
 .pricing .box h3 {
@@ -57,8 +279,8 @@
 }
 
 .pricing .box h4 sup {
-    font-size: 25px;
-    top: -4px;
+    font-size: 22px;
+    top: 0px;
     left: 1px;
 }
 
@@ -81,6 +303,7 @@
     line-height: 20px;
     font-size: 14px;
     text-align: start;
+    margin-left: 25px;
 }
 
 .pricing .box ul .fa {
@@ -90,6 +313,7 @@
     text-align: center;
     line-height: 20px;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .pricing .featured ul {
@@ -99,10 +323,13 @@
     text-align: start;
     line-height: 20px;
     font-size: 14px;
+    font-weight: 500;
+    margin-left: 25px;
 }
 
 .pricing .box ul li {
     padding-bottom: 16px;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .pricing .box ul i {
@@ -123,34 +350,24 @@
     left: calc(50% - 20px);
 } */
 
-.pricing .box ul li span {
-    font-weight: 900;
-}
-
 .pricing .box ul li .right {
-    font-weight: 900;
     float: right;
-}
-
-.pricing .box ul li {
-    font-weight: 500;
 }
 
 .pricing .STANDARD {
     margin-left: 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .pricing .btn-buy {
     background: #fff;
     display: inline-block;
-    padding: 8px 35px 10px 35px;
+    padding: 8px 35px 8px 30px;
     border-radius: 30px;
     color: #0a576c;
     transition: none;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
+    font-size: 12px;
+    font-family: 'PT Serif Caption', serif;
     transition: 0.3s;
     border: 2px solid #0a576c;
 }
@@ -158,14 +375,12 @@
 .pricing .btn-buy20 {
     background: #0a576c;
     display: inline-block;
-    padding: 8px 35px 10px 35px;
+    padding: 8px 35px 8px 30px;
     border-radius: 30px;
     color: #fff;
     transition: none;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
     transition: 0.3s;
     border: 2px solid #0a576c;
 }
@@ -199,14 +414,14 @@
 --------------------------------------------------------------*/
 
 section {
-    padding: 60px 0;
-    overflow: hidden;
+    padding: 30px !important;
 }
 
 .section-header {
     text-align: center;
     padding-bottom: 40px;
     color: #0a576c;
+    margin-left: -70px;
 }
 
 .section-header h2 {
@@ -215,7 +430,6 @@ section {
     font-weight: 700;
     margin: 0;
     color: #0a576c;
-    text-transform: uppercase;
 }
 
 .section-header p {
@@ -236,24 +450,41 @@ section {
 
 .count-box .btn-buy {
     position: absolute;
-    top: 360px;
-    left: 50%;
+    top: 405px;
+    width: 145px;
+    left: 53%;
     transform: translateX(-50%);
-    /* font-size: 24px; */
+    font-family: 'Poppins Bold';
+    font-size: 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 5px 14px 5px 15px;
+    height: 40px;
 }
 
 .count-box .btn-buy20 {
     position: absolute;
-    top: 360px;
-    left: 50%;
+    top: 405px;
+    width: 145px;
+    left: 53%;
     transform: translateX(-50%);
-    /* font-size: 24px; */
+    font-family: 'Poppins Bold';
+    font-size: 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 5px 14px 5px 15px;
+    height: 40px;
+}
+
+@media only screen and (max-width: 912px) {
+    .count-box .btn-buy {
+        font-size: 12px;
+    }
+    .count-box .btn-buy20 {
+        font-size: 12px;
+    }
 }
 
 .section90 h3::after {
@@ -271,9 +502,39 @@ section {
     content: "";
     position: absolute;
     display: block;
-    width: 50px;
+    width: 40px;
     height: 3px;
     background: #0a576c;
-    left: calc(50% - 25px);
+    left: calc(52% - 25px);
     margin-top: 5px;
+}
+
+.carousel-control-prev {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: #0a576c !important;
+    margin-top: 320px;
+    margin-left: 145px;
+}
+
+.carousel-control-prev span {
+    color: #000;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background: #0a576c;
+    margin-top: 320px;
+    margin-right: 145px;
+}
+
+.carousel-control-next span {
+    color: #000;
+    font-size: 30px;
+    font-weight: 800;
 }

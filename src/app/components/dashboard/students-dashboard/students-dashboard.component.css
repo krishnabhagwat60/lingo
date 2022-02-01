@@ -1,8 +1,9 @@
-.button-actives{
-    background-color:#136980;
+.button-actives {
+    background-color: #136980;
     /* color: white; */
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
     /* color: #fff;  */
 }
@@ -13,55 +14,50 @@
 }
 
 .dummy-for-height::-webkit-scrollbar {
-	width: 6px;
-	height: 1px;
-    background-color:transparent ;
+    width: 6px;
+    height: 1px;
+    background-color: transparent;
 }
 
 .dummy-for-height::-webkit-scrollbar-thumb {
-    background:#3893ab ;
-	border: 0px none #fff5f5;
-	border-radius: 5px;
+    background: #3893ab;
+    border: 0px none #fff5f5;
+    border-radius: 5px;
 }
-.gray {
-	background-color: #008ad2;
-	border: #008ad2;
-   }
-   .grays{
-    background-color: grey;
-	border: grey; 
-   }
-   #das-enroll {
 
-    width: 130px;
-  
-    height: 32px;
-  
-    font-size: 12px;
-  
-    margin-top: 10px;
-  
-    text-align: center;
-  
-    text-transform: uppercase;
-  
-    border-radius: 16px;
-  
+.gray {
     background-color: #008ad2;
-  
+    border: #008ad2;
+}
+
+.grays {
+    background-color: grey;
+    border: grey;
+}
+
+#das-enroll {
+    width: 130px;
+    height: 32px;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 16px;
+    background-color: #008ad2;
     cursor: auto;
-  
-  }
-  .reset-btns1 .reset-dash {
+}
+
+.reset-btns1 .reset-dash {
     padding: 10px 30px;
     background-color: #6f6f6f;
     color: #fff;
     font-size: 14px;
     text-transform: uppercase;
     border-radius: 6px;
-    }
-    .student-dashboard-heading {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+}
+
+.student-dashboard-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
