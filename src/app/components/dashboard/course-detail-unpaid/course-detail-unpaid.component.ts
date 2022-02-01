@@ -105,7 +105,7 @@ export class CourseDetailUnpaidComponent implements OnInit {
   //enroll api
   enrollId(data) {
     this.enrollID = this.courseData;
-    this.enroll = data.id
+    this.enroll = data.course_id;
     localStorage.setItem('enrollId', this.enroll)
     localStorage.setItem('course_name', data.title)
     if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
@@ -116,6 +116,7 @@ export class CourseDetailUnpaidComponent implements OnInit {
     }
   }
   submitEnrolls(amount) {
+ 
     this.mainpageLod = true;
     this.amount = amount
     const data = {

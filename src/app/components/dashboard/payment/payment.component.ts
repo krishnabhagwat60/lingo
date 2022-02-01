@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { ServiceService } from '../../service.service';
 
-declare var hljs: any;
+//declare var hljs: any;
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,6 +19,7 @@ export class PaymentComponent implements AfterViewInit, OnInit {
   public showSuccess: boolean = false;
   public showCancel: boolean = false;
   public showError: boolean = false;
+  public hljs: any;
   public readonly npmCode = `npm install ngx-paypal --save`;
 
   public readonly moduleInstallation = `
@@ -209,7 +210,7 @@ export class PaymentComponent implements AfterViewInit, OnInit {
   }
 
   private prettify(): void {
-    hljs.initHighlightingOnLoad();
+    this.hljs.initHighlightingOnLoad();
   }
 
   paymentFun() {
