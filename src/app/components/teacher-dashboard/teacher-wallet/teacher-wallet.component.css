@@ -10,21 +10,6 @@
 
 
 /*--------------------------------------------------------------
-# Pricing
---------------------------------------------------------------*/
-
-.main {
-    width: 100%;
-    padding: 35px 20px;
-    background-color: #f2fbff;
-    border-top-left-radius: 45px;
-    /* height: calc(500px + 100%) !important; */
-    height: 804px;
-    position: relative;
-}
-
-
-/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 
@@ -220,7 +205,7 @@ section {
 --------------------------------------------------------------*/
 
 .main {
-    width: 100%;
+    width: 98%;
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
@@ -528,7 +513,7 @@ section {
     border-radius: 5px;
     background: #0a576c !important;
     margin-top: 315px;
-    margin-left: 160px;
+    margin-left: 152px;
 }
 
 .carousel-control-prev span {

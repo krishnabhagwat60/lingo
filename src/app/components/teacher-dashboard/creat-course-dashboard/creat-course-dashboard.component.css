@@ -3,12 +3,11 @@
 --------------------------------------------------------------*/
 
 .main {
-    width: 100%;
+    width: 98%;
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    /* height: calc(500px + 100%) !important; */
-    height: 804px;
+    height: 787px;
     position: relative;
 }
 
@@ -209,7 +208,7 @@ section {
 --------------------------------------------------------------*/
 
 .main {
-    width: 100%;
+    width: 98%;
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;

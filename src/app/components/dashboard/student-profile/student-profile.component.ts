@@ -164,7 +164,23 @@ export class StudentProfileComponent implements OnInit {
     }
     )
   }
-
+  studentImage(){
+    const data = {
+      user_id: sessionStorage.getItem('uid'),
+      avatar: this.imageSrc
+    }
+    this.service.post('profile-update', data, 1).subscribe(res => {
+      debugger
+      if (res.body.result === 'success') {
+        this.mainpageLoder = false;
+        this.msg = 'Profile Updated Successfully'
+        this.updateData();
+        window.location.reload();
+        this.submitted = false;
+      }
+    }
+    )
+  }
   reset() {
     this.profileForm.reset();
   }

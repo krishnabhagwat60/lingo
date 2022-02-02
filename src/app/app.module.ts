@@ -9,23 +9,26 @@ import { TermConditionComponent } from './components/term-condition/term-conditi
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
-import { ServiceService } from '../app/components/service.service'
+import { ServiceService } from '../app/components/service.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageCroppingComponent } from './components/image-cropping/image-cropping.component';
 import {
   GoogleLoginProvider,
-  FacebookLoginProvider
+  FacebookLoginProvider,
 } from 'angularx-social-login';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { CancelPaymentComponent } from './components/cancel-payment/cancel-payment.component';
-import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
+import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
 import { DatePipe } from '@angular/common';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 
@@ -45,7 +48,7 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     // ImageCropperComponent,
     ImageCroppingComponent,
     ThankYouComponent,
-    CancelPaymentComponent
+    CancelPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,26 +60,31 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     HttpClientModule,
     SocialLoginModule,
     NgxCSVtoJSONModule,
-    NgxCsvParserModule
+    NgxCsvParserModule,
   ],
-  providers: [ServiceService, DatePipe ,  {
-    provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: false,
-      providers: [
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider(
-            '1055684469608-s4ud2r83ruqvhj1q393n160as904j64m.apps.googleusercontent.com'
-          )
-        },
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('1790679687807535')
-        }
-      ]
-    } as SocialAuthServiceConfig,
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    ServiceService,
+    DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              // '1055684469608-s4ud2r83ruqvhj1q393n160as904j64m.apps.googleusercontent.com'
+              '621159063786-tibd36211e90a2pu2mt5len5hibd6ifa.apps.googleusercontent.com'
+            ),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1413242099126993'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -26,7 +26,7 @@
 .row-accordian .faq-box .faq-wrap .card-header {
     margin-bottom: 5px;
     border: 2px solid #d2dfe2;
-    width: 50%;
+    width: 100%;
 }
 
 .row-accordian .faq-box .faq-wrap .card-header h5 a .accord-content {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { ServiceService } from '../../service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class NavbarComponent implements OnInit {
   wallet: string;
    term:string
   images: string;
-  constructor(private router: Router,private authService: SocialAuthService) {
+  updateNewDataImage :any;
+  constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService) {
     this.images = localStorage.getItem('image')
    }
 
@@ -20,6 +22,17 @@ export class NavbarComponent implements OnInit {
     this.usernameData();
     this.walletData();
     this.usernameData();
+    this.profile();
+  }
+  profile(){
+    const data = {
+      "user_id": sessionStorage.getItem('uid')
+    }
+    this.service.post('get_profile_by_id', data, 1).subscribe(res => {
+      debugger
+      this.updateNewDataImage = res.body.profile.avatar;
+    }
+    )
   }
   logout(){
     sessionStorage.clear();

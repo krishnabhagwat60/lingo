@@ -68,6 +68,7 @@ export class SidebarComponent implements OnInit {
     sessionStorage.getItem('course_id')
     sessionStorage.getItem('teacher_name')
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+
   }
 
   getSubTitle(parent) {
@@ -79,4 +80,19 @@ export class SidebarComponent implements OnInit {
       this.subTitle = res.body.result
     })
   }
+
+
+  /**
+     * Porfolio isotope and filter
+     */
+  
+
+        
+
+       
+
 }
+function on(arg0: string, arg1: string, arg2: (e: any) => void, arg3: boolean) {
+  throw new Error('Function not implemented.');
+}
+

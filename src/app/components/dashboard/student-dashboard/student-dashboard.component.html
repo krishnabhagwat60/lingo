@@ -89,7 +89,7 @@
                                 <p>Teaching Language</p>
                                 <div class="select-dropdown">
                                     <!-- <p>Teaching Language</p> -->
-                                    <select formControlName="teacherLanguage">
+                                    <select formControlName="teacherLanguage" (change)="search()">
                                         <option value="" disabled>TEACHER LANGUAGE</option>
                                         <option *ngFor="let data of language" value="{{data.key}}">
                                             {{data.value}}
@@ -194,11 +194,12 @@
                 <div class="right-content text-right" *ngIf="!mainpageLoder">
                     <p>{{data.date}}</p>
                 </div>
-
+                
                 <div class="course-detail-2" *ngIf="!mainpageLoder && !errMsg">
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                             <div class="course-detail">
+                                
                                 <h3>Course Name: <span>{{data.title}}</span></h3>
                                 <h4><span>Approximate</span> Duration: {{data.time_duration}}</h4>
                                 <button type="button" id="view-course-btn" (click)="viewDetail(data.id)">View Course
