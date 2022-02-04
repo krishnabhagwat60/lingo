@@ -28,7 +28,7 @@ export class TeacherDashboardComponent implements OnInit {
   inviteName: any;
   audSrc: any;
   msgShow: string;
-  submitted: boolean = false;
+  submitted: boolean = false; isAnyOneEmailAdded=false;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
   ismenusub: boolean = false;
@@ -56,7 +56,7 @@ export class TeacherDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTeacherCourse(1, 0);
-    this.AccordionInitialForms();
+    this.AccordionInitialForms(0);
     this.username();
   }
   logout() {
@@ -160,12 +160,23 @@ export class TeacherDashboardComponent implements OnInit {
       this.getTeacherCourse(1, 0);
     })
   }
-  AccordionInitialForms() {
+  AccordionInitialForms(index) {
+    
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
   }
-
+  setEmailControl(index){
+    return this.inviteFormData.controls[index].invalid;
+  }
+  setForm($event){
+    debugger
+  }
+  setVisibilityUploader(){
+    debugger
+    return this.inviteFormData.value.every(x=>x.email!='')&&this.inviteFormData.controls.every(x=>x.status=="VALID");
+  }
   addNewServiceData() {
+    this.isAnyOneEmailAdded=true;
     const searchForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]),
     })
@@ -177,6 +188,7 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   audFileSelected(event: any) {
+    debugger
     this.inviteName = (event.target.files[0].name);
     const file = event.target.files[0];
     this.ngxCsvParser.parse(file, { header: false, delimiter: ',' })

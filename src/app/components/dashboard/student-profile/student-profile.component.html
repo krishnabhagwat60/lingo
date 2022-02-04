@@ -121,7 +121,7 @@
                                         <ng-multiselect-dropdown [placeholder]="'Language'"
                                             [settings]="dropdownSettings" [data]="language"
                                             formControlName="selectedItems" (onSelect)="onItemSelect($event)"
-                                            (onSelectAll)="onSelectAll($event)"
+                                            (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language"
                                             [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
