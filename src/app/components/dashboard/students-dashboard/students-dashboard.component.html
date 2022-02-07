@@ -217,8 +217,10 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                             <div class="course-detail-1">
-                                <p>Course Fees: <span
+                                <p>Course Fees: <span *ngIf="data.course_type != 'closed'"
                                         style="border-radius: 5px; padding: 4px; background-color: #008ad2; color: #fff; font-size: 12px; ">{{data.field_course_fees}}</span>
+                                        <span *ngIf="data.course_type == 'closed'"
+                                        style="border-radius: 5px; padding: 4px; background-color: #008ad2; color: #fff; font-size: 12px; ">FREE</span>
                                 </p>
                                 <span style="color: #fff;" *ngIf="data.rating != '0'">{{data.rating}}</span>
                                 <ng-container *ngIf="data?.rating === '1'">

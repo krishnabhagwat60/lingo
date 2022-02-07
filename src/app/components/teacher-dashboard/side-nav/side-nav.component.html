@@ -19,7 +19,8 @@
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <img class="user-avatar" [src]="image">
+                        <span *ngIf="!image" class="user-avatar"><img  src="assets/images/teacher-icon.png"></span>
+                         <span *ngIf="image" class="user-avatar"><img src="image"></span> 
                     </a>
                 </li>
                 <li>

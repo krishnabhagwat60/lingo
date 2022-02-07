@@ -1820,6 +1820,7 @@ export class ContentStyleComponent implements OnInit {
       type: 'otherlink',
       title: this.otherLinkForm.value.questionOtherLink,
       data_value: this.dataUrl,
+      name:'iframe youtube video',
     }
     this.service.post('edit-course-multimedia', data, 1).subscribe(res => {
       this.closeOtherLink.nativeElement.click();
