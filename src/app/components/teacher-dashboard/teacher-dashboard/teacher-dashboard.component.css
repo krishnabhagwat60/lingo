@@ -52,3 +52,7 @@
     background-color: grey;
     border: grey;
 }
+
+.disabled {
+    pointer-events: none; 
+  }

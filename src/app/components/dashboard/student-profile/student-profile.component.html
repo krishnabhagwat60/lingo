@@ -108,8 +108,11 @@
                                 <div class="course-language-dropdown">
                                     <p>KNOWN LANGUAGE</p>
                                     <div class="select-dropdown">
-                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
-                                        </ng-multiselect-dropdown>
+                                        <<<<<<< HEAD <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                            =======
+                                            <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                                >>>>>>> 7b12e35957020c7454dcd4920cbacadc6ba7dcb4
+                                            </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && f.selectedItems.invalid" class="text-danger mt-1">
                                         <div *ngIf="f.selectedItems.errors.required">
@@ -124,8 +127,8 @@
                             <div class="display-center left-section">
                                 <div class="prof-add">
                                     <div class="circle">
-                                        <img [src]="imageSrc" *ngIf="imageSrc">
-                                        <img *ngIf="!imageSrc" [src]="updateNewDataImage">
+                                        <img [src]="updateNewDataImage" *ngIf="updateNewDataImage">
+                                        <!-- <img [src]="updateNewDataImage" *ngIf="!imageSrc"> -->
                                         <label class="fa fa-camera">
                                             <input _ngcontent-qjy-c61="" type="file" (change)="fileChangeEvent($event)"
                                                 formControlName="image" class="ng-valid ng-touched ng-dirty"
@@ -138,6 +141,7 @@
                             </div>
                             <div class="save-btn" *ngIf="!passwordShow">
                                 <button (click)="studentImage()" type="button" id="save">Update Image</button>
+                                <button type="button" id="reset" (click)="reseted()">Reset</button>
                             </div>
                         </div>
 

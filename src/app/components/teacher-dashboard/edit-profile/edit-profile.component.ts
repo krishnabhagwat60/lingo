@@ -83,7 +83,7 @@ export class EditProfileComponent implements OnInit {
   titlename: void;
   subtitle: void;
   imageSrc: string;
-  updateNewDataImage: any;
+  updateNewDataImage: string;
   constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
     this.route.queryParamMap.subscribe(queryParams => {
       this.userId = queryParams.get("userId");
@@ -217,7 +217,7 @@ export class EditProfileComponent implements OnInit {
 
   editProfile() {
     this.submit = true;
-    if (this.editProfileForm.invalid) {
+    if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
     }
     this.mainpageLoder = true
@@ -241,11 +241,11 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
-      localStorage.setItem('image',this.imageSrc)
+      localStorage.setItem('image',this.updateNewDataImage)
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false
@@ -294,7 +294,7 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
 
     }
     // console.log(data);
@@ -493,7 +493,7 @@ export class EditProfileComponent implements OnInit {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.imageSrc = reader.result as string;
+        this.updateNewDataImage = reader.result as string;
         this.editProfileForm.patchValue({
           fileSource: reader.result
         });

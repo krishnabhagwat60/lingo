@@ -363,7 +363,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   getHtml(url) {
-    if(url.includes('<figure')){
+    if(url && url.includes('<figure')){
      var split = url.split('<figure')
      var prefix = ''
      var suffix = ''
