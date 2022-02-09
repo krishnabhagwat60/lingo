@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="main main-height">
+    <div class="main">
         <div class="dashboard" style="padding: 5px 10px;">
             <div class="course-detail-top">
                 <div class="course-detail-heading">
@@ -26,11 +26,8 @@
                     <hr>
                 </div>
                 <div class="course-detail-right">
-                    <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.feedback == '1'"
-                        style="background-color: #3c96ccbf;">Feedback</button>
-                    <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.feedback == '0'"
-                        data-target="#feedback" data-toggle="modal"
-                        (click)="clearData();getFeedbackId(courseData?.course_id)">Feedback</button>
+                    <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.feedback == '1'" style="background-color: #3c96ccbf;">Feedback</button>
+                    <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.feedback == '0'" data-target="#feedback" data-toggle="modal" (click)="clearData();getFeedbackId(courseData?.course_id)">Feedback</button>
                 </div>
             </div>
             <div class="right-content text-right">
@@ -50,8 +47,7 @@
                     <tr>
                         <th class="table-1">Course Type : <span>{{courseData?.course_type}}</span>
                         </th>
-                        <td><span
-                                style="font-size:14px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
+                        <td><span style="font-size:14px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
                                 Fees:</span>
                             <p>{{courseData?.field_course_fees}}</p> <span>per month</span>
                         </td>
@@ -69,17 +65,14 @@
                         <div class="faq-wrap" *ngFor="let data of courseSubdata;let i = index">
                             <div class="card-header" role="tab" id="headingOne">
                                 <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#accordion"
-                                        [attr.data-target]="'#collapesDetails' + i" aria-expanded="true"
-                                        aria-controls="collapseOne">
+                                    <a data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#collapesDetails' + i" aria-expanded="true" aria-controls="collapseOne">
                                         <div class="accord-content">{{data.title}}
                                             <i class="fa fa-angle-down"></i>
                                         </div>
                                     </a>
                                 </h5>
                             </div>
-                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
-                                [attr.id]="'collapesDetails' + i">
+                            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.id]="'collapesDetails' + i">
                                 <div class="card-block" *ngFor="let data1 of data.submenu">{{data1.name}}</div>
                             </div>
                         </div>
@@ -97,25 +90,21 @@
                         <div class="faq-wrap2" *ngFor="let data of courseFaqdata;let j = index">
                             <div class="card-header" role="tab" id="headingTwo">
                                 <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#faq"
-                                        [attr.data-target]="'#collapesDetail' + j" aria-expanded="true"
-                                        aria-controls="collapseTwo+ j">
+                                    <a data-toggle="collapse" data-parent="#faq" [attr.data-target]="'#collapesDetail' + j" aria-expanded="true" aria-controls="collapseTwo+ j">
                                         <div class="accord-content">{{data.title}}
                                             <i class="fa fa-angle-down"></i>
                                         </div>
                                     </a>
                                 </h5>
                             </div>
-                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                                [attr.id]="'collapesDetail' + j">
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" [attr.id]="'collapesDetail' + j">
                                 <div class="card-block">{{data.text}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '1'"
-                style="color: #fff; background-color: #3c96ccbf;">Enrolled
+            <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '1'" style="color: #fff; background-color: #3c96ccbf;">Enrolled
             </button>
             <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '0'">Enroll
                 Now</button>
@@ -156,8 +145,7 @@
                             <td style="border-bottom:transparent">Approximated Duration
                                 <span>{{courseData?.time_duration}}</span>
                             </td>
-                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
-                                    style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
+                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
                                     USD</span></td>
                         </tr>
                     </table>
@@ -167,15 +155,12 @@
                     <span>
                         <img src="assets/images/icons/pay.png">Bill monthly
                     </span>
-                    <strong class="text-right"
-                        style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
+                    <strong class="text-right" style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
                             months</span></strong>
                 </div>
                 <div class="enrollnow">
-                    <a style="color: #fff;  background-color: #3c96ccbf;"
-                        *ngIf="courseData?.student_enroll  == '1'">Enrolled</a>
-                    <a (click)="enrollId(courseData)" style="color: #fff;"
-                        *ngIf="courseData?.student_enroll  == '0'">Enroll Now</a>
+                    <a style="color: #fff;  background-color: #3c96ccbf;" *ngIf="courseData?.student_enroll  == '1'">Enrolled</a>
+                    <a (click)="enrollId(courseData)" style="color: #fff;" *ngIf="courseData?.student_enroll  == '0'">Enroll Now</a>
                 </div>
             </div>
         </div>
@@ -201,20 +186,15 @@
                                 <p>Your Overall Rating</p>
                                 <div id="full-stars">
                                     <div class="rate">
-                                        <input type="radio" id="star5" [name]="inputName" value="5"
-                                            [checked]="rating===5" />
+                                        <input type="radio" id="star5" [name]="inputName" value="5" [checked]="rating===5" />
                                         <label for="star5" (click)='onClick(5)'></label>
-                                        <input type="radio" id="star4" [name]="inputName" value="4"
-                                            [checked]="rating===4" />
+                                        <input type="radio" id="star4" [name]="inputName" value="4" [checked]="rating===4" />
                                         <label for="star4" (click)='onClick(4)'></label>
-                                        <input type="radio" id="star3" name="rate" value="3" [name]="inputName"
-                                            value="3" [checked]="rating===3" />
+                                        <input type="radio" id="star3" name="rate" value="3" [name]="inputName" value="3" [checked]="rating===3" />
                                         <label for="star3" (click)='onClick(3)'></label>
-                                        <input type="radio" id="star2" [name]="inputName" value="2"
-                                            [checked]="rating===2" />
+                                        <input type="radio" id="star2" [name]="inputName" value="2" [checked]="rating===2" />
                                         <label for="star2" (click)='onClick(2)'></label>
-                                        <input type="radio" id="star1" [name]="inputName" value="1"
-                                            [checked]="rating===1" />
+                                        <input type="radio" id="star1" [name]="inputName" value="1" [checked]="rating===1" />
                                         <label for="star1" (click)='onClick(1)'></label>
                                     </div>
                                 </div>
@@ -224,8 +204,7 @@
 
                     <div class="form-group">
                         <form [formGroup]="feedBackForm">
-                            <textarea class="form-control" formControlName="feedback" id="textarea"
-                                placeholder="Type Your Feedback"></textarea>
+                            <textarea class="form-control" formControlName="feedback" id="textarea" placeholder="Type Your Feedback"></textarea>
                         </form>
                     </div>
                     <div>

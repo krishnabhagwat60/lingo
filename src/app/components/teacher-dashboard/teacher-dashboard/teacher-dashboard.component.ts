@@ -51,8 +51,8 @@ export class TeacherDashboardComponent implements OnInit {
 
   constructor(private service: ServiceService, private router: Router,
     private authService: SocialAuthService, private ngxCsvParser: NgxCsvParser) {
-      this.image=localStorage.getItem('image')
-     }
+    this.image = localStorage.getItem('image')
+  }
 
   ngOnInit(): void {
     this.getTeacherCourse(1, 0);
@@ -182,16 +182,16 @@ export class TeacherDashboardComponent implements OnInit {
     this.ngxCsvParser.parse(file, { header: false, delimiter: ',' })
       .pipe().subscribe((result: Array<any>) => {
         this.audSrc = result;
-       this.inviteFormData.clear();
-       this.addNewServiceData()
-    
+        this.inviteFormData.clear();
+        this.addNewServiceData()
+
         //  (this.addImageData as FormGroup).get('audio').patchValue('');
 
       }, (error: NgxCSVParserError) => {
       });
   }
 
-  emailData(){
+  emailData() {
     this.audSrc = ''
     this.inviteName = ''
     this.myInputVariables.nativeElement.value = '';

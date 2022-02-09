@@ -210,7 +210,7 @@ section {
     background-color: #f2fbff;
     border-top-left-radius: 45px;
     /* height: calc(500px + 100%) !important; */
-    height: 804px;
+    height: 100%;
     position: relative;
 }
 

@@ -50,8 +50,7 @@
                         <tr>
                             <th class="table-1">Course Type : <span>{{courseData?.course_type}}</span>
                             </th>
-                            <td><span
-                                    style="font-size:14px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
+                            <td><span style="font-size:14px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
                                     Fees:</span>
                                 <p>{{courseData?.field_course_fees}}</p> <span>per month</span>
                             </td>
@@ -69,17 +68,14 @@
                             <div class="faq-wrap" *ngFor="let data of courseSubdata;let i = index">
                                 <div class="card-header" role="tab" id="headingOne">
                                     <h5 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#accordion"
-                                            [attr.data-target]="'#collapesDetails' + i" aria-expanded="true"
-                                            aria-controls="collapseOne">
+                                        <a data-toggle="collapse" data-parent="#accordion" [attr.data-target]="'#collapesDetails' + i" aria-expanded="true" aria-controls="collapseOne">
                                             <div class="accord-content">{{data.title}}
                                                 <i class="fa fa-angle-down"></i>
                                             </div>
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
-                                    [attr.id]="'collapesDetails' + i">
+                                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" [attr.id]="'collapesDetails' + i">
                                     <div class="card-block" *ngFor="let data1 of data.submenu">{{data1.name}}</div>
                                 </div>
                             </div>
@@ -97,17 +93,14 @@
                             <div class="faq-wrap" *ngFor="let data of courseFaqdata;let j = index">
                                 <div class="card-header" role="tab" id="headingTwo">
                                     <h5 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#faq"
-                                            [attr.data-target]="'#collapesDetail' + j" aria-expanded="true"
-                                            aria-controls="collapseTwo+ j">
+                                        <a data-toggle="collapse" data-parent="#faq" [attr.data-target]="'#collapesDetail' + j" aria-expanded="true" aria-controls="collapseTwo+ j">
                                             <div class="accord-content">{{data.title}}
                                                 <i class="fa fa-angle-down"></i>
                                             </div>
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
-                                    [attr.id]="'collapesDetail' + j">
+                                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" [attr.id]="'collapesDetail' + j">
                                     <div class="card-block">{{data.text}}</div>
                                 </div>
                             </div>
@@ -150,8 +143,7 @@
                         <tr>
                             <td style="border-bottom:transparent">Approximated Duration
                                 <span>{{courseData?.time_duration}}</span></td>
-                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
-                                    style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
+                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
                                     USD</span></td>
                         </tr>
                     </table>
@@ -161,8 +153,7 @@
                     <span>
                         <img src="assets/images/icons/pay.png">Bill monthly
                     </span>
-                    <strong class="text-right"
-                        style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
+                    <strong class="text-right" style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
                             months</span></strong>
                 </div>
             </div>
@@ -187,9 +178,8 @@
                         <div class="col-md-6">
                             <div class="summary-2">
                                 <p>{{courseData?.title}}</p>
-                                <ul *ngIf ="courseData?.review_count != '0'">
-                                    <li
-                                        style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
+                                <ul *ngIf="courseData?.review_count != '0'">
+                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
                                         {{courseData?.teacher_name}} </li>
                                     <li style="border-bottom: transparent;"><span>{{courseData?.course_id}}</span></li>
                                     <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
@@ -244,7 +234,7 @@
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                         </ng-container>
-                                      <a style="color: grey;" *ngIf ="courseData?.review_count != '0'">({{courseData?.review_count}})</a>
+                                        <a style="color: grey;" *ngIf="courseData?.review_count != '0'">({{courseData?.review_count}})</a>
                                     </li>
                                 </ul>
                             </div>
@@ -254,12 +244,10 @@
                                 <div class="vl"></div>
                                 <p>Payment Review</p>
                                 <ul>
-                                    <li
-                                        style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
+                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
                                         Course fees : <span>{{courseData?.field_course_fees}}</span></li>
                                     <li style="border-bottom: transparent;">Tax <span>€2.00</span></li>
-                                    <li
-                                        style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                    <li style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
                                         Total <span>{{courseData?.field_course_fees}}</span></li>
                                 </ul>
                             </div>

@@ -456,7 +456,7 @@
 .sidenav .subt-dropdown {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 14px!important;
+    font-size: 14px !important;
     color: #fff;
     display: block;
     border-radius: 0;
@@ -485,7 +485,7 @@
 .sidenav .title-dropdown {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 14px!important;
+    font-size: 14px !important;
     color: #fff;
     display: block;
     border-radius: 0;
@@ -510,9 +510,9 @@
     background-color: #3c96cc;
 }
 
-.dashboard-custom a {
+.dashboard-custom20 {
     color: #fff !important;
-    background-color: #739CB2 !important;
+    background: #739CB2;
     border-radius: 0;
     padding-left: 28px;
     font-size: 12px !important;
@@ -526,13 +526,9 @@
     overflow: hidden;
 }
 
-.dashboard-custom a:active {
-    color: #fff;
-    background-color: #3c96cc !important;
-}
-
-.dashboard-custom a:hover {
-    background-color: #3c96cc !important;
+.dashboard-custom20:focus,
+.dashboard-custom20:active {
+    background-color: red !important;
 }
 
 .bigg-imgs {
@@ -567,11 +563,4 @@
 
 .modal-img {
     width: 100% !important;
-}
-
-.dashboard-custom a:hover,
-.dashboard-custom .active,
-.dashboard-custom .active:focus,
-.dashboard-custom a:focus>a {
-    background-color: tomato !important;
 }

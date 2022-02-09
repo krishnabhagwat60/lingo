@@ -183,7 +183,7 @@ a {
 }
 
 .main {
-    width: 100%;
+    /* width: 100%; */
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
@@ -2688,7 +2688,7 @@ a {
     height: auto;
     width: 50px;
     float: right;
-    margin-top: -85px;
+    margin-top: -55px;
 }
 
 #edit-button {
@@ -7007,7 +7007,7 @@ input:checked+.slider:before {
     right: 20px;
     width: 150px;
     background-color: #008ad2;
-    top: 180px;
+    top: 200px;
     border-radius: 5px;
     height: 45px;
     text-transform: uppercase;
@@ -7478,7 +7478,7 @@ input:checked+.slider:before {
 }
 
 .main-height {
-    height: calc(500px + 74px) !important;
+    height: 804px;
     overflow: auto !important;
 }
 

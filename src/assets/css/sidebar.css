@@ -786,7 +786,7 @@ header .form-inline .search-form.close {
 
 .header-left .dropdown .dropdown-menu {
     background: #fff;
-    border: none!important;
+    border: none !important;
     border-radius: 0;
     box-shadow: none;
     top: 49px !important;
@@ -940,7 +940,7 @@ header .form-inline .search-form.close {
 .dropdown-btn {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 16px!important;
+    font-size: 16px !important;
     color: #fff;
     display: block;
     border: none;
@@ -1303,7 +1303,7 @@ header .form-inline .search-form.close {
         }
         .transaction-table td {
             padding-left: 10px;
-            font-size: 12px!important;
+            font-size: 12px !important;
         }
         .container-fluid {
             padding: 0px;
@@ -1413,18 +1413,18 @@ header .form-inline .search-form.close {
             display: block;
         }
         .login-btn {
-            float: none!important;
+            float: none !important;
             width: 100%;
         }
     }
     /*forgot*/
     @media(max-width: 767px) {
         .forget-form {
-            display: block!important;
-            width: 100%!important;
-            padding: 10px!important;
-            margin-top: 70px!important;
-            border-radius: 0!important;
+            display: block !important;
+            width: 100% !important;
+            padding: 10px !important;
+            margin-top: 70px !important;
+            border-radius: 0 !important;
         }
         .forgot-top h1 {
             font-size: 25px;
@@ -1490,7 +1490,7 @@ header .form-inline .search-form.close {
             position: fixed;
             z-index: 9;
             left: 0;
-            width: 95%!important;
+            width: 95% !important;
             right: 0;
             top: 60px;
             bottom: 100%;
@@ -1530,7 +1530,7 @@ header .form-inline .search-form.close {
         }
         .banner-left {
             margin-top: 100px;
-            position: relative!important;
+            position: relative !important;
             text-align: center;
         }
         .banner img {
@@ -1545,7 +1545,7 @@ header .form-inline .search-form.close {
             color: #fff;
         }
         .px-5 {
-            padding: 10px!important;
+            padding: 10px !important;
         }
         .banner-left p {
             text-align: center;
@@ -1565,14 +1565,14 @@ header .form-inline .search-form.close {
         .banner-right img {
             width: 100%;
             height: 100%;
-            margin-left: 0px!important;
+            margin-left: 0px !important;
             position: relative;
         }
         .vector img {
             top: -135px;
-            height: 150px!important;
-            left: -20px!important;
-            width: 150px!important;
+            height: 150px !important;
+            left: -20px !important;
+            width: 150px !important;
         }
         .left-content {
             padding: 10px;
@@ -1655,17 +1655,17 @@ header .form-inline .search-form.close {
             height: auto;
         }
         .pt-5 {
-            padding-top: 0px!important;
+            padding-top: 0px !important;
         }
         .carousel-control-prev {
-            margin-top: 55px!important;
-            margin-left: 10px!important;
+            margin-top: 55px !important;
+            margin-left: 10px !important;
             width: 40px;
             height: 40px;
         }
         .carousel-control-next {
-            margin-top: 55px!important;
-            margin-right: 10px!important;
+            margin-top: 55px !important;
+            margin-right: 10px !important;
             width: 40px;
             height: 40px;
         }
@@ -1812,7 +1812,7 @@ header .form-inline .search-form.close {
             font-size: 25px;
         }
         #skill {
-            width: 100%!important;
+            width: 100% !important;
         }
         .right-edit {
             padding: 0px;
@@ -1852,11 +1852,11 @@ header .form-inline .search-form.close {
         .course-table td {
             width: auto;
             padding: 5px;
-            font-size: 12px!important;
+            font-size: 12px !important;
         }
         .course-table .col-md-12 .col-sm-12 {
-            padding-left: 0px!important;
-            padding-right: 0px!important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
         }
         .course-table span {
             font-size: 12px;
@@ -1875,7 +1875,7 @@ header .form-inline .search-form.close {
             width: 100%;
             right: 5px;
             border-radius: 0px;
-            margin-top: 25px!important;
+            margin-top: 25px !important;
         }
         .multimedia-content {
             padding-left: 10px;
@@ -1896,11 +1896,11 @@ header .form-inline .search-form.close {
             padding: 0px;
         }
         .fill-popup-heading h3 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .fill-popup-heading hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .fill-right {
             max-width: 100%;
@@ -1910,69 +1910,69 @@ header .form-inline .search-form.close {
             padding-top: 30px;
         }
         .question-radio-popup h3 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .question-radio-popup hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .modal-body h4 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .modal-body hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .question-drop-heading h3 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .question-drop-heading hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .afiliation-popup-heading h3 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .afiliation-popup-heading hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .drag-word-popup h3 {
-            font-size: 22px!important;
-            text-align: center!important;
+            font-size: 22px !important;
+            text-align: center !important;
         }
         .drag-word-popup hr {
-            margin-left: 95px!important;
+            margin-left: 95px !important;
         }
         .question-radio-title input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .antonym input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .match-ans {
-            width: 100%!important;
+            width: 100% !important;
         }
         .affilition-input-section {
             padding-top: 50px;
         }
         .match-ans input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .snumber input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .affilation-score input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .antonym {
-            width: 100%!important;
+            width: 100% !important;
         }
         .affilation-score {
-            width: 82%!important;
+            width: 82% !important;
         }
         .snumber {
-            width: 100%!important;
+            width: 100% !important;
         }
         .submit {
             text-align: center;
@@ -1990,44 +1990,44 @@ header .form-inline .search-form.close {
             top: 12px;
         }
         .fill-title {
-            width: 100%!important;
+            width: 100% !important;
         }
         .fill-title input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .fill-score {
-            width: 100%!important;
-            position: relative!important;
+            width: 100% !important;
+            position: relative !important;
         }
         .fill-score input {
-            width: 100%!important;
-            margin-left: 0px!important;
+            width: 100% !important;
+            margin-left: 0px !important;
         }
         .pick-the-right {
             padding-right: 0px;
         }
         .question-radio-input {
-            width: 70%!important;
+            width: 70% !important;
             display: block;
         }
         .question-radio-input input {
-            width: 90%!important;
+            width: 90% !important;
         }
         .radio-score-range span {
-            margin-top: -53px!important;
+            margin-top: -53px !important;
         }
         .question-radio-btn {
-            width: 15%!important;
+            width: 15% !important;
         }
         .modal-body {
-            padding: 20px 10px!important;
-            border-radius: 0!important;
+            padding: 20px 10px !important;
+            border-radius: 0 !important;
         }
         .fill-popup {
             margin: 0 -5px;
         }
         .fill-title-image {
-            margin-left: 0px!important;
+            margin-left: 0px !important;
         }
         .fill-popup-heading {
             max-width: 100%;
@@ -2036,62 +2036,62 @@ header .form-inline .search-form.close {
             width: 100%;
         }
         .drag-input-ans input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .drag-input {
             width: 100%;
         }
         .drag-input input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .drag-score input {
-            width: 82%!important;
+            width: 82% !important;
         }
         .drag-image-popup {
-            width: 30%!important;
+            width: 30% !important;
         }
         .fill-title-image {
-            width: 100%!important;
+            width: 100% !important;
         }
         .fill-title-image input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .custom-file-image {
             max-width: 20%;
         }
         .fill-score-image {
-            width: 100%!important;
-            margin-left: 0px!important;
+            width: 100% !important;
+            margin-left: 0px !important;
         }
         .fill-score-image input {
-            width: 80%!important;
-            margin-left: 0px!important;
+            width: 80% !important;
+            margin-left: 0px !important;
         }
         .fill-score-image a {
-            right: 15px!important;
+            right: 15px !important;
         }
         .question-input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .question-input input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .right-ans {
             margin-top: 10px;
-            width: 100%!important;
+            width: 100% !important;
         }
         .right-ans input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .question-score {
-            width: 100%!important;
+            width: 100% !important;
             margin-top: 10px;
         }
         .question-score input {
-            width: 82%!important;
+            width: 82% !important;
         }
         .question-score a {
-            right: 10px!important;
+            right: 10px !important;
         }
         .question-radio-title-data {
             width: 100%;
@@ -2099,27 +2099,27 @@ header .form-inline .search-form.close {
             margin-bottom: 10px;
         }
         .radio-score-range {
-            width: 100%!important;
+            width: 100% !important;
             margin-bottom: 10px;
         }
         .radio-score-range input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .question-radio-title-data input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .px-3 .py-3 {
-            padding: 0px!important;
+            padding: 0px !important;
         }
         .radio-section {
-            padding-top: 20px!important;
+            padding-top: 20px !important;
         }
         .add-wrong-input {
-            width: 100%!important;
+            width: 100% !important;
             margin-top: 10px;
         }
         .add-wrong-input input {
-            width: 100%!important;
+            width: 100% !important;
         }
         .add-wrong-left {
             width: 100;
@@ -2214,7 +2214,7 @@ header .form-inline .search-form.close {
 }
 
 .dummy-for-height {
-    height: 26.5em !important;
+    height: 47.5em !important;
     overflow: auto;
 }
 
