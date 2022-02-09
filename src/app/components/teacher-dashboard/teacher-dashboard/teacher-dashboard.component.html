@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar" [src]="image" />
+                        <img class="user-avatar" src="assets/images/student-profile.jpg">
                     </a>
                 </li>
                 <li>
@@ -347,24 +347,20 @@
                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                     (keyup)="emailData()"
                   />
-                  <div
-                    *ngIf="form.get('email').hasError('pattern')"
-                    style="color: #dc3545; font-size: 12px"
-                    padding
-                  >
-                    *Please enter correct e-mail address
-                  </div>
-                </ng-container>
-                <span
+                  <span
                   class="fa fa-plus"
                   style="right: -5px; position: absolute"
                   [class.disabled]="setEmailControl(i)"
                   (click)="AccordionInitialForms(i)"
                 >
                 </span>
+                                        <div *ngIf="form.get('email').hasError('pattern')" style="color: #dc3545; font-size: 12px" padding>
+                                            *Please enter correct e-mail address
+                                        </div>
                 </ng-container>
-                </div>
-                <p for="name" style="
+            </ng-container>
+            </div>
+            <p for="name" style="
                 margin-top: 10px;
                 font-size: 13px;
                 text-transform: uppercase;
@@ -372,24 +368,24 @@
                 color: #65696b;
                 padding-bottom: 3px;
               ">
-                    Bulk Upload (Only .csv file allowed)
-                </p>
-                <div class="custom-file-wrp" [class.disabled]="setVisibilityUploader() || isAnyOneEmailAdded">
-                    <div class="filename" style="width: 100%">
-                        <input type="" formControlName="bulk" placeholder="{{ inviteName }}" />
-                    </div>
-                    <div class="custom-file">
-                        <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px"></a>Browse</label>
-                        <input type="file" id="fileupload" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
-                    </div>
+                Bulk Upload (Only .csv file allowed)
+            </p>
+            <div class="custom-file-wrp" [class.disabled]="setVisibilityUploader() || isAnyOneEmailAdded">
+                <div class="filename" style="width: 100%">
+                    <input type="" formControlName="bulk" placeholder="{{ inviteName }}" />
                 </div>
-                <p *ngIf="msgShow" style="color: #008ad2">{{ msgShow }}</p>
-                <div class="invite-btn">
-                    <a (click)="inviteApi()" style="color: #fff">invite</a>
+                <div class="custom-file">
+                    <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px"></a>Browse</label>
+                    <input type="file" id="fileupload" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
                 </div>
-                </form>
-                </div>
-                </div>
-                </div>
+            </div>
+            <p *ngIf="msgShow" style="color: #008ad2">{{ msgShow }}</p>
+            <div class="invite-btn">
+                <a (click)="inviteApi()" style="color: #fff">invite</a>
+            </div>
+            </form>
+            </div>
+            </div>
+            </div>
         </div>
     </div>

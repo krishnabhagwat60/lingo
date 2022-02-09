@@ -108,11 +108,10 @@
                                 <div class="course-language-dropdown">
                                     <p>KNOWN LANGUAGE</p>
                                     <div class="select-dropdown">
-                                        <<<<<<< HEAD <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
-                                            =======
-                                            <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
-                                                >>>>>>> 7b12e35957020c7454dcd4920cbacadc6ba7dcb4
-                                            </ng-multiselect-dropdown>
+                                        <!-- <<<<<<< HEAD <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                            ======= -->
+                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                        </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && f.selectedItems.invalid" class="text-danger mt-1">
                                         <div *ngIf="f.selectedItems.errors.required">
@@ -128,7 +127,7 @@
                                 <div class="prof-add">
                                     <div class="circle">
                                         <img [src]="updateNewDataImage" *ngIf="updateNewDataImage">
-                                        <!-- <img [src]="updateNewDataImage" *ngIf="!imageSrc"> -->
+                                        <img [src]="updateNewDataImage" *ngIf="!imageSrc">
                                         <label class="fa fa-camera">
                                             <input _ngcontent-qjy-c61="" type="file" (change)="fileChangeEvent($event)"
                                                 formControlName="image" class="ng-valid ng-touched ng-dirty"
