@@ -33,7 +33,7 @@
                             <label for="email">Subject
                     <span class="required-asterisk">*</span>
                   </label>
-                            <input type="text" class="form-control" id="email" placeholder="Type Your Subject" formControlName="subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
+                            <input type="text" class="form-control" id="email" placeholder="Type Your Subject" formControlName="subject" id="subject" name="subject" [ngClass]="{ 'is-invalid': submitted && f.subject.errors }">
                             <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
                                 <div *ngIf="f.subject.errors.required">Subject is required</div>
                             </div>
@@ -42,7 +42,7 @@
                             <label for="exampleFormControlTextarea1">Message
                     <span class="required-asterisk">*</span>
                   </label>
-                            <textarea class="form-control" id="textarea1" rows="3" placeholder="Type Your Issue" formControlName="message" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+                            <textarea class="form-control" id="textarea1" rows="3" placeholder="Type Your Issue" formControlName="message" id="message" name="message" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
                             <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
                                 <div *ngIf="f.message.errors.required">Message is required</div>
                             </div>

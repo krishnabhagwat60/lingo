@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
       this.sidebarData[index].isActive = false;
     } else {
       this.sidebarData.forEach(element => {
-         element.isActive = false;
+        element.isActive = false;
       });
       this.sidebarData[index].isActive = true;
     }
@@ -85,11 +85,11 @@ export class SidebarComponent implements OnInit {
   /**
      * Porfolio isotope and filter
      */
-  
 
-        
 
-       
+
+
+
 
 }
 function on(arg0: string, arg1: string, arg2: (e: any) => void, arg3: boolean) {

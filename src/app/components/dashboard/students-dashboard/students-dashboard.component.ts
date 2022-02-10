@@ -57,7 +57,7 @@ export class StudentsDashboardComponent implements OnInit {
   images: string;
   searchDataBtn: boolean = false;
   constructor(private service: ServiceService, private router: Router,
-     private authService: SocialAuthService) {
+    private authService: SocialAuthService) {
     this.images = localStorage.getItem('image')
   }
   ngOnInit(): void {
@@ -67,9 +67,8 @@ export class StudentsDashboardComponent implements OnInit {
     this.getTeacher();
     this.languageData();
     this.username();
-    if(this.images=="")
-    {
-      this.images='assets/images/student-profile.jpg';
+    if (this.images == "") {
+      this.images = 'assets/images/student-profile.jpg';
     }
   }
 
@@ -190,10 +189,10 @@ export class StudentsDashboardComponent implements OnInit {
   searchform = new FormGroup({
     searchData: new FormControl('')
   })
-  resets(){
-     this.searchform.reset();
-     this.searchForm.reset();
-     this.errMsg = ''
+  resets() {
+    this.searchform.reset();
+    this.searchForm.reset();
+    this.errMsg = ''
     this.studentCourseDetail(this.pages, this.index)
   }
   searchDatas() {
@@ -277,25 +276,26 @@ export class StudentsDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
+    debugger;
     this.msgShow = ''
     this.enrollID = data
     this.enroll = data.id
-    localStorage.setItem('enrollId',this.enroll)
-    localStorage.setItem('course_name',data.title)
-    if(data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent'){
+    localStorage.setItem('enrollId', this.enroll)
+    localStorage.setItem('course_name', data.title)
+    if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
       this.submitEnrolls(this.amount)
-      this.router.navigate(['/dashboard/wallet']);
-      }else{
-        this.router.navigate(['/dashboard/payment'], { queryParams: { url:this.enroll,id: data.id } })
-      }
+      this.router.navigateByUrl('/thank-you?url=' + this.enroll);
+    } else {
+      this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.id } })
+    }
   }
 
   submitEnroll() {
-      $('#enroll').hide();
-      // this.tansationApi();
-      setTimeout(() => {
-        jQuery('#summary').modal('show');
-      }, 1);
+    $('#enroll').hide();
+    // this.tansationApi();
+    setTimeout(() => {
+      jQuery('#summary').modal('show');
+    }, 1);
   }
 
   submitEnrolls(amount) {
@@ -324,9 +324,9 @@ export class StudentsDashboardComponent implements OnInit {
 
   // submit on summary page
   confirmPayment() {
-    this.router.navigate(['/dashboard/payment'], { queryParams: { url:this.enroll } })
+    this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll } })
   }
-  
+
   confirmPayments() {
     this.router.navigate(['/dashboard/wallet']);
   }

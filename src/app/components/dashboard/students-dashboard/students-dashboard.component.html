@@ -7,7 +7,7 @@
             <div class="header-top-menu hd-search-rp">
                 <form [formGroup]="searchform">
                     <div role="search" class="dashboard-search-header">
-                        <input type="text" (keyup.enter)="searchDatas()" placeholder="SEARCH" formControlName="searchData" class="form-control " id="search">
+                        <input type="text" (keyup.enter)="searchDatas()" placeholder="SEARCH" id="searchData" name="searchData" formControlName="searchData" class="form-control " id="search">
                         <i class="fa fa-search" (click)="searchDatas()"></i>
                     </div>
                 </form>
@@ -69,7 +69,7 @@
                         <form [formGroup]="searchform">
                             <div class="student-search">
                                 <!-- <p>Search</p> -->
-                                <input type="text" class="search-dropdown" formControlName="searchData" (keyup.enter)="searchDatas()" placeholder="Search Here">
+                                <input type="text" class="search-dropdown" formControlName="searchData" id="searchData" name="searchData" (keyup.enter)="searchDatas()" placeholder="Search Here">
                                 <a class="fa fa-search" (click)="searchDatas()"></a>
                             </div>
                         </form>

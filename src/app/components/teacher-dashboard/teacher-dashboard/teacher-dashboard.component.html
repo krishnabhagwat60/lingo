@@ -7,7 +7,7 @@
             <div class="header-top-menu hd-search-rp">
                 <form [formGroup]="searchform">
                     <div role="search" class="dashboard-search-header">
-                        <input type="text" placeholder="SEARCH" (keyup.enter)="searchDatas()" formControlName="searchData" class="form-control" id="search" />
+                        <input type="text" placeholder="SEARCH" (keyup.enter)="searchDatas()" formControlName="searchData" class="form-control" name="searchData" id="searchData" />
                         <i class="fa fa-search" (click)="searchDatas()"></i>
                     </div>
                 </form>
@@ -321,7 +321,7 @@
               <input
                 type="name"
                 class="form-control"
-                id="name"
+                id="courseName" name="courseName"
                 formControlName="courseName"
                 placeholder="{{ courseName }}"
               />
@@ -341,7 +341,7 @@
                     type="name"
                     class="form-control"
                     (focusout)="setForm($event)"
-                    id="name"
+                    id="email" name="email"
                     formControlName="email"
                     placeholder="GERMAN"
                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
@@ -372,11 +372,11 @@
             </p>
             <div class="custom-file-wrp" [class.disabled]="setVisibilityUploader() || isAnyOneEmailAdded">
                 <div class="filename" style="width: 100%">
-                    <input type="" formControlName="bulk" placeholder="{{ inviteName }}" />
+                    <input type="" formControlName="bulk" name="bulk" id="bulk" placeholder="{{ inviteName }}" />
                 </div>
                 <div class="custom-file">
                     <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px"></a>Browse</label>
-                    <input type="file" id="fileupload" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
+                    <input type="file" id="bulk" name="bulk" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
                 </div>
             </div>
             <p *ngIf="msgShow" style="color: #008ad2">{{ msgShow }}</p>

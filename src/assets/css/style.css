@@ -132,7 +132,6 @@ body {
 input {
     border: 2px solid #efeef4;
     color: #707070;
-    padding: 10px;
     font-size: 13px;
     outline: 0;
 }
@@ -140,7 +139,6 @@ input {
 textarea {
     border: 2px solid #efeef4;
     color: #707070;
-    padding: 10px;
     font-size: 13px;
     outline: 0;
 }

@@ -104,19 +104,20 @@ export class CourseDetailUnpaidComponent implements OnInit {
   }
   //enroll api
   enrollId(data) {
+    debugger;
     this.enrollID = this.courseData;
     this.enroll = data.course_id;
     localStorage.setItem('enrollId', this.enroll)
     localStorage.setItem('course_name', data.title)
     if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
       this.submitEnrolls(this.amount)
-      this.router.navigate(['/dashboard/wallet']);
+      this.router.navigateByUrl('/thank-you?url=' + this.enroll);
     } else {
       this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.course_id } })
     }
   }
   submitEnrolls(amount) {
- 
+
     this.mainpageLod = true;
     this.amount = amount
     const data = {

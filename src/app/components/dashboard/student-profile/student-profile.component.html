@@ -33,7 +33,7 @@
                         <div class="row" *ngIf="!mainpageLoder">
                             <div class="col-md-6 form-group">
                                 <label for="name">FIRST NAME</label>
-                                <input type="text" class="form-control" id="name" placeholder="FIRST NAME" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                <input type="text" class="form-control" id="name" placeholder="FIRST NAME" id="firstName" name="firstName" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
                                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                     <div *ngIf="f.firstName.errors.required">First Name is required</div>
                                     <div *ngIf="f.firstName.errors.pattern">Special Character is Not Allowed </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for="lastname">LAST NAME</label>
-                                <input type="name" class="form-control" id="lastname" placeholder="LAST NAME" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                <input type="name" class="form-control" id="lastName" placeholder="LAST NAME" name="lastName" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
                                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                     <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                                     <div *ngIf="f.lastName.errors.pattern">Only Special Character is Not Allowed </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for="email">EMAIL ADDRESS</label>
-                                <input type="email" class="form-control" id="email" placeholder="EMAIL" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <input type="email" class="form-control" id="email" placeholder="EMAIL" formControlName="email" name="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                     <div *ngIf="f.email.errors.required">Email is required</div>
                                     <div *ngIf=" profileForm.get('email').hasError('pattern')" style=" color:#dc3545; font-size: 12px;" padding>*Please enter correct e-mail address
@@ -59,7 +59,7 @@
 
                             <div class="col-md-6 form-group">
                                 <label for="number">CONTACT NUMBER </label>
-                                <input type="" class="form-control" id="number" placeholder="CONTACT NUMBER" formControlName="contactNumber" [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }">
+                                <input type="" class="form-control" id="number" placeholder="CONTACT NUMBER" id="contactNumber" name="contactNumber" formControlName="contactNumber" [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }">
                                 <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback">
                                     <div *ngIf="f.contactNumber.errors.required">Contact Number is required</div>
                                     <div *ngIf="f.contactNumber.errors.pattern">Please input correct phone no.</div>
@@ -130,7 +130,7 @@
                                         <img [src]="updateNewDataImage" *ngIf="!imageSrc">
                                         <label class="fa fa-camera">
                                             <input _ngcontent-qjy-c61="" type="file" (change)="fileChangeEvent($event)"
-                                                formControlName="image" class="ng-valid ng-touched ng-dirty"
+                                                formControlName="image" name="image" id="image" class="ng-valid ng-touched ng-dirty"
                                                 style="display: none;">
                                         </label>
 
@@ -169,7 +169,7 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="pass">OLD PASSWORD</label>
-                                            <input type="Password" class="form-control" id="pass" placeholder="OLD PASSWORD" formControlName="oldPassword" [ngClass]="{ 'is-invalid': submit && fn.oldPassword.errors }">
+                                            <input type="Password" class="form-control" id="pass" placeholder="OLD PASSWORD" id="oldPassword" name="oldPassword" formControlName="oldPassword" [ngClass]="{ 'is-invalid': submit && fn.oldPassword.errors }">
                                             <div *ngIf="submit && fn.oldPassword.errors" class="invalid-feedback">
                                                 <div *ngIf="fn.oldPassword.errors.required">Old Password is required
                                                 </div>
@@ -180,14 +180,14 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="pass">NEW PASSWORD</label>
-                                            <input type="Password" class="form-control" id="Password" placeholder="NEW PASSWORD" formControlName="pwd" [ngClass]="{ 'is-invalid': submit && fn.pwd.errors }">
+                                            <input type="Password" class="form-control" id="Password" placeholder="NEW PASSWORD" id="pwd" name="pwd" formControlName="pwd" [ngClass]="{ 'is-invalid': submit && fn.pwd.errors }">
                                             <div *ngIf="submit && fn.pwd.errors" class="invalid-feedback">
                                                 <div *ngIf="fn.pwd.errors.required">Password is required</div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="pass">CONFIRM PASSWORD</label>
-                                            <input type="Password" class="form-control" id="Password" placeholder="CONFIRM PASSWORD" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submit && fn.confirm_password.errors }">
+                                            <input type="Password" class="form-control" id="Password" placeholder="CONFIRM PASSWORD" id="confirm_password" name="confirm_password" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submit && fn.confirm_password.errors }">
                                             <div *ngIf="submit && fn.confirm_password.errors" class="invalid-feedback">
                                                 <div *ngIf="fn.confirm_password.errors.required">Password is required
                                                 </div>
