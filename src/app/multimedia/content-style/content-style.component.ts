@@ -647,22 +647,20 @@ export class ContentStyleComponent implements OnInit {
     }
     this.service.post('allexercises-get', data, 1).subscribe(res => {
       this.fillTheBlanksData = res.body.result;
-      if (this.fillTheBlanksData !== undefined) {
-        if (!this.fillTheBlanksData.length) {
-          this.errmsg = 'Data Not Found'
-        }
-        if (res.body.result) {
-          this.fillTheBlank = true;
-        }
-
-        this.fillTheBlanksData.forEach((element, index) => {
-          if (element.type === 'fill_in_the_blanks') {
-            if (element.question.includes('*')) {
-              element.question = this.findStarWord(element.question, index);
-            }
-          }
-        });
+      if (!this.fillTheBlanksData.length) {
+        this.errmsg = 'Data Not Found'
       }
+      if (res.body.result) {
+        this.fillTheBlank = true;
+      }
+
+      this.fillTheBlanksData.forEach((element, index) => {
+        if (element.type === 'fill_in_the_blanks') {
+          if (element.question.includes('*')) {
+            element.question = this.findStarWord(element.question, index);
+          }
+        }
+      });
     })
   }
 
@@ -835,6 +833,7 @@ export class ContentStyleComponent implements OnInit {
   })
   // upload other link
   otherLinkSubmit() {
+    debugger
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.otherLinkForm.value.otherLinkText);
     this.sendSrc = this.otherLinkForm.value.otherLinkText
     this.otherlink = true;
@@ -1822,7 +1821,7 @@ export class ContentStyleComponent implements OnInit {
       type: 'otherlink',
       title: this.otherLinkForm.value.questionOtherLink,
       data_value: this.dataUrl,
-      name: 'iframe youtube video',
+      name:'iframe youtube video',
     }
     this.service.post('edit-course-multimedia', data, 1).subscribe(res => {
       this.closeOtherLink.nativeElement.click();

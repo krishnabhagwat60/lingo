@@ -125,16 +125,24 @@
                         <div class="prof-user">
                             <div class="display-center left-section">
                                 <div class="prof-add">
-                                    <div class="circle">
-                                        <img [src]="updateNewDataImage" *ngIf="updateNewDataImage">
-                                        <img [src]="updateNewDataImage" *ngIf="!imageSrc">
+
+                                    <div class="circle ">
+                                        <!-- <img [src]="imageSrc" *ngIf="imageSrc"> -->
+                                        <img class="circular_image center " *ngIf="!imageSrc" [src]="updateNewDataImage">
+                                        <div *ngIf="imageSrc" class="btn">No Img</div>
+                                        <!-- <img [src]="imageSrc" *ngIf="imageSrc">
+                                    <img *ngIf="!imageSrc" [src] = "updateNewDataImage"> -->
+
                                         <label class="fa fa-camera">
+
                                             <input _ngcontent-qjy-c61="" type="file" (change)="fileChangeEvent($event)"
-                                                formControlName="image" name="image" id="image" class="ng-valid ng-touched ng-dirty"
+                                                formControlName="image" class="ng-valid ng-touched ng-dirty"
                                                 style="display: none;">
+
                                         </label>
 
                                     </div>
+
                                 </div>
 
                             </div>

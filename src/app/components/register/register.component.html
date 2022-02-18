@@ -47,8 +47,8 @@
                     <form [formGroup]="registerForm">
 
                         <div class="wrapper_register">
-                            <input type="radio" id="option-1" id="remember" name="remember" (change)="validateData()" formControlName="remember" value="student" checked>
-                            <input type="radio" id="option-2" (change)="validateData()" formControlName="remember" id="remember" name="remember" value="teacher">
+                            <input type="radio" id="option-1" (change)="validateData()" formControlName="remember" value="student" checked>
+                            <input type="radio" id="option-2" (change)="validateData()" formControlName="remember" value="teacher">
                             <label for="option-1" class="option option-1">
                                 <div class="dot"></div>
                                 <span>As A Student</span>
@@ -72,7 +72,7 @@
                             <label for="username">User Name :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="abc" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                            <input type="text" class="form-control" id="username" placeholder="abc" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                             <img src="assets/images/icons/user-icon.png" style="float: right; margin-right:10px;margin-top:-35px; width: 21px;">
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div *ngIf="f.username.errors.required">User Name is required</div>
@@ -84,7 +84,7 @@
                             <label for="email">EMAIL :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="email@1234.com" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <input type="text" class="form-control" id="email" placeholder="email@1234.com" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                             <img src="assets/images/icons/email-icon.png" style="float: right; margin-top:-40px;">
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
@@ -96,7 +96,7 @@
                             <label for="pwd">CREATE PASSWORD :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="******" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
+                            <input type="password" class="form-control" placeholder="******" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
                             <img src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
                             <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
                                 <div *ngIf="f.pwd.errors.required">Password is required</div>
@@ -108,15 +108,14 @@
                             <label for="pwd">CONFIRM PASSWORD :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="password" class="form-control" placeholder="******" id="confirm_password" name="confirm_password" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"> <img src="assets/images/icons/lock.png"
-                                style="float: right; margin-top:-45px;">
+                            <input type="password" class="form-control" placeholder="******" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"> <img src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
                             <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
                                 <div *ngIf="f.confirm_password.errors.required">Password is required</div>
                                 <div *ngIf="f.confirm_password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
                             </div>
                         </div>
                         <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" id="checkbox" name="checkbox" (change)="updateStatus($event)" formControlName="checkbox" [(ngModel)]="isDisableds">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" (change)="updateStatus($event)" formControlName="checkbox" [(ngModel)]="isDisableds">
                             <label class="custom-control-label" for="customCheck1"><span>I agree to the lingolista's <a
                                         routerLink="/term_condition">Terms & Conditions</a>&nbsp;<span
                                         style="color: black;">and</span>&nbsp;<a routerLink="/privacy_policy">Privacy

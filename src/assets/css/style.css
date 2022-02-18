@@ -7397,7 +7397,6 @@ input:checked+.slider:before {
 }
 
 #cancel-popup-btn {
-    padding: 12px 20px;
     border-radius: 4px;
     background-color: #008ad2;
     color: #fff;

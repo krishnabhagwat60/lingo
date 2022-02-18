@@ -39,7 +39,7 @@
                                 <label for="name">FIRST NAME
                                     <span class="required-asterisk">*</span>
                                 </label>
-                                <input type="name" class="form-control" id="firstName" name="firstName" placeholder="FIRST NAME" formControlName="firstName" [ngClass]="{ 'is-invalid': submit && form.firstName.errors }">
+                                <input type="name" class="form-control" id="name" placeholder="FIRST NAME" formControlName="firstName" [ngClass]="{ 'is-invalid': submit && form.firstName.errors }">
                                 <div *ngIf="submit && form.firstName.errors" class="invalid-feedback">
                                     <div *ngIf="form.firstName.errors.required">First Name is required</div>
                                     <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
@@ -49,7 +49,7 @@
                                 <label for="name">LAST NAME
                                     <span class="required-asterisk">*</span>
                                 </label>
-                                <input type="name" class="form-control" id="lastName" name="lastName" placeholder="LAST NAME" formControlName="lastName" [ngClass]="{ 'is-invalid': submit && form.lastName.errors }">
+                                <input type="name" class="form-control" id="lname" placeholder="LAST NAME" formControlName="lastName" [ngClass]="{ 'is-invalid': submit && form.lastName.errors }">
                                 <div *ngIf="submit && form.lastName.errors" class="invalid-feedback">
                                     <div *ngIf="form.lastName.errors.required">Last Name is required</div>
                                     <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
@@ -59,7 +59,7 @@
                                 <label for="email">EMAIL ADDRESS
                                     <span class="required-asterisk">*</span>
                                 </label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="EMAIL" formControlName="email" [ngClass]="{ 'is-invalid': submit && form.email.errors }">
+                                <input type="email" class="form-control" id="email" placeholder="EMAIL" formControlName="email" [ngClass]="{ 'is-invalid': submit && form.email.errors }">
                                 <div *ngIf="submit && form.email.errors" class="invalid-feedback">
                                     <div *ngIf="form.email.errors.required">Email is required</div>
                                     <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
@@ -68,7 +68,7 @@
                             <div class="col-md-6 form-group">
                                 <label for="number">CONTACT NUMBER
                                     <span class="required-asterisk">*</span> </label>
-                                <input type="text" class="form-control" id="number" id="contactNumber" name="contactNumber" placeholder="CONTACT NUMBER" formControlName="contactNumber" [ngClass]="{ 'is-invalid': submit && form.contactNumber.errors }">
+                                <input type="text" class="form-control" id="number" placeholder="CONTACT NUMBER" formControlName="contactNumber" [ngClass]="{ 'is-invalid': submit && form.contactNumber.errors }">
                                 <div *ngIf="submit && form.contactNumber.errors" class="invalid-feedback">
                                     <div *ngIf="form.contactNumber.errors.required">Contact Number is required</div>
                                     <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
@@ -198,7 +198,7 @@
                                 <span class="required-asterisk">*</span>
                             </h4>
                             <!-- <tag-input [(ngModel)]="items"  style="width: 60%;height: 50px;" class="form-control" id="skill" placeholder="SKILL"></tag-input> -->
-                            <input type="text" class="form-control" id="tag" name="tag" placeholder="SKILL" formControlName="tag" style="width: 60%;height: 50px;" #tagInput (keyup)="onKeyUp($event)" [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
+                            <input type="text" class="form-control" id="skill" placeholder="SKILL" formControlName="tag" style="width: 60%;height: 50px;" #tagInput (keyup)="onKeyUp($event)" [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
                             <div *ngIf="submit && form.tag.errors" class="invalid-feedback">
                                 <div *ngIf="form.tag.errors.required">Skills is required</div>
                                 <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div>
@@ -239,7 +239,7 @@
                                         <label class="fa fa-camera">
 
                                             <input _ngcontent-qjy-c61="" type="file" (change)="fileChangeEvent($event)"
-                                                formControlName="image" id="image" name="image" class="ng-valid ng-touched ng-dirty"
+                                                formControlName="image" class="ng-valid ng-touched ng-dirty"
                                                 style="display: none;">
 
                                         </label>
@@ -323,7 +323,7 @@
                                         <div class="modal-body choose-option" style="padding:26px 26px 26px 26px !important">
                                             <label> Choose file
                                                 <input type="file" (change)="fileChangeEvent($event)"
-                                                    formControlName="image" id="image" name="image" />
+                                                    formControlName="image" />
                                             </label>
                                             <br />
                                             <br />
@@ -353,8 +353,8 @@
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header close-modal-header">
-                                            <button type="button" class="folder-close" data-dismiss="modal" style="padding: 6px 0;"><i
-                                                    class="fa fa-times" aria-hidden="true"></i></button>
+                                            <button type="button" class="folder-close" data-dismiss="modal" style="padding: 6px 0;"><i class="fa fa-times"
+                                                    aria-hidden="true"></i></button>
                                         </div>
                                         <div class="modal-body final-file-output" style="padding:26px 26px 26px 26px !important">
                                             <img src="assets/images/Customize-and-Extend.png">
@@ -362,3 +362,131 @@
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+                        <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
+                        <div class="account-toggle">
+                            <span>Account Deactivate</span>
+                            <label class="switch" *ngIf="activated">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <label class="switch" *ngIf="!activated">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+
+                            </label>
+                        </div>
+                        <div class="save-btn">
+                            <button type="button" id="save" (click)="profileUpdate()">Save</button>
+                            <button type="button" id="reset" (click)="reset()" style="background-color: gray;">Reset</button>
+                        </div>
+
+                    </form>
+
+                    <div class="change-pass">
+                        <button id="change-pass-btn" (click)="passwordChange()">Change Password</button>
+                        <ng-container *ngIf="passwordShow">
+                            <div class="col text-center mt-5 mb-5" *ngIf="mainLoder">
+                                <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
+                            </div>
+                            <form [formGroup]="passwordForm" *ngIf="!mainLoder">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="pass">OLD PASSWORD</label>
+                                        <input type="Password" class="form-control" id="pass" placeholder="OLD PASSWORD" formControlName="oldPassword" [ngClass]="{ 'is-invalid': submitted && f.oldPassword.errors }">
+                                        <div *ngIf="submitted && f.oldPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.oldPassword.errors.required">Old Password is required</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="pass">NEW PASSWORD</label>
+                                        <input type="Password" class="form-control" id="Password" placeholder="NEW PASSWORD" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
+                                        <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
+                                            <div *ngIf="f.pwd.errors.required">Password is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="pass">CONFIRM PASSWORD</label>
+                                        <input type="Password" class="form-control" id="Password" placeholder="CONFIRM PASSWORD" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }">
+                                        <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.confirm_password.errors.required">Password is required</div>
+                                            <div *ngIf="f.confirm_password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <p *ngIf="errMsg" style="color: red; text-align: center;"><b>{{errMsg}}</b></p>
+                                <p *ngIf="ErrMsg" style="color:#0a576c;text-align: center;"><b>{{ErrMsg}}</b></p>
+
+                                <div class="save-btn">
+                                    <button type="button" id="save" (click)="changePassword()">Save</button>
+                                </div>
+                            </form>
+                        </ng-container>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" class="mt-4 ml-5 output-option" data-target="#finalOutput" data-toggle="modal" /> -->
+
+<div id="imgcrop" class="modal add-mat-modal">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header close-modal-header">
+                <button type="button" class="folder-close" data-dismiss="modal" style="padding: 6px 0;"><i
+                        class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body choose-option" style="padding:26px 26px 26px 26px !important">
+                <label> Choose file
+                    <input type="file" (change)="fileChangeEvent($event)" />
+                </label>
+                <br />
+                <br />
+                <div class="file-zoom-option">
+                    <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" />
+                    <button (click)="zoomOut()"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    <button (click)="zoomIn()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+
+                <div>
+                    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="4 / 3" [resizeToWidth]="256" [cropperMinWidth]="128" [onlyScaleDown]="true" [roundCropper]="false"
+                        [canvasRotation]="canvasRotation" [transform]="transform" [alignImage]="'left'" [style.display]="showCropper ? null : 'none'" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+                        (loadImageFailed)="loadImageFailed()"></image-cropper>
+                </div>
+
+                <button type="submit" data-dismiss="modal" class="mt-3 submit-btn-file">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="finalOutput" class="modal">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header close-modal-header">
+                <button type="button" class="folder-close" data-dismiss="modal" style="padding: 6px 0;"><i
+                        class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="modal-body final-file-output" style="padding:26px 26px 26px 26px !important">
+                <img src="assets/images/Customize-and-Extend.png">
+            </div>
+        </div>
+    </div>
+</div>
