@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
@@ -56,6 +56,8 @@ export class StudentsDashboardComponent implements OnInit {
   paymentUrl: string;
   images: string;
   searchDataBtn: boolean = false;
+  currentItem = 'Television';
+
   constructor(private service: ServiceService, private router: Router,
     private authService: SocialAuthService) {
     this.images = localStorage.getItem('image')
@@ -288,6 +290,7 @@ export class StudentsDashboardComponent implements OnInit {
     } else {
       this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.id } })
     }
+    
   }
 
   submitEnroll() {
