@@ -1777,7 +1777,7 @@ a {
 
 .show-button {
     width: 100%;
-    max-height: 50px;
+    /* max-height: 50px; */
     padding-top: 25px;
 }
 
@@ -1798,7 +1798,7 @@ a {
     font-size: 13px;
     text-align: center;
     color: #ffffff;
-    margin-top: -6px;
+    margin-top: 26px;
     font-weight: 500;
     text-transform: uppercase;
     background-color: #008ad2;
@@ -6999,10 +6999,10 @@ input:checked+.slider:before {
 
 #pre-support {
     position: absolute;
-    right: 20px;
+    right: 28px;
     width: 150px;
     background-color: #008ad2;
-    top: 200px;
+    top: 189px;
     border-radius: 5px;
     height: 45px;
     text-transform: uppercase;

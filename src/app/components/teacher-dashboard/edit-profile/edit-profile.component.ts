@@ -32,6 +32,7 @@ export class EditProfileComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
+  profileForm: FormGroup = new FormGroup({});
   rotation = 0;
   scale = 1;
   showCropper = false;
@@ -342,7 +343,11 @@ export class EditProfileComponent implements OnInit {
 
   // form reset
   reset() {
-    this.editProfileForm.reset();
+    this.updateNewDataImage="";
+    this.profileForm.reset();
+  }
+  reseted(){
+    this.updateNewDataImage="";
   }
   // show change password
   passwordChange() {

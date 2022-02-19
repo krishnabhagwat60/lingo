@@ -247,7 +247,6 @@
                                     </div>
 
                                 </div>
-
                                 <!-- </div> -->
 
                                 <!-- <div class="prof-btns display-center">
@@ -256,8 +255,7 @@
     
                               <button type="button" class="user-save">Save</button>
     
-                            </div> -->
-
+                              </div> -->
                             </div>
                             <!-- <div class="prof-user">
 
@@ -363,6 +361,10 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="save-btn" *ngIf="!passwordShow">
+                            <button (click)="studentImage()" type="button" id="save">Update Image</button>
+                            <button type="button" id="reset" (click)="reseted()">Reset</button>
                         </div>
                         <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
                         <div class="account-toggle">
