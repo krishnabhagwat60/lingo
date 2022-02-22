@@ -54,5 +54,14 @@
 }
 
 .disabled {
-    pointer-events: none; 
-  }
+    pointer-events: none;
+}
+
+.form-control {
+    height: 50px;
+    width: 100%;
+    border-radius: 27px;
+    background-color: #f6f6fc;
+    padding-left: 25px;
+    border: 2px solid #efeef4;
+}

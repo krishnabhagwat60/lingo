@@ -53,7 +53,7 @@
                             <ul>
                                 <li class="subj-names">
                                     <p class="subj-t">{{courseDetail?.title}}</p>
-                                    
+
                                     <p class="subj-star">
                                         <span style="color: #fff;" *ngIf="courseDetail?.rating != '0'">{{courseDetail?.rating}}</span>
                                         <ng-container *ngIf="courseDetail?.rating === '1'">
@@ -94,6 +94,7 @@
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
                                         </ng-container>
                                         <ng-container *ngIf="courseDetail?.rating === '5'">
@@ -103,7 +104,7 @@
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                         </ng-container>
-                                           
+
                                     </p>
                                 </li>
                                 <li>

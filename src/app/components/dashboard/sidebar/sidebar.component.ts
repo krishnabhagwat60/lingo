@@ -1,23 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
+import { StudentDashboardComponent } from '../student-dashboard/student-dashboard.component';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit  {
   sidebarData: any;
   coursesName: void;
   subTitle: any;
   courseid: void;
   name: void;
   studentRating: void;
+  //@ViewChild(StudentDashboardComponent) itemShow;
+  //@Input()  = '';
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.studentSideBar()
+   // alert(this.itemShow);
+  }
+  ngAfterViewInit() {
+    
+    this.studentSideBar();
+  }
+  ngOnChanges(){
+  
+    
   }
   studentSideBar() {
     const data = {
