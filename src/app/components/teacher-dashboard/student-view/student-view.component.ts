@@ -1,11 +1,12 @@
 
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Injector, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import $ from 'jquery';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { SocialAuthService } from 'angularx-social-login';
+import { FrontService } from 'src/app/services/front.service';
 
 @Component({
   selector: 'app-student-view',
@@ -103,7 +104,12 @@ export class StudentViewComponent implements OnInit {
   studentRating: void;
   image: any;
   images: string;
-  constructor(private router: Router, private service: ServiceService, private authService: SocialAuthService, private _location: Location, private route: ActivatedRoute, private sanitizer: DomSanitizer, private _sanitizer: DomSanitizer,) {
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private router: Router, private service: ServiceService, private injector: Injector, private authService: SocialAuthService, private _location: Location, private route: ActivatedRoute, private sanitizer: DomSanitizer, private _sanitizer: DomSanitizer,) {
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
     })
@@ -277,13 +283,22 @@ export class StudentViewComponent implements OnInit {
     this.wallet = sessionStorage.getItem('wallet');
   }
   sidebar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    debugger
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('teacher_sidebar', data, 1).subscribe(res => {
+        this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData = this.sidebarData;
+
+        //  console.log(this.sidebarData);
+      })
+    } else {
+      this.sidebarData = this.frontServices.vm.sidebarData;
+
     }
-    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
-    })
   }
   // get affiliation
   get() {
@@ -706,12 +721,21 @@ export class StudentViewComponent implements OnInit {
     }
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    debugger
+    console.log('sidebar', this.frontServices.vm);
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.sidebarData2 = res.body.result;
+        this.frontServices.vm.sidebarData = this.sidebarData2;
+      })
     }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData2 = res.body.result;
-    })
+    else {
+      this.sidebarData2 = this.frontServices.vm.sidebarData;
+    }
   }
   toggleAccordian2(event, index, name, id) {
     this.coursesName = sessionStorage.setItem('course_name', name)

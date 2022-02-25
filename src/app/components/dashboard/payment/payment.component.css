@@ -157,21 +157,18 @@
 }
 
 .paypl-btns {
-    width: 325px;
-    height: 56px;
-    /* border: 3px solid #136980; */
+    width: 293px;
+    height: 41px;
     margin: 0 auto;
-    /* border-radius: 25px;
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
+    border: 3px solid #136980;
+    border-radius: 6px;
 }
 
 .paypl-btns figure {
     padding: 0;
     width: 290px;
     margin: 0;
+    margin-top: -8px;
 }
 
 .paypl-btns figure img {

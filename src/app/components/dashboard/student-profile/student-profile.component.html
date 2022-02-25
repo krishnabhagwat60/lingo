@@ -107,7 +107,7 @@
                             <div class="col-md-6 form-group">
                                 <div class="course-language-dropdown">
                                     <p>KNOWN LANGUAGE</p>
-                                    <div class="select-dropdown">
+                                    <div class="select-dropdown multiselect-dropdown">
                                         <!-- <<<<<<< HEAD <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                             ======= -->
                                         <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
@@ -118,6 +118,33 @@
                                             Language is required.
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <label for="known">MAIN LANGUAGE</label> -->
+                                <div class="course-language-dropdown">
+                                    <p>MAIN LANGUAGE
+                                        <span class="required-asterisk">*</span>
+                                    </p>
+                                    <div class="select-dropdown multiselect-dropdown">
+
+                                        <!-- <select formControlName="mainLanguage">
+                                            <option value="" disabled>Main Language</option>
+                                            <option *ngFor="let data of language" value="{{data.key}}">
+                                                {{data.value}}
+                                            </option>
+                                        </select> -->
+                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="mainLanguage" (onSelect)="onMainSelect($event)" (onSelectAll)="onMainSelectAll($event)" [ngClass]="{ 'is-invalid': submit && form.mainLanguage.errors }">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+                                    <div *ngIf="submit && form.mainLanguage.invalid" class="text-danger mt-1">
+                                        <div *ngIf="form.mainLanguage.errors.required">
+                                            Language is required.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="submit && form.mainLanguage.errors" class="invalid-feedback">
+                                    <div *ngIf="form.mainLanguage.errors.required">Language is required</div>
                                 </div>
                             </div>
                         </div>

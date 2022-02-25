@@ -431,8 +431,14 @@
 
                                     </div>
                                     <ng-container *ngFor="let questionData of data.data">
-                                        <input type="" name="" value="{{questionData.question}}" disabled>
-                                        <div class="select-dropdown-question-view">
+                                        <!-- <div class="">
+                                            <input type="" name=""  disabled>
+                                            <input type="name" placeholder="Enter Course Name" name="courseName" formcontrolname="courseName" class="form-control ng-pristine ng-invalid ng-touched">
+                                        </div> -->
+                                        <div class="col-md-8 form-group">
+                                            <input type="name" value="{{questionData.question}}" id="courseName" name="courseName" formControlName="courseName" class="form-control">
+                                        </div>
+                                        <div class="col-md-4 select-dropdown-question-view">
                                             <select (change)="getQuestionValue($event.target.value,questionData.p_id)">
                         <option disabled selected>Answer</option>
                         <option *ngFor="let data1 of questionData.worng_answer">{{(data1.wrong.length>20)? (data1.wrong| slice:0:13)+'..':(data1.wrong)}}</option>

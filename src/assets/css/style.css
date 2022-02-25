@@ -2718,12 +2718,12 @@ a {
 }
 
 .right-btn ul {
-    margin-left: -80px;
+    margin-left: 160px;
     margin-top: 130px;
     background-color: #fff;
     padding-bottom: 10px;
-    border: 2px solid rgba(51, 42, 124, 0.08);
-    box-shadow: 3px 5px 7px #ddd;
+    border: 2px solid #fff;
+    box-shadow: 0 5px 30px 0 rgb(82 63 105 / 20%);
 }
 
 .arrow-top-1:after {
@@ -2734,7 +2734,9 @@ a {
     border-top: none;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 10px solid #ddd;
+    border-bottom: 10px solid #fff;
+    /* color: red; */
+    box-shadow: 0 5px 30px 0 rgb(82 63 105 / 20%);
 }
 
 .right-btn ul li {

@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 import { StudentDashboardComponent } from '../student-dashboard/student-dashboard.component';
 
@@ -8,7 +9,7 @@ import { StudentDashboardComponent } from '../student-dashboard/student-dashboar
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit  {
+export class SidebarComponent implements OnInit {
   sidebarData: any;
   coursesName: void;
   subTitle: any;
@@ -17,28 +18,41 @@ export class SidebarComponent implements OnInit  {
   studentRating: void;
   //@ViewChild(StudentDashboardComponent) itemShow;
   //@Input()  = '';
-  constructor(private service: ServiceService, private router: Router) { }
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private service: ServiceService, private router: Router, private injector: Injector) { }
 
   ngOnInit(): void {
     this.studentSideBar()
-   // alert(this.itemShow);
+    // alert(this.itemShow);
   }
   ngAfterViewInit() {
-    
+
     this.studentSideBar();
   }
-  ngOnChanges(){
-  
-    
+  ngOnChanges() {
+
+
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
+    debugger
+    console.log('sidebar',this.frontServices.vm);
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
 
-    })
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData = this.sidebarData;
+      })
+    }
+    else{
+      this.sidebarData = this.frontServices.vm.sidebarData;
+    }
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {

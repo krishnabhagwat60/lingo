@@ -1,6 +1,7 @@
 import { getUrlScheme } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
 @Component({
   selector: 'app-cancel-payment',
@@ -17,7 +18,12 @@ export class CancelPaymentComponent implements OnInit {
   name: void;
   studentRating: void;
   courseName: string;
-  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router) {
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private injector: Injector) {
     this.route.queryParams.subscribe(params => {
       this.url = params['url'];
     });
@@ -35,13 +41,18 @@ export class CancelPaymentComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
 
-    })
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData  =this.sidebarData;
+      })
+    } else {
+      this.sidebarData = this.frontServices.vm.sidebarData;
+    }
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {

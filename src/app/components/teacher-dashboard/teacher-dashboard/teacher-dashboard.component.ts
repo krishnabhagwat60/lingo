@@ -263,7 +263,8 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   searchform = new FormGroup({
-    searchData: new FormControl('')
+    searchData: new FormControl('',),
+    rating: new FormControl('',)
   })
   searchDatas() {
     this.err = ''
@@ -278,7 +279,7 @@ export class TeacherDashboardComponent implements OnInit {
         "course_language": '',
         "teacher_id": sessionStorage.getItem('uid'),
         "level_id": '',
-        "rating": '',
+        "rating": this.searchform.value.rating,
         "page": this.pages,
       }
       // this.buttonColor = i;

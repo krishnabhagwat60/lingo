@@ -18,7 +18,7 @@
                     <button class="dropdown-btn active" style="font-size: 18px; background-color: #0a576c !important;">My Course
                         <i class="fa fa-angle-down"></i>
                     </button>
-                    <div class="for-scroll">
+                    <div class="for-scroll" id="std-courses">
                         <ng-container *ngFor="let data of sidebarData ; index as j">
                             <button class="title-dropdown" (click)="toggleAccordian($event, j,data.course_name)" style="font-size: 18px; border-radius: 0; margin-top: .4em; background-color: #0a576c !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
                                 <i class="fa fa-angle-down"></i>

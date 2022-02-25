@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
 @Component({
@@ -11,19 +12,35 @@ export class StudentHeaderComponent implements OnInit {
   sidebarData: any;
   coursesName: void;
   subTitle: any;
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
 
-  constructor(private service: ServiceService, private router: Router) { }
+  constructor(private service: ServiceService, private router: Router, private injector: Injector) { }
 
   ngOnInit(): void {
     this.studentSideBar()
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    debugger
+    console.log('student-header',this.frontServices.vm);
+
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData=this.sidebarData;
+      })
     }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
-    })
+    else{
+      this.sidebarData = this.frontServices.vm.sidebarData;
+
+    }
   }
   //sidebar accordion
   toggleAccordian(event, index, name) {

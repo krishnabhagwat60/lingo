@@ -103,8 +103,8 @@
 
                                     <div class="view-btn">
                                         <button type="button" id="view-btn" (click)="viewDetail(data.id)" style="color: #fff">
-                      View Course Details
-                    </button>
+                                          View Course Details
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -112,18 +112,16 @@
                             <div class="col-lg-5 col-md-5 col-xs-12">
                                 <div class="course-detail">
                                     <h3 style="text-transform: uppercase">
-                                        Teaching Language :<span>
-                      {{ data.teaching_language }}</span
-                    >
-                  </h3>
-                  <h4>
-                    <span>Students Enrolled</span> :{{ data.total_enroll }}
-                                        </h4>
-                                        <div class="t-btn" *ngIf="data.course_type == 'closed'">
-                                            <button type="button" id="t-btn" (click)="acceptCourseDetail(data.id)">
+                                        Teaching Language :<span>{{ data.teaching_language }}</span>
+                                    </h3>
+                                    <h4>
+                                        <span>Students Enrolled</span> :{{ data.total_enroll }}
+                                    </h4>
+                                    <div class="t-btn" *ngIf="data.course_type == 'closed'">
+                                        <button type="button" id="t-btn" (click)="acceptCourseDetail(data.id)">
                       Accepts Students
                     </button>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -140,6 +138,7 @@
                       ">{{ data.field_course_fees }}</span
                     >
                   </p>
+                  <!-- {{ data|json }} -->
                   <span
                     *ngIf="data.rating != '0'"
                     style="
@@ -151,21 +150,21 @@
                     >{{ data.rating }}</span
                   >
 
-                  <ng-container *ngIf="data?.rating === '1'">
+                  <ng-container *ngIf="data.rating === '1'">
                     <i class="fa fa-star" style="color: #ff4545 !important"></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '1.5'">
+                  <ng-container *ngIf="data.rating === '1.5'">
                     <i class="fa fa-star" style="color: #ffa534 !important"></i>
                     <i
                       class="fa fa-star-half-o"
                       style="color: #ffa534 !important"
                     ></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '2'">
+                  <ng-container *ngIf="data.rating === '2'">
                     <i class="fa fa-star" style="color: #ffa534 !important"></i>
                     <i class="fa fa-star" style="color: #ffa534 !important"></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '2.5'">
+                  <ng-container *ngIf="data.rating === '2.5'">
                     <i class="fa fa-star" style="color: #ffe234 !important"></i>
                     <i class="fa fa-star" style="color: #ffe234 !important"></i>
                     <i
@@ -173,12 +172,12 @@
                       style="color: #ffe234 !important"
                     ></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '3'">
+                  <ng-container *ngIf="data.rating === '3'">
                     <i class="fa fa-star" style="color: #ffe234 !important"></i>
                     <i class="fa fa-star" style="color: #ffe234 !important"></i>
                     <i class="fa fa-star" style="color: #ffe234 !important"></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '3.5'">
+                  <ng-container *ngIf="data.rating === '3.5'">
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
@@ -187,13 +186,13 @@
                       style="color: #b7dd29 !important"
                     ></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '4'">
+                  <ng-container *ngIf="data.rating === '4'">
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                     <i class="fa fa-star" style="color: #b7dd29 !important"></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '4.5'">
+                  <ng-container *ngIf="data.rating === '4.5'">
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
@@ -202,12 +201,12 @@
                       style="color: #57e32c !important"
                     ></i>
                   </ng-container>
-                  <ng-container *ngIf="data?.rating === '5'">
+                  <ng-container *ngIf="data.rating === '5'">
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
                     <i class="fa fa-star" style="color: #57e32c !important"></i>
-                    <i class="fa fa-star" style="color: #97a593 !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
                   </ng-container>
                   <a style="color: grey" *ngIf="data.review_count != '0'"
                     >({{ data.review_count }})</a
@@ -375,7 +374,7 @@
                     <input type="" formControlName="bulk" name="bulk" id="bulk" placeholder="{{ inviteName }}" />
                 </div>
                 <div class="custom-file">
-                    <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px"></a>Browse</label>
+                    <label for="fileupload"><a class="fa fa-picture-o" style="margin-right: 10px"></a>Browse</label>
                     <input type="file" id="bulk" name="bulk" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
                 </div>
             </div>

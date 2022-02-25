@@ -357,7 +357,7 @@
     height: 25px;
     border-radius: 50%;
     position: relative;
-    top: 20px;
+    top: 7px;
 }
 
 .faqs-more .card-1 {
@@ -378,7 +378,7 @@
     height: 25px;
     border-radius: 50%;
     position: relative;
-    top: 20px;
+    top: 7px;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {

@@ -17,6 +17,15 @@
     margin-top: 20px;
 }
 
+.multiselect-dropdown {
+    position: relative;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    border: 2px solid rgba(51, 42, 124, 0.08);
+    color: #aaaaaa;
+}
+
 .prof-btns .user-cancel {
     margin-right: 10px;
     width: 78px;

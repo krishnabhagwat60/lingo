@@ -63,7 +63,7 @@
                                 <p for="language">LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown-language">
                                     <!-- <select formControlName="language" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && f.language.errors }">
                                         <option value="" disabled>Language</option>
@@ -85,7 +85,7 @@
                                 <p for="language">TEACHING LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown-language">
                                     <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event)" [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>
                                 </div>
@@ -116,13 +116,13 @@
                             <div class="col-md-6 course-free" *ngIf="courseFee">
                                 <p>COURSE FEES</p>
                                 <div class="radio_FreeCourse">
-                                    <input id="radio-2" type="radio" formControlName="radio" id="radio" name="radio" value="monthly" (click)="showInput($event)">
+                                    <input id="radio-2" type="radio" formControlName="radio" value="monthly" (click)="showInput($event)">
                                     <label for="radio-2" class="radio-label"><span
                                             style="margin-right: 5px;">Monthly</span></label>
 
                                 </div>
                                 <div class="radio_FreeCourse">
-                                    <input id="free" type="radio" formControlName="radio" id="radio" name="radio" value="free" (click)="showInput($event)">
+                                    <input id="free" type="radio" formControlName="radio" value="free" (click)="showInput($event)">
                                     <label for="free" class="radio-label"><span>Free</span></label>
                                 </div>
                                 <div class="fees-rype">
@@ -140,7 +140,7 @@
                             <div class="col-md-6 course-fees" *ngIf="teacherFees">
                                 <p for="course">course Fee for Teachers</p>
                                 <div class="radio_FreeCourse">
-                                    <input id="free-1" formControlName="radio" type="radio" id="radio" name="radio" value="50 cent" (click)="showInput($event)">
+                                    <input id="free-1" formControlName="radio" type="radio" value="50 cent" (click)="showInput($event)">
                                     <label for="free-1" class="radio-label"><span>50 Cent / Student /
                                             Month</span></label>
                                 </div>

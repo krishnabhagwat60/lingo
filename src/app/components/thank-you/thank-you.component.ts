@@ -1,6 +1,7 @@
 import { getUrlScheme } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -18,17 +19,23 @@ export class ThankYouComponent implements OnInit {
   name: void;
   studentRating: void;
   courseName: string;
-  constructor(private service: ServiceService,private route: ActivatedRoute,private router: Router) {
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private injector: Injector) {
     this.route.queryParams.subscribe(params => {
       this.url = params['url'];
     });
-   }
+  }
 
   ngOnInit(): void {
-    this.studentSideBar()
+
     this.submitEnroll();
     this.user = sessionStorage.getItem('username');
     this.courseName = localStorage.getItem('course_name');
+    this.studentSideBar()
   }
   logout() {
     sessionStorage.clear();
@@ -36,13 +43,23 @@ export class ThankYouComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
+    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      setTimeout(() => {
+        this.service.post('student_sidebar', data, 1).subscribe(res => {
+          this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData  =this.sidebarData;
 
-    })
+        })
+
+      }, 100);
+    }
+    else{
+      this.sidebarData = this.frontServices.vm.sidebarData;
+
+    }
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
@@ -92,15 +109,15 @@ export class ThankYouComponent implements OnInit {
       this.subTitle = res.body.result
     })
   }
-   submitEnroll() {
+  submitEnroll() {
     const data = {
       "course_id": localStorage.getItem('enrollId'),
       "user_id": sessionStorage.getItem('uid'),
-      order_id : this.url
+      order_id: this.url
     }
     this.service.post('course-enroll', data, 1).subscribe(res => {
     }
     )
   }
-  
+
 }
