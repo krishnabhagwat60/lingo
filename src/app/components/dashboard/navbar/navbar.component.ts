@@ -12,10 +12,10 @@ export class NavbarComponent implements OnInit {
   username: string;
   wallet: string;
    term:string
-  images: string;
+  image: string;
   updateNewDataImage :any;
   constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService) {
-    this.images = localStorage.getItem('image')
+    this.image = localStorage.getItem('image')
    }
 
   ngOnInit(): void {
