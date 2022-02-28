@@ -1800,6 +1800,7 @@ export class ContentStyleComponent implements OnInit {
   }
   // update pdf
   updateOtherlink() {
+    debugger
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.otherLinkForm.value.otherLinkText);
     var newurl = btoa(this.otherLinkForm.value.mediaEmbedding)
 
@@ -1820,7 +1821,9 @@ export class ContentStyleComponent implements OnInit {
       p_id: this.otherlinkId,
       type: 'otherlink',
       title: this.otherLinkForm.value.questionOtherLink,
-      data_value: this.dataUrl,
+      // data_value: this.dataUrl,
+      data_value: this.safeSrc,
+
       name:'iframe youtube video',
     }
     this.service.post('edit-course-multimedia', data, 1).subscribe(res => {

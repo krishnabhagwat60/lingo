@@ -88,6 +88,7 @@ export class TeacherDashboardComponent implements OnInit {
     this.buttonColor = i;
     this.service.post('get-teacher-course', data, 1).subscribe(res => {
       this.getCourse = res.body.data;
+      console.log(this.getCourse)
       if (!this.getCourse.length) {
         this.err = 'No Data Found'
       }
