@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
 @Component({
@@ -13,8 +14,13 @@ export class NavbarComponent implements OnInit {
   wallet: string;
    term:string
   image: string;
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
   updateNewDataImage :any;
-  constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService) {
+  constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService,private injector: Injector) {
     this.image = localStorage.getItem('image')
    }
 
@@ -40,6 +46,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login'])
   }
   signOutFunc(): void {
+    this.frontServices.vm.sidebarData =null;
+
     this.authService.signOut();
   }
   usernameData(){

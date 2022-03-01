@@ -37,6 +37,8 @@ export class CancelPaymentComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.frontServices.vm.sidebarData =null;
+    
     this.router.navigate(['/login'])
     // this.signOut();
   }

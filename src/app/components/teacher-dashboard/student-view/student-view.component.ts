@@ -14,6 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { SocialAuthService } from 'angularx-social-login';
 import { FrontService } from 'src/app/services/front.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student-view',
@@ -118,6 +119,7 @@ export class StudentViewComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
+  subscription: Subscription;
   constructor(
     private router: Router,
     private service: ServiceService,
@@ -293,6 +295,8 @@ export class StudentViewComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.frontServices.vm.sidebarData =null;
+
     this.router.navigate(['/login']);
     this.signOut();
   }

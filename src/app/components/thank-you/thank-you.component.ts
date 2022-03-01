@@ -1,6 +1,7 @@
 import { getUrlScheme } from '@angular/compiler';
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
 
@@ -28,6 +29,7 @@ export class ThankYouComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
+  subscription: Subscription;
   constructor(
     private service: ServiceService,
     private route: ActivatedRoute,
@@ -47,6 +49,7 @@ export class ThankYouComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.frontServices.vm.sidebarData =null;
     this.router.navigate(['/login']);
     // this.signOut();
   }
@@ -131,9 +134,14 @@ export class ThankYouComponent implements OnInit {
     this.service.post('course-enroll', data, 1).subscribe((res) => {
       if (res.body.message === 'success') {
         this.frontServices.vm.sidebarData = null;
-        this.frontServices.event.emit(1);
+        // this.frontServices.event.emit(1);
+        this.frontServices.contactsArrived(1);
         this.mainpageLod = false;
       }
     });
   }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }
