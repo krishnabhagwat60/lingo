@@ -23,10 +23,12 @@ export class StudentHeaderComponent implements OnInit {
     this.studentSideBar()
   }
   studentSideBar() {
-    debugger
-    console.log('student-header',this.frontServices.vm);
+    console.log(' student header view', this.frontServices.vm);
 
-    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+    if ( this.frontServices == null ||
+      this.frontServices.vm == null ||
+      this.frontServices.vm.sidebarData == null ||
+      this.frontServices.vm.sidebarData.length == 0) {
 
       const data = {
         user_id: sessionStorage.getItem('uid')

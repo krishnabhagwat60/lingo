@@ -51,10 +51,12 @@ export class ThankYouComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
+    console.log(' thank you view', this.frontServices.vm);
+
     if (
-      this.frontServices != null &&
-      this.frontServices.vm != null &&
-      this.frontServices.vm.sidebarData != null &&
+      this.frontServices == null ||
+      this.frontServices.vm == null ||
+      this.frontServices.vm.sidebarData == null ||
       this.frontServices.vm.sidebarData.length == 0
     ) {
       const data = {
@@ -129,6 +131,7 @@ export class ThankYouComponent implements OnInit {
     this.service.post('course-enroll', data, 1).subscribe((res) => {
       if (res.body.message === 'success') {
         this.frontServices.vm.sidebarData = null;
+        this.frontServices.event.emit(1);
         this.mainpageLod = false;
       }
     });

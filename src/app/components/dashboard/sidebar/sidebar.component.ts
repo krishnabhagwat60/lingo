@@ -23,6 +23,7 @@ export class SidebarComponent implements OnInit {
   courseid: void;
   name: void;
   studentRating: void;
+  isCoursesRender=false;
   //@ViewChild(StudentDashboardComponent) itemShow;
   //@Input()  = '';
   private _frontService: FrontService;
@@ -36,7 +37,16 @@ export class SidebarComponent implements OnInit {
     private service: ServiceService,
     private router: Router,
     private injector: Injector
-  ) {}
+  ) {
+    debugger;
+    this.frontServices.event.subscribe((res) => {
+      debugger;
+      if (res > 0 && !this.isCoursesRender) {
+        this.studentSideBar();
+      }
+      console.log(res);
+    });
+  }
 
   ngOnInit(): void {
     this.studentSideBar();
@@ -47,10 +57,12 @@ export class SidebarComponent implements OnInit {
   }
   ngOnChanges() {}
   studentSideBar() {
+    console.log(' sidebar view', this.frontServices.vm);
+
     if (
-      this.frontServices != null &&
-      this.frontServices.vm != null &&
-      this.frontServices.vm.sidebarData != null &&
+      this.frontServices == null ||
+      this.frontServices.vm == null ||
+      this.frontServices.vm.sidebarData == null ||
       this.frontServices.vm.sidebarData.length == 0
     ) {
       const data = {
@@ -60,12 +72,14 @@ export class SidebarComponent implements OnInit {
         this.sidebarData = res.body.result;
         if (this.sidebarData != null && this.sidebarData.length > 0) {
           var filteredData = this.unique(this.sidebarData, ['course_id']);
-          this.sidebarData=filteredData;
+          this.sidebarData = filteredData;
           this.frontServices.vm.sidebarData = this.sidebarData;
         }
+        this.isCoursesRender=true;
       });
     } else {
       this.sidebarData = this.frontServices.vm.sidebarData;
+      this.isCoursesRender=true;
     }
   }
   unique(arr, keyProps) {

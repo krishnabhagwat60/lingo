@@ -1,11 +1,11 @@
-import { Injectable, Injector } from '@angular/core';
+import { EventEmitter, Injectable, Injector } from '@angular/core';
 import { ServiceService } from '../components/service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FrontService {
-
+  event: EventEmitter<Number> = new EventEmitter();
   vm = {
     clientModel: {},
     categoryModel: [],
