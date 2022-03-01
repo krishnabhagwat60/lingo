@@ -1826,6 +1826,9 @@ export class ContentStyleComponent implements OnInit {
 
       name:'iframe youtube video',
     }
+    if(this.safeSrc["changingThisBreaksApplicationSecurity"].length>100){
+      data.data_value = data.data_value["changingThisBreaksApplicationSecurity"]
+    }
     this.service.post('edit-course-multimedia', data, 1).subscribe(res => {
       this.closeOtherLink.nativeElement.click();
       this.affiliationList();
