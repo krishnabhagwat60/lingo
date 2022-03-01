@@ -71,7 +71,7 @@
                                             {{data.value}}
                                         </option>
                                     </select> -->
-                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectLangAll($event,i)" (onDeSelect)="onLangDeSelect($event,i)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                     </ng-multiselect-dropdown>
                                 </div>
                                 <div *ngIf="submitted && f.selectedItems.invalid" class="text-danger mt-1">
@@ -86,7 +86,8 @@
                                     <span class="required-asterisk">*</span>
                                 </p>
                                 <div class="select-dropdown-language">
-                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event)" [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
+                                    <ng-multiselect-dropdown [placeholder]="'Teaching Language'" [settings]="dropdownSettings" [data]="language" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event,i)" (onSelectAll)="onSelectTeacherLangAll($event,i)" (onDeSelect)="onTeacherLangDeSelect($event,i)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>
                                 </div>
                                 <div *ngIf="submitted && f.teachingLanguage.invalid" class="text-danger mt-1">
