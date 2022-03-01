@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import { Location } from '@angular/common';
+import { FrontService } from 'src/app/services/front.service';
 
 @Component({
   selector: 'app-fill-word-solution',
@@ -29,8 +30,15 @@ export class FillWordSolutionComponent implements OnInit {
   sidebarData2: any;
   coursesName: void;
   titleid: any;
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
+  }
 
-  constructor(private service: ServiceService, private _sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private _location: Location) {
+  constructor(private service: ServiceService, private _sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private _location: Location,  private injector: Injector) {
     this.courseNameData = sessionStorage.getItem('course_name')
     this.route.queryParamMap.subscribe(queryParams => {
       this.titleid = queryParams.get("titleid")
@@ -51,7 +59,21 @@ export class FillWordSolutionComponent implements OnInit {
     }
     this.service.post('student_sidebar', data, 1).subscribe(res => {
       this.sidebarData2 = res.body.result;
+      if (this.sidebarData2 != null && this.sidebarData2.length > 0) {
+        var filteredData = this.unique(this.sidebarData2, ['course_id']);
+        this.sidebarData2 = filteredData;
+        this.frontServices.vm.sidebarData = this.sidebarData2;
+      }
     })
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   toggleAccordian2(event, index) {
     const element = event.target;

@@ -17,7 +17,6 @@ export class StudentHeaderComponent implements OnInit {
     if (this._frontService) { return this._frontService };
     return this._frontService = this.injector.get(FrontService);
   }
-
   constructor(private service: ServiceService, private router: Router, private injector: Injector) { }
 
   ngOnInit(): void {
@@ -41,6 +40,15 @@ export class StudentHeaderComponent implements OnInit {
       this.sidebarData = this.frontServices.vm.sidebarData;
 
     }
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   //sidebar accordion
   toggleAccordian(event, index, name) {
