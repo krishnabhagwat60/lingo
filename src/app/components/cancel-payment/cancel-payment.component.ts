@@ -48,11 +48,24 @@ export class CancelPaymentComponent implements OnInit {
       }
       this.service.post('student_sidebar', data, 1).subscribe(res => {
         this.sidebarData = res.body.result;
-        this.frontServices.vm.sidebarData  =this.sidebarData;
+        if (this.sidebarData != null && this.sidebarData.length > 0) {
+          var filteredData = this.unique(this.sidebarData, ['course_id']);
+          this.sidebarData = filteredData;
+          this.frontServices.vm.sidebarData = this.sidebarData;
+        }
       })
     } else {
       this.sidebarData = this.frontServices.vm.sidebarData;
     }
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {

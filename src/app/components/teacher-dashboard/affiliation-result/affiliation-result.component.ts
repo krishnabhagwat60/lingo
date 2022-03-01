@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
+import { FrontService } from 'src/app/services/front.service';
 
 @Component({
   selector: 'app-affiliation-result',
-  templateUrl: './affiliation-result.component.html' 
-  ,
-  styleUrls: ['./affiliation-result.component.css']
+  templateUrl: './affiliation-result.component.html',
+  styleUrls: ['./affiliation-result.component.css'],
 })
 export class AffiliationResultComponent implements OnInit {
   sidebarData: any;
@@ -28,12 +28,25 @@ export class AffiliationResultComponent implements OnInit {
   sidebarData2: any;
   coursesName: void;
   titleid: string;
-  constructor(private service: ServiceService,private router: ActivatedRoute, private route: Router,private _location: Location) { 
-    this.router.queryParamMap.subscribe(queryParams => {
-      this.id = queryParams.get("id");
-      this.titleid = queryParams.get("titleid");
-    })
-    this.courseNameData= sessionStorage.getItem('course_name')
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
+  }
+  constructor(
+    private service: ServiceService,
+    private router: ActivatedRoute,
+    private route: Router,
+    private _location: Location,
+    private injector: Injector
+  ) {
+    this.router.queryParamMap.subscribe((queryParams) => {
+      this.id = queryParams.get('id');
+      this.titleid = queryParams.get('titleid');
+    });
+    this.courseNameData = sessionStorage.getItem('course_name');
   }
 
   ngOnInit(): void {
@@ -45,12 +58,26 @@ export class AffiliationResultComponent implements OnInit {
     this.studentSideBar();
   }
   studentSideBar() {
-    const data={
-      user_id:sessionStorage.getItem('uid')
-    }
-    this.service.post('student_sidebar',data, 1).subscribe(res => {
+    const data = {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('student_sidebar', data, 1).subscribe((res) => {
       this.sidebarData2 = res.body.result;
-    })
+      if (this.sidebarData2 != null && this.sidebarData2.length > 0) {
+        var filteredData = this.unique(this.sidebarData2, ['course_id']);
+        this.sidebarData2 = filteredData;
+        this.frontServices.vm.sidebarData = this.sidebarData2;
+      }
+    });
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   toggleAccordian2(event, index) {
     const element = event.target;
@@ -65,7 +92,7 @@ export class AffiliationResultComponent implements OnInit {
     for (let i = 0; i < this.sidebarData2.length; i++) {
       const title = this.sidebarData2[i].title;
       for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
+        const id = title[j].titleid;
         if (data === id) {
           const element = event.target;
           element.classList.toggle('active');
@@ -80,85 +107,91 @@ export class AffiliationResultComponent implements OnInit {
   }
 
   authenticateName() {
-    this.authenticate = sessionStorage.getItem('student')
+    this.authenticate = sessionStorage.getItem('student');
     if (this.authenticate) {
       this.courses = true;
     }
   }
-  gotoBack(){
+  gotoBack() {
     this._location.back();
   }
   getSubTitle(parent) {
     const data = {
-      "title_id": parent,
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('submenu-listing', data, 1).subscribe(res => {
+      title_id: parent,
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('submenu-listing', data, 1).subscribe((res) => {
       // console.log(res);
-      this.subTitle = res.body.result
-    })
+      this.subTitle = res.body.result;
+    });
   }
   getChildData(child) {
     sessionStorage.setItem('subId', child);
-    this.route.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.route.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
-  showshubmenu(){
-    this.ismenuShow=!this.ismenuShow
-  }
-
-  showsubmenu(){
-    this.ismenu=!this.ismenu
+  showshubmenu() {
+    this.ismenuShow = !this.ismenuShow;
   }
 
-  showsub(){
-    this.ismenusub=!this.ismenusub
+  showsubmenu() {
+    this.ismenu = !this.ismenu;
   }
 
-  dashboardShow1(){
-    this.dashboardShow=!this.dashboardShow
+  showsub() {
+    this.ismenusub = !this.ismenusub;
   }
 
-  profileShow1(){
-    this.profileShow=!this.profileShow
+  dashboardShow1() {
+    this.dashboardShow = !this.dashboardShow;
+  }
+
+  profileShow1() {
+    this.profileShow = !this.profileShow;
   }
   // sidebar api
   sidebar() {
-    const data ={
-      user_id : sessionStorage.getItem('uid')
-    }
-    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
+    const data = {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('teacher_sidebar', data, 1).subscribe((res) => {
       this.sidebarData = res.body.result;
       //  console.log(this.sidebarData);
-    })
+    });
   }
-    // affiliation show result api
-    showAffiliationData() {
-      const data1 = {
-        // title_data:  this.service.globaleData,
-        title_data: JSON.parse(sessionStorage.getItem('my_data')),
-        type: "afiliation"
-      }
-      this.service.post('show_result', data1, 1).subscribe(res => {
-        this.affiliationData  = res.body.result.data;
-        this.totalQuestion = res.body.result.total_question
-        this.totalRightAnswer = res.body.result.total_right_answer
-      })
-    }
+  // affiliation show result api
+  showAffiliationData() {
+    const data1 = {
+      // title_data:  this.service.globaleData,
+      title_data: JSON.parse(sessionStorage.getItem('my_data')),
+      type: 'afiliation',
+    };
+    this.service.post('show_result', data1, 1).subscribe((res) => {
+      this.affiliationData = res.body.result.data;
+      this.totalQuestion = res.body.result.total_question;
+      this.totalRightAnswer = res.body.result.total_right_answer;
+    });
+  }
 
-    // retry functionality
-    retry(){
-      this.route.navigate(['/teacherDashboard/student-view'], { queryParams: { id: this.id } });
-    }
-    courseName() {
-      this.courseNameData = sessionStorage.getItem('course_name')
-    }
-    titleName(){
-      this.title = sessionStorage.getItem('title')
-    }
-      //sidebar accordion
-  toggleAccordian(event, index,name,id) {
-    this.coursesName = localStorage.setItem('coursename',name)
-   this.route.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+  // retry functionality
+  retry() {
+    this.route.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: this.id },
+    });
+  }
+  courseName() {
+    this.courseNameData = sessionStorage.getItem('course_name');
+  }
+  titleName() {
+    this.title = sessionStorage.getItem('title');
+  }
+  //sidebar accordion
+  toggleAccordian(event, index, name, id) {
+    this.coursesName = localStorage.setItem('coursename', name);
+    this.route.navigate(['/teacherDashboard/editCourse'], {
+      queryParams: { id: id },
+    });
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -171,7 +204,7 @@ export class AffiliationResultComponent implements OnInit {
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
+        const id = title[j].titleid;
         if (data === id) {
           const element = event.target;
           element.classList.toggle('active');
@@ -186,10 +219,13 @@ export class AffiliationResultComponent implements OnInit {
   }
   getChildSData(child) {
     sessionStorage.setItem('subId', child);
-    this.route.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.route.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
-  goToSolution(){
-    this.route.navigate(['/teacherDashboard/affiliationSolution'], { queryParams: { titleid: this.titleid } });
+  goToSolution() {
+    this.route.navigate(['/teacherDashboard/affiliationSolution'], {
+      queryParams: { titleid: this.titleid },
+    });
   }
 }
-

@@ -7,10 +7,12 @@ import { ServiceService } from '../service.service';
 @Component({
   selector: 'app-thank-you',
   templateUrl: './thank-you.component.html',
-  styleUrls: ['./thank-you.component.css']
+  styleUrls: ['./thank-you.component.css'],
 })
 export class ThankYouComponent implements OnInit {
   url: string;
+  mainpageLod: boolean = false;
+
   user: string;
   sidebarData: any;
   coursesName: void;
@@ -21,50 +23,57 @@ export class ThankYouComponent implements OnInit {
   courseName: string;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
-    if (this._frontService) { return this._frontService };
-    return this._frontService = this.injector.get(FrontService);
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
   }
-  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private injector: Injector) {
-    this.route.queryParams.subscribe(params => {
+  constructor(
+    private service: ServiceService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private injector: Injector
+  ) {
+    this.route.queryParams.subscribe((params) => {
       this.url = params['url'];
     });
   }
 
   ngOnInit(): void {
-
     this.submitEnroll();
     this.user = sessionStorage.getItem('username');
     this.courseName = localStorage.getItem('course_name');
-    this.studentSideBar()
+    this.studentSideBar();
   }
   logout() {
     sessionStorage.clear();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
     // this.signOut();
   }
   studentSideBar() {
-    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+    if (
+      this.frontServices != null &&
+      this.frontServices.vm != null &&
+      this.frontServices.vm.sidebarData != null &&
+      this.frontServices.vm.sidebarData.length == 0
+    ) {
       const data = {
-        user_id: sessionStorage.getItem('uid')
-      }
+        user_id: sessionStorage.getItem('uid'),
+      };
       setTimeout(() => {
-        this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.service.post('student_sidebar', data, 1).subscribe((res) => {
           this.sidebarData = res.body.result;
-        this.frontServices.vm.sidebarData  =this.sidebarData;
-
-        })
-
+          this.frontServices.vm.sidebarData = this.sidebarData;
+        });
       }, 100);
-    }
-    else{
+    } else {
       this.sidebarData = this.frontServices.vm.sidebarData;
-
     }
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
-    this.coursesName = sessionStorage.setItem('course_name', name)
-    this.coursesName = sessionStorage.setItem('course_id', id)
+    this.coursesName = sessionStorage.setItem('course_name', name);
+    this.coursesName = sessionStorage.setItem('course_id', id);
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -77,7 +86,7 @@ export class ThankYouComponent implements OnInit {
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
+        const id = title[j].titleid;
         if (data === id) {
           const element = event.target;
           element.classList.toggle('active');
@@ -92,32 +101,36 @@ export class ThankYouComponent implements OnInit {
   }
   getChildSData(child, id, name, rating) {
     sessionStorage.setItem('subId', child);
-    this.courseid = sessionStorage.setItem('course_id', id)
-    this.name = sessionStorage.setItem('teacher_name', name)
-    this.studentRating = sessionStorage.setItem('student_rating', rating)
-    sessionStorage.getItem('course_id')
-    sessionStorage.getItem('teacher_name')
-    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.courseid = sessionStorage.setItem('course_id', id);
+    this.name = sessionStorage.setItem('teacher_name', name);
+    this.studentRating = sessionStorage.setItem('student_rating', rating);
+    sessionStorage.getItem('course_id');
+    sessionStorage.getItem('teacher_name');
+    this.router.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
 
   getSubTitle(parent) {
     const data = {
-      "title_id": parent,
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('submenu-listing', data, 1).subscribe(res => {
-      this.subTitle = res.body.result
-    })
+      title_id: parent,
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('submenu-listing', data, 1).subscribe((res) => {
+      this.subTitle = res.body.result;
+    });
   }
   submitEnroll() {
     const data = {
-      "course_id": localStorage.getItem('enrollId'),
-      "user_id": sessionStorage.getItem('uid'),
-      order_id: this.url
-    }
-    this.service.post('course-enroll', data, 1).subscribe(res => {
-    }
-    )
+      course_id: localStorage.getItem('enrollId'),
+      user_id: sessionStorage.getItem('uid'),
+      order_id: this.url,
+    };
+    this.service.post('course-enroll', data, 1).subscribe((res) => {
+      if (res.body.message === 'success') {
+        this.frontServices.vm.sidebarData = null;
+        this.mainpageLod = false;
+      }
+    });
   }
-
 }

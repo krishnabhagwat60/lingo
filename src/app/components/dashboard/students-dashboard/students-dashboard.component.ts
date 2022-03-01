@@ -1,7 +1,8 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Injector, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 declare var $: any;
 declare var jQuery: any;
@@ -57,8 +58,15 @@ export class StudentsDashboardComponent implements OnInit {
   images: string;
   searchDataBtn: boolean = false;
   currentItem = 'Television';
-
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
+  }
   constructor(private service: ServiceService, private router: Router,
+    private injector: Injector,
     private authService: SocialAuthService) {
     this.images = localStorage.getItem('image')
   }
@@ -285,7 +293,7 @@ export class StudentsDashboardComponent implements OnInit {
     localStorage.setItem('enrollId', this.enroll)
     localStorage.setItem('course_name', data.title)
     if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
-      this.submitEnrolls(this.amount)
+     // this.submitEnrolls(this.amount)
       this.router.navigateByUrl('/thank-you?url=' + this.enroll);
     } else {
       this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.id } })
@@ -314,6 +322,7 @@ export class StudentsDashboardComponent implements OnInit {
         this.mainpageLod = false;
       }
       if (res.body.message === "success") {
+        this.frontServices.vm.sidebarData =null
         this.mainpageLod = false;
         $('#enroll').hide();
         setTimeout(() => {

@@ -47,8 +47,6 @@ export class SidebarComponent implements OnInit {
   }
   ngOnChanges() {}
   studentSideBar() {
-    debugger;
-    console.log('sidebar', this.frontServices.vm);
     if (
       this.frontServices != null &&
       this.frontServices.vm != null &&
@@ -62,7 +60,6 @@ export class SidebarComponent implements OnInit {
         this.sidebarData = res.body.result;
         if (this.sidebarData != null && this.sidebarData.length > 0) {
           var filteredData = this.unique(this.sidebarData, ['course_id']);
-          console.log('Unique Ids', filteredData);
           this.sidebarData=filteredData;
           this.frontServices.vm.sidebarData = this.sidebarData;
         }
