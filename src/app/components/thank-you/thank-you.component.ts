@@ -140,8 +140,8 @@ export class ThankYouComponent implements OnInit {
       }
     });
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 
 }
