@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 
 @Component({
   selector: 'app-thank-you',
@@ -22,6 +23,7 @@ export class ThankYouComponent implements OnInit {
   name: void;
   studentRating: void;
   courseName: string;
+  subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -29,16 +31,26 @@ export class ThankYouComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
-  subscription: Subscription;
+ 
   constructor(
     private service: ServiceService,
     private route: ActivatedRoute,
+    private eventEmitterService: EventEmitterService,
     private router: Router,
-    private injector: Injector
+    private injector: Injector,
+   
   ) {
     this.route.queryParams.subscribe((params) => {
       this.url = params['url'];
     });
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit(): void {
@@ -49,7 +61,7 @@ export class ThankYouComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
-    this.frontServices.vm.sidebarData =null;
+    this.frontServices.vm.sidebarData = null;
     this.router.navigate(['/login']);
     // this.signOut();
   }
@@ -133,15 +145,15 @@ export class ThankYouComponent implements OnInit {
     };
     this.service.post('course-enroll', data, 1).subscribe((res) => {
       if (res.body.message === 'success') {
-        this.frontServices.vm.sidebarData = null;
-        // this.frontServices.event.emit(1);
-        this.frontServices.contactsArrived(1);
+        this.eventEmitterService.onMenuChanged();
+        this.frontServices.vm.courseChanged = true;
         this.mainpageLod = false;
       }
     });
   }
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
-
+  ngOnDestroy() {
+    if (this.subscription !== undefined) {
+      this.subscription.unsubscribe();
+    }
+  }
 }

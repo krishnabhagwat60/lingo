@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 import { StudentDashboardComponent } from '../student-dashboard/student-dashboard.component';
@@ -38,23 +39,34 @@ export class SidebarComponent implements OnInit {
   constructor(
     private service: ServiceService,
     private router: Router,
-    private injector: Injector
+    private eventEmitterService: EventEmitterService,
+    private injector: Injector,
+    
+   
   ) {
     // this.frontServices.event.subscribe((res) => {
     //   if (res > 0) {
     //       this.studentSideBar();
     //   }
     // });
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit(): void {
     this.studentSideBar();
     // alert(this.itemShow);
-    this.subscription = this.frontServices.contactArrived$.subscribe((data) => {
-      if (data == 1) {
-        this.studentSideBar();
-      }
-    });
+    // this.subscription = this.frontServices.contactArrived$.subscribe((data) => {
+    //   if (data == 1) {
+    //     this.studentSideBar();
+    //   }
+    // });
   }
   ngAfterViewInit() {
     this.studentSideBar();
@@ -65,12 +77,7 @@ export class SidebarComponent implements OnInit {
   studentSideBar() {
     console.log('sidebar view', this.frontServices.vm);
 
-    if (
-      this.frontServices == null ||
-      this.frontServices.vm == null ||
-      this.frontServices.vm.sidebarData == null ||
-      this.frontServices.vm.sidebarData.length == 0
-    ) {
+  
       const data = {
         user_id: sessionStorage.getItem('uid'),
       };
@@ -83,10 +90,7 @@ export class SidebarComponent implements OnInit {
         }
         this.isCoursesRender = 1;
       });
-    } else {
-      this.sidebarData = this.frontServices.vm.sidebarData;
-      this.isCoursesRender = 1;
-    }
+    
   }
   unique(arr, keyProps) {
     return Object.values(

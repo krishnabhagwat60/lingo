@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import {Location} from '@angular/common';
 import { FrontService } from 'src/app/services/front.service';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-image-drag-result',
@@ -29,6 +31,7 @@ export class ImageDragResultComponent implements OnInit {
   sidebarData2: any;
   coursesName: void;
   titleid: string;
+  subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -37,12 +40,20 @@ export class ImageDragResultComponent implements OnInit {
     return (this._frontService = this.injector.get(FrontService));
   }
 
-  constructor(private service: ServiceService,private router: ActivatedRoute,private route: Router,private _location: Location,  private injector: Injector) { 
+  constructor(private service: ServiceService, private eventEmitterService: EventEmitterService,private router: ActivatedRoute,private route: Router,private _location: Location,  private injector: Injector) { 
     this.router.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
       this.titleid = queryParams.get("titleid")
     })
     this.courseNameData= sessionStorage.getItem('course_name')
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit( ): void {

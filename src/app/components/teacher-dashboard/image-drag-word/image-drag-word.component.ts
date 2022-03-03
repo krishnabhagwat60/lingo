@@ -1,5 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
@@ -24,6 +26,7 @@ export class ImageDragWordComponent implements OnInit {
   courses: boolean = false;
   sidebarData2: any;
   coursesName: void;
+  subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -32,11 +35,19 @@ export class ImageDragWordComponent implements OnInit {
     return (this._frontService = this.injector.get(FrontService));
   }
 
-  constructor(private service: ServiceService,private route: ActivatedRoute,private router: Router,  private injector: Injector) { 
+  constructor(private service: ServiceService,private eventEmitterService: EventEmitterService,private route: ActivatedRoute,private router: Router,  private injector: Injector) { 
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
     })
     this.courseNameData= sessionStorage.getItem('course_name')
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit(): void {
