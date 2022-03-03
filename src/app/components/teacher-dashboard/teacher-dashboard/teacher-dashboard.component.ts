@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
@@ -6,6 +6,7 @@ import { ServiceService } from '../../service.service';
 declare var $: any;
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { NgxCSVParserError } from 'ngx-csv-parser';
+import { FrontService } from 'src/app/services/front.service';
 
 @Component({
   selector: 'app-teacher-dashboard',
@@ -48,8 +49,15 @@ export class TeacherDashboardComponent implements OnInit {
   inviteId: any;
   courseName: any;
   image: string;
-
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
+  }
   constructor(private service: ServiceService, private router: Router,
+    private injector: Injector,
     private authService: SocialAuthService, private ngxCsvParser: NgxCsvParser) {
     this.image = localStorage.getItem('image')
   }
@@ -61,6 +69,8 @@ export class TeacherDashboardComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.frontServices.vm.sidebarData =null;
+
     this.router.navigate(['/login'])
     this.signOut()
   }

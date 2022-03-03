@@ -37,11 +37,15 @@ export class CancelPaymentComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    this.frontServices.vm.sidebarData =null;
+    
     this.router.navigate(['/login'])
     // this.signOut();
   }
   studentSideBar() {
-    if (this.frontServices != null && this.frontServices.vm != null && this.frontServices.vm.sidebarData != null && this.frontServices.vm.sidebarData.length == 0) {
+    console.log('cancel payment view', this.frontServices.vm);
+
+    if (this.frontServices != null && this.frontServices.vm == null && this.frontServices.vm.sidebarData == null && this.frontServices.vm.sidebarData.length == 0) {
 
       const data = {
         user_id: sessionStorage.getItem('uid')

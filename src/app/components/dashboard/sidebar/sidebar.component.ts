@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 import { StudentDashboardComponent } from '../student-dashboard/student-dashboard.component';
@@ -23,6 +24,7 @@ export class SidebarComponent implements OnInit {
   courseid: void;
   name: void;
   studentRating: void;
+  isCoursesRender: number = 0;
   //@ViewChild(StudentDashboardComponent) itemShow;
   //@Input()  = '';
   private _frontService: FrontService;
@@ -32,25 +34,41 @@ export class SidebarComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
+  subscription: Subscription;
   constructor(
     private service: ServiceService,
     private router: Router,
     private injector: Injector
-  ) {}
+  ) {
+    // this.frontServices.event.subscribe((res) => {
+    //   if (res > 0) {
+    //       this.studentSideBar();
+    //   }
+    // });
+  }
 
   ngOnInit(): void {
     this.studentSideBar();
     // alert(this.itemShow);
+    this.subscription = this.frontServices.contactArrived$.subscribe((data) => {
+      if (data == 1) {
+        this.studentSideBar();
+      }
+    });
   }
   ngAfterViewInit() {
     this.studentSideBar();
   }
-  ngOnChanges() {}
+  ngOnChanges() {
+    debugger;
+  }
   studentSideBar() {
+    console.log('sidebar view', this.frontServices.vm);
+
     if (
-      this.frontServices != null &&
-      this.frontServices.vm != null &&
-      this.frontServices.vm.sidebarData != null &&
+      this.frontServices == null ||
+      this.frontServices.vm == null ||
+      this.frontServices.vm.sidebarData == null ||
       this.frontServices.vm.sidebarData.length == 0
     ) {
       const data = {
@@ -60,12 +78,14 @@ export class SidebarComponent implements OnInit {
         this.sidebarData = res.body.result;
         if (this.sidebarData != null && this.sidebarData.length > 0) {
           var filteredData = this.unique(this.sidebarData, ['course_id']);
-          this.sidebarData=filteredData;
+          this.sidebarData = filteredData;
           this.frontServices.vm.sidebarData = this.sidebarData;
         }
+        this.isCoursesRender = 1;
       });
     } else {
       this.sidebarData = this.frontServices.vm.sidebarData;
+      this.isCoursesRender = 1;
     }
   }
   unique(arr, keyProps) {

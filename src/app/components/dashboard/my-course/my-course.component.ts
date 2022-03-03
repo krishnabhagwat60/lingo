@@ -51,10 +51,13 @@ export class MyCourseComponent implements OnInit {
   }
   logout(){
 sessionStorage.clear();
+this.frontServices.vm.sidebarData =null;
+
     this.signOut();
     this.router.navigate(['/login'])
   }
   signOut(): void {
+
     this.authService.signOut();
   }
   //  get course data
