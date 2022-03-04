@@ -15,6 +15,7 @@ import { Location } from '@angular/common';
 import { SocialAuthService } from 'angularx-social-login';
 import { FrontService } from 'src/app/services/front.service';
 import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 
 @Component({
   selector: 'app-student-view',
@@ -112,6 +113,7 @@ export class StudentViewComponent implements OnInit {
   studentRating: void;
   image: any;
   images: string;
+  subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -119,7 +121,7 @@ export class StudentViewComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
-  subscription: Subscription;
+  
   constructor(
     private router: Router,
     private service: ServiceService,
@@ -128,12 +130,22 @@ export class StudentViewComponent implements OnInit {
     private _location: Location,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    private eventEmitterService: EventEmitterService,
   ) {
     this.route.queryParamMap.subscribe((queryParams) => {
       this.id = queryParams.get('id');
     });
     this.images = localStorage.getItem('image');
+    	
+ if (this.subscription == undefined) {
+  this.subscription = this.eventEmitterService.
+    invokeMenuList.subscribe(() => {
+      debugger
+      this.frontServices.vm.courseChanged = false;
+      this.studentSideBar();
+    });
+}
   }
 
   ngOnInit(): void {

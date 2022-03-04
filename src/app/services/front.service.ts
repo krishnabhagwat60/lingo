@@ -10,6 +10,7 @@ export class FrontService {
   vm = {
     clientModel: {},
     categoryModel: [],
+    courseChanged: false,
     itemModel: [],
     selectedCategoryId: 0,
     sidebarData: [],

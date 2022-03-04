@@ -1,5 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
@@ -19,6 +21,7 @@ export class TextDragSolutionComponent implements OnInit {
   ismenusub: boolean = false;
   ismenu: boolean = false;
   ismenuShow: boolean = false;
+  subscription: Subscription;
   subTitle: any;
   authenticate: string;
   courses: boolean = false;
@@ -30,7 +33,16 @@ export class TextDragSolutionComponent implements OnInit {
     return (this._frontService = this.injector.get(FrontService));
   }
 
-  constructor(private service: ServiceService,private router: Router,  private injector: Injector) { }
+  constructor(private service: ServiceService,  private eventEmitterService: EventEmitterService,private router: Router,  private injector: Injector) { 
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
+  }
 
   ngOnInit(): void {
     this.sidebar();

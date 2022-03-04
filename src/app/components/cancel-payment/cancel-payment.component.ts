@@ -1,6 +1,8 @@
 import { getUrlScheme } from '@angular/compiler';
 import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
 @Component({
@@ -18,15 +20,26 @@ export class CancelPaymentComponent implements OnInit {
   name: void;
   studentRating: void;
   courseName: string;
+  subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) { return this._frontService };
     return this._frontService = this.injector.get(FrontService);
   }
-  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private injector: Injector) {
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router,
+    private eventEmitterService: EventEmitterService,
+     private injector: Injector) {
     this.route.queryParams.subscribe(params => {
       this.url = params['url'];
     });
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit(): void {
@@ -45,7 +58,7 @@ export class CancelPaymentComponent implements OnInit {
   studentSideBar() {
     console.log('cancel payment view', this.frontServices.vm);
 
-    if (this.frontServices != null && this.frontServices.vm == null && this.frontServices.vm.sidebarData == null && this.frontServices.vm.sidebarData.length == 0) {
+    // if (this.frontServices != null && this.frontServices.vm == null && this.frontServices.vm.sidebarData == null && this.frontServices.vm.sidebarData.length == 0) {
 
       const data = {
         user_id: sessionStorage.getItem('uid')
@@ -58,9 +71,9 @@ export class CancelPaymentComponent implements OnInit {
           this.frontServices.vm.sidebarData = this.sidebarData;
         }
       })
-    } else {
-      this.sidebarData = this.frontServices.vm.sidebarData;
-    }
+    // } else {
+    //   this.sidebarData = this.frontServices.vm.sidebarData;
+    // }
   }
   unique(arr, keyProps) {
     return Object.values(
