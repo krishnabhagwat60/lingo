@@ -348,7 +348,7 @@
                                             <br />
                                             <br />
                                             <div class="file-zoom-option">
-                                                <input [(ngModel)]="rotation" placeholder="Rotation" type="number"
+                                                <input [(ngModel)]="rotation" [ngModelOptions]="{standalone: true}" placeholder="Rotation" type="number"
                                                     (keyup)="updateRotation()" />
                                                 <button (click)="zoomOut()"><i class="fa fa-minus"
                                                         aria-hidden="true"></i></button>
@@ -396,7 +396,7 @@
 
                         </div>
                         <div class="save-btn" *ngIf="!passwordShow">
-                            <button (click)="studentImage()" type="button" id="save">Update Image</button>
+                            <button (click)="teacherImage()" type="button" id="save">Update Image</button>
                             <button type="button" id="reset" (click)="reseted()">Reset</button>
                         </div>
                         <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->
@@ -466,6 +466,7 @@
                                 </div>
                                 <p *ngIf="errMsg" style="color: red; text-align: center;"><b>{{errMsg}}</b></p>
                                 <p *ngIf="ErrMsg" style="color:#0a576c;text-align: center;"><b>{{ErrMsg}}</b></p>
+                                <p *ngIf="msg" style="color: #0a576c ;text-align: center;"><b>{{msg}}</b></p>
 
                                 <div class="save-btn">
                                     <button type="button" id="save" (click)="changePassword()">Save</button>
@@ -501,7 +502,7 @@
                 <br />
                 <br />
                 <div class="file-zoom-option">
-                    <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (keyup)="updateRotation()" />
+                    <input [(ngModel)]="rotation" [ngModelOptions]="{standalone: true}" placeholder="Rotation" type="number" (keyup)="updateRotation()" />
                     <button (click)="zoomOut()"><i class="fa fa-minus" aria-hidden="true"></i></button>
                     <button (click)="zoomIn()"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div>

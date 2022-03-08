@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   }
   updateNewDataImage :any;
   constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService,private injector: Injector) {
-    this.image = localStorage.getItem('image')
+     this.image = localStorage.getItem('image')
    }
 
   ngOnInit(): void {

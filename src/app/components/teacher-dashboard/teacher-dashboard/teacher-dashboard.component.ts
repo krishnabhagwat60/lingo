@@ -52,7 +52,7 @@ export class TeacherDashboardComponent implements OnInit {
   image: string;
   isEmailDiasable = false;
   isBulkuploaded = false;
-  studentInvitationFile: File[] = [];
+   studentInvitationFile: File[] = [];
   // email = (<HTMLInputElement>document.getElementById("email")).value;
   // bulk = (<HTMLInputElement>document.getElementById("bulk")).value;
   private _frontService: FrontService;
@@ -252,10 +252,20 @@ export class TeacherDashboardComponent implements OnInit {
     }
   }
 
-  removeFile(event: any) {
-    this.inviteForm.controls.bulk.setValue('')
-    this.isEmailDiasable = false; this.inviteName = '';
+  // removeFile(event: any) {
+  //   this.inviteForm.controls.bulk.setValue('')
+  //   this.isEmailDiasable = false; this.inviteName = '';
+  // }
+
+
+
+   removeFile(obj: any) {
+     debugger
+      this.studentInvitationFile.forEach((value,index)=>{
+          if(value==obj) this.studentInvitationFile.splice(index,1);
+      });
   }
+  
 
   emailData() {
     debugger
@@ -276,6 +286,7 @@ export class TeacherDashboardComponent implements OnInit {
   // invite api
   get f() { return this.inviteFormData.controls; }
   inviteApi() {
+    debugger
     var data = {}
     if (!this.audSrc) {
       const dataInvite = this.inviteFormData.getRawValue();

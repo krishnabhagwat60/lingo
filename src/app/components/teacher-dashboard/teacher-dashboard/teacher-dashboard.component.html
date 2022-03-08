@@ -304,8 +304,8 @@
 
               <div class="filename" style="width: 100%;">
 
-                <input type="" style="width: 446px;" multiple formControlName="bulk" [class.disabled]="isBulkuploaded" name="bulk" id="bulk"
-                  placeholder={{inviteName}}>
+                <input type="" style="width: 446px;" multiple formControlName="bulk" [class.disabled]="isBulkuploaded"
+                  name="bulk" id="bulk" placeholder={{inviteName}}>
               </div>
               <div class="custom-file">
                 <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px;"></a>Browse</label>
@@ -316,17 +316,21 @@
 
             </div>
             <br />
-            <div *ngIf="isEmailDiasable" class="alert alert-secondary" style="
-            height: 52px;  width: 555px;
-        " role="alert">Selected file : {{inviteName}}}
-              <br />
+            <div *ngFor="let obj of studentInvitationFile ">
+              <div *ngIf="isEmailDiasable" class="alert alert-secondary" style="
+            height: 52px;  width: 555px;" role="alert">
 
-              
-              <div>
-                <button (click)="removeFile($event)">
-                  <span class="fa fa-times cross" >
-                  </span>
-                </button>
+                Selected file : {{obj.name}}
+                <br />
+
+
+                <div>
+                  <button (click)="removeFile(obj)">
+                    <span class="fa fa-times cross">
+                    </span>
+                  </button>
+                </div>
+
               </div>
             </div>
 

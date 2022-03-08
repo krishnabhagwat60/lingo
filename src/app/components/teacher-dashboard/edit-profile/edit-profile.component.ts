@@ -71,6 +71,7 @@ export class EditProfileComponent implements OnInit {
   imageUpdate: any;
   taged: any;
   newTag: any;
+  msg: string;
   tagedd: any;
   subTitle: any;
   mainpageLoder: boolean = false;
@@ -169,6 +170,31 @@ export class EditProfileComponent implements OnInit {
       //  console.log(this.sidebarData);
     })
   }
+
+// Image Update
+
+
+
+teacherImage(){
+  debugger
+  const data = {
+    user_id: sessionStorage.getItem('uid'),
+    avatar: this.updateNewDataImage
+  }
+  this.service.post('profile-update', data, 1).subscribe(res => {
+    debugger
+    if (res.body.result === 'success') {
+      this.mainpageLoder = false;
+      this.msg = 'Profile Updated Successfully'
+      this.updateData();
+      window.location.reload();
+      this.submitted = false;
+    }
+  }
+  )
+}
+
+
 
   // view page
   view(id) {
