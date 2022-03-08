@@ -65,3 +65,11 @@
     padding-left: 25px;
     border: 2px solid #efeef4;
 }
+.cross{
+    right: -5px;
+    position: absolute;
+    top: 46px;
+    background: red;
+}
+
+
