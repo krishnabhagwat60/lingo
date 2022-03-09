@@ -223,6 +223,16 @@
                       invite Students
                     </button>
                     <button
+                      *ngIf="data.course_type == 'public'"
+                      type="button"
+                      id="disabledbutton"
+                      title="Course is public"
+                      data-target="#invite"
+                      data-toggle="modal"
+                      disabled="disabled">
+                      invite Students
+                    </button>
+                    <button
                       type="button"
                       id="view-student-btn"
                       (click)="viewStudent(data.id)"

@@ -65,3 +65,18 @@
     padding-left: 25px;
     border: 2px solid #efeef4;
 }
+
+#disabledbutton {
+    width: 160px;
+    border-radius: 30px;
+    background-color: #cbcecf;
+    border: 1px solid #9dd0e7;
+    text-align: center;
+    height: 30px;
+    margin-top: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #000000;
+    font-family: 'poppins Medium';
+    font-weight: 700;
+}
