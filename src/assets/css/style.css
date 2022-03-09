@@ -7478,8 +7478,7 @@ input:checked+.slider:before {
 }
 
 .main-height {
-    height: 804px;
-    overflow: auto !important;
+    height: 100%;
 }
 
 

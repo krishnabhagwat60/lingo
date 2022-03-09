@@ -52,7 +52,7 @@ export class TeacherDashboardComponent implements OnInit {
   image: string;
   isEmailDiasable = false;
   isBulkuploaded = false;
-   studentInvitationFile: File[] = [];
+  studentInvitationFile: File[] = [];
   // email = (<HTMLInputElement>document.getElementById("email")).value;
   // bulk = (<HTMLInputElement>document.getElementById("bulk")).value;
   private _frontService: FrontService;
@@ -181,6 +181,7 @@ export class TeacherDashboardComponent implements OnInit {
       this.getTeacherCourse(1, 0);
     })
   }
+  public records: any[] = [];
   AccordionInitialForms(index) {
 
     this.addNewServiceData()
@@ -213,15 +214,17 @@ export class TeacherDashboardComponent implements OnInit {
 
     this.inviteFormData.push(searchForm);
 
-    this.inviteFormData.controls['email'].valueChanges.subscribe(value => {
-      debugger;
-      if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
-        this.isBulkuploaded = true;
+    if (this.inviteFormData.controls['email'] !== undefined) {
+      this.inviteFormData.controls['email'].valueChanges.subscribe(value => {
+        debugger;
+        if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
+          this.isBulkuploaded = true;
 
-      } else {
-        this.isBulkuploaded = false
-      }
-    });
+        } else {
+          this.isBulkuploaded = false
+        }
+      });
+    }
   }
 
   deleteServiceFieldData(formIndex) {
@@ -230,7 +233,24 @@ export class TeacherDashboardComponent implements OnInit {
 
   audFileSelected(event: any) {
     debugger
+    
     const fileCheck = event.target.files[0];
+
+    if (event.target.files[0]) {
+      let file: File = event.target.files[0];
+      console.log(file.name);
+      console.log(file.size);
+      console.log(file.type);
+      let reader: FileReader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = (e) => {
+        let csv: string = reader.result as string;
+        let csvRecordsArray = csv.split(/\r\n|\n/);  
+  
+        this.records= this.getHeaderArray(csvRecordsArray);  
+      }
+    }
+
     for (let index = 0; index < event.target.files.length; index++) {
       this.inviteName = (event.target.files[index].name);
       const file = event.target.files[index];
@@ -242,7 +262,7 @@ export class TeacherDashboardComponent implements OnInit {
           //  (this.addImageData as FormGroup).get('audio').patchValue('');
         }, (error: NgxCSVParserError) => {
         });
-
+this.studentInvitationFile = [];
       this.studentInvitationFile.push(file);
     }
     if (fileCheck && fileCheck != undefined && fileCheck != null) {
@@ -252,20 +272,42 @@ export class TeacherDashboardComponent implements OnInit {
     }
   }
 
+  getHeaderArray(csvRecordsArr: any) {  
+    let headers = (<string>csvRecordsArr[0]).split(',');  
+    let headerArray = [];  
+    for (let j = 0; j < headers.length; j++) {  
+      headerArray.push(headers[j]);  
+    }  
+    return headerArray;  
+  }  
+  
+  
+
   // removeFile(event: any) {
   //   this.inviteForm.controls.bulk.setValue('')
   //   this.isEmailDiasable = false; this.inviteName = '';
   // }
-
-
-
-   removeFile(obj: any) {
-     debugger
-      this.studentInvitationFile.forEach((value,index)=>{
-          if(value==obj) this.studentInvitationFile.splice(index,1);
-      });
-  }
+ 
+  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {  
+    let csvArr = [];  
   
+    for (let i = 1; i < csvRecordsArray.length; i++) {  
+      let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
+      if (curruntRecord.length == headerLength) {  
+        csvArr.push(curruntRecord);  
+      }  
+    }  
+    return csvArr;  
+  }  
+
+
+  removeFile(obj: any) {
+    debugger
+    this.studentInvitationFile.forEach((value, index) => {
+      if (value == obj) this.studentInvitationFile.splice(index, 1);
+    });
+  }
+
 
   emailData() {
     debugger
@@ -298,9 +340,14 @@ export class TeacherDashboardComponent implements OnInit {
     } else {
       const dataInvite = []
       this.audSrc.forEach(element => {
-        dataInvite.push({
-          email: element[0]
-        })
+        if(this.records!=null && this.records.length>0){
+          this.records.forEach(el=>{
+            dataInvite.push({
+              email: el
+            })
+          })
+        }
+        
       });
       data = {
         email: dataInvite,
@@ -308,6 +355,7 @@ export class TeacherDashboardComponent implements OnInit {
         course_id: this.inviteId
       }
     }
+    debugger;
     this.service.post('invite-student', data, 1).subscribe(res => {
       if (res.body.result.message == 'Sent Successfully') {
         this.msgShow = 'Successfully Sent.'

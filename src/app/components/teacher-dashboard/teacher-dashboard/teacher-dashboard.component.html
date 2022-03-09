@@ -304,12 +304,12 @@
 
               <div class="filename" style="width: 100%;">
 
-                <input type="" style="width: 446px;" multiple formControlName="bulk" [class.disabled]="isBulkuploaded"
+                <input type="" style="width: 446px;"  formControlName="bulk" [class.disabled]="isBulkuploaded"
                   name="bulk" id="bulk" placeholder={{inviteName}}>
               </div>
               <div class="custom-file">
                 <label for="fileupload"><a class="fa fa-music" style="margin-right: 10px;"></a>Browse</label>
-                <input type="file" id="fileupload" accept=".csv" multiple formControlName="bulk"
+                <input type="file" id="fileupload" accept=".csv"  formControlName="bulk"
                   (change)="audFileSelected($event)">
 
               </div>
