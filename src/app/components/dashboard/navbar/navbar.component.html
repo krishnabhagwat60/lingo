@@ -18,8 +18,8 @@
                 </li>
                 <li>
                     <a  class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span *ngIf="!image" class="user-avatar"><img  src="assets/images/student-icon.png"></span>
-                        <span *ngIf="image" class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span>
+                        <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets/images/student-icon.png"></span>
+                        <span *ngIf="updateNewDataImage" class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span>
                     </a>
                 </li>
                 <li>

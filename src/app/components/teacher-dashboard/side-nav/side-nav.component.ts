@@ -25,10 +25,11 @@ export class SideNavComponent implements OnInit {
     private injector: Injector,
     private service: ServiceService,
     ) {
-    this.image = localStorage.getItem('image')
+    this.image = localStorage.getItem('images')
   }
 
   ngOnInit(): void {
+    console.log("Images",this.image);
     this.username();
     this.walletData();
     this.profile();

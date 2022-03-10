@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log("images",this.image)
     this.usernameData();
     this.walletData();
     this.usernameData();
