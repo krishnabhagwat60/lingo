@@ -14,6 +14,8 @@ declare var jQuery: any;
 export class StudentsDashboardComponent implements OnInit {
   @ViewChild('closeBtnText') closeBtnText
   @ViewChild('closeModal') private closeModal: ElementRef;
+  @Output() addsidebar = new EventEmitter<any>();
+ 
   term: string;
   courseDetail = [];
   feedbackData: any;
@@ -57,6 +59,7 @@ export class StudentsDashboardComponent implements OnInit {
   paymentUrl: string;
   images: string;
   searchDataBtn: boolean = false;
+
   currentItem = 'Television';
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -296,12 +299,26 @@ export class StudentsDashboardComponent implements OnInit {
     localStorage.setItem('course_name', data.title)
     if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
      // this.submitEnrolls(this.amount)
-      this.router.navigateByUrl('/thank-you?url=' + this.enroll);
+      this.router.navigateByUrl('/thank-you?url=' + this.enroll) .then(() => {
+        this.refresh();
+      
+      });
+
+      // this.addsidebar.emit({course_name : data.title, enrollId :this.enroll});
     } else {
       this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.id } })
     }
     
   }
+  refresh()
+  {
+    setTimeout(()=>{                          
+   window.location.reload();
+  }, 2000);
+  }
+ 
+  
+  
 
   submitEnroll() {
     $('#enroll').hide();

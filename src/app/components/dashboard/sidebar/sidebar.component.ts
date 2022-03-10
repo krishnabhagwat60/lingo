@@ -49,14 +49,14 @@ export class SidebarComponent implements OnInit {
     //       this.studentSideBar();
     //   }
     // });
-    if (this.subscription == undefined) {
-      this.subscription = this.eventEmitterService.
-        invokeMenuList.subscribe(() => {
-          debugger
-          this.frontServices.vm.courseChanged = false;
-          this.studentSideBar();
-        });
-    }
+    // if (this.subscription == undefined) {
+    //   this.subscription = this.eventEmitterService.
+    //     invokeMenuList.subscribe(() => {
+    //       debugger
+    //       this.frontServices.vm.courseChanged = false;
+    //       this.studentSideBar();
+    //     });
+    // }
   }
 
   ngOnInit(): void {
@@ -92,6 +92,11 @@ export class SidebarComponent implements OnInit {
       });
     
   }
+  // sidebarChange(event : any)
+  // {
+  //   debugger
+  //     this.sidebarData =event;
+  // }
   unique(arr, keyProps) {
     return Object.values(
       arr.reduce((uniqueMap, entry) => {

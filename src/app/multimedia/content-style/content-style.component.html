@@ -67,7 +67,7 @@
                             <button type="button" id="bck-btn" (click)="gotoBack()"
                                 *ngIf="backBtns == true">Back</button>
                             <button type="button" id="student-view-btn"
-                                routerLink="/teacherDashboard/student-view">Student
+                            (click)="studentView()">Student
                                 View</button>
                             <button type="button" id="save-btn" (click)="backToDashboard()">Save</button>
                         </div>

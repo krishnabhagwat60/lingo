@@ -417,6 +417,7 @@ export class ContentStyleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.removeItem('studentView');
     // if (sessionStorage.getItem('subId')) {
     //   this.subCatSelected = true;
     // }
@@ -429,8 +430,10 @@ export class ContentStyleComponent implements OnInit {
     this.courseDetail();
     this.username();
     this.AccordionInitialForms();
-    this.affiliationLists();
     this.setTitleName();
+    this.affiliationList();
+    
+    
     // this.getImageBox();
     // this.getAudioBox();
     if (sessionStorage.getItem('course_id')) {
@@ -816,6 +819,7 @@ export class ContentStyleComponent implements OnInit {
   // subtitle api
   getSubTitle(parent) {
     // this.getTitles(parent);
+    sessionStorage.setItem('selectedsubTitle',parent);
     this.topButton = true;
     const data = {
       title_id: parent,
@@ -823,6 +827,10 @@ export class ContentStyleComponent implements OnInit {
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
       this.subTitle = res.body.result;
+      debugger
+      if (sessionStorage.getItem('subId')) {
+        this.titleForm.controls.subTitle.setValue(sessionStorage.getItem('subId'));
+      }
       // sessionStorage.setItem('title',data)
       // this.titless = sessionStorage.getItem('title')
     });
@@ -838,13 +846,22 @@ export class ContentStyleComponent implements OnInit {
     });
   }
   getChildData(child) {
+    debugger
     this.titles = false;
     sessionStorage.setItem('subId', child);
     this.subCatSelected = true;
     this.affiliationList();
   }
-
+  ngOnDestroy(): void {
+    if(sessionStorage.getItem("studentView")==null)
+    {
+      sessionStorage.removeItem('selectedsubTitle');
+      sessionStorage.removeItem('subId');
+    }
+    //sessionStorage.clear();
+  }
   studentView() {
+    sessionStorage.setItem("studentView","true");
     this.router.navigate(['/teacherDashboard/student-view'], {
       queryParams: { id: sessionStorage.getItem('subId') },
     });
@@ -1560,8 +1577,13 @@ export class ContentStyleComponent implements OnInit {
     subTitle: new FormControl(''),
   });
   setTitleName() {
-    this.titleForm.controls.title.setValue(localStorage.getItem('courseName'));
-    this.titleForm.controls.subTitle.setValue(localStorage.getItem('subtitle'));
+    // this.titleForm.controls.title.setValue(localStorage.getItem('courseName'));
+    // this.titleForm.controls.subTitle.setValue(localStorage.getItem('subtitle'));
+    if (sessionStorage.getItem('selectedsubTitle')) {
+      this.titleForm.controls.title.setValue(sessionStorage.getItem('selectedsubTitle'));
+      this.getSubTitle(sessionStorage.getItem('selectedsubTitle'));
+    }
+   
   }
   // open pdf in new tab
   pdfDatas(e) {
