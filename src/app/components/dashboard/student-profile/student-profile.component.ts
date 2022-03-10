@@ -165,6 +165,7 @@ export class StudentProfileComponent implements OnInit {
     )
   }
   studentImage(){
+    debugger
     const data = {
       user_id: sessionStorage.getItem('uid'),
       avatar: this.updateNewDataImage
@@ -182,6 +183,7 @@ export class StudentProfileComponent implements OnInit {
     )
   }
   reset() {
+    debugger
     this.updateNewDataImage="";
     this.profileForm.reset();
   }

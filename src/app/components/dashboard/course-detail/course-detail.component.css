@@ -41,7 +41,7 @@
 }
 
 .row-accordian .faq-box .card-block {
-    width: 100%;
+    width: 50%;
     background-color: #fff;
     border: 2px solid #d2dfe2;
     padding: 10px 15px;
@@ -55,7 +55,7 @@
 .row-accordian .faq-box .faq-wrap2 .card-header {
     margin-bottom: 5px;
     border: 2px solid #d2dfe2;
-    width: 100%;
+    width: 50%;
 }
 
 .row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {
