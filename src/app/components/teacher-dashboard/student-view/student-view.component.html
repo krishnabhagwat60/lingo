@@ -1,4 +1,5 @@
-<div id="dasboard-header" style="padding-bottom: 0;">
+<app-side-nav></app-side-nav>
+<!-- <div id="dasboard-header" style="padding-bottom: 0;">
     <div class="header-menu">
         <div class="col-md-2 dashboard-logo">
             <a><img src="assets/images/logo.png" alt="Logo"></a>
@@ -29,7 +30,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 <app-task-editor *ngIf="!courses"></app-task-editor>
 <aside id="left-panel" class="left-panel" *ngIf="courses">
     <nav class="navbar-expand-sm navbar-default">
