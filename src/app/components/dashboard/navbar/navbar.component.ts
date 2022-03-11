@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
@@ -14,14 +16,23 @@ export class NavbarComponent implements OnInit {
   wallet: string;
    term:string
   image: string;
+  subscription: Subscription;
+
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) { return this._frontService };
     return this._frontService = this.injector.get(FrontService);
   }
   updateNewDataImage :any;
-  constructor(private service: ServiceService,private router: Router,private authService: SocialAuthService,private injector: Injector) {
+  constructor(private service: ServiceService,private router: Router,     private eventEmitterService: EventEmitterService,private authService: SocialAuthService,private injector: Injector) {
      this.image = localStorage.getItem('image')
+     if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeProfileChange .subscribe(() => {
+          debugger
+          this.profile();
+        });
+    }
    }
 
   ngOnInit(): void {
@@ -29,7 +40,7 @@ export class NavbarComponent implements OnInit {
     this.usernameData();
     this.walletData();
     this.usernameData();
-    this.profile();
+    this.profile(); 
   }
   profile(){
     const data = {

@@ -8,6 +8,7 @@ export class EventEmitterService {
   invokeFirstComponentFunction = new EventEmitter();
   invokeMenuList = new EventEmitter();
   loadedCategoryList = new EventEmitter();
+  invokeProfileChange = new EventEmitter();
 
   categoryMover = new EventEmitter();
   subsVar: Subscription;
@@ -22,6 +23,9 @@ export class EventEmitterService {
 
   onMenuChanged() {
     this.invokeMenuList.emit();
+  }
+  onProfileChanged() {
+    this.invokeProfileChange.emit();
   }
   
   onCategoryLoaded() {

@@ -1,6 +1,6 @@
 <app-side-nav></app-side-nav>
- 
- <!-- <div id="dasboard-header" style="padding-bottom: 0">
+
+<!-- <div id="dasboard-header" style="padding-bottom: 0">
     <div class="header-menu">
         <div class="col-md-2 dashboard-logo">
             <a routerLink="/teacherDashboard/teachersDashboard"><img src="assets/images/logo.png" alt="Logo" /></a>
@@ -40,336 +40,259 @@
 </div>   -->
 <app-task-editor></app-task-editor>
 <div id="right-panel" class="right-panel">
-    <div class="breadcrumbs">
-        <div class="col-sm-6">
-            <div class="page-header">
-                <div class="page-title-left">
-                    <img src="assets/images/teacher/teacher-icon.png" />
-                    <h2>Teacher Account</h2>
-                </div>
-            </div>
+  <div class="breadcrumbs">
+    <div class="col-sm-6">
+      <div class="page-header">
+        <div class="page-title-left">
+          <img src="assets/images/teacher/teacher-icon.png" />
+          <h2>Teacher Account</h2>
         </div>
-        <div class="col-sm-6">
-            <div class="page-header">
-                <div class="page-title-right">
-                    <h2>
-                        Welcome Back <span>{{ user | titlecase }}!</span>
-                    </h2>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="main main-height">
-        <div class="dashboard">
-            <div class="teacher-dasboard-heading">
-                <div class="row">
-                    <div class="col-md-9 text-left">
-                        <h1>Dashboard</h1>
-                        <hr />
-                    </div>
-                    <div class="col-md-3 create-btn">
-                        <button type="button" id="create-btn" routerLink="/teacherDashboard/addCourse">
-            <i class="fa fa-plus"></i> Create New Course
-          </button>
-                    </div>
+    <div class="col-sm-6">
+      <div class="page-header">
+        <div class="page-title-right">
+          <h2>
+            Welcome Back <span>{{ user | titlecase }}!</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-height">
+    <div class="dashboard">
+      <div class="teacher-dasboard-heading">
+        <div class="row">
+          <div class="col-md-9 text-left">
+            <h1>Dashboard</h1>
+            <hr />
+          </div>
+          <div class="col-md-3 create-btn">
+            <button type="button" id="create-btn" routerLink="/teacherDashboard/addCourse">
+              <i class="fa fa-plus"></i> Create New Course
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
+        <i class="fa fa-spinner fa-spin loder-color" style="font-size: 50px"></i>
+      </div>
+      <p *ngIf="err" style="color: red; text-align: center">
+        <b>{{ err }}</b>
+      </p>
+      <ng-container *ngIf="!mainpageLoder">
+        <ng-container *ngFor="let data of getCourse | filter: term">
+          <div class="right-content text-right" *ngIf="!err">
+            <p>{{ data.date }}</p>
+          </div>
+
+          <div class="teacher-section" *ngIf="!mainpageLoder && !err">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="course-detail">
+                  <h3>{{ data.title }}</h3>
+                  <h4>
+                    <span>Approximate</span> Duration {{ data.time_duration }}
+                  </h4>
+                  <div class="t-btn">
+                    <button type="button" id="t-btn" (click)="publishApi(data.id)" *ngIf="data.status === '0'">
+                      Publish
+                    </button>
+                    <button type="button" id="t-btn" *ngIf="data.status === '1'">
+                      Published
+                    </button>
+                  </div>
+
+                  <div class="view-btn">
+                    <button type="button" id="view-btn" (click)="viewDetail(data.id)" style="color: #fff">
+                      View Course Details
+                    </button>
+                  </div>
                 </div>
-            </div>
-            <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
-                <i class="fa fa-spinner fa-spin loder-color" style="font-size: 50px"></i>
-            </div>
-            <p *ngIf="err" style="color: red; text-align: center">
-                <b>{{ err }}</b>
-            </p>
-            <ng-container *ngIf="!mainpageLoder">
-                <ng-container *ngFor="let data of getCourse | filter: term">
-                    <div class="right-content text-right" *ngIf="!err">
-                        <p>{{ data.date }}</p>
-                    </div>
+              </div>
 
-                    <div class="teacher-section" *ngIf="!mainpageLoder && !err">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-xs-12">
-                                <div class="course-detail">
-                                    <h3>{{ data.title }}</h3>
-                                    <h4>
-                                        <span>Approximate</span> Duration {{ data.time_duration }}
-                                    </h4>
-                                    <div class="t-btn">
-                                        <button type="button" id="t-btn" (click)="publishApi(data.id)" *ngIf="data.status === '0'">
-                    Publish
-                  </button>
-                                        <button type="button" id="t-btn" *ngIf="data.status === '1'">
-                    Published
-                  </button>
-                                    </div>
+              <div class="col-lg-5 col-md-5 col-xs-12">
+                <div class="course-detail">
+                  <h3 style="text-transform: uppercase">
+                    Teaching Language :<span>{{ data.teaching_language }}</span>
+                  </h3>
+                  <h4>
+                    <span>Students Enrolled</span> :{{ data.total_enroll }}
+                  </h4>
+                  <div class="t-btn" *ngIf="data.course_type == 'closed'">
+                    <button type="button" id="t-btn" (click)="acceptCourseDetail(data.id)">
+                      Accepts Students
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-                                    <div class="view-btn">
-                                        <button type="button" id="view-btn" (click)="viewDetail(data.id)" style="color: #fff">
-                                        View Course Details
-                                      </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-5 col-md-5 col-xs-12">
-                                <div class="course-detail">
-                                    <h3 style="text-transform: uppercase">
-                                        Teaching Language :<span>{{ data.teaching_language }}</span>
-                                    </h3>
-                                    <h4>
-                                        <span>Students Enrolled</span> :{{ data.total_enroll }}
-                                    </h4>
-                                    <div class="t-btn" *ngIf="data.course_type == 'closed'">
-                                        <button type="button" id="t-btn" (click)="acceptCourseDetail(data.id)">
-                    Accepts Students
-                  </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-3 col-xs-12">
-                                <div class="course-detail">
-                                    <p>
-                                        Course Fees:
-                                        <span style="
+              <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="course-detail">
+                  <p>
+                    Course Fees:
+                    <span style="
                       border-radius: 5px;
                       padding: 2px 6px;
                       background-color: #008ad2;
                       color: #fff;
                       font-size: 10px;
-                    ">{{ data.field_course_fees }}</span
-                  >
-                </p>
-                <!-- {{ data|json }} -->
-                <span
-                  *ngIf="data.rating != '0'"
-                  style="
+                    ">{{ data.field_course_fees }}</span>
+                  </p>
+                  <!-- {{ data|json }} -->
+                  <span *ngIf="data.rating != '0'" style="
                     background-color: #ff7e00;
                     border-radius: 4px;
                     padding: 0px 6px;
                     color: #fff;
-                  "
-                  >{{ data.rating }}</span
-                >
+                  ">{{ data.rating }}</span>
 
-                <ng-container *ngIf="data.rating === '1'">
-                  <i class="fa fa-star" style="color: #ff4545 !important"></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '1.5'">
-                  <i class="fa fa-star" style="color: #ffa534 !important"></i>
-                  <i
-                    class="fa fa-star-half-o"
-                    style="color: #ffa534 !important"
-                  ></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '2'">
-                  <i class="fa fa-star" style="color: #ffa534 !important"></i>
-                  <i class="fa fa-star" style="color: #ffa534 !important"></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '2.5'">
-                  <i class="fa fa-star" style="color: #ffe234 !important"></i>
-                  <i class="fa fa-star" style="color: #ffe234 !important"></i>
-                  <i
-                    class="fa fa-star-half-o"
-                    style="color: #ffe234 !important"
-                  ></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '3'">
-                  <i class="fa fa-star" style="color: #ffe234 !important"></i>
-                  <i class="fa fa-star" style="color: #ffe234 !important"></i>
-                  <i class="fa fa-star" style="color: #ffe234 !important"></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '3.5'">
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i
-                    class="fa fa-star-half-o"
-                    style="color: #b7dd29 !important"
-                  ></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '4'">
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                  <i class="fa fa-star" style="color: #b7dd29 !important"></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '4.5'">
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i
-                    class="fa fa-star-half-o"
-                    style="color: #57e32c !important"
-                  ></i>
-                </ng-container>
-                <ng-container *ngIf="data.rating === '5'">
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                  <i class="fa fa-star" style="color: #57e32c !important"></i>
-                </ng-container>
-                <a style="color: grey" *ngIf="data.review_count != '0'"
-                  >({{ data.review_count }})</a
-                >
-                <div class="t-btn space-btn">
-                  <button
-                    *ngIf="data.course_type == 'closed'"
-                    type="button"
-                    id="t-btn"
-                    data-target="#invite"
-                    data-toggle="modal"
-                    (click)="getInviteId(data.id, data.title)"
-                  >
-                    invite Students
+                  <ng-container *ngIf="data.rating === '1'">
+                    <i class="fa fa-star" style="color: #ff4545 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '1.5'">
+                    <i class="fa fa-star" style="color: #ffa534 !important"></i>
+                    <i class="fa fa-star-half-o" style="color: #ffa534 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '2'">
+                    <i class="fa fa-star" style="color: #ffa534 !important"></i>
+                    <i class="fa fa-star" style="color: #ffa534 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '2.5'">
+                    <i class="fa fa-star" style="color: #ffe234 !important"></i>
+                    <i class="fa fa-star" style="color: #ffe234 !important"></i>
+                    <i class="fa fa-star-half-o" style="color: #ffe234 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '3'">
+                    <i class="fa fa-star" style="color: #ffe234 !important"></i>
+                    <i class="fa fa-star" style="color: #ffe234 !important"></i>
+                    <i class="fa fa-star" style="color: #ffe234 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '3.5'">
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star-half-o" style="color: #b7dd29 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '4'">
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                    <i class="fa fa-star" style="color: #b7dd29 !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '4.5'">
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star-half-o" style="color: #57e32c !important"></i>
+                  </ng-container>
+                  <ng-container *ngIf="data.rating === '5'">
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                    <i class="fa fa-star" style="color: #57e32c !important"></i>
+                  </ng-container>
+                  <a style="color: grey" *ngIf="data.review_count != '0'">({{ data.review_count }})</a>
+                  <div class="t-btn space-btn">
+                    <button *ngIf="data.course_type == 'closed'" type="button" id="t-btn" data-target="#invite"
+                      data-toggle="modal" (click)="getInviteId(data.id, data.title)">
+                      invite Students
+                    </button>
+                    <button *ngIf="data.course_type == 'public'" type="button" id="disabledbutton"
+                      title="Course is public" data-target="#invite" data-toggle="modal" disabled="disabled">
+                      invite Students
+                    </button>
+                    <button type="button" id="view-student-btn" (click)="viewStudent(data.id)">
+                      View Student
+                    </button>
+                  </div>
+                </div>
+                <div class="right-btn">
+                  <button type="button" id="edit-button" (click)="editStudent(data.id)">
+                    <img src="assets/images/icons/edit.png" />
                   </button>
-                  <button
-                    *ngIf="data.course_type == 'public'"
-                    type="button"
-                    id="disabledbutton"
-                    title="Course is public"
-                    data-target="#invite"
-                    data-toggle="modal"
-                    disabled="disabled">
-                    invite Students
-                  </button>
-                  <button
-                    type="button"
-                    id="view-student-btn"
-                    (click)="viewStudent(data.id)"
-                  >
-                    View Student
+                  <button type="button" id="share-btn" data-toggle="dropdown">
+                    <img src="assets/images/icons/share.png" />
+                    <ul class="dropdown-menu arrow-top-1">
+                      <li><a href="#" class="fa fa-linkedin"></a></li>
+                      <li><a href="#" class="fa fa-twitter"></a></li>
+                      <li><a href="#" class="fa fa-facebook"></a></li>
+                    </ul>
                   </button>
                 </div>
               </div>
-              <div class="right-btn">
-                <button
-                  type="button"
-                  id="edit-button"
-                  (click)="editStudent(data.id)"
-                >
-                  <img src="assets/images/icons/edit.png" />
-                </button>
-                <button type="button" id="share-btn" data-toggle="dropdown">
-                  <img src="assets/images/icons/share.png" />
-                  <ul class="dropdown-menu arrow-top-1">
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-facebook"></a></li>
+            </div>
+          </div>
+        </ng-container>
+        <div class="container-fluid">
+          <div class="pages">
+            <div class="row" *ngIf="buttonShow">
+              <div class="col-md-2">
+                <div class="prev-btn" [class.gray]="questionButton" [disabled]="questionButton">
+                  <a (click)="direction(0)" style="color: #fff">PREV</a>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"></li>
+                    <li class="page-item" *ngFor="let data of totalPages; index as i">
+                      <a (click)="getTeacherCourse(data, i); enableDisableRule()" class="page-link" style="color: #fff"
+                        [ngClass]="[
+                        i == buttonColor
+                          ? 'button-actives'
+                          : 'button-standard'
+                      ]">{{ data }}</a>
+                    </li>
                   </ul>
-                </button>
+                </nav>
+              </div>
+              <div class="col-md-2">
+                <div class="next-button" [class.grays]="questionButtons" [disabled]="questionButtons">
+                  <a (click)="direction(1)" style="color: #fff">NEXT</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </ng-container>
-      <div class="container-fluid">
-        <div class="pages">
-          <div class="row" *ngIf="buttonShow">
-            <div class="col-md-2">
-              <div
-                class="prev-btn"
-                [class.gray]="questionButton"
-                [disabled]="questionButton"
-              >
-                <a (click)="direction(0)" style="color: #fff">PREV</a>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item disabled"></li>
-                  <li
-                    class="page-item"
-                    *ngFor="let data of totalPages; index as i"
-                  >
-                    <a
-                      (click)="getTeacherCourse(data, i); enableDisableRule()"
-                      class="page-link"
-                      style="color: #fff"
-                      [ngClass]="[
-                        i == buttonColor
-                          ? 'button-actives'
-                          : 'button-standard'
-                      ]"
-                      >{{ data }}</a
-                    >
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="col-md-2">
-              <div
-                class="next-button"
-                [class.grays]="questionButtons"
-                [disabled]="questionButtons"
-              >
-                <a (click)="direction(1)" style="color: #fff">NEXT</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </ng-container>
+    </div>
   </div>
-</div>
 </div>
 
 <!---invite-modal-->
 
 <div id="invite" class="modal fade" role="dialog" #invite>
-<div class="modal-dialog">
-  <div class="modal-content">
-    <button data-dismiss="modal" class="close">&times;</button>
-    <div class="modal-body">
-      <div class="invite-popup">
-        <h3>Invite Student</h3>
-        <hr />
-        <form [formGroup]="inviteForm">
-          <div class="form-group-1">
-            <label for="name">Course Name</label>
-            <input
-              type="name"
-              class="form-control"
-              id="courseName" name="courseName"
-              formControlName="courseName"
-              placeholder="{{ courseName }}"
-            />
-          </div>
-          <div
-            class="form-group-1"
-            id="email-controls"
-            [class.disabled]="inviteName && inviteName.length > 0"
-            style="width: 95%"
-          >
-            <ng-container
-              *ngFor="let form of inviteFormData.controls; index as i"
-            >
-              <ng-container [formGroup]="form">
-                <label for="name">Email Id</label>
-                <input
-                  type="name"
-                  class="form-control"
-                  (focusout)="setForm($event)"
-                  id="email" name="email"
-                  formControlName="email"
-                  placeholder="GERMAN"
-                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                  (keyup)="emailData()"
-                />
-                <span
-                class="fa fa-plus"
-                style="right: -5px; position: absolute"
-                [class.disabled]="setEmailControl(i)"
-                (click)="AccordionInitialForms(i)"
-              >
-              </span>
-                                        <div *ngIf="form.get('email').hasError('pattern')" style="color: #dc3545; font-size: 12px" padding>
-                                            *Please enter correct e-mail address
-                                        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button data-dismiss="modal" class="close">&times;</button>
+      <div class="modal-body">
+        <div class="invite-popup">
+          <h3>Invite Student</h3>
+          <hr />
+          <form [formGroup]="inviteForm">
+            <div class="form-group-1">
+              <label for="name">Course Name</label>
+              <input type="name" class="form-control" id="courseName" name="courseName" formControlName="courseName"
+                placeholder="{{ courseName }}" />
+            </div>
+            <div class="form-group-1" id="email-controls" [class.disabled]="inviteName && inviteName.length > 0"
+              style="width: 95%">
+              <ng-container *ngFor="let form of inviteFormData.controls; index as i">
+                <ng-container [formGroup]="form">
+                  <label for="name">Email Id</label>
+                  <input type="name" class="form-control" (focusout)="setForm($event)" id="email" name="email"
+                    formControlName="email" placeholder="GERMAN"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" (keyup)="emailData()" />
+                  <span class="fa fa-plus" style="right: -5px; position: absolute" [class.disabled]="setEmailControl(i)"
+                    (click)="AccordionInitialForms(i)">
+                  </span>
+                  <div *ngIf="form.get('email').hasError('pattern')" style="color: #dc3545; font-size: 12px" padding>
+                    *Please enter correct e-mail address
+                  </div>
                 </ng-container>
-            </ng-container>
+              </ng-container>
             </div>
             <p for="name" style="
               margin-top: 10px;
@@ -379,24 +302,25 @@
               color: #65696b;
               padding-bottom: 3px;
             ">
-                Bulk Upload (Only .csv file allowed)
+              Bulk Upload (Only .csv file allowed)
             </p>
             <div class="custom-file-wrp" [class.disabled]="setVisibilityUploader() || isAnyOneEmailAdded">
-                <div class="filename" style="width: 100%">
-                    <input type="" formControlName="bulk" name="bulk" id="bulk" placeholder="{{ inviteName }}" />
-                </div>
-                <div class="custom-file">
-                    <label for="fileupload"><a class="fa fa-picture-o" style="margin-right: 10px"></a>Browse</label>
-                    <input type="file" id="bulk" name="bulk" accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
-                </div>
+              <div class="filename" style="width: 100%">
+                <input type="" formControlName="bulk" name="bulk" id="bulk" placeholder="{{ inviteName }}" />
+              </div>
+              <div class="custom-file">
+                <label for="fileupload"><a class="fa fa-picture-o" style="margin-right: 10px"></a>Browse</label>
+                <input type="file" id="bulk" name="bulk" accept=".csv" formControlName="bulk"
+                  (change)="audFileSelected($event)" />
+              </div>
             </div>
             <p *ngIf="msgShow" style="color: #008ad2">{{ msgShow }}</p>
             <div class="invite-btn">
-                <a (click)="inviteApi()" style="color: #fff">invite</a>
+              <a (click)="inviteApi()" style="color: #fff">invite</a>
             </div>
-            </form>
-            </div>
-            </div>
-            </div>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
+</div>

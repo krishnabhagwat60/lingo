@@ -6,6 +6,7 @@ import { ConfirmeValidator } from './confirmedEdit.validator';
 import { find, get, pull } from 'lodash';
 import * as Editor from 'ckeditor5/build/ckeditor';
 import { Dimensions, ImageCroppedEvent, ImageTransform } from '../../image-cropper/interfaces';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -86,7 +87,9 @@ export class EditProfileComponent implements OnInit {
   subtitle: void;
   imageSrc: string;
   updateNewDataImage: string;
-  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,
+    private eventEmitterService: EventEmitterService,
+    ) {
     this.route.queryParamMap.subscribe(queryParams => {
       this.userId = queryParams.get("userId");
     })
@@ -187,7 +190,9 @@ teacherImage(){
       this.mainpageLoder = false;
       this.msg = 'Profile Updated Successfully'
       this.updateData();
-      window.location.reload();
+      this.eventEmitterService.onProfileChanged();
+
+      //window.location.reload();
       this.submitted = false;
     }
   }
@@ -235,6 +240,7 @@ teacherImage(){
     // console.log(this.selectedArr);
   }
   profileUpdate() {
+    debugger
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -275,9 +281,10 @@ teacherImage(){
       localStorage.setItem('image',this.updateNewDataImage)
       this.editData = res;
       if (res.body.result === 'success') {
-        this.mainpageLoder = false
-        this.router.navigate(['/teacherDashboard/teacherProfile'])
-        window.location.reload()
+        this.mainpageLoder = false;
+        this.eventEmitterService.onProfileChanged();
+        //this.router.navigate(['/teacherDashboard/teacherProfile'])
+      //  window.location.reload()
       }
     }
     )
@@ -330,8 +337,10 @@ teacherImage(){
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        this.router.navigate(['/teacherDashboard/teacherProfile'])
-        window.location.reload();
+        this.eventEmitterService.onProfileChanged();
+
+        //this.router.navigate(['/teacherDashboard/teacherProfile'])
+        //window.location.reload();
       }
     }
     )
