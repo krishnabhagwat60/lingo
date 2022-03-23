@@ -1,4 +1,4 @@
-import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
@@ -6,8 +6,6 @@ import { ServiceService } from '../../service.service';
 declare var $: any;
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { NgxCSVParserError } from 'ngx-csv-parser';
-import { FrontService } from 'src/app/services/front.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-teacher-dashboard',
@@ -30,7 +28,7 @@ export class TeacherDashboardComponent implements OnInit {
   inviteName: any;
   audSrc: any;
   msgShow: string;
-  submitted: boolean = false; isAnyOneEmailAdded = false;
+  submitted: boolean = false;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
   ismenusub: boolean = false;
@@ -50,33 +48,19 @@ export class TeacherDashboardComponent implements OnInit {
   inviteId: any;
   courseName: any;
   image: string;
-  isEmailDiasable = false;
-  isBulkuploaded = false;
-  studentInvitationFile: File[] = [];
-  // email = (<HTMLInputElement>document.getElementById("email")).value;
-  // bulk = (<HTMLInputElement>document.getElementById("bulk")).value;
-  private _frontService: FrontService;
-  public get frontServices(): FrontService {
-    if (this._frontService) {
-      return this._frontService;
-    }
-    return (this._frontService = this.injector.get(FrontService));
-  }
+
   constructor(private service: ServiceService, private router: Router,
-    private injector: Injector,
     private authService: SocialAuthService, private ngxCsvParser: NgxCsvParser) {
-    this.image = localStorage.getItem('image')
-  }
+      this.image=localStorage.getItem('image')
+     }
 
   ngOnInit(): void {
     this.getTeacherCourse(1, 0);
-    this.AccordionInitialForms(0);
+    this.AccordionInitialForms();
     this.username();
   }
   logout() {
     sessionStorage.clear();
-    this.frontServices.vm.sidebarData = null;
-
     this.router.navigate(['/login'])
     this.signOut()
   }
@@ -104,7 +88,6 @@ export class TeacherDashboardComponent implements OnInit {
     this.buttonColor = i;
     this.service.post('get-teacher-course', data, 1).subscribe(res => {
       this.getCourse = res.body.data;
-      console.log(this.getCourse)
       if (!this.getCourse.length) {
         this.err = 'No Data Found'
       }
@@ -158,11 +141,7 @@ export class TeacherDashboardComponent implements OnInit {
   inviteForm = new FormGroup({
     courseName: new FormControl('',),
     bulk: new FormControl(''),
-
   })
-
-
-
 
   // accept student api
   viewDetail(id) {
@@ -181,50 +160,16 @@ export class TeacherDashboardComponent implements OnInit {
       this.getTeacherCourse(1, 0);
     })
   }
-  public records: any[] = [];
-  AccordionInitialForms(index) {
-
+  AccordionInitialForms() {
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
   }
-  setEmailControl(index) {
-    return this.inviteFormData.controls[index].invalid;
-  }
-  // setForm(event) {
-  //   debugger
-  //  let email =event.value
-  //  console.log(email)
 
-  // }
-  // onKey(event: any) {
-  //   debugger
-  //   let shiv = event.target.value
-  //   console.log(shiv);
-
-  // }
-  setVisibilityUploader() {
-    return this.inviteFormData.value.every(x => x.email != '') && this.inviteFormData.controls.every(x => x.status == "VALID");
-  }
   addNewServiceData() {
-    debugger
-    this.isAnyOneEmailAdded = true;
     const searchForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]),
     })
-
     this.inviteFormData.push(searchForm);
-
-    if (this.inviteFormData.controls['email'] !== undefined) {
-      this.inviteFormData.controls['email'].valueChanges.subscribe(value => {
-        debugger;
-        if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
-          this.isBulkuploaded = true;
-
-        } else {
-          this.isBulkuploaded = false
-        }
-      });
-    }
   }
 
   deleteServiceFieldData(formIndex) {
@@ -232,93 +177,24 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   audFileSelected(event: any) {
-    debugger
+    this.inviteName = (event.target.files[0].name);
+    const file = event.target.files[0];
+    this.ngxCsvParser.parse(file, { header: false, delimiter: ',' })
+      .pipe().subscribe((result: Array<any>) => {
+        this.audSrc = result;
+       this.inviteFormData.clear();
+       this.addNewServiceData()
     
-    const fileCheck = event.target.files[0];
+        //  (this.addImageData as FormGroup).get('audio').patchValue('');
 
-    if (event.target.files[0]) {
-      let file: File = event.target.files[0];
-      console.log(file.name);
-      console.log(file.size);
-      console.log(file.type);
-      let reader: FileReader = new FileReader();
-      reader.readAsText(file);
-      reader.onload = (e) => {
-        let csv: string = reader.result as string;
-        let csvRecordsArray = csv.split(/\r\n|\n/);  
-  
-        this.records= this.getHeaderArray(csvRecordsArray);  
-      }
-    }
-
-    for (let index = 0; index < event.target.files.length; index++) {
-      this.inviteName = (event.target.files[index].name);
-      const file = event.target.files[index];
-      this.ngxCsvParser.parse(file, { header: false, delimiter: ',' })
-        .pipe().subscribe((result: Array<any>) => {
-          this.audSrc = result;
-          this.inviteFormData.clear();
-          this.addNewServiceData()
-          //  (this.addImageData as FormGroup).get('audio').patchValue('');
-        }, (error: NgxCSVParserError) => {
-        });
-this.studentInvitationFile = [];
-      this.studentInvitationFile.push(file);
-    }
-    if (fileCheck && fileCheck != undefined && fileCheck != null) {
-      this.isEmailDiasable = true;
-    } else {
-      this.isEmailDiasable = false
-    }
+      }, (error: NgxCSVParserError) => {
+      });
   }
 
-  getHeaderArray(csvRecordsArr: any) {  
-    let headers = (<string>csvRecordsArr[0]).split(',');  
-    let headerArray = [];  
-    for (let j = 0; j < headers.length; j++) {  
-      headerArray.push(headers[j]);  
-    }  
-    return headerArray;  
-  }  
-  
-  
-
-  // removeFile(event: any) {
-  //   this.inviteForm.controls.bulk.setValue('')
-  //   this.isEmailDiasable = false; this.inviteName = '';
-  // }
- 
-  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {  
-    let csvArr = [];  
-  
-    for (let i = 1; i < csvRecordsArray.length; i++) {  
-      let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
-      if (curruntRecord.length == headerLength) {  
-        csvArr.push(curruntRecord);  
-      }  
-    }  
-    return csvArr;  
-  }  
-
-
-  removeFile(obj: any) {
-    debugger
-    this.studentInvitationFile.forEach((value, index) => {
-      if (value == obj) this.studentInvitationFile.splice(index, 1);
-    });
-  }
-
-
-  emailData() {
-    debugger
+  emailData(){
     this.audSrc = ''
     this.inviteName = ''
     this.myInputVariables.nativeElement.value = '';
-
-    //   console.log(shiv);
-
-
-
   }
   // get invite id
   getInviteId(id, name) {
@@ -328,7 +204,6 @@ this.studentInvitationFile = [];
   // invite api
   get f() { return this.inviteFormData.controls; }
   inviteApi() {
-    debugger
     var data = {}
     if (!this.audSrc) {
       const dataInvite = this.inviteFormData.getRawValue();
@@ -340,14 +215,9 @@ this.studentInvitationFile = [];
     } else {
       const dataInvite = []
       this.audSrc.forEach(element => {
-        if(this.records!=null && this.records.length>0){
-          this.records.forEach(el=>{
-            dataInvite.push({
-              email: el
-            })
-          })
-        }
-        
+        dataInvite.push({
+          email: element[0]
+        })
       });
       data = {
         email: dataInvite,
@@ -355,7 +225,6 @@ this.studentInvitationFile = [];
         course_id: this.inviteId
       }
     }
-    debugger;
     this.service.post('invite-student', data, 1).subscribe(res => {
       if (res.body.result.message == 'Sent Successfully') {
         this.msgShow = 'Successfully Sent.'
@@ -382,8 +251,7 @@ this.studentInvitationFile = [];
   }
 
   searchform = new FormGroup({
-    searchData: new FormControl('',),
-    rating: new FormControl('',)
+    searchData: new FormControl('')
   })
   searchDatas() {
     this.err = ''
@@ -398,7 +266,7 @@ this.studentInvitationFile = [];
         "course_language": '',
         "teacher_id": sessionStorage.getItem('uid'),
         "level_id": '',
-        "rating": this.searchform.value.rating,
+        "rating": '',
         "page": this.pages,
       }
       // this.buttonColor = i;
