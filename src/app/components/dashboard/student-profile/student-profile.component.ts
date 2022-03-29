@@ -53,7 +53,7 @@ export class StudentProfileComponent implements OnInit {
   successmsg: string;
   mainLoder: boolean = false;
   coursesName: void;
-  updateNewDataImage: any;
+  updateNewDataImage: string;
   imageSrc: string;
   constructor(private service: ServiceService, private fb: FormBuilder, private router: Router, private http: HttpClient) {
     this.profileForm = fb.group({
@@ -104,7 +104,7 @@ export class StudentProfileComponent implements OnInit {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.imageSrc = reader.result as string;
+        this.updateNewDataImage = reader.result as string;
         this.profileForm.patchValue({
           fileSource: reader.result
         });
@@ -149,7 +149,7 @@ export class StudentProfileComponent implements OnInit {
       "country": this.profileForm.value.countrys,
       "state": this.profileForm.value.state,
       "email": this.profileForm.value.email,
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
     }
     
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -165,16 +165,17 @@ export class StudentProfileComponent implements OnInit {
     )
   }
   studentImage(){
+    debugger
     const data = {
       user_id: sessionStorage.getItem('uid'),
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
     }
     this.service.post('profile-update', data, 1).subscribe(res => {
       debugger
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
         this.msg = 'Profile Updated Successfully'
-        this.updateData();
+        // this.updateData();
         window.location.reload();
         this.submitted = false;
       }
@@ -182,9 +183,13 @@ export class StudentProfileComponent implements OnInit {
     )
   }
   reset() {
+    debugger
+    this.updateNewDataImage="";
     this.profileForm.reset();
   }
-
+  reseted(){
+    this.updateNewDataImage="";
+  }
   // patch data
   updateData() {
     const data = {

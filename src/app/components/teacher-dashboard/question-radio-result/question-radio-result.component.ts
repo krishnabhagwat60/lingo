@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import {Location} from '@angular/common';
+import { FrontService } from 'src/app/services/front.service';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-question-radio-result',
@@ -28,13 +31,29 @@ export class QuestionRadioResultComponent implements OnInit {
   sidebarData2: any;
   coursesName: void;
   titleid: string;
-  constructor(private service: ServiceService,private route: ActivatedRoute,private router: Router ,private _location: Location) { 
+  subscription: Subscription;
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
+  }
+  constructor(private service: ServiceService,private eventEmitterService: EventEmitterService,private route: ActivatedRoute,private router: Router ,private _location: Location,  private injector: Injector) { 
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
       this.titleid = queryParams.get("titleid");
 
     })
     this.courseNameData= sessionStorage.getItem('course_name')
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
   }
 
   ngOnInit(): void {
@@ -52,7 +71,21 @@ export class QuestionRadioResultComponent implements OnInit {
     }
     this.service.post('student_sidebar',data, 1).subscribe(res => {
       this.sidebarData2 = res.body.result;
+      if (this.sidebarData2 != null && this.sidebarData2.length > 0) {
+        var filteredData = this.unique(this.sidebarData2, ['course_id']);
+        this.sidebarData2 = filteredData;
+        this.frontServices.vm.sidebarData = this.sidebarData2;
+      }
     })
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   toggleAccordian2(event, index) {
     const element = event.target;

@@ -31,7 +31,7 @@ import { CancelPaymentComponent } from './components/cancel-payment/cancel-payme
 import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
 import { DatePipe } from '@angular/common';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
-
+import { FrontService } from './services/front.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +65,7 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
   providers: [
     ServiceService,
     DatePipe,
+    FrontService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

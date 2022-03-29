@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SocialAuthService } from 'angularx-social-login';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
 @Component({
@@ -30,7 +31,12 @@ export class MyCourseComponent implements OnInit {
   questionButton: boolean = false;
   questionButtons: boolean = false;
   errMsg: string;
-  constructor(private service: ServiceService, private router: Router,private authService: SocialAuthService) { 
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private service: ServiceService, private router: Router,private authService: SocialAuthService,private injector: Injector) { 
     this.user = sessionStorage.getItem('username');
   }
 
@@ -45,10 +51,13 @@ export class MyCourseComponent implements OnInit {
   }
   logout(){
 sessionStorage.clear();
+this.frontServices.vm.sidebarData =null;
+
     this.signOut();
     this.router.navigate(['/login'])
   }
   signOut(): void {
+
     this.authService.signOut();
   }
   //  get course data
@@ -118,6 +127,7 @@ sessionStorage.clear();
     searchData : new FormControl('')
   })
   searchDatas() {
+    debugger
     // this.mainpageLoder = true;
     const data =
     {

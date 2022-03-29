@@ -6,6 +6,7 @@ import { ConfirmeValidator } from './confirmedEdit.validator';
 import { find, get, pull } from 'lodash';
 import * as Editor from 'ckeditor5/build/ckeditor';
 import { Dimensions, ImageCroppedEvent, ImageTransform } from '../../image-cropper/interfaces';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -32,6 +33,7 @@ export class EditProfileComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
+  profileForm: FormGroup = new FormGroup({});
   rotation = 0;
   scale = 1;
   showCropper = false;
@@ -70,6 +72,7 @@ export class EditProfileComponent implements OnInit {
   imageUpdate: any;
   taged: any;
   newTag: any;
+  msg: string;
   tagedd: any;
   subTitle: any;
   mainpageLoder: boolean = false;
@@ -83,8 +86,11 @@ export class EditProfileComponent implements OnInit {
   titlename: void;
   subtitle: void;
   imageSrc: string;
-  updateNewDataImage: any;
-  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) {
+  updateNewDataImage: string;
+  loding = false;
+  constructor(private service: ServiceService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder,
+    private eventEmitterService: EventEmitterService,
+  ) {
     this.route.queryParamMap.subscribe(queryParams => {
       this.userId = queryParams.get("userId");
     })
@@ -160,14 +166,48 @@ export class EditProfileComponent implements OnInit {
   }
   // sidebar api
   sidebar() {
-    const data ={
-      user_id : sessionStorage.getItem('uid')
+    const data = {
+      user_id: sessionStorage.getItem('uid')
     }
-    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
+    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
       //  console.log(this.sidebarData);
     })
   }
+
+  // Image Update
+
+
+
+  teacherImage() {
+    debugger
+    this.mainpageLoder = true;
+    this.loding = true;
+    const data = {
+      user_id: sessionStorage.getItem('uid'),
+      avatar: this.updateNewDataImage
+    }
+    if(data.avatar !=undefined)
+    {
+    this.service.post('profile-update', data, 1).subscribe(res => {
+     
+      if (res.body.result === 'success') {
+        this.loding = false;
+        this.mainpageLoder = false;
+        this.msg = 'Profile Updated Successfully'
+         this.updateData();
+        this.eventEmitterService.onProfileChanged();
+
+        //window.location.reload();
+        this.submitted = false;
+      }
+      this.loding = false;
+    }
+  
+    )}
+  }
+
+
 
   // view page
   view(id) {
@@ -190,7 +230,7 @@ export class EditProfileComponent implements OnInit {
     responsibility: new FormControl('', Validators.required),
     countrys: new FormControl('', Validators.required),
     taged: new FormControl('',),
-    image : new FormControl('',),
+    image: new FormControl('',),
     fileSource: new FormControl('',),
   })
   onItemSelect(item: any) {
@@ -208,6 +248,7 @@ export class EditProfileComponent implements OnInit {
     // console.log(this.selectedArr);
   }
   profileUpdate() {
+    debugger
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -217,7 +258,7 @@ export class EditProfileComponent implements OnInit {
 
   editProfile() {
     this.submit = true;
-    if (this.editProfileForm.invalid) {
+    if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
     }
     this.mainpageLoder = true
@@ -241,21 +282,22 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
-      localStorage.setItem('image',this.imageSrc)
+      localStorage.setItem('image', this.updateNewDataImage)
       this.editData = res;
       if (res.body.result === 'success') {
-        this.mainpageLoder = false
-        this.router.navigate(['/teacherDashboard/teacherProfile'])
-        window.location.reload()
+        this.mainpageLoder = false;
+        this.eventEmitterService.onProfileChanged();
+        //this.router.navigate(['/teacherDashboard/teacherProfile'])
+        //  window.location.reload()
       }
     }
     )
   }
-  get form() { return this.editProfileForm.controls;}
+  get form() { return this.editProfileForm.controls; }
 
   // api for edit form
   editProfileById() {
@@ -276,8 +318,8 @@ export class EditProfileComponent implements OnInit {
     for (const data of this.selectedNewArr) {
       this.selectedMainLanguage.push(data.key);
     }
-    var teacherLanguage =  this.updateNewData.main_language_id.concat(this.selectedMainLanguage)
-    var studentLanguage =  this.updateNewData.known_language_id.concat(this.selectedLanguage)
+    var teacherLanguage = this.updateNewData.main_language_id.concat(this.selectedMainLanguage)
+    var studentLanguage = this.updateNewData.known_language_id.concat(this.selectedLanguage)
     var image_description = this.imageUpdate.concat(this.tags)
     this.imageUpdate = this.tags
     const data = {
@@ -294,7 +336,7 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.imageSrc
+      avatar: this.updateNewDataImage
 
     }
     // console.log(data);
@@ -303,8 +345,10 @@ export class EditProfileComponent implements OnInit {
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        this.router.navigate(['/teacherDashboard/teacherProfile'])
-        window.location.reload();
+        this.eventEmitterService.onProfileChanged();
+
+        //this.router.navigate(['/teacherDashboard/teacherProfile'])
+        //window.location.reload();
       }
     }
     )
@@ -313,16 +357,23 @@ export class EditProfileComponent implements OnInit {
   // get data by id
 
   updateData() {
+    debugger
     const data = {
-      "user_id": this.userId
+      "user_id": this.userId,
+      "avatar" : this.updateNewDataImage
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
       this.updateNewData = res.body.profile;
-      this.updateNewDataImage = res.body.profile.avatar;
+      if(this.updateNewDataImage == undefined)
+      {
+        this.updateNewDataImage = res.body.profile.avatar;
+      }
+     // this.updateNewDataImage = res.body.profile.avatar;
       this.imageUpdate = res.body.profile.skills
+      localStorage.setItem('image', res.body.profile.avatar )
       this.editProfileForm.patchValue({
         "firstName": this.updateNewData.firstname,
         "lastName": this.updateNewData.lastname,
@@ -342,7 +393,11 @@ export class EditProfileComponent implements OnInit {
 
   // form reset
   reset() {
-    this.editProfileForm.reset();
+    this.updateNewDataImage = "";
+    this.profileForm.reset();
+  }
+  reseted() {
+    this.updateNewDataImage = "";
   }
   // show change password
   passwordChange() {
@@ -370,9 +425,9 @@ export class EditProfileComponent implements OnInit {
         if (res.body.message === 'Old Password Not Match') {
           this.ErrMsg = ''
           this.errMsg = 'Old Password Not Match'
-          
+
         }
-        if(res.body.message == 'success'){
+        if (res.body.message == 'success') {
           this.errMsg = ''
           this.ErrMsg = 'Password Changed Successfully'
         }
@@ -447,10 +502,10 @@ export class EditProfileComponent implements OnInit {
     this.profileShow = !this.profileShow
   }
   //sidebar accordion
-  toggleAccordian(event, index,name,id) {
-  this.coursesName = sessionStorage.setItem('course_name',name)
-  sessionStorage.setItem('course-id',id)
-  this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+  toggleAccordian(event, index, name, id) {
+    this.coursesName = sessionStorage.setItem('course_name', name)
+    sessionStorage.setItem('course-id', id)
+    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -459,7 +514,7 @@ export class EditProfileComponent implements OnInit {
       this.sidebarData[index].isActive = true;
     }
   }
-  toggleSubTitle(event, index, data,title) {
+  toggleSubTitle(event, index, data, title) {
     this.titlename = sessionStorage.setItem('title', title)
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
@@ -477,23 +532,24 @@ export class EditProfileComponent implements OnInit {
       }
     }
   }
-  getChildSData(child,subtitle) {
-    this.subtitle = sessionStorage.setItem('subtitle',subtitle)
+  getChildSData(child, subtitle) {
+    this.subtitle = sessionStorage.setItem('subtitle', subtitle)
     sessionStorage.setItem('subId', child);
     this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
   cropperReady(sourceImageDimensions: Dimensions) {
-    
+
   }
 
   fileChangeEvent(event: any): void {
+    debugger
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.imageSrc = reader.result as string;
+        this.updateNewDataImage = reader.result as string;
         this.editProfileForm.patchValue({
           fileSource: reader.result
         });
@@ -508,7 +564,7 @@ export class EditProfileComponent implements OnInit {
 
   imageLoaded() {
     this.showCropper = true;
-    
+
   }
 
   zoomOut() {
@@ -539,7 +595,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   loadImageFailed() {
-    
-}
+
+  }
 }
 

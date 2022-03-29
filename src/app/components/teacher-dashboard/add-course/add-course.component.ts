@@ -48,6 +48,8 @@ export class AddCourseComponent implements OnInit {
   sidebarData: any;
   level: any;
   language: any;
+  teachinglanguage: any;
+
   courseFee: boolean = false;
   teacherFees: boolean = false;
   feeBox: boolean = false;
@@ -135,9 +137,11 @@ export class AddCourseComponent implements OnInit {
     this.getEditorData = editor.getData();
   }
   onItemSelect(item: any) {
+    debugger
     this.selectedArr.push(item);
   }
   onTeacherSelect(item: any) {
+    debugger
     this.selectedArrr.push(item);
   }
   showValue(event) {
@@ -224,12 +228,12 @@ export class AddCourseComponent implements OnInit {
   }
 
   addInitialForms() {
-      this.editButoon = false;
-      this.addButton = true
-      this.addEmployee();
-      this.addEmployeeSkill(this.employees().controls.length - 1);
-      this.faq().controls.length - 1;
-      this.addFaq();
+    this.editButoon = false;
+    this.addButton = true
+    this.addEmployee();
+    this.addEmployeeSkill(this.employees().controls.length - 1);
+    this.faq().controls.length - 1;
+    this.addFaq();
   }
   addInitialForm() {
     if (this.id) {
@@ -266,7 +270,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   submit() {
-      this.addSubmit();
+    this.addSubmit();
   }
   deleteTitle() {
     if (sessionStorage.getItem('course_id')) {
@@ -278,6 +282,7 @@ export class AddCourseComponent implements OnInit {
   // submit new course form
   get f() { return this.addCourseForm.controls; }
   addSubmit() {
+    debugger
     this.submitted = true;
     if (this.addCourseForm.invalid) {
       return;
@@ -309,7 +314,7 @@ export class AddCourseComponent implements OnInit {
       "course_fee": this.addCourseForm.value.radio,
       "course_type": this.addCourseForm.value.courseType,
       "course_fee_teacher": this.addCourseForm.value.teacher_fee,
-      "course_duration": this.addCourseForm.value.timeDurationHr + ':' +this.addCourseForm.value.timeDurationMin,
+      "course_duration": this.addCourseForm.value.timeDurationHr + ':' + this.addCourseForm.value.timeDurationMin,
       "course_desc": this.addCourseForm.value.otherLinkTextDescription,
       "title_data": titleForm,
       "faq": faqForm
@@ -317,7 +322,7 @@ export class AddCourseComponent implements OnInit {
     this.service.post('course-create', data, 1).subscribe(res => {
       sessionStorage.setItem('course_id', res.body.id)
       sessionStorage.setItem('course_name', res.body.course_name)
-      sessionStorage.setItem('back',res.body.back)
+      sessionStorage.setItem('back', res.body.back)
       this.mainpageLoder = false;
       setTimeout(() => {
         this.router.navigate(['/multimedia/contentStyle']);
@@ -358,53 +363,87 @@ export class AddCourseComponent implements OnInit {
   languageData() {
     this.service.get('profile-dropdown', 1).subscribe(res => {
       this.language = res.body.language_listing
+      this.teachinglanguage = this.language;
+      var teacherLangArr = []
+      if (this.teachinglanguage.length > 0) {
+        debugger
+        this.teachinglanguage.forEach(function (value) {
 
+          let teacherLangData = {
+            PKID: parseInt(value['merchantId']),
+            MerchantName: value['merchantName'],
+            checked: false
+          }
+
+          teacherLangArr.push(teacherLangData);
+        })
+      }
     })
   }
 
+  onSelectTeacherLangAll(items: any, index: any) {
+    debugger
+    this.selectedArrr = [];
+    this.selectedArrr = items;
+  }
+  onTeacherLangDeSelect(item: any, i: any) {
+    debugger;
+    this.selectedArrr = this.selectedArrr.filter(x=>x.key != item.key)
+  }
+
+  onSelectLangAll(items: any, index: any) {
+    debugger
+    this.selectedArr = [];
+    this.selectedArr = items;
+  }
+  onLangDeSelect(item: any, i: any) {
+    debugger;
+    this.selectedArr = this.selectedArr.filter(x=>x.key != item.key)
+  }
+
   getHtml(url) {
-    if(url.includes('<figure')){
-     var split = url.split('<figure')
-     var prefix = ''
-     var suffix = ''
-     if(split.length > 0){
-       var removeLink = split[split.length -1].split('</figure>')
-      prefix = split[0]
-      if(removeLink.length > 0){
-        suffix = removeLink[removeLink.length -1]
+    if (url && url.includes('<figure')) {
+      var split = url.split('<figure')
+      var prefix = ''
+      var suffix = ''
+      if (split.length > 0) {
+        var removeLink = split[split.length - 1].split('</figure>')
+        prefix = split[0]
+        if (removeLink.length > 0) {
+          suffix = removeLink[removeLink.length - 1]
+        }
       }
-     }
-     var iframeStart = '<iframe' + url.split('<iframe')[1];
-    var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
-     finalIframe = finalIframe.replace('position: absolute', '');
-     finalIframe  = prefix + finalIframe + suffix
-     return this.sanitizer.bypassSecurityTrustHtml(
-      finalIframe.replace(/\\"/g, '"')
-      );
-    }else{
+      var iframeStart = '<iframe' + url.split('<iframe')[1];
+      var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+      finalIframe = finalIframe.replace('position: absolute', '');
+      finalIframe = prefix + finalIframe + suffix
       return this.sanitizer.bypassSecurityTrustHtml(
-       url.replace(/\\"/g, '"')
-       );
+        finalIframe.replace(/\\"/g, '"')
+      );
+    } else {
+      return this.sanitizer.bypassSecurityTrustHtml(
+        url.replace(/\\"/g, '"')
+      );
     }
-   }
-  deleteTitles(empIndex){
-    var arr =this.addCourseForm.get("employees") as FormArray
+  }
+  deleteTitles(empIndex) {
+    var arr = this.addCourseForm.get("employees") as FormArray
     var item = arr.at(empIndex);
-    if(item.value.titleid == ''){
-    this.removeEmployee(empIndex)
-    }else{
-    this.deleteTitleData(empIndex)
+    if (item.value.titleid == '') {
+      this.removeEmployee(empIndex)
+    } else {
+      this.deleteTitleData(empIndex)
     }
   }
 
-  deleteSubTitles(formIndex, index){
-    var arr =this.addCourseForm.get("employees") as FormArray
+  deleteSubTitles(formIndex, index) {
+    var arr = this.addCourseForm.get("employees") as FormArray
     var item = arr.at(formIndex);
-    var subarray =item.value.sub_title
-     var id = subarray[index].submenuId
-    if(id == ''){
+    var subarray = item.value.sub_title
+    var id = subarray[index].submenuId
+    if (id == '') {
       this.removeEmployeeSkill(formIndex, index)
-    }else{
+    } else {
       this.deleteSubTitleData(formIndex, index)
     }
   }
@@ -434,7 +473,7 @@ export class AddCourseComponent implements OnInit {
     sessionStorage.setItem('course_id', id)
     setTimeout(() => {
       this.router.navigate(['/teacherDashboard/editCourse']);
-      }, 100);
+    }, 100);
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -489,7 +528,7 @@ export class AddCourseComponent implements OnInit {
     }
     this.service.post('delete-course-title-subtitle', data, 1).subscribe(res => {
       if (res.body.message === 'success') {
-      this.loder = false;
+        this.loder = false;
         this.employeeSkills(formIndex).removeAt(index)
         setTimeout(() => {
           this.mainpageLoder = false;

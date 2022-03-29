@@ -20,6 +20,7 @@ export class TaskEditorComponent implements OnInit {
     const data = {
       user_id: sessionStorage.getItem('uid')
     }
+    debugger
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
     })
@@ -34,6 +35,7 @@ export class TaskEditorComponent implements OnInit {
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
       this.sidebarData[index].isActive = false;
+      debugger
     } else {
       this.sidebarData[index].isActive = true;
     }

@@ -1,4 +1,5 @@
-<div id="dasboard-header" style="padding-bottom: 0;">
+<app-side-nav></app-side-nav>
+<!-- <div id="dasboard-header" style="padding-bottom: 0;">
     <div class="header-menu">
         <div class="col-md-2 dashboard-logo">
             <a><img src="assets/images/logo.png" alt="Logo"></a>
@@ -18,7 +19,7 @@
                 </li>
                 <li>
                     <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar" [src]="images">
+                        <img class="user-avatar" src="assets/images/student-profile.jpg">
                     </a>
                 </li>
                 <li>
@@ -29,7 +30,7 @@
             </ul>
         </div>
     </div>
-</div>
+</div> -->
 <app-task-editor *ngIf="!courses"></app-task-editor>
 <aside id="left-panel" class="left-panel" *ngIf="courses">
     <nav class="navbar-expand-sm navbar-default">
@@ -264,7 +265,7 @@
                                     <div class="show-button">
                                         <button type="button" *ngIf="!courses" id="show-button" (click)="showAffiliationData();showResult(data.title_id,data.title);"><img
                         src="assets/images/icons/show.png">Show
-                      Result</button>
+                      Result1</button>
                                         <button type="button" *ngIf="courses" id="show-button" (click)="showAffiliationData();showResult(data.title_id,data.title);getAffilitionData(data.title_id)"><img
                         src="assets/images/icons/show.png">Show
                       Result</button>
@@ -431,8 +432,14 @@
 
                                     </div>
                                     <ng-container *ngFor="let questionData of data.data">
-                                        <input type="" name="" value="{{questionData.question}}" disabled>
-                                        <div class="select-dropdown-question-view">
+                                        <!-- <div class="">
+                                            <input type="" name=""  disabled>
+                                            <input type="name" placeholder="Enter Course Name" name="courseName" formcontrolname="courseName" class="form-control ng-pristine ng-invalid ng-touched">
+                                        </div> -->
+                                        <div class="col-md-8 form-group">
+                                            <input type="name" value="{{questionData.question}}" id="courseName" name="courseName" formControlName="courseName" class="form-control">
+                                        </div>
+                                        <div class="col-md-4 select-dropdown-question-view">
                                             <select (change)="getQuestionValue($event.target.value,questionData.p_id)">
                         <option disabled selected>Answer</option>
                         <option *ngFor="let data1 of questionData.worng_answer">{{(data1.wrong.length>20)? (data1.wrong| slice:0:13)+'..':(data1.wrong)}}</option>

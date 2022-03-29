@@ -191,6 +191,7 @@ export class StudentDashboardComponent implements OnInit {
   })
 
   searchDatas() {
+    debugger
     this.mainpageLoder = true;
     const data =
     {
@@ -272,6 +273,7 @@ export class StudentDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
+    debugger
     this.enrollID = data
     this.enroll = data.id
     localStorage.setItem('enrollId',this.enroll)

@@ -1,35 +1,36 @@
-
 <div class="main-header">
     <div class="container-fluid d-flex">
-      <div id="main-header">
-        <input id="nav-toggle" type="checkbox">
-        <div class="logo"><a href="index.html">
-          <img src="assets/img/logo.png">
-        </a></div>
-        <ul class="links">
-        
-            <li ><a routerLink="/register" style="color:#000"><i class="fa fa-user" ></i>Register</a></li>
-            <li class="active" ><a routerLink="/login" style="background-color: #008ad2;"><i class="fa fa-user"></i>Login</a></li>
-       
-        </ul>
-        <label for="nav-toggle" class="icon-burger">
+        <div id="main-header">
+            <input id="nav-toggle" type="checkbox">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.png">
+                </a>
+            </div>
+            <ul class="links">
+
+                <li><a routerLink="/register" style="color:#000"><i class="fa fa-user" ></i>Register</a></li>
+                <li class="active"><a routerLink="/login" style="background-color: #008ad2;"><i class="fa fa-user"></i>Login</a></li>
+
+            </ul>
+            <label for="nav-toggle" class="icon-burger">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
         </label>
+        </div>
     </div>
-    </div>
-  </div>
+</div>
 <div class="login-section">
     <div class="container mr-auto text-center">
-        <div class="row" > 
+        <div class="row">
             <div class="col-md-3">
             </div>
-            <div class="col-md-6" >
-               <p style="color: #136980; text-align:center;"><b>{{msg}}</b></p>
-                
-                <div class="login-form" >
-                    
+            <div class="col-md-6">
+                <p style="color: #136980; text-align:center;"><b>{{msg}}</b></p>
+
+                <div class="login-form">
+
                     <div class="login-top">
                         <span>Welcome Back</span>
                     </div>
@@ -37,31 +38,28 @@
                         <h1>
                             <a style="color: #136980; font-size: 30px; font-weight:900;">Login</a> to Lingolista
                         </h1>
-                        
+
                     </div>
 
                     <div class="social-top-section">
-                        <div class="google-left" (click) ="signInWithGoogle()">
-                            <a ><img src="assets/img/icons/google.png">Sign In With<span
-                             >Google</span></a>
+                        <div class="google-left" (click)="signInWithGoogle()">
+                            <a><img src="assets/img/icons/google.png">Sign In With<span>Google</span></a>
                         </div>
                         <div class="facebook-right" (click)="signInWithFB()">
-                            <a ><img src="assets/img/icons/facebook.png">Sign
-                                In With <span>Facebook</span></a>
+                            <a><img src="assets/img/icons/facebook.png">Sign In With <span>Facebook</span></a>
                         </div>
                         <h6>OR</h6>
                     </div>
                     <div class="col text-center mt-5 mb-5">
                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px" *ngIf="mainpageLoder"></i>
-                      </div>
+                    </div>
                     <form [formGroup]="loginForm" *ngIf="!mainpageLoder">
                         <div class="form-group">
                             <label for="email">User Name :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="email" class="form-control" id="email" placeholder="abc"
-                                formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                                <img src="assets/images/icons/user-icon.png" style="float: right; margin-right:10px;margin-top:-35px; width: 21px;">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="abc" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <img src="assets/images/icons/user-icon.png" style="float: right; margin-right:10px;margin-top:-35px; width: 21px;">
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">User Name is required</div>
                                 <div *ngIf="f.email.errors.maxlength">User name should be only 25 characters</div>
@@ -74,8 +72,7 @@
                                 <span class="required-asterisk">*</span>
                             </label>
                             <i toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" style="font-size: 12px; text-transform: uppercase;" (click)="password()">&nbsp;&nbsp;show</i>
-                            <input type="password" class="form-control" [type]="show ? 'text' : 'password'" id="pwd" placeholder="******"
-                                formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
+                            <input type="password" class="form-control" [type]="show ? 'text' : 'password'" id="pwd" name="pwd" placeholder="******" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
                             <img src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
                             <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
                                 <div *ngIf="f.pwd.errors.required">Password is required</div>
@@ -92,16 +89,14 @@
                             <a routerLink="/forget_password">Forgot Password?</a>
                         </div>
                         <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" [(ngModel)]="ischeckboxTrue" [ngModelOptions]="{standalone: true}" (click)="rememberMe()"
-                            [checked]="isChecked">
+                            <input type="checkbox" class="custom-control-input" [(ngModel)]="ischeckboxTrue" [ngModelOptions]="{standalone: true}" (click)="rememberMe()" [checked]="isChecked">
                             <label class="custom-control-label" for="customCheck1" (click)="rememberMe()">Remember me</label>
                         </div>
-                      
+
                     </form>
                     <div class="footer-text-1" style="margin-top: 80px;">
                         <hr>
-                        <p>Don't have an account? <a routerLink="/register"
-                                style="color: #136980; font-weight: bold;">Sign Up</a></p>
+                        <p>Don't have an account? <a routerLink="/register" style="color: #136980; font-weight: bold;">Sign Up</a></p>
                     </div>
                 </div>
             </div>
@@ -114,8 +109,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="col-lg-12 pop-show mt-5 mb-5">
-                    <h5>'Google Login Failed', <br>
-                        'The Google Login failed. Please make sure that 3rd party cookies have not been blocked.'</h5>
+                    <h5>'Google Login Failed', <br> 'The Google Login failed. Please make sure that 3rd party cookies have not been blocked.'</h5>
                 </div>
             </div>
         </div>

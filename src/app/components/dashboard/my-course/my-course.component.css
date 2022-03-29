@@ -1,16 +1,28 @@
 .gray {
-	background-color: #008ad2;
-	border: #008ad2;
-   }
-   .grays{
+    background-color: #008ad2;
+    border: #008ad2;
+}
+
+.grays {
     background-color: grey;
-	border: grey; 
-   }
-   .button-actives{
-    background-color:#136980;
+    border: grey;
+}
+
+.button-actives {
+    background-color: #136980;
     /* color: white; */
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
     /* color: #fff;  */
+}
+
+.form-control {
+    height: 50px;
+    width: 100%;
+    border-radius: 27px;
+    background-color: #f6f6fc;
+    padding-left: 25px;
+    border: 2px solid #efeef4;
 }

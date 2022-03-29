@@ -7,7 +7,7 @@
             <div class="header-top-menu hd-search-rp">
                 <form [formGroup]="searchform">
                     <div role="search" class="dashboard-search-header">
-                        <input type="text" placeholder="SEARCH" formControlName="searchData" class="form-control " id="search">
+                        <input type="text" placeholder="SEARCH" formControlName="searchData" class="form-control " id="searchData" name="searchData">
                         <i class="fa fa-search" (click)="searchDatas()"></i>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
 
         <div class="dashboard">
             <div class="my-course-heading">
-                <h1>My Course13</h1>
+                <h1>My Course</h1>
                 <hr>
             </div>
             <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder ">

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../../service.service';
 
 @Component({
@@ -11,19 +14,55 @@ export class StudentHeaderComponent implements OnInit {
   sidebarData: any;
   coursesName: void;
   subTitle: any;
-
-  constructor(private service: ServiceService, private router: Router) { }
+  subscription: Subscription;
+  private _frontService: FrontService;
+  public get frontServices(): FrontService {
+    if (this._frontService) { return this._frontService };
+    return this._frontService = this.injector.get(FrontService);
+  }
+  constructor(private service: ServiceService,   private eventEmitterService: EventEmitterService, private router: Router, private injector: Injector) { 
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.
+        invokeMenuList.subscribe(() => {
+          debugger
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        });
+    }
+  }
 
   ngOnInit(): void {
     this.studentSideBar()
   }
   studentSideBar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    console.log(' student header view', this.frontServices.vm);
+
+    if ( this.frontServices == null ||
+      this.frontServices.vm == null ||
+      this.frontServices.vm.sidebarData == null ||
+      this.frontServices.vm.sidebarData.length == 0) {
+
+      const data = {
+        user_id: sessionStorage.getItem('uid')
+      }
+      this.service.post('student_sidebar', data, 1).subscribe(res => {
+        this.sidebarData = res.body.result;
+        this.frontServices.vm.sidebarData=this.sidebarData;
+      })
     }
-    this.service.post('student_sidebar', data, 1).subscribe(res => {
-      this.sidebarData = res.body.result;
-    })
+    else{
+      this.sidebarData = this.frontServices.vm.sidebarData;
+
+    }
+  }
+  unique(arr, keyProps) {
+    return Object.values(
+      arr.reduce((uniqueMap, entry) => {
+        const key = keyProps.map((k) => entry[k]).join('|');
+        if (!(key in uniqueMap)) uniqueMap[key] = entry;
+        return uniqueMap;
+      }, {})
+    );
   }
   //sidebar accordion
   toggleAccordian(event, index, name) {

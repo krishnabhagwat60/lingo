@@ -132,7 +132,6 @@ body {
 input {
     border: 2px solid #efeef4;
     color: #707070;
-    padding: 10px;
     font-size: 13px;
     outline: 0;
 }
@@ -140,7 +139,6 @@ input {
 textarea {
     border: 2px solid #efeef4;
     color: #707070;
-    padding: 10px;
     font-size: 13px;
     outline: 0;
 }
@@ -1782,7 +1780,7 @@ a {
 
 .show-button {
     width: 100%;
-    max-height: 50px;
+    /* max-height: 50px; */
     padding-top: 25px;
 }
 
@@ -1803,7 +1801,7 @@ a {
     font-size: 13px;
     text-align: center;
     color: #ffffff;
-    margin-top: -6px;
+    /* margin-top: 26px; */
     font-weight: 500;
     text-transform: uppercase;
     background-color: #008ad2;
@@ -2658,6 +2656,7 @@ a {
     text-align: center;
     height: 30px;
     margin-top: 8px;
+    top: 125px;
     position: absolute;
     right: 20px;
     bottom: 0px;
@@ -2719,12 +2718,12 @@ a {
 }
 
 .right-btn ul {
-    margin-left: -80px;
+    margin-left: 160px;
     margin-top: 130px;
     background-color: #fff;
     padding-bottom: 10px;
-    border: 2px solid rgba(51, 42, 124, 0.08);
-    box-shadow: 3px 5px 7px #ddd;
+    border: 2px solid #fff;
+    box-shadow: 0 5px 30px 0 rgb(82 63 105 / 20%);
 }
 
 .arrow-top-1:after {
@@ -2735,7 +2734,9 @@ a {
     border-top: none;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 10px solid #ddd;
+    border-bottom: 10px solid #fff;
+    /* color: red; */
+    box-shadow: 0 5px 30px 0 rgb(82 63 105 / 20%);
 }
 
 .right-btn ul li {
@@ -6716,7 +6717,7 @@ input:checked+.slider:before {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
 .image-drag-section h5 {
@@ -7004,7 +7005,7 @@ input:checked+.slider:before {
 
 #pre-support {
     position: absolute;
-    right: 20px;
+    right: 28px;
     width: 150px;
     background-color: #008ad2;
     top: 200px;
@@ -7398,7 +7399,6 @@ input:checked+.slider:before {
 }
 
 #cancel-popup-btn {
-    padding: 12px 20px;
     border-radius: 4px;
     background-color: #008ad2;
     color: #fff;
@@ -7478,8 +7478,7 @@ input:checked+.slider:before {
 }
 
 .main-height {
-    height: 804px;
-    overflow: auto !important;
+    height: 100%;
 }
 
 
