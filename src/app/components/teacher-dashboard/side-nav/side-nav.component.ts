@@ -15,7 +15,7 @@ export class SideNavComponent implements OnInit {
   user: string;
   wallet: string;
   image: string;
-  updateNewDataImage :any;
+  updateNewDataImage: any;
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -26,27 +26,24 @@ export class SideNavComponent implements OnInit {
   }
   constructor(private router: Router, private authService: SocialAuthService,
     private injector: Injector,
-    private service: ServiceService,private eventEmitterService: EventEmitterService
-    ) {
- 
+    private service: ServiceService, private eventEmitterService: EventEmitterService
+  ) {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
-        invokeProfileChange .subscribe(() => {
-          debugger
-           this.profile();
+        invokeProfileChange.subscribe(() => {
+          this.profile();
         });
     }
   }
 
   ngOnInit(): void {
-    console.log("Images",this.image);
     this.username();
     this.walletData();
-   this.profile();
+    this.profile();
   }
   logout() {
     sessionStorage.clear();
-    this.frontServices.vm.sidebarData =null;
+    this.frontServices.vm.sidebarData = null;
 
     this.router.navigate(['/login'])
     this.signOut();
@@ -62,14 +59,12 @@ export class SideNavComponent implements OnInit {
   walletData() {
     this.wallet = sessionStorage.getItem('wallet');
   }
-  profile(){
-    debugger
+  profile() {
     const data = {
       "user_id": sessionStorage.getItem('uid'),
-      "avatar" :  localStorage.getItem('image')
+      "avatar": localStorage.getItem('image')
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
-      debugger
       this.updateNewDataImage = res.body.profile.avatar;
     }
     )

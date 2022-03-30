@@ -67,8 +67,8 @@ export class TeacherDashboardComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router,
     private injector: Injector,
     private authService: SocialAuthService, private ngxCsvParser: NgxCsvParser) {
-    this.image = localStorage.getItem('image')
-  }
+      this.image=localStorage.getItem('image')
+     }
 
   ngOnInit(): void {
     this.getTeacherCourse(1, 0);
@@ -185,30 +185,16 @@ export class TeacherDashboardComponent implements OnInit {
   }
   public records: any[] = [];
   AccordionInitialForms(index) {
-
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
   }
   setEmailControl(index) {
     return this.inviteFormData.controls[index].invalid;
   }
-  // setForm(event) {
-  //   debugger
-  //  let email =event.value
-  //  console.log(email)
-
-  // }
-  // onKey(event: any) {
-  //   debugger
-  //   let shiv = event.target.value
-  //   console.log(shiv);
-
-  // }
   setVisibilityUploader() {
     return this.inviteFormData.value.every(x => x.email != '') && this.inviteFormData.controls.every(x => x.status == "VALID");
   }
   addNewServiceData() {
-    debugger
     this.isAnyOneEmailAdded = true;
     const searchForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]),
@@ -218,7 +204,6 @@ export class TeacherDashboardComponent implements OnInit {
 
     if (this.inviteFormData.controls['email'] !== undefined) {
       this.inviteFormData.controls['email'].valueChanges.subscribe(value => {
-        debugger;
         if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
           this.isBulkuploaded = true;
 
@@ -234,8 +219,6 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   audFileSelected(event: any) {
-    debugger
-    
     const fileCheck = event.target.files[0];
 
     if (event.target.files[0]) {
@@ -311,7 +294,6 @@ this.studentInvitationFile = [];
 
 
   removeFile(obj: any) {
-    debugger
     this.studentInvitationFile.forEach((value, index) => {
       if (value == obj) this.studentInvitationFile.splice(index, 1);
     });
@@ -319,7 +301,6 @@ this.studentInvitationFile = [];
 
 
   emailData() {
-    debugger
     this.audSrc = ''
     this.inviteName = ''
     this.myInputVariables.nativeElement.value = '';
@@ -344,7 +325,6 @@ this.studentInvitationFile = [];
   // invite api
   get f() { return this.inviteFormData.controls; }
   inviteApi() {
-    debugger
     var data = {}
     if (!this.audSrc) {
       const dataInvite = this.inviteFormData.getRawValue();
@@ -371,7 +351,6 @@ this.studentInvitationFile = [];
         course_id: this.inviteId
       }
     }
-    debugger;
     this.service.post('invite-student', data, 1).subscribe(res => {
       if (res.body.result.message == 'Sent Successfully') {
         this.msgShow = 'Successfully Sent.'

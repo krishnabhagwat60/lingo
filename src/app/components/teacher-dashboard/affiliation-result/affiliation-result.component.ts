@@ -34,7 +34,7 @@ export class AffiliationResultComponent implements OnInit {
   titleid: string;
   subscription: Subscription;
 
-  
+
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -48,7 +48,7 @@ export class AffiliationResultComponent implements OnInit {
     private router: Router,
     private _location: Location,
     private injector: Injector,
-   
+
     private eventEmitterService: EventEmitterService,
   ) {
     this.route.queryParamMap.subscribe((queryParams) => {
@@ -56,7 +56,7 @@ export class AffiliationResultComponent implements OnInit {
       this.titleid = queryParams.get('titleid');
     });
     this.courseNameData = sessionStorage.getItem('course_name');
-    
+
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeMenuList.subscribe(() => {
@@ -130,11 +130,9 @@ export class AffiliationResultComponent implements OnInit {
       this.courses = true;
     }
   }
-  // gotoBack() {
-  //   this._location.back();
-  // }
-  gotoBack(){
-    debugger
+
+  gotoBack() {
+
     this.router.navigate(['/multimedia/contentStyle']);
   }
   getSubTitle(parent) {

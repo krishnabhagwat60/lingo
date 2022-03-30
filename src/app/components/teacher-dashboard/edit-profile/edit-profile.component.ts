@@ -171,7 +171,6 @@ export class EditProfileComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
 
@@ -180,7 +179,6 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-    debugger
     this.mainpageLoder = true;
     this.loding = true;
     const data = {
@@ -248,7 +246,6 @@ export class EditProfileComponent implements OnInit {
     // console.log(this.selectedArr);
   }
   profileUpdate() {
-    debugger
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -357,7 +354,6 @@ export class EditProfileComponent implements OnInit {
   // get data by id
 
   updateData() {
-    debugger
     const data = {
       "user_id": this.userId,
       "avatar" : this.updateNewDataImage
@@ -542,7 +538,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   fileChangeEvent(event: any): void {
-    debugger
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
