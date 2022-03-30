@@ -67,8 +67,8 @@ export class TeacherDashboardComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router,
     private injector: Injector,
     private authService: SocialAuthService, private ngxCsvParser: NgxCsvParser) {
-      this.image=localStorage.getItem('image')
-     }
+    this.image = localStorage.getItem('image')
+  }
 
   ngOnInit(): void {
     this.getTeacherCourse(1, 0);
@@ -185,12 +185,25 @@ export class TeacherDashboardComponent implements OnInit {
   }
   public records: any[] = [];
   AccordionInitialForms(index) {
+
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
   }
   setEmailControl(index) {
     return this.inviteFormData.controls[index].invalid;
   }
+  // setForm(event) {
+  //   debugger
+  //  let email =event.value
+  //  console.log(email)
+
+  // }
+  // onKey(event: any) {
+  //   debugger
+  //   let shiv = event.target.value
+  //   console.log(shiv);
+
+  // }
   setVisibilityUploader() {
     return this.inviteFormData.value.every(x => x.email != '') && this.inviteFormData.controls.every(x => x.status == "VALID");
   }
