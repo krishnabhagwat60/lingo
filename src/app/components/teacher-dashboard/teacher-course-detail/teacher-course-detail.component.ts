@@ -28,6 +28,9 @@ export class TeacherCourseDetailComponent implements OnInit {
   courseFaqdata: any;
   fqButton: boolean;
   frame: string;
+  expandedIndex:number;
+  expandedIndexTitle:number;
+
 
   constructor(private service: ServiceService, private route: ActivatedRoute,private router: Router, private _sanitizer: DomSanitizer) {
     this.route.queryParamMap.subscribe(queryParams => {
@@ -60,6 +63,13 @@ export class TeacherCourseDetailComponent implements OnInit {
   }
   showshubmenu(){
     this.ismenuShow=!this.ismenuShow
+  }
+
+  toggleShow(index) {
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
+  }
+  toggleShowTitle(index){
+    this.expandedIndexTitle = index === this.expandedIndexTitle ? -1 : index;
   }
 
   showsubmenu(){

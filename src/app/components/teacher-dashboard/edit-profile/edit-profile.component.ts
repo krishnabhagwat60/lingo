@@ -76,6 +76,7 @@ export class EditProfileComponent implements OnInit {
   tagedd: any;
   subTitle: any;
   mainpageLoder: boolean = false;
+  mainpageLoderUpdate: boolean = false;
   user: string;
   countryss: any = [];
   selectingLanguage: any = [];
@@ -180,35 +181,48 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-    this.mainpageLoder = true;
+    debugger
+    this.mainpageLoderUpdate = true;
     this.loding = true;
-    const data = {
+    const datas = {
       user_id: sessionStorage.getItem('uid'),
       avatar: this.updateNewDataImage
     }
-    if(data.avatar !=undefined)
-    {
-    this.service.post('profile-update', data, 1).subscribe(res => {
-     
-      if (res.body.result === 'success') {
-        this.loding = false;
-        this.mainpageLoder = false;
-        this.msg = 'Profile Updated Successfully'
-         this.updateData();
-        this.eventEmitterService.onProfileChanged();
-
-        //window.location.reload();
-        this.submitted = false;
+   
+    this.service.post('get_profile_by_id', datas, 1).subscribe(res => {
+      var ress= res.body.profile;
+      const data = {
+        user_id: sessionStorage.getItem('uid'),
+        "first_name": ress.firstname,
+        "last_name": ress.lastname,
+        "bio": ress.bio,
+        "contact_number": ress.phone_number,
+        "known_language": ress.known_language_id,
+        "main_language": ress.main_language_id,
+        "skills": this.tags,
+        "address": "Indore",
+        "responsibilities": ress.responsibilities,
+        country: ress.country,
+        state: ress.State,
+        email: ress.email,
+        avatar: this.updateNewDataImage
       }
-      this.loding = false;
-    }
+      this.service.post('profile-update', data, 1).subscribe(res => {
+     
+        if (res.body.result === 'success') {
+          this.loding = false;
+          this.mainpageLoderUpdate = false;
+          this.msg = 'Profile Updated Successfully'
+          this.updateData();
+          this.eventEmitterService.onProfileChanged();
   
-    )}
+          //window.location.reload();
+          this.submitted = false;
+        }
+        this.loding = false;
+      });
+    });
   }
-
-
-
-  // view page
   view(id) {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { viewpage: id } });
   }
@@ -224,7 +238,7 @@ export class EditProfileComponent implements OnInit {
     oldPass: new FormControl('',),
     newPass: new FormControl('',),
     confirmPass: new FormControl('',),
-    tag: new FormControl('', [Validators.maxLength(51)]),
+    skills: new FormControl('', [Validators.maxLength(51)]),
     bio: new FormControl('', Validators.required),
     responsibility: new FormControl('', Validators.required),
     countrys: new FormControl('', Validators.required),
@@ -247,6 +261,7 @@ export class EditProfileComponent implements OnInit {
     // console.log(this.selectedArr);
   }
   profileUpdate() {
+    debugger
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -255,6 +270,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   editProfile() {
+    debugger
     this.submit = true;
     if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
@@ -274,7 +290,7 @@ export class EditProfileComponent implements OnInit {
       "contact_number": this.editProfileForm.value.contactNumber,
       "known_language": this.selectedLanguage,
       "main_language": this.selectedMainLanguage,
-      "skills": this.tags,
+      "skills": this.editProfileForm.value.skills,
       "address": "Indore",
       "responsibilities": this.editProfileForm.value.responsibility,
       country: this.editProfileForm.value.countrys,
@@ -355,6 +371,7 @@ export class EditProfileComponent implements OnInit {
   // get data by id
 
   updateData() {
+    debugger
     const data = {
       "user_id": this.userId,
       "avatar" : this.updateNewDataImage
@@ -377,6 +394,7 @@ export class EditProfileComponent implements OnInit {
         "bio": this.updateNewData.bio,
         "contactNumber": this.updateNewData.phone_number,
         "knownLanguage": this.updateNewData.known_language,
+        "skills": this.updateNewData.skills,
         "mainLanguage": this.updateNewData.main_language,
         countrys: this.updateNewData.country,
         state: this.updateNewData.State,
@@ -539,6 +557,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   fileChangeEvent(event: any): void {
+    debugger
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {

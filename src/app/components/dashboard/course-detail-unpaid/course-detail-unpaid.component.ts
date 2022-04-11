@@ -36,6 +36,9 @@ export class CourseDetailUnpaidComponent implements OnInit {
   fqButton: boolean;
   paymentUrl: any;
   amount: any;
+  expandedIndex:number;
+  expandedIndexTitle:number;
+
   constructor(private service: ServiceService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) {
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
@@ -51,6 +54,12 @@ export class CourseDetailUnpaidComponent implements OnInit {
     this.user = sessionStorage.getItem('username');
   }
 
+  toggleShow(index) {
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
+  }
+  toggleShowTitle(index){
+    this.expandedIndexTitle = index === this.expandedIndexTitle ? -1 : index;
+  }
   // view page
   view(id) {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { viewpage: id } });

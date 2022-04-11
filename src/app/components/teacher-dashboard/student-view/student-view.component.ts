@@ -856,7 +856,7 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    this._location.back();
+    this.router.navigateByUrl('/multimedia/contentStyle')
   }
 
   // open pdf in new tab

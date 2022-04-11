@@ -129,6 +129,7 @@ export class StudentsDashboardComponent implements OnInit {
 
   // get course dropdown data
   courseData() {
+    debugger;
     const data = {
       "name": "course_language"
     }
@@ -152,6 +153,7 @@ export class StudentsDashboardComponent implements OnInit {
     this.buttonColor = i;
     this.service.post('get-course', data, 1).subscribe(res => {
       this.courseDetail = res.body.data;
+      console.log(this.courseDetail)
       this.mainpageLoder = false
       if (i == 1) {
         this.questionButton = true;
@@ -172,6 +174,8 @@ export class StudentsDashboardComponent implements OnInit {
         this.mainpageLoder = false;
       }
       this.totalPages = [];
+     
+   
       for (let i = 0; i < res.body.total_course; i++) {
         this.totalPages.push(i + 1);
       }
@@ -222,7 +226,7 @@ export class StudentsDashboardComponent implements OnInit {
       "rating": '',
       "page": this.pages,
     }
-    // this.buttonColor = i;
+     
     this.service.post('course-filter', data, 1).subscribe(res => {
       this.mainpageLoder = false;
       this.searchDataBtn = true
@@ -233,6 +237,7 @@ export class StudentsDashboardComponent implements OnInit {
       }
       if (res.body.total_course === 1 || res.body.total_course === 0 || res.body.data[0].message == 'No Data Found') {
         this.buttonShow = false;
+
       }
       if (res.body.data[0].message == 'No Data Found') {
         this.errMsg = 'No Data Found'
@@ -243,8 +248,14 @@ export class StudentsDashboardComponent implements OnInit {
   }
   // search filter api
   search(pageNo?:number,i?:number) {
+    debugger
     this.mainpageLoder = true;
-    this.buttonColor = i ;
+    if(i != undefined){
+      this.buttonColor = i;
+    }
+    else{
+      this.buttonColor = 0;
+    }
     const data =
     {
       "name": this.searchForm.value.course,
@@ -261,6 +272,9 @@ export class StudentsDashboardComponent implements OnInit {
       this.searchDataBtn = true
       this.courseDetail = res.body.data;
       this.totalPages = [];
+      this.pages = 1;
+      this.current_page = Number(1);
+      
       for (let i = 0; i < res.body.total_course; i++) {
         this.totalPages.push(i + 1);
       }

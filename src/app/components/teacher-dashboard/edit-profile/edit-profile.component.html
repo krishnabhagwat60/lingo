@@ -23,7 +23,7 @@
     <div class="main main-height">
         <div class="container-fluid">
             <div class="dashboard">
-                <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder ">
+                <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
                     <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
                 </div>
                 <div class="teacher-profile-edit" *ngIf="!mainpageLoder">
@@ -219,7 +219,7 @@
                                 <span class="required-asterisk">*</span>
                             </h4>
                             <!-- <tag-input [(ngModel)]="items"  style="width: 60%;height: 50px;" class="form-control" id="skill" placeholder="SKILL"></tag-input> -->
-                            <input type="text" class="form-control" id="skill" placeholder="SKILL" formControlName="tag"
+                            <input type="text" class="form-control" id="skill" placeholder="SKILL" formControlName="skills"
                                 style="width: 60%;height: 50px;" #tagInput (keyup)="onKeyUp($event)"
                                 [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
                             <div *ngIf="submit && form.tag.errors" class="invalid-feedback">
@@ -399,7 +399,8 @@
                         </div>
                         <div class="save-btn" *ngIf="!passwordShow">
                             <div class="loader" *ngIf="loding">Loading...</div>
-                            <button (click)="teacherImage()" type="button" id="save">Update Image</button>
+                            <button (click)="teacherImage()" type="button" id="save">Update Image <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
+                                *ngIf="mainpageLoderUpdate"></i></button>
                             <button type="button" id="reset" (click)="reseted()">Reset </button>
                         </div>
                         <!-- <input type="file" (change)="fileChangeEvent($event)" /> -->

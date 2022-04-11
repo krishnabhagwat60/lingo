@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
@@ -27,9 +27,9 @@ export class StudentProfileComponent implements OnInit {
   passwordShow: boolean;
   sidebarData: any;
   dropdownList = [];
-  selectedItems = [];
   dropdownSettings = {};
   selectedLanguage = [];
+  selectedMainLanguage = [];
   selectedArr = []
   allStateList: string;
   allCityList: any;
@@ -49,12 +49,14 @@ export class StudentProfileComponent implements OnInit {
   countryss: any = [];
   msg: string;
   mainpageLoder = false;
+  mainpageLoderOfSave = false;
   submit: boolean = false;
   successmsg: string;
   mainLoder: boolean = false;
   coursesName: void;
   updateNewDataImage: string;
   imageSrc: string;
+  @Output() loadImageFailed = new EventEmitter<void>();
   constructor(private service: ServiceService, private fb: FormBuilder, private router: Router, private http: HttpClient) {
     this.profileForm = fb.group({
       firstName: new FormControl('', [Validators.required, , Validators.pattern('^[a-zA-Z ]*$')]),
@@ -66,6 +68,7 @@ export class StudentProfileComponent implements OnInit {
       selectedItems: new FormControl('', Validators.required),
       image: new FormControl('',),
       fileSource: new FormControl('',),
+      mainLanguage: new FormControl('',),
     })
     this.passwordForm = fb.group({
       oldPassword: new FormControl('', Validators.required),
@@ -98,6 +101,7 @@ export class StudentProfileComponent implements OnInit {
   }
   
   fileChangeEvent(event: any): void {
+    debugger
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
@@ -111,7 +115,20 @@ export class StudentProfileComponent implements OnInit {
       };
     }
   }
-
+  toDataURL(url, callback) {
+    debugger;
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        callback(reader.result);
+      };
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
   onItemSelect(item: any) {
     this.selectedArr.push(item);
   }
@@ -126,23 +143,40 @@ export class StudentProfileComponent implements OnInit {
   get f() { return this.profileForm.controls; }
 
   studentProfile() {
+    debugger
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
     }
-    this.mainpageLoder = true;
+   
     for (const data of this.selectedArr) {
-      this.selectedLanguage.push(data.key);
+      this.selectedLanguage.push(data.value);
     }
-
+    for (const data of this.profileForm.value.mainLanguage) {
+      this.selectedMainLanguage.push(data.value);
+    }
+    //var image = "";
+    if(this.updateNewDataImage.split("//")[0] == "http:")
+    {
+      this.toDataURL(
+        this.updateNewDataImage,
+        function (dataUrl) {
+          debugger
+          console.log("base64",dataUrl);
+        }
+      );
+      
+      //var image =this.getBase64Image(this.updateNewDataImage);
+    }
+    this.mainpageLoderOfSave = true;
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.profileForm.value.firstName,
       "last_name": this.profileForm.value.lastName,
       "bio": this.profileForm.value.bio,
       "contact_number": this.profileForm.value.contactNumber,
-      "known_language": this.selectedLanguage,
-      "main_language": this.profileForm.value.mainLanguage,
+      "knownlanguage": this.selectedLanguage,
+      "mainlanguage": this.selectedMainLanguage,
       "skill": "0",
       "address": "Indore",
       "responsibilities": this.profileForm.value.responsibility,
@@ -151,14 +185,12 @@ export class StudentProfileComponent implements OnInit {
       "email": this.profileForm.value.email,
       avatar: this.updateNewDataImage
     }
-    
     this.service.post('profile-update', data, 1).subscribe(res => {
       this.editData = res;
       if (res.body.result === 'success') {
-        this.mainpageLoder = false;
+        this.mainpageLoderOfSave = false;
         this.msg = 'Profile Updated Successfully'
         this.updateData();
-        window.location.reload();
         this.submitted = false;
       }
     }
@@ -166,8 +198,28 @@ export class StudentProfileComponent implements OnInit {
   }
   studentImage(){
     debugger
+    const datas = {
+      "user_id": sessionStorage.getItem('uid')
+    }
+    this.mainpageLoder = true;
+    this.service.post('get_profile_by_id', datas, 1).subscribe(res => {
+      var ress= res.body.profile;
     const data = {
       user_id: sessionStorage.getItem('uid'),
+      "first_name": ress.firstname,
+      "last_name": ress.lastname,
+      "bio": ress.bio,
+      "contact_number": ress.phone_number,
+      "known_language": ress.known_language,
+      "known_language_id": ress.known_language_id,
+      "main_language": ress.main_language,
+      "main_language_id": ress.main_language_id,
+      "skill": "0",
+      "address": "Indore",
+      "responsibilities": ress.responsibilities,
+      "country": ress.country,
+      "state": ress.State,
+      "email": ress.email,
       avatar: this.updateNewDataImage
     }
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -175,12 +227,14 @@ export class StudentProfileComponent implements OnInit {
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
         this.msg = 'Profile Updated Successfully'
-        // this.updateData();
+        // 
         window.location.reload();
+        this.ngOnInit();
         this.submitted = false;
       }
     }
     )
+    });
   }
   reset() {
     debugger
@@ -192,6 +246,7 @@ export class StudentProfileComponent implements OnInit {
   }
   // patch data
   updateData() {
+    debugger
     const data = {
       "user_id": sessionStorage.getItem('uid')
     }

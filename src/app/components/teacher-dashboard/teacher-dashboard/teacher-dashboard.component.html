@@ -199,10 +199,10 @@
                       data-toggle="modal" (click)="getInviteId(data.id, data.title)">
                       invite Students
                     </button>
-                    <button *ngIf="data.course_type == 'public'" type="button" id="disabledbutton"
+                    <!-- <button *ngIf="data.course_type == 'public'" type="button" id="disabledbutton"
                       title="Course is public" data-target="#invite" data-toggle="modal" disabled="disabled">
                       invite Students
-                    </button>
+                    </button> -->
                     <button type="button" id="view-student-btn" (click)="viewStudent(data.id)">
                       View Student
                     </button>
@@ -274,26 +274,40 @@
           <form [formGroup]="inviteForm">
             <div class="form-group-1">
               <label for="name">Course Name</label>
-              <input type="name" class="form-control" id="courseName" name="courseName" formControlName="courseName"
-                placeholder="{{ courseName }}" />
+              <input type="name" readonly class="form-control" id="courseName" name="courseName"
+                formControlName="courseName" placeholder="{{ courseName }}" />
             </div>
-            <div class="form-group-1" id="email-controls" [class.disabled]="inviteName && inviteName.length > 0"
-              style="width: 95%">
-              <ng-container *ngFor="let form of inviteFormData.controls; index as i">
-                <ng-container [formGroup]="form">
-                  <label for="name">Email Id</label>
-                  <input type="name" class="form-control" [attr.disabled]="enabledDisabled ? enabledDisabled : null" (focusout)="setForm($event)" id="email" name="email"
-                    formControlName="email" placeholder="GERMAN"
-                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" (keyup)="emailData()" />
-                  <span class="fa fa-plus" style="right: -5px;margin-top: -40px;position: absolute;" [class.disabled]="setEmailControl(i)"
-                    (click)="AccordionInitialForms(i)">
-                  </span>
-                  <div *ngIf="form.get('email').hasError('pattern')" style="color: #dc3545; font-size: 12px" padding>
-                    *Please enter correct e-mail address
-                  </div>
+            <div (mouseover)="doCheckEmail(enabledDisabled,1)" (mouseout)="doCheckEmail(enabledDisabled,0)">
+              <div class="form-group-1" id="email-controls" [class.disabled]="inviteName && inviteName.length > 0"
+                style="width: 95%">
+                <ng-container *ngFor="let form of inviteFormData.controls; index as i">
+                  <ng-container [formGroup]="form">
+                    <label for="name">Email Id</label>
+                    <input type="name" class="form-control" [attr.disabled]="enabledDisabled ? enabledDisabled : null"
+                      id="email" name="email" formControlName="email" placeholder="GERMAN"
+                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" (keyup)="emailData()" />
+                    <span class="fa fa-plus"  *ngIf="i==0" style="right: -5px;margin-top: -40px;position: absolute;"
+                      [class.disabled]="setEmailControl(i) || plusDisabled" (click)="AccordionInitialForms(i)">
+                    </span>
+                    <span class="fa fa-close" *ngIf="i!=0" style="right: -5px;margin-top: -40px;position: absolute;"
+                    (click)="onRemoveRow(i)">
+                    </span>
+                    <!-- <i class="fa fa-trash"  style=" margin-left: 18px;" aria-hidden="true"
+                      (click)="onRemoveRow(index)"></i> -->
+                    <!-- <div *ngIf="erroMessage">
+                    <p  style="color: #FF0000">{{ erroMessage }}</p>
+                  </div> -->
+                    <div *ngIf="form.get('email').hasError('pattern')" style="color: #dc3545; font-size: 12px" padding>
+                      *Please enter correct e-mail address
+                    </div>
+                  </ng-container>
                 </ng-container>
-              </ng-container>
+                <div *ngIf="erroMessageForEmail">
+                  <p style="color: #FF0000">{{ erroMessageForEmail }}</p>
+                </div>
+              </div>
             </div>
+
             <p for="name" style="
               margin-top: 10px;
               font-size: 13px;
@@ -304,19 +318,28 @@
             ">
               Bulk Upload (Only .csv file allowed)
             </p>
-            <div class="custom-file-wrp" >
+            <div class="custom-file-wrp">
               <div class="filename" style="width: 100%;">
 
-                <input type="" formControlName="bulk" placeholder={{inviteName}}>
-            </div>
-              <div class="custom-file">
-                <label for="fileupload"><a class="fa fa-picture-o" style="margin-right: 10px"></a>Browse</label>
-                <input type="file" id="fileupload" [attr.disabled]="browseDisabled ? browseDisabled : null" accept=".csv" formControlName="bulk"
-                  (change)="audFileSelected($event)" />
+                <input type="" [attr.disabled]="browseDisabled ? browseDisabled : null" 
+                  placeholder={{inviteName}}>
               </div>
+              <div class="custom-file" (mouseover)="doCheckFileData(browseDisabled,1)"
+                (mouseout)="doCheckFileData(browseDisabled,0)">
+                <label for="fileupload"><a class="fa fa-picture-o" style="margin-right: 10px"></a>Browse</label>
+                <input type="file" id="fileupload" [attr.disabled]="browseDisabled ? browseDisabled : null"
+                  accept=".csv" formControlName="bulk" (change)="audFileSelected($event)" />
+                <div style="margin-top: 10px;">
+                  <i class="fa fa-trash" style="
+                  margin-left: 18px;" aria-hidden="true" (click)="removeSelectedFile()"></i>
+                </div>
+                <div *ngIf="erroMessageForFile">
+                  <p style="color: #FF0000">{{ erroMessageForFile }}</p>
+                </div>
+              </div>
+
             </div>
             <p *ngIf="msgShow" style="color: #008ad2">{{ msgShow }}</p>
-            <i class="fa fa-trash" aria-hidden="true" (click)="removeSelectedFile()"></i>
             <div class="invite-btn">
               <a (click)="inviteApi()" style="color: #fff">invite</a>
             </div>

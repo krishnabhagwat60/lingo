@@ -42,6 +42,7 @@ import { ImageDragSolutionComponent } from './image-drag-solution/image-drag-sol
 import { StudentPipe } from '../teacher-dashboard/student-view/studentPipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StudentHeaderComponent } from './student-header/student-header.component';
+import { ThankYouTeacherComponent } from './thank-you-teacher/thank-you-teacher.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -91,6 +92,7 @@ import { StudentHeaderComponent } from './student-header/student-header.componen
         ImageDragSolutionComponent,
         StudentPipe,
         StudentHeaderComponent,
+        ThankYouTeacherComponent,
     ]
 })
 export class TeacherModule { }

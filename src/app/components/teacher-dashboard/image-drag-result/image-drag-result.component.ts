@@ -65,7 +65,7 @@ export class ImageDragResultComponent implements OnInit {
     this.studentSideBar();
   }
   gotoBack(){
-    this._location.back();
+    this.route.navigateByUrl('/multimedia/contentStyle')
   }
 
   studentSideBar() {

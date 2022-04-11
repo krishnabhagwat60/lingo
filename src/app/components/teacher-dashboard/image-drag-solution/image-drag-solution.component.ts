@@ -65,7 +65,7 @@ export class ImageDragSolutionComponent implements OnInit {
   }
 
   gotoBack(){
-    this._location.back();
+    this.router.navigateByUrl('/multimedia/contentStyle')
   }
   studentSideBar() {
     const data={

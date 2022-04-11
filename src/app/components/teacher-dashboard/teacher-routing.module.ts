@@ -31,6 +31,7 @@ import { QuestionDropdownSolutionComponent } from './question-dropdown-solution/
 import { QuesRadioSolutionComponent } from './ques-radio-solution/ques-radio-solution.component';
 import { TextDragSolutionComponent } from './text-drag-solution/text-drag-solution.component';
 import { ImageDragSolutionComponent } from './image-drag-solution/image-drag-solution.component';
+import { ThankYouTeacherComponent } from './thank-you-teacher/thank-you-teacher.component';
 const routes: Routes = [
 
   {
@@ -87,6 +88,13 @@ const routes: Routes = [
     component: PickRightResultComponent,
     data: {
       title: 'PickRightResultComponent'
+    }
+  },
+  {
+    path: 'thank-you-teacher',
+    component: ThankYouTeacherComponent,
+    data: {
+      title: 'ThankYouTeacherComponent'
     }
   },
   {

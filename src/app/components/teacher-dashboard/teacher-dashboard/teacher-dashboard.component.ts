@@ -17,7 +17,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class TeacherDashboardComponent implements OnInit {
   // @ViewChild('invite') invite: ElementRef;
   @ViewChild('invite') myInputVariables: ElementRef;
-
+  @ViewChild('fileUploader') fileUploader:ElementRef;
   getCourse: any;
   sidebarData: any;
   current_page = 1;
@@ -30,6 +30,8 @@ export class TeacherDashboardComponent implements OnInit {
   inviteName: any;
   audSrc: any;
   msgShow: string;
+  erroMessageForEmail: string
+  erroMessageForFile: string
   submitted: boolean = false; isAnyOneEmailAdded = false;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
@@ -46,10 +48,11 @@ export class TeacherDashboardComponent implements OnInit {
   prevButton: boolean = false;
   questionButton: boolean = false;
   questionButtons: boolean = false;
+  plusDisabled : boolean = false;
   pages: number;
   inviteId: any;
-  enabledDisabled =false;
-  browseDisabled =false;
+  enabledDisabled = false;
+  browseDisabled = false;
   courseName: any;
   image: string;
   isEmailDiasable = false;
@@ -85,6 +88,20 @@ export class TeacherDashboardComponent implements OnInit {
   signOut(): void {
     this.authService.signOut();
   }
+  onRemoveRow(rowIndex: number) {
+    debugger
+    this.inviteFormData.removeAt(rowIndex);
+    if(this.inviteFormData.length == 1)
+    {
+      if(this.inviteFormData.value[0].email == "")
+      {
+        this.browseDisabled = false;
+      }
+      else{
+        this.browseDisabled = true;
+      }
+    }
+  }
   // username
   username() {
     this.user = sessionStorage.getItem('username');
@@ -107,7 +124,7 @@ export class TeacherDashboardComponent implements OnInit {
     this.service.post('get-teacher-course', data, 1).subscribe(res => {
       this.getCourse = res.body.data;
       console.log(this.getCourse)
-      if (!this.getCourse.length) {
+      if (!this.getCourse.length && this.getCourse != undefined) {
         this.err = 'No Data Found'
       }
       if (res.body.data) {
@@ -185,11 +202,14 @@ export class TeacherDashboardComponent implements OnInit {
   }
   public records: any[] = [];
   AccordionInitialForms(index) {
-
+    debugger
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
+
+   
   }
   setEmailControl(index) {
+    debugger
     return this.inviteFormData.controls[index].invalid;
   }
   // setForm(event) {
@@ -217,6 +237,7 @@ export class TeacherDashboardComponent implements OnInit {
 
     if (this.inviteFormData.controls['email'] !== undefined) {
       this.inviteFormData.controls['email'].valueChanges.subscribe(value => {
+       
         if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
           this.isBulkuploaded = true;
 
@@ -232,8 +253,9 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   audFileSelected(event: any) {
+    debugger
     const fileCheck = event.target.files[0];
-
+   
     if (event.target.files[0]) {
       this.enabledDisabled = true;
       let file: File = event.target.files[0];
@@ -244,12 +266,12 @@ export class TeacherDashboardComponent implements OnInit {
       reader.readAsText(file);
       reader.onload = (e) => {
         let csv: string = reader.result as string;
-        let csvRecordsArray = csv.split(/\r\n|\n/);  
-  
-        this.records= this.getHeaderArray(csvRecordsArray);  
+        let csvRecordsArray = csv.split(/\r\n|\n/);
+
+        this.records = this.getHeaderArray(csvRecordsArray);
       }
     }
-    else{
+    else {
       this.enabledDisabled = false;
     }
 
@@ -264,7 +286,7 @@ export class TeacherDashboardComponent implements OnInit {
           //  (this.addImageData as FormGroup).get('audio').patchValue('');
         }, (error: NgxCSVParserError) => {
         });
-this.studentInvitationFile = [];
+      this.studentInvitationFile = [];
       this.studentInvitationFile.push(file);
     }
     if (fileCheck && fileCheck != undefined && fileCheck != null) {
@@ -274,39 +296,38 @@ this.studentInvitationFile = [];
     }
   }
 
-  getHeaderArray(csvRecordsArr: any) {  
-    let headers = (<string>csvRecordsArr[0]).split(',');  
-    let headerArray = [];  
-    for (let j = 0; j < headers.length; j++) {  
-      headerArray.push(headers[j]);  
-    }  
-    return headerArray;  
-  }  
-  removeSelectedFile(){
-    this.inviteName = '';
+  getHeaderArray(csvRecordsArr: any) {
+    let headers = (<string>csvRecordsArr[0]).split(',');
+    let headerArray = [];
+    for (let j = 0; j < headers.length; j++) {
+      headerArray.push(headers[j]);
+    }
+    return headerArray;
+  }
+  removeSelectedFile() {
+     this.inviteName = '';
     this.enabledDisabled = false;
   }
-  
-
   // removeFile(event: any) {
   //   this.inviteForm.controls.bulk.setValue('')
   //   this.isEmailDiasable = false; this.inviteName = '';
   // }
- 
-  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {  
-    let csvArr = [];  
-  
-    for (let i = 1; i < csvRecordsArray.length; i++) {  
-      let curruntRecord = (<string>csvRecordsArray[i]).split(',');  
-      if (curruntRecord.length == headerLength) {  
-        csvArr.push(curruntRecord);  
-      }  
-    }  
-    return csvArr;  
-  }  
+
+  getDataRecordsArrayFromCSVFile(csvRecordsArray: any, headerLength: any) {
+    let csvArr = [];
+
+    for (let i = 1; i < csvRecordsArray.length; i++) {
+      let curruntRecord = (<string>csvRecordsArray[i]).split(',');
+      if (curruntRecord.length == headerLength) {
+        csvArr.push(curruntRecord);
+      }
+    }
+    return csvArr;
+  }
 
 
   removeFile(obj: any) {
+    debugger
     this.studentInvitationFile.forEach((value, index) => {
       if (value == obj) this.studentInvitationFile.splice(index, 1);
     });
@@ -317,11 +338,17 @@ this.studentInvitationFile = [];
     this.audSrc = ''
     this.inviteName = ''
     this.myInputVariables.nativeElement.value = '';
-    if(this.inviteFormData.length && this.inviteFormData.value[0].email.length)
+    if(this.inviteFormData.status == 'INVALID')
     {
-      this.browseDisabled = true;
+      this.plusDisabled = true;
     }
     else{
+      this.plusDisabled = false;
+    }
+    if (this.inviteFormData.length && this.inviteFormData.value[0].email.length) {
+      this.browseDisabled = true;
+    }
+    else {
       this.browseDisabled = false;
 
     }
@@ -338,6 +365,7 @@ this.studentInvitationFile = [];
   // invite api
   get f() { return this.inviteFormData.controls; }
   inviteApi() {
+    debugger
     var data = {}
     if (!this.audSrc) {
       const dataInvite = this.inviteFormData.getRawValue();
@@ -349,14 +377,14 @@ this.studentInvitationFile = [];
     } else {
       const dataInvite = []
       this.audSrc.forEach(element => {
-        if(this.records!=null && this.records.length>0){
-          this.records.forEach(el=>{
+        if (this.records != null && this.records.length > 0) {
+          this.records.forEach(el => {
             dataInvite.push({
               email: el
             })
           })
         }
-        
+
       });
       data = {
         email: dataInvite,
@@ -428,6 +456,23 @@ this.studentInvitationFile = [];
           this.err = 'No Data Found'
         }
       })
+    }
+  }
+
+
+  doCheckFileData(value, index) {
+    if (index == 1 && value) {
+      this.erroMessageForFile = 'Choose only one option at a time'
+    } else {
+      this.erroMessageForFile = ''
+    }
+  }
+
+  doCheckEmail(value, index) {
+    if (index == 1 && value) {
+      this.erroMessageForEmail = 'Choose only one option at a time'
+    } else {
+      this.erroMessageForEmail = ''
     }
   }
 }

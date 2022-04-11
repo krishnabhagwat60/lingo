@@ -282,6 +282,7 @@
                                 <ul class="pagination justify-content-center">
                                     <li class="page-item disabled">
                                     </li>
+                                    {{totalPages||json}}
                                     <li class="page-item" *ngFor="let data of totalPages; index as i" (click)="studentCourseDetail(data,i)"><a class="page-link" style="color: #fff;" [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
                                     </li>
                                 </ul>

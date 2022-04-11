@@ -27,7 +27,7 @@
                             <h1>Profile Information</h1>
                             <hr>
                         </div>
-                        <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder ">
+                        <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoderOfSave">
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
                         </div>
                         <div class="row" *ngIf="!mainpageLoder">
@@ -110,7 +110,9 @@
                                     <div class="select-dropdown-language multiselect-dropdown">
                                         <!-- <<<<<<< HEAD <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                             ======= -->
-                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" placeholder="KNOWN Language" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" 
+                                        formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                         [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && f.selectedItems.invalid" class="text-danger mt-1">
@@ -127,14 +129,14 @@
                                         <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-
                                         <!-- <select formControlName="mainLanguage">
                                             <option value="" disabled>Main Language</option>
                                             <option *ngFor="let data of language" value="{{data.key}}">
                                                 {{data.value}}
                                             </option>
                                         </select> -->
-                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="mainLanguage" (onSelect)="onMainSelect($event)" (onSelectAll)="onMainSelectAll($event)" [ngClass]="{ 'is-invalid': submit && form.mainLanguage.errors }">
+                                        <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language"
+                                         formControlName="mainLanguage"  [ngClass]="{ 'is-invalid': submit && form.mainLanguage.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submit && form.mainLanguage.invalid" class="text-danger mt-1">
@@ -155,8 +157,8 @@
 
                                     <div class="circle ">
                                         <!-- <img [src]="imageSrc" *ngIf="imageSrc"> -->
-                                        <img class="circular_image center " *ngIf="!imageSrc" [src]="updateNewDataImage">
-                                        <div *ngIf="imageSrc" class="btn">No Img</div>
+                                        <img class="circular_image center " [src]="updateNewDataImage">
+                                        <!-- <div *ngIf="imageSrc" class="btn">No Img</div> -->
                                         <!-- <img [src]="imageSrc" *ngIf="imageSrc">
                                     <img *ngIf="!imageSrc" [src] = "updateNewDataImage"> -->
 
@@ -171,10 +173,16 @@
                                     </div>
 
                                 </div>
+                                <div *ngIf="submitted && f.image.invalid" class="text-danger mt-1">
+                                    <div *ngIf="f.image.errors.required">
+                                        Image is required.
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="save-btn" *ngIf="!passwordShow">
-                                <button (click)="studentImage()" type="button" id="save">Update Image </button>
+                                <button (click)="studentImage()" type="button" id="save">Update Image  <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
+                                    *ngIf="mainpageLoder"></i></button>
                                 <button type="button" id="reset" (click)="reseted()">Reset</button>
                             </div>
                         </div>

@@ -74,7 +74,7 @@ export class QuesRadioSolutionComponent implements OnInit {
     })
   }
   gotoBack(){
-    this._location.back();
+    this.router.navigateByUrl('/multimedia/contentStyle')
   }
 
   toggleAccordian2(event, index) {
