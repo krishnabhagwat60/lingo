@@ -25,6 +25,7 @@
 
 .row-accordian .faq-box .faq-wrap .card-header {
     margin-bottom: 5px;
+    overflow-wrap: break-word;
     border: 2px solid #d2dfe2;
    width: 50%;
 }
@@ -46,6 +47,7 @@
     border: 2px solid #d2dfe2;
     padding: 10px 15px;
     margin-bottom: 5px;
+    overflow-wrap: break-word;
 }
 
 .row-accordian .faq-box .faq-wrap2 {

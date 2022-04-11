@@ -27,255 +27,118 @@
                 <h5>Choose your best Plan!</h5>
                 <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
             </div>
+            <div class="col-6 text-right">
+                <a class="btn mb-3 mr-1" style="background: #0a576c !important; color: #fff; cursor: pointer;" href="#pricing" (click)="prev()" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn mb-3 " style="background: #0a576c !important; color: #fff; " href="#pricing" role="button" (click)="next()" data-slide="next">
+                    <i class="fa fa-arrow-right" style="cursor: pointer;"></i>
+                </a>
+            </div>
             <div class="carousel-item active">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-1">
                         </div>
-                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="box boxing">
-                                <div class="section90">
-                                    <h3>BASIC</h3>
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(0)" (mouseleave)="getIndex(0)" data-aos="fade-up" data-aos-delay="200">
+                            <label for="a">
+                                <input type="radio" name="letter" id="a" [class.span]="currentCardIndex==0" [checked]="currentCardIndex==0"  checked>
+                                <div class="featured box  span" [class.span]="currentCardIndex==0">
+                                    <div class="section10" style="color: red;">
+                                        <h3>BASIC</h3>
+                                        <h4 class="boder"></h4>
+                                    </div>
+                                    <h4>50<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span>
+                                    </h4>
+                                    <div class="STANDARD mt-5">
+                                        <ul>
+                                            <li><span>● </span> <strong>Courses Allowed</strong></li>
+                                            <li><i class="fa fa-check"></i> Free Open Courses <span
+                                                    class="right">10</span></li>
+                                            <li><i class="fa fa-check"></i> Paid Open Courses <span
+                                                    class="right">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                            </li>
+                                            <li><span>● </span> <strong>Invite Students</strong> <span
+                                                    class="right"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                        GB</strong></span></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h4>50<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">03</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">01</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>50</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>5 GB</strong></span></li>
-                                    </ul>
+                                <div class="count-box">
+                                    <a href="#" class="btn-buy20" routerLink="/teacherDashboard/thank-you-teacher">Get Started</a>
                                 </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy" [routerLink]="'/thank-you'">Get Started</a>
-                            </div>
-                            <!-- <div>
-
-                            <a class="btn-buy">Get Started</a>
-                        </div> -->
-
+                            </label>
                         </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>STANDARD</h3>
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(1)" (mouseleave)="getIndex(1)" data-aos="fade-up" data-aos-delay="200">
+                            <label for="b">
+                                <input type="radio" name="letter" id="b"  [checked]="currentCardIndex==1" >
+                                <div class="featured box  span"[class.span]="currentCardIndex==1">
+                                    <div class="section10" style="color: red;">
+                                        <h3>STANDARD</h3>
+                                        <h4 class="boder"></h4>
+                                    </div>
+                                    <h4>100<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span>
+                                    </h4>
+                                    <div class="STANDARD mt-5">
+                                        <ul>
+                                            <li><span>● </span> <strong>Courses Allowed</strong></li>
+                                            <li><i class="fa fa-check"></i> Free Open Courses <span
+                                                    class="right">10</span></li>
+                                            <li><i class="fa fa-check"></i> Paid Open Courses <span
+                                                    class="right">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                            </li>
+                                            <li><span>● </span> <strong>Invite Students</strong> <span
+                                                    class="right"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                        GB</strong></span></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h4>100<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>100</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10 GB</strong></span></li>
-                                    </ul>
+                                <div class="count-box">
+                                    <a href="#" class="btn-buy20" routerLink="/teacherDashboard/thank-you-teacher">Get Started</a>
                                 </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="'/thank-you'">Get Started</a>
-                            </div>
+                            </label>
                         </div>
-
-                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>PROFESSIONAL</h3>
+                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(2)" (mouseleave)="getIndex(2)" data-aos="fade-up" data-aos-delay="200">
+                            <label for="c">
+                                <input type="radio" name="letter" id="c"  [checked]="currentCardIndex==2">
+                                <div class="featured box  span"[class.span]="currentCardIndex==2">
+                                    <div class="section10" style="color: red;">
+                                        <h3>PROFESSIONAL</h3>
+                                        <h4 class="boder"></h4>
+                                    </div>
+                                    <h4>200<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span>
+                                    </h4>
+                                    <div class="STANDARD mt-5">
+                                        <ul>
+                                            <li><span>● </span> <strong>Courses Allowed</strong></li>
+                                            <li><i class="fa fa-check"></i> Free Open Courses <span
+                                                    class="right">10</span></li>
+                                            <li><i class="fa fa-check"></i> Paid Open Courses <span
+                                                    class="right">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                            </li>
+                                            <li><span>● </span> <strong>Invite Students</strong> <span
+                                                    class="right"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                        GB</strong></span></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h4>500<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">05</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>200</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>20 GB</strong></span></li>
-                                    </ul>
+                                <div class="count-box">
+                                    <a href="#" class="btn-buy20" routerLink="/teacherDashboard/thank-you-teacher">Get Started</a>
                                 </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="'/thank-you'">Get Started</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Carousel Item -->
-
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-1">
-                        </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>STANDARD</h3>
-                                </div>
-                                <h4>100<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>100</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="box boxing">
-                                <div class="section90">
-                                    <h3>BASIC</h3>
-                                </div>
-                                <h4>50<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">03</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">01</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>50</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>5 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
-                            <!-- <div>
-
-                            <a class="btn-buy">Get Started</a>
-                        </div> -->
-
-                        </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>PROFESSIONAL</h3>
-                                </div>
-                                <h4>500<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">05</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>200</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>20 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
+                            </label>
                         </div>
                         <div class="col-lg-1">
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End Carousel Item -->
 
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-1">
-                        </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>STANDARD</h3>
-                                </div>
-                                <h4>100<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>100</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                            <div class="box featured">
-                                <div class="section10">
-                                    <h3>PROFESSIONAL</h3>
-                                </div>
-                                <h4>500<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">10</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">05</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>200</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>20 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy20" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="box boxing">
-                                <div class="section90">
-                                    <h3>BASIC</h3>
-                                </div>
-                                <h4>50<sup>$</sup><span class="back">/</span><span> <strong>month</strong></span></h4>
-                                <div class="STANDARD mt-5">
-                                    <ul>
-                                        <li><span>● </span> <strong>Courses Allowed</strong></li>
-                                        <li><i class="fa fa-check"></i> Free Open Courses <span class="right">05</span></li>
-                                        <li><i class="fa fa-check"></i> Paid Open Courses <span class="right">03</span></li>
-                                        <li><i class="fa fa-check"></i> Close Courses <span class="right">01</span></li>
-                                        <li><span>● </span> <strong>Invite Students</strong> <span class="right"><strong>50</strong></span></li>
-                                        <li><span>● </span> <strong>Space</strong> <span class="right"><strong>5 GB</strong></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="count-box">
-                                <a href="#" class="btn-buy" [routerLink]="['/teacherDashboard/plansAndPricing']">Get Started</a>
-                            </div>
-                            <!-- <div>
-
-                            <a class="btn-buy">Get Started</a>
-                        </div> -->
-
-                        </div>
-                        <div class="col-lg-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Carousel Item -->
-
-            <a class="carousel-control-prev" href="#pricing" role="button" data-slide="prev">
-                <span class="fa fa-angle-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#pricing" role="button" data-slide="next">
-                <span class="fa fa-angle-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
 
         </section>
         <!-- End pricing Section -->

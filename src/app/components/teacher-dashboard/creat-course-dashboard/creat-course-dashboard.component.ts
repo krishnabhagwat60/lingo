@@ -14,6 +14,7 @@ export class CreatCourseDashboardComponent implements OnInit {
   ismenusub: boolean = false;
   ismenu: boolean = false;
   ismenuShow: boolean = false;
+  currentCardIndex = 0;
   subTitle: any;
   user: string;
 
@@ -59,6 +60,33 @@ export class CreatCourseDashboardComponent implements OnInit {
     } else {
       this.sidebarData[index].isActive = true;
     }
+  }
+  getIndex(activeIndex){
+    this.currentCardIndex = activeIndex;
+  }
+  prev() {
+    console.log('prev')
+    this.currentCardIndex = this.currentCardIndex--;
+    if (this.currentCardIndex != 0) {
+
+      this.currentCardIndex = this.currentCardIndex - 1;
+    }
+    else {
+      this.currentCardIndex =2;
+    }
+    console.log(this.currentCardIndex)
+
+  }
+  next() {
+    console.log('next')
+    if (this.currentCardIndex >= 0 && this.currentCardIndex < 2) {
+
+      this.currentCardIndex = this.currentCardIndex + 1;
+    }
+    else {
+      this.currentCardIndex = 0;
+    }
+    console.log(this.currentCardIndex)
   }
   toggleSubTitle(event, index, data) {
     for (let i = 0; i < this.sidebarData.length; i++) {

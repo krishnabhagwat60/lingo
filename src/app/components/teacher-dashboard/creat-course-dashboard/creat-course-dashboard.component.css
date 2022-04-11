@@ -1,14 +1,11 @@
-/*--------------------------------------------------------------
-# Pricing
---------------------------------------------------------------*/
+.button-actives {
+    background-color: #136980;
+    /* color: white; */
+}
 
-.main {
-    width: 98%;
-    padding: 35px 20px;
-    background-color: #f2fbff;
-    border-top-left-radius: 45px;
-    height: 787px;
-    position: relative;
+.button-standard {
+    background-color: gray;
+    /* color: #fff;  */
 }
 
 
@@ -213,20 +210,67 @@ section {
     background-color: #f2fbff;
     border-top-left-radius: 45px;
     /* height: calc(500px + 100%) !important; */
-    height: 804px;
+    height: 100%;
     position: relative;
 }
 
 .pricing .box {
     padding: 20px;
-    background: #f7f7f7 !important;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     text-align: center;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
     border-radius: 5px;
     position: relative;
     overflow: hidden;
     border: 1px solid #c8dadf;
     width: 110%;
+    background: #fff;
+}
+
+.pricing .featured:hover {
+    background: #0a576c;
+    color: #fff;
+}
+
+.pricing .featured:hover .count-box a {
+    background: #fff !important;
+    color: #0a576c;
+}
+
+.pricing .featured:hover .section10 h3,
+.pricing .featured:hover h4,
+.pricing .featured:hover h4 span,
+.pricing .featured:hover .STANDARD ul {
+    color: #fff;
+}
+
+.pricing [type="radio"]:checked+.span .section10 h3,
+.pricing [type="radio"]:checked+.span h4,
+.pricing [type="radio"]:checked+.span h4 span,
+.pricing [type="radio"]:checked+.span .STANDARD ul {
+    color: #fff;
+}
+
+.section10 .boder {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #fff;
+    left: calc(50% - 25px);
+    margin-top: -33px;
+}
+
+input[type="radio"]:checked+.span {
+    background-color: #0a576c;
+}
+
+input {
+    display: none;
+}
+
+.pricing .box:hover h3 {
+    color: #fff;
 }
 
 .pricing .box h4 .back {
@@ -234,24 +278,25 @@ section {
     font-weight: 500;
 }
 
-.pricing .boxing {
-    padding: 20px;
-    background: #0a576c !important;
-    text-align: center;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    width: 110%;
-}
-
-.pricing .box h3 {
+.pricing .box .section10 h3 {
     font-weight: 400;
     margin: -20px -20px 20px -20px;
     padding: 20px 15px;
     font-size: 16px;
     font-weight: 600;
     color: #0a576c;
+}
+
+.pricing .boxing {
+    padding: 20px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #c8dadf;
+    width: 110%;
+    background: #0a576c;
 }
 
 .pricing .boxing h3 {
@@ -263,7 +308,15 @@ section {
     color: #fff;
 }
 
-.pricing .box h4 {
+.pricing .boxing .section10 h3 {
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 20px;
+}
+
+.pricing .boxing h4 {
     font-size: 36px;
     color: #fff;
     font-weight: 600;
@@ -339,18 +392,6 @@ section {
     padding-right: 4px;
 }
 
-
-/* .boxing .section-title h3::after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: #fff;
-    bottom: 0;
-    left: calc(50% - 20px);
-} */
-
 .pricing .box ul li .right {
     float: right;
 }
@@ -384,16 +425,6 @@ section {
     font-family: 'Open Sans', sans-serif;
     transition: 0.3s;
     border: 2px solid #0a576c;
-}
-
-.pricing .btn-buy:hover {
-    background: #0a576c;
-    color: #fff;
-}
-
-.pricing .btn-buy20:hover {
-    background: #fff;
-    color: #0a576c;
 }
 
 .pricing .advanced {
@@ -488,17 +519,6 @@ section {
     }
 }
 
-.section90 h3::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 50px;
-    height: 3px;
-    background: #fff;
-    left: calc(50% - 25px);
-    margin-top: 5px;
-}
-
 .section10 h3::after {
     content: "";
     position: absolute;
@@ -516,7 +536,7 @@ section {
     border-radius: 5px;
     background: #0a576c !important;
     margin-top: 315px;
-    margin-left: 160px;
+    margin-left: 152px;
 }
 
 .carousel-control-prev span {

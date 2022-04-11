@@ -2650,15 +2650,15 @@ a {
 }
 
 #view-student-btn {
-    width: 140px;
+    width: 160px;
     border-radius: 30px;
-    background-color: #0082da;
+    background-color: #0082DA;
     text-align: center;
     height: 30px;
     margin-top: 8px;
-    top: 125px;
+    top: 70px;
     position: absolute;
-    right: 20px;
+    left: 15px;
     bottom: 0px;
     font-size: 12px;
     letter-spacing: 1px;
@@ -2667,7 +2667,6 @@ a {
     font-family: 'poppins Medium';
     font-weight: 500;
 }
-
 #view-btn {
     width: 197px;
     height: 30px;
@@ -2687,7 +2686,7 @@ a {
     height: auto;
     width: 50px;
     float: right;
-    margin-top: -55px;
+    margin-top:  -64px;
 }
 
 #edit-button {
@@ -7007,8 +7006,7 @@ input:checked+.slider:before {
     position: absolute;
     right: 28px;
     width: 150px;
-    background-color: #008ad2;
-    top: 200px;
+    background-color: #008AD2;
     border-radius: 5px;
     height: 45px;
     text-transform: uppercase;
@@ -7016,6 +7014,7 @@ input:checked+.slider:before {
     text-align: center;
     font-size: 13px;
     color: #fff;
+    top: 6%;
 }
 
 .support-list-section {

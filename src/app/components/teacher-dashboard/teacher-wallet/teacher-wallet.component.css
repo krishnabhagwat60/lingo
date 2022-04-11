@@ -226,8 +226,14 @@ section {
     background: #fff;
 }
 
-.pricing .box.featured:hover {
+.pricing .featured:hover {
     background: #0a576c;
+    color: #fff;
+}
+
+.pricing .featured:hover .count-box a {
+    background: #fff !important;
+    color: #0a576c;
 }
 
 .pricing .featured:hover .section10 h3,
@@ -419,16 +425,6 @@ input {
     font-family: 'Open Sans', sans-serif;
     transition: 0.3s;
     border: 2px solid #0a576c;
-}
-
-.pricing .btn-buy:hover {
-    background: #0a576c;
-    color: #fff;
-}
-
-.pricing .btn-buy20:hover {
-    background: #fff;
-    color: #0a576c;
 }
 
 .pricing .advanced {
