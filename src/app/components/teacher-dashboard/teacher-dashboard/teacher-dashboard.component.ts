@@ -89,7 +89,7 @@ export class TeacherDashboardComponent implements OnInit {
     this.authService.signOut();
   }
   onRemoveRow(rowIndex: number) {
-    debugger
+    
     this.inviteFormData.removeAt(rowIndex);
     if(this.inviteFormData.length == 1)
     {
@@ -202,14 +202,14 @@ export class TeacherDashboardComponent implements OnInit {
   }
   public records: any[] = [];
   AccordionInitialForms(index) {
-    debugger
+    
     this.addNewServiceData()
     this.inviteFormData.controls.length - 1;
 
    
   }
   setEmailControl(index) {
-    debugger
+    
     return this.inviteFormData.controls[index].invalid;
   }
   // setForm(event) {
@@ -253,7 +253,7 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   audFileSelected(event: any) {
-    debugger
+    
     const fileCheck = event.target.files[0];
    
     if (event.target.files[0]) {
@@ -327,7 +327,7 @@ export class TeacherDashboardComponent implements OnInit {
 
 
   removeFile(obj: any) {
-    debugger
+    
     this.studentInvitationFile.forEach((value, index) => {
       if (value == obj) this.studentInvitationFile.splice(index, 1);
     });
@@ -365,7 +365,7 @@ export class TeacherDashboardComponent implements OnInit {
   // invite api
   get f() { return this.inviteFormData.controls; }
   inviteApi() {
-    debugger
+    
     var data = {}
     if (!this.audSrc) {
       const dataInvite = this.inviteFormData.getRawValue();

@@ -127,7 +127,7 @@ this.frontServices.vm.sidebarData =null;
     searchData : new FormControl('')
   })
   searchDatas() {
-    debugger
+    
     // this.mainpageLoder = true;
     const data =
     {

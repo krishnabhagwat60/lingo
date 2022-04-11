@@ -141,7 +141,7 @@ export class StudentViewComponent implements OnInit {
  if (this.subscription == undefined) {
   this.subscription = this.eventEmitterService.
     invokeMenuList.subscribe(() => {
-      debugger
+      
       this.frontServices.vm.courseChanged = false;
       this.studentSideBar();
     });
@@ -323,7 +323,7 @@ export class StudentViewComponent implements OnInit {
     this.wallet = sessionStorage.getItem('wallet');
   }
   sidebar() {
-    debugger;
+    
     console.log(' student  view', this.frontServices.vm);
 
     if (
@@ -787,7 +787,7 @@ export class StudentViewComponent implements OnInit {
     }
   }
   studentSideBar() {
-    debugger;
+    
     console.log('sidebar -student view', this.frontServices.vm);
     if (
       this.frontServices == null ||

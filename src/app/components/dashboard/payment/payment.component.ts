@@ -242,7 +242,7 @@ export class PaymentComponent implements AfterViewInit, OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('course-details', data, 1).subscribe((res) => {
-      debugger
+     
       localStorage.setItem('enrollId', this.enrollId),
         (this.courseDetail = res.body.result);
        console.log(this.courseDetail)

@@ -22,7 +22,7 @@ export class PlansAndPricingComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    debugger
+    
     this.sidebar();
     this.username();
   }

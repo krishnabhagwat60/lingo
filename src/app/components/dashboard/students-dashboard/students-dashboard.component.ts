@@ -129,7 +129,7 @@ export class StudentsDashboardComponent implements OnInit {
 
   // get course dropdown data
   courseData() {
-    debugger;
+   
     const data = {
       "name": "course_language"
     }
@@ -248,7 +248,7 @@ export class StudentsDashboardComponent implements OnInit {
   }
   // search filter api
   search(pageNo?:number,i?:number) {
-    debugger
+    
     this.mainpageLoder = true;
     if(i != undefined){
       this.buttonColor = i;
@@ -306,7 +306,7 @@ export class StudentsDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-    debugger;
+   
     this.msgShow = ''
     this.enrollID = data
     this.enroll = data.id

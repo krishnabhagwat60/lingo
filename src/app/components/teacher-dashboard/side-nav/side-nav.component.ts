@@ -32,7 +32,7 @@ export class SideNavComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeProfileChange .subscribe(() => {
-          debugger
+          
            this.profile();
         });
     }
@@ -63,7 +63,7 @@ export class SideNavComponent implements OnInit {
     this.wallet = sessionStorage.getItem('wallet');
   }
   profile(){
-    debugger
+    
     const data = {
       "user_id": sessionStorage.getItem('uid'),
       "avatar" :  localStorage.getItem('image')

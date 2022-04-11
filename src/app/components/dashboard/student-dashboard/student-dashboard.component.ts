@@ -124,7 +124,7 @@ export class StudentDashboardComponent implements OnInit {
   }
   // student course details api
   studentCourseDetail(page = 1, i) {
-    debugger
+   
     window.scrollTo(0, 0)
     this.pages = page
     this.index = i
@@ -194,7 +194,7 @@ export class StudentDashboardComponent implements OnInit {
   })
 
   searchDatas() {
-    debugger
+    
     this.mainpageLoder = true;
     const data =
     {
@@ -228,7 +228,7 @@ export class StudentDashboardComponent implements OnInit {
   }
   // search filter api
   search() {
-    debugger
+   
     this.buttonColor = 1;
     this.mainpageLoder = true;
     const data =
@@ -280,7 +280,7 @@ export class StudentDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-    debugger
+    
     this.enrollID = data
     this.enroll = data.id
     localStorage.setItem('enrollId',this.enroll)

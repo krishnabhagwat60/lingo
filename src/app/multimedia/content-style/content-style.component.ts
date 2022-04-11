@@ -827,7 +827,7 @@ export class ContentStyleComponent implements OnInit {
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
       this.subTitle = res.body.result;
-      debugger
+      
       if (sessionStorage.getItem('subId')) {
         this.titleForm.controls.subTitle.setValue(sessionStorage.getItem('subId'));
       }
@@ -846,7 +846,7 @@ export class ContentStyleComponent implements OnInit {
     });
   }
   getChildData(child) {
-    debugger
+    
     this.titles = false;
     sessionStorage.setItem('subId', child);
     this.subCatSelected = true;
@@ -889,7 +889,7 @@ export class ContentStyleComponent implements OnInit {
   });
   // upload other link
   otherLinkSubmit() {
-    debugger;
+   
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );
@@ -1848,7 +1848,7 @@ export class ContentStyleComponent implements OnInit {
   }
   // update pdf
   updateOtherlink() {
-    debugger;
+ 
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );

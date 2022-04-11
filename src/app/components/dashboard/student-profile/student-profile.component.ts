@@ -101,7 +101,7 @@ export class StudentProfileComponent implements OnInit {
   }
   
   fileChangeEvent(event: any): void {
-    debugger
+   
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
@@ -116,7 +116,7 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   toDataURL(url, callback) {
-    debugger;
+   
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
       var reader = new FileReader();
@@ -143,7 +143,7 @@ export class StudentProfileComponent implements OnInit {
   get f() { return this.profileForm.controls; }
 
   studentProfile() {
-    debugger
+   
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -161,7 +161,7 @@ export class StudentProfileComponent implements OnInit {
       this.toDataURL(
         this.updateNewDataImage,
         function (dataUrl) {
-          debugger
+         
           console.log("base64",dataUrl);
         }
       );
@@ -197,7 +197,7 @@ export class StudentProfileComponent implements OnInit {
     )
   }
   studentImage(){
-    debugger
+   
     const datas = {
       "user_id": sessionStorage.getItem('uid')
     }
@@ -223,7 +223,7 @@ export class StudentProfileComponent implements OnInit {
       avatar: this.updateNewDataImage
     }
     this.service.post('profile-update', data, 1).subscribe(res => {
-      debugger
+     
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
         this.msg = 'Profile Updated Successfully'
@@ -237,7 +237,7 @@ export class StudentProfileComponent implements OnInit {
     });
   }
   reset() {
-    debugger
+   
     this.updateNewDataImage="";
     this.profileForm.reset();
   }
@@ -246,7 +246,7 @@ export class StudentProfileComponent implements OnInit {
   }
   // patch data
   updateData() {
-    debugger
+   
     const data = {
       "user_id": sessionStorage.getItem('uid')
     }

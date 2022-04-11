@@ -72,7 +72,7 @@ export class SidebarComponent implements OnInit {
     this.studentSideBar();
   }
   ngOnChanges() {
-    debugger;
+   
   }
   studentSideBar() {
     console.log('sidebar view', this.frontServices.vm);

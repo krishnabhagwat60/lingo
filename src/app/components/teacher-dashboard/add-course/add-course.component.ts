@@ -137,11 +137,11 @@ export class AddCourseComponent implements OnInit {
     this.getEditorData = editor.getData();
   }
   onItemSelect(item: any) {
-    debugger
+   
     this.selectedArr.push(item);
   }
   onTeacherSelect(item: any) {
-    debugger
+   
     this.selectedArrr.push(item);
   }
   showValue(event) {
@@ -282,7 +282,7 @@ export class AddCourseComponent implements OnInit {
   // submit new course form
   get f() { return this.addCourseForm.controls; }
   addSubmit() {
-    debugger
+   
     this.submitted = true;
     if (this.addCourseForm.invalid) {
       return;
@@ -366,7 +366,7 @@ export class AddCourseComponent implements OnInit {
       this.teachinglanguage = this.language;
       var teacherLangArr = []
       if (this.teachinglanguage.length > 0) {
-        debugger
+       
         this.teachinglanguage.forEach(function (value) {
 
           let teacherLangData = {
@@ -382,22 +382,22 @@ export class AddCourseComponent implements OnInit {
   }
 
   onSelectTeacherLangAll(items: any, index: any) {
-    debugger
+    
     this.selectedArrr = [];
     this.selectedArrr = items;
   }
   onTeacherLangDeSelect(item: any, i: any) {
-    debugger;
+    
     this.selectedArrr = this.selectedArrr.filter(x=>x.key != item.key)
   }
 
   onSelectLangAll(items: any, index: any) {
-    debugger
+    
     this.selectedArr = [];
     this.selectedArr = items;
   }
   onLangDeSelect(item: any, i: any) {
-    debugger;
+    
     this.selectedArr = this.selectedArr.filter(x=>x.key != item.key)
   }
 

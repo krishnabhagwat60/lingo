@@ -48,7 +48,7 @@ export class SolutionAffiliationComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeMenuList.subscribe(() => {
-          debugger
+          
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
         });
@@ -230,7 +230,7 @@ export class SolutionAffiliationComponent implements OnInit {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
   gotoBack(){
-    debugger
+    
     this.router.navigate(['/multimedia/contentStyle']);
   }
 }

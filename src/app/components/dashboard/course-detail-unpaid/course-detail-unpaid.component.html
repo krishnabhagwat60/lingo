@@ -77,14 +77,14 @@
                                 <div class="faq-wrap" *ngFor="let data of courseSubdata;let i = index">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
-                                            <a (click)="toggleShow(j)">
+                                            <a (click)="toggleShowTitle(i)">
                                                 <div class="accord-content">{{data.title}}
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
                                             </a>
                                         </h5>
                                     </div>
-                                    <div *ngIf="expandedIndex===j">
+                                    <div *ngIf="expandedIndexTitle===i">
                                         <div class="card-block" *ngFor="let data1 of data.submenu">{{data1.name}}</div>
                                     </div>
                                 </div>

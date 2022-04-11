@@ -37,7 +37,8 @@
     height: 25px;
     border-radius: 50%;
     position: relative;
-    top: 20px;
+    top: -36px;
+    left: 641px;
 }
 
 .radio_FreeCourse input[type=radio]:checked+.radio-label:before {

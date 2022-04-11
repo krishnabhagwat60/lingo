@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
      if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeProfileChange .subscribe(() => {
-          debugger
+       
           this.profile();
         });
     }
@@ -47,7 +47,7 @@ export class NavbarComponent implements OnInit {
       "user_id": sessionStorage.getItem('uid')
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
-      debugger
+     
       this.updateNewDataImage = res.body.profile.avatar;
     }
     )

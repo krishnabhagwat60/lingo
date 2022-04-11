@@ -35,7 +35,7 @@ export class CancelPaymentComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeMenuList.subscribe(() => {
-          debugger
+          
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
         });

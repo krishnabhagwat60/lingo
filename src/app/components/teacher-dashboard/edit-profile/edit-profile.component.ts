@@ -181,7 +181,7 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-    debugger
+    
     this.mainpageLoderUpdate = true;
     this.loding = true;
     const datas = {
@@ -261,7 +261,7 @@ export class EditProfileComponent implements OnInit {
     // console.log(this.selectedArr);
   }
   profileUpdate() {
-    debugger
+    
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -270,7 +270,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   editProfile() {
-    debugger
+    
     this.submit = true;
     if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
@@ -371,7 +371,7 @@ export class EditProfileComponent implements OnInit {
   // get data by id
 
   updateData() {
-    debugger
+    
     const data = {
       "user_id": this.userId,
       "avatar" : this.updateNewDataImage
@@ -557,7 +557,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   fileChangeEvent(event: any): void {
-    debugger
+    
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {

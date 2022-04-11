@@ -50,7 +50,7 @@ export class PickWordSolutionComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeMenuList.subscribe(() => {
-          debugger
+          
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
         });
@@ -247,7 +247,7 @@ titleName(){
   }
 
   editFillBlanks() {
-    debugger
+    
     // this.resetPickModalData();
     const data = {
       // "subtitle_id": localStorage.getItem('subId')
