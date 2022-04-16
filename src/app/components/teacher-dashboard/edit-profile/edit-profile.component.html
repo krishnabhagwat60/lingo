@@ -2,7 +2,7 @@
 <app-task-editor></app-task-editor>
 
 <!-- Start Welcome area -->
-<div id="right-panel" class="right-panel">
+<div #editProfileDiv id="right-panel" class="right-panel">
     <div class="breadcrumbs">
         <div class="col-sm-6">
             <div class="page-header">
@@ -129,12 +129,12 @@
 
                             <div class="col-md-6 form-group">
                                 <div class="course-language-dropdown">
-                                    <p>KNOWN LANGUAGE
+                                    <p>KNOWN LANGUAGE 
                                         <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-                                        <ng-multiselect-dropdown [placeholder]="'language.key'"
-                                            [settings]="dropdownSettings" [data]="language"
+                                        <ng-multiselect-dropdown [placeholder]="'Select Known Language'"
+                                            [settings]="dropdownSettings" [data]="knownLanguages"
                                             formControlName="known_language" (onSelect)="onItemSelect($event)"
                                             (onSelectAll)="onSelectAll($event)"
                                             [ngClass]="{ 'is-invalid': submit && form.known_language.errors }">
@@ -163,8 +163,8 @@
                                                 {{data.value}}
                                             </option>
                                         </select> -->
-                                        <ng-multiselect-dropdown [placeholder]="'Language'"
-                                            [settings]="dropdownSettings" [data]="language"
+                                        <ng-multiselect-dropdown [placeholder]="'Select Main Language'"
+                                            [settings]="dropdownSettings" [data]="mainLanguages"
                                             formControlName="main_language" (onSelect)="onMainSelect($event)"
                                             (onSelectAll)="onMainSelectAll($event)"
                                             [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
@@ -205,7 +205,7 @@
                                 </textarea> -->
                             <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="responsibilities"
                                 id="descriptions" name="descriptions" type="divarea"
-                                [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
+                                [ngClass]="{ 'is-invalid': submit && form.taged.errors }">
                             </ckeditor>
                             <!--<div *ngIf="submit && form.responsibility.errors" class="invalid-feedback">
                                 <div *ngIf="form.responsibility.errors.hasError.required">Responsibility is required</div>

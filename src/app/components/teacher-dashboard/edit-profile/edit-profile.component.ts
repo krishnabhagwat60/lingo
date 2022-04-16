@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
@@ -14,6 +14,8 @@ import { EventEmitterService } from 'src/app/services/event-emitter.service';
 })
 export class EditProfileComponent implements OnInit {
   public Editor = Editor;
+  @ViewChild('editProfileDiv') editProfileDiv: ElementRef<HTMLElement>;
+  mainLanguages: any[] = []; knownLanguages: any[] = [];
   editorConfig1 = {
     toolbar: {
       items: [
@@ -110,7 +112,7 @@ export class EditProfileComponent implements OnInit {
     }
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'key',
+      idField: 'value',
       textField: 'value',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
@@ -118,13 +120,13 @@ export class EditProfileComponent implements OnInit {
       allowSearchFilter: true
     };
 
-    this.updateData();
-    
     this.languageData();
+    // this.updateData();
+
     this.sidebar();
     this.getNewToken();
     this.username();
-    
+
     // this.addInitialForms();
   }
   username() {
@@ -183,16 +185,16 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-    
+
     this.mainpageLoderUpdate = true;
     this.loding = true;
     const datas = {
       user_id: sessionStorage.getItem('uid'),
       avatar: this.updateNewDataImage
     }
-   
+
     this.service.post('get_profile_by_id', datas, 1).subscribe(res => {
-      var ress= res.body.profile;
+      var ress = res.body.profile;
       const data = {
         user_id: sessionStorage.getItem('uid'),
         "first_name": ress.firstname,
@@ -210,14 +212,14 @@ export class EditProfileComponent implements OnInit {
         avatar: this.updateNewDataImage
       }
       this.service.post('profile-update', data, 1).subscribe(res => {
-     
+
         if (res.body.result === 'success') {
           this.loding = false;
           this.mainpageLoderUpdate = false;
           this.msg = 'Profile Updated Successfully'
           this.updateData();
           this.eventEmitterService.onProfileChanged();
-  
+
           //window.location.reload();
           this.submitted = false;
         }
@@ -230,7 +232,7 @@ export class EditProfileComponent implements OnInit {
   }
   // validate edit profile form
   editProfileForm = new FormGroup({
-    
+
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
@@ -249,22 +251,30 @@ export class EditProfileComponent implements OnInit {
     image: new FormControl('',),
     fileSource: new FormControl('',),
   })
+
+ 
+
   onItemSelect(item: any) {
-    this.selectedArr.push(item);
+    debugger
+    this.knownLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
   }
   onSelectAll(items: any) {
-    this.selectedArr.push(items);
-    // console.log(this.selectedArr);
+    for (var i = 0; i < this.knownLanguages.length; i++) {
+      this.knownLanguages[i]["checked"] = true;
+    }
   }
   onMainSelect(item: any) {
-    this.selectedNewArr.push(item);
+    debugger
+    this.mainLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
+
   }
   onMainSelectAll(items: any) {
-    this.selectedNewArr.push(items);
-    // console.log(this.selectedArr);
+    for (var i = 0; i < this.mainLanguages.length; i++) {
+      this.mainLanguages[i]["checked"] = true;
+    }
   }
   profileUpdate() {
-    
+
     if (this.imageUpdate != null) {
       this.editProfileById();
     } else {
@@ -280,32 +290,53 @@ export class EditProfileComponent implements OnInit {
     }
     this.mainpageLoder = true
     for (const data of this.editProfileForm.value.known_language) {
-      if(data.key == null)
-      {
+      if (data.key == null) {
         this.selectedLanguage.push(data);
       }
-      else{
+      else {
         this.selectedLanguage.push(data.key);
       }
     }
     for (const data of this.editProfileForm.value.main_language) {
-      if(data.key == null)
-      {
+      if (data.key == null) {
         this.selectedMainLanguage.push(data);
       }
-      else{
+      else {
         this.selectedMainLanguage.push(data.key);
       }
     }
+    let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
+        if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+          debugger
+          this.selectedLanguage.forEach(element => {
+            let kLang = this.knownLanguages.find(x => x.value == element.value);
+            if (kLang != null && kLang.key != null) {
+              if (!selectedknownLanguages.includes(kLang.key)) {
+                selectedknownLanguages.push(kLang.key);
+              }
+            }
+          });
+        }
+        if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+          debugger
+          this.selectedMainLanguage.forEach(element => {
+            let mLang = this.mainLanguages.find(x => x.value == element.value);
+            if (mLang != null && mLang.key != null) {
+              if (!selectedMainLanguages.includes(mLang.key)) {
+                selectedMainLanguages.push(mLang.key);
+              }
+            }
+          });
+        }
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
       "last_name": this.editProfileForm.value.lastName,
       "bio": this.editProfileForm.value.bio,
       "contact_number": this.editProfileForm.value.contactNumber,
-      "known_language": this.selectedLanguage,
-      "main_language": this.selectedMainLanguage,
+      "known_language": selectedknownLanguages,
+      "main_language": selectedMainLanguages,
       "skills": this.editProfileForm.value.skills,
       "address": "Indore",
       "responsibilities": this.editProfileForm.value.responsibilities,
@@ -313,7 +344,7 @@ export class EditProfileComponent implements OnInit {
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
       avatar: "",
-      status:1
+      status: 1
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -321,9 +352,9 @@ export class EditProfileComponent implements OnInit {
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        window.location.reload();
-       // this.updateData();
-       // this.eventEmitterService.onProfileChanged();
+        // window.location.reload();
+        // this.updateData();
+        // this.eventEmitterService.onProfileChanged();
         //this.router.navigate(['/teacherDashboard/teacherProfile'])
         //  window.location.reload()
       }
@@ -340,29 +371,46 @@ export class EditProfileComponent implements OnInit {
       return;
     }
     this.mainpageLoder = true
-  
-    for (const data of this.editProfileForm.value.main_language) {
-      if(data.key == null)
-      {
-        this.selectingLanguage.push(data);        
-      }
-      else{
-        this.selectingLanguage.push(data.key);
-      }
-    }
     for (const data of this.editProfileForm.value.known_language) {
-      if(data.key == null)
-      {
-        this.selectsLanguage.push(data);        
+      if (data.key == null) {
+        this.selectedLanguage.push(data);
       }
-      else{
-        this.selectsLanguage.push(data.key);
+      else {
+        this.selectedLanguage.push(data.key);
       }
     }
-    // var teacherLanguage = this.updateNewData.main_language_id.concat(this.selectedMainLanguage)
-    // var studentLanguage = this.updateNewData.known_language_id.concat(this.selectedLanguage)
-    // var image_description = this.imageUpdate.concat(this.tags)
+    for (const data of this.editProfileForm.value.main_language) {
+      if (data.key == null) {
+        this.selectedMainLanguage.push(data);
+      }
+      else {
+        this.selectedMainLanguage.push(data.key);
+      }
+    }
+    let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
+    if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+      debugger
+      this.selectedLanguage.forEach(element => {
+        let kLang = this.knownLanguages.find(x => x.value == element.value);
+        if (kLang != null && kLang.key != null) {
+          if (!selectedknownLanguages.includes(kLang.key)) {
+            selectedknownLanguages.push(kLang.key);
+          }
+        }
+      });
+    }
+    if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+      debugger
+      this.selectedMainLanguage.forEach(element => {
+        let mLang = this.mainLanguages.find(x => x.value == element.value);
+        if (mLang != null && mLang.key != null) {
+          if (!selectedMainLanguages.includes(mLang.key)) {
+            selectedMainLanguages.push(mLang.key);
+          }
+        }
+      });
+    }
     this.imageUpdate = this.tags
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -370,16 +418,16 @@ export class EditProfileComponent implements OnInit {
       "last_name": this.editProfileForm.value.lastName,
       "bio": this.editProfileForm.value.bio,
       "contact_number": this.editProfileForm.value.contactNumber,
-      "known_language":  this.selectsLanguage,
-      "main_language": this.selectingLanguage,
-      "skills":  this.editProfileForm.value.skills,
+      "known_language": selectedknownLanguages,
+      "main_language": selectedMainLanguages,
+      "skills": this.editProfileForm.value.skills,
       "address": "Indore",
       "responsibilities": this.editProfileForm.value.responsibilities,
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
       avatar: "",
-      status:1
+      status: 1
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -387,7 +435,7 @@ export class EditProfileComponent implements OnInit {
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        window.location.reload();
+        // window.location.reload();
 
         //this.router.navigate(['/teacherDashboard/teacherProfile'])
         //window.location.reload();
@@ -405,7 +453,7 @@ export class EditProfileComponent implements OnInit {
   //     }
   //   })
   // } 
-  
+
   // async getDataBlob(url){
   //   debugger
   //   var blob = new blob(url, { type: "image/png"});
@@ -413,15 +461,16 @@ export class EditProfileComponent implements OnInit {
   //   var uri = this.parseURI(blob);
   //   return uri;
   // }
-  
+
 
   // get data by id
 
+
   updateData() {
-    
+
     const data = {
       "user_id": this.userId,
-      "avatar" : this.updateNewDataImage
+      "avatar": this.updateNewDataImage
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
       debugger
@@ -429,28 +478,80 @@ export class EditProfileComponent implements OnInit {
         this.activated = true;
       }
       this.updateNewData = res.body.profile;
-      if(this.updateNewDataImage == undefined)
-      {
+      if (this.updateNewDataImage == undefined) {
         this.updateNewDataImage = res.body.profile.avatar;
       }
-     // this.updateNewDataImage = res.body.profile.avatar;
-      this.imageUpdate = res.body.profile.skills
-      localStorage.setItem('image', res.body.profile.avatar )
+      debugger
+      // this.updateNewDataImage = res.body.profile.avatar;
+      this.imageUpdate = res.body.profile.skills;
+      var main_languages = []; var known_languages = [];
+
+
+
+      if (this.updateNewData.main_language_id != null && this.updateNewData.main_language_id != undefined && this.updateNewData.main_language_id != '') {
+
+
+        if (this.updateNewData.main_language_id.length > 0) {
+          var mainLangArr = [];
+
+          for (var i = 0; i < this.updateNewData.main_language_id.length; i++) {
+            var id = this.updateNewData.main_language_id[i];
+            var Index = this.mainLanguages.findIndex(x => x["key"] === id);
+            if (this.mainLanguages[Index]) {
+              this.mainLanguages[Index]["checked"] = true;
+              let mainLangData = {
+                value: this.mainLanguages[Index]["value"],
+                checked: false
+              }
+              mainLangArr.push(mainLangData);
+            }
+
+          }
+
+        }
+      }
+
+      if (this.updateNewData.known_language_id != null && this.updateNewData.known_language_id != undefined && this.updateNewData.known_language_id != '') {
+
+
+        if (this.updateNewData.known_language_id.length > 0) {
+          var knownLangArr = [];
+
+          for (var i = 0; i < this.updateNewData.known_language_id.length; i++) {
+            var id = this.updateNewData.known_language_id[i];
+            var Index = this.knownLanguages.findIndex(x => x["key"] === id);
+            if (this.knownLanguages[Index]) {
+              this.knownLanguages[Index]["checked"] = true;
+              // knownLangArr.push(this.knownLanguages[Index]["key"]);
+              let knownLangData = {
+                value: this.knownLanguages[Index]["value"],
+                checked: false
+              }
+              knownLangArr.push(knownLangData);
+            }
+
+          }
+
+        }
+      }
+      localStorage.setItem('image', res.body.profile.avatar)
       this.editProfileForm.patchValue({
         "firstName": this.updateNewData.firstname,
         "lastName": this.updateNewData.lastname,
         "bio": this.updateNewData.bio,
         "contactNumber": this.updateNewData.phone_number,
-        "known_language": this.updateNewData.known_language_id,
+        "known_language": knownLangArr,
         "skills": this.updateNewData.skills,
-        "main_language": this.updateNewData.main_language_id,
+        "main_language": mainLangArr,
         countrys: this.updateNewData.country,
         state: this.updateNewData.State,
         "address": "Indore",
         "responsibilities": this.updateNewData.responsibilities,
         email: this.updateNewData.email,
-        status:1
+        status: 1
       });
+      let el: HTMLElement = this.editProfileDiv.nativeElement;
+      el.click();
       this.getState();
     }
     )
@@ -508,9 +609,11 @@ export class EditProfileComponent implements OnInit {
   // language api
   languageData() {
     this.service.get('profile-dropdown', 1).subscribe(res => {
-      this.language = res.body.language_listing
-      this.country = res.body.country_listing
-
+      debugger
+      this.language = res.body.language_listing;
+      this.knownLanguages = this.mainLanguages = this.language;
+      this.country = res.body.country_listing;
+      this.updateData();
     })
   }
   getCountry() {
@@ -521,18 +624,18 @@ export class EditProfileComponent implements OnInit {
       this.allCountryList.forEach(element => {
         this.countryss.push(element.country_name)
       });
-      
+
     })
   }
 
   getState() {
-debugger
+    debugger
     this.isImageShow = true;
     this.allCityList = null;
     this.service.getData('states/' + this.editProfileForm.value.countrys, this.authToken).subscribe(result => {
       this.isImageShow = false;
       this.allStateList = result;
-     console.log(this.allStateList)
+      console.log(this.allStateList)
 
     })
   }
@@ -540,7 +643,7 @@ debugger
     this.service.getAuthToken('getaccesstoken/').subscribe(result => {
       this.authToken = result.auth_token;
       this.getCountry();
-      
+
     })
   }
   showshubmenu() {
@@ -612,7 +715,7 @@ debugger
   }
 
   fileChangeEvent(event: any): void {
-    
+
     this.imageChangedEvent = event;
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {

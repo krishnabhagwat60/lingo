@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
@@ -15,6 +15,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./student-profile.component.css']
 })
 export class StudentProfileComponent implements OnInit {
+  @ViewChild('studentProfileDiv') studentProfileDiv: ElementRef<HTMLElement>;
+
+  mainLanguages: any[] = []; knownLanguages: any[] = [];
   submitted: boolean = false;
   profileForm: FormGroup = new FormGroup({});
   passwordForm: FormGroup = new FormGroup({})
@@ -65,10 +68,10 @@ export class StudentProfileComponent implements OnInit {
       contactNumber: new FormControl('', [Validators.required, Validators.pattern('[0-9]{10,10}')]),
       state: new FormControl('', Validators.required),
       countrys: new FormControl('', Validators.required),
-      selectedItems: new FormControl('', Validators.required),
-      image: new FormControl('',),
-      fileSource: new FormControl('',),
-      mainLanguage: new FormControl('',),
+      image: new FormControl(''),
+      fileSource: new FormControl(''),
+      known_language: new FormControl('', Validators.required),
+      main_language: new FormControl('', Validators.required),
     })
     this.passwordForm = fb.group({
       oldPassword: new FormControl('', Validators.required),
@@ -78,12 +81,12 @@ export class StudentProfileComponent implements OnInit {
       validator: ConfirmedValidator('pwd', 'confirm_password')
     })
   }
-
+  get form() { return this.profileForm.controls; }
   ngOnInit(): void {
     this.getNewToken();
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'key',
+      idField: 'value',
       textField: 'value',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
@@ -91,10 +94,22 @@ export class StudentProfileComponent implements OnInit {
       allowSearchFilter: true
     };
     this.languageData();
-    this.updateData();
+    // this.updateData();
     this.username();
   }
+  onItemsSelect(item: any) {
+    debugger
+    this.knownLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
+  }
+  onSelectsAll(items: any) {
+    for (var i = 0; i < this.knownLanguages.length; i++) {
+      this.knownLanguages[i]["checked"] = true;
+    }
+  }
 
+
+
+  
   // username
   username() {
     this.user = sessionStorage.getItem('username');
@@ -130,12 +145,24 @@ export class StudentProfileComponent implements OnInit {
     xhr.send();
   }
   onItemSelect(item: any) {
-    this.selectedArr.push(item);
+    debugger
+    this.knownLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
   }
   onSelectAll(items: any) {
-    this.selectedArr.push(items);
+    for (var i = 0; i < this.knownLanguages.length; i++) {
+      this.knownLanguages[i]["checked"] = true;
+    }
   }
+  onMainSelect(item: any) {
+    debugger
+    this.mainLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
 
+  }
+  onMainSelectAll(items: any) {
+    for (var i = 0; i < this.mainLanguages.length; i++) {
+      this.mainLanguages[i]["checked"] = true;
+    }
+  }
   // view page
   view(id) {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { viewpage: id } });
@@ -148,13 +175,47 @@ export class StudentProfileComponent implements OnInit {
     if (this.profileForm.invalid) {
       return;
     }
-   
-    for (const data of this.selectedArr) {
-      this.selectedLanguage.push(data.value);
+    for (const data of this.profileForm.value.known_language) {
+      if (data.key == null) {
+        this.selectedLanguage.push(data);
+      }
+      else {
+        this.selectedLanguage.push(data.key);
+      }
     }
-    for (const data of this.profileForm.value.mainLanguage) {
-      this.selectedMainLanguage.push(data.value);
+    for (const data of this.profileForm.value.main_language) {
+      if (data.key == null) {
+        this.selectedMainLanguage.push(data);
+      }
+      else {
+        this.selectedMainLanguage.push(data.key);
+      }
     }
+    let selectedknownLanguages = []; let selectedMainLanguages = [];
+    //var tmp = this.getDataBlob(this.updateNewDataImage);
+        if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+          debugger
+          this.selectedLanguage.forEach(element => {
+            let kLang = this.knownLanguages.find(x => x.value == element.value);
+            if (kLang != null && kLang.key != null) {
+              if (!selectedknownLanguages.includes(kLang.key)) {
+                selectedknownLanguages.push(kLang.key);
+              }
+            }
+          });
+        }
+        if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+          debugger
+          this.selectedMainLanguage.forEach(element => {
+            let mLang = this.mainLanguages.find(x => x.value == element.value);
+            if (mLang != null && mLang.key != null) {
+              if (!selectedMainLanguages.includes(mLang.key)) {
+                selectedMainLanguages.push(mLang.key);
+              }
+            }
+          });
+        }
+
     //var image = "";
     if(this.updateNewDataImage.split("//")[0] == "http:")
     {
@@ -175,8 +236,8 @@ export class StudentProfileComponent implements OnInit {
       "last_name": this.profileForm.value.lastName,
       "bio": this.profileForm.value.bio,
       "contact_number": this.profileForm.value.contactNumber,
-      "knownlanguage": this.selectedLanguage,
-      "main_language": this.selectedMainLanguage,
+      "known_language": selectedknownLanguages,
+      "main_language":selectedMainLanguages,
       "skill": "0",
       "address": "Indore",
       "responsibilities": this.profileForm.value.responsibility,
@@ -204,6 +265,32 @@ export class StudentProfileComponent implements OnInit {
     this.mainpageLoder = true;
     this.service.post('get_profile_by_id', datas, 1).subscribe(res => {
       var ress= res.body.profile;
+      
+    let selectedknownLanguages = []; let selectedMainLanguages = [];
+    //var tmp = this.getDataBlob(this.updateNewDataImage);
+        if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+          debugger
+          this.selectedLanguage.forEach(element => {
+            let kLang = this.knownLanguages.find(x => x.value == element.value);
+            if (kLang != null && kLang.key != null) {
+              if (!selectedknownLanguages.includes(kLang.key)) {
+                selectedknownLanguages.push(kLang.key);
+              }
+            }
+          });
+        }
+        if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+          debugger
+          this.selectedMainLanguage.forEach(element => {
+            let mLang = this.mainLanguages.find(x => x.value == element.value);
+            if (mLang != null && mLang.key != null) {
+              if (!selectedMainLanguages.includes(mLang.key)) {
+                selectedMainLanguages.push(mLang.key);
+              }
+            }
+          });
+        }
+
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": ress.firstname,
@@ -257,14 +344,65 @@ export class StudentProfileComponent implements OnInit {
       this.updateNewData = res.body.profile;
       this.updateNewDataImage = res.body.profile.avatar;
       localStorage.setItem('image', this.updateNewDataImage)
+      var main_languages = []; var known_languages = [];
+
+
+
+      if (this.updateNewData.main_language_id != null && this.updateNewData.main_language_id != undefined && this.updateNewData.main_language_id != '') {
+
+
+        if (this.updateNewData.main_language_id.length > 0) {
+          var mainLangArr = [];
+
+          for (var i = 0; i < this.updateNewData.main_language_id.length; i++) {
+            var id = this.updateNewData.main_language_id[i];
+            var Index = this.mainLanguages.findIndex(x => x["key"] === id);
+            if (this.mainLanguages[Index]) {
+              this.mainLanguages[Index]["checked"] = true;
+              let mainLangData = {
+                value: this.mainLanguages[Index]["value"],
+                checked: false
+              }
+              mainLangArr.push(mainLangData);
+            }
+
+          }
+
+        }
+      }
+
+      if (this.updateNewData.known_language_id != null && this.updateNewData.known_language_id != undefined && this.updateNewData.known_language_id != '') {
+
+
+        if (this.updateNewData.known_language_id.length > 0) {
+          var knownLangArr = [];
+
+          for (var i = 0; i < this.updateNewData.known_language_id.length; i++) {
+            var id = this.updateNewData.known_language_id[i];
+            var Index = this.knownLanguages.findIndex(x => x["key"] === id);
+            if (this.knownLanguages[Index]) {
+              this.knownLanguages[Index]["checked"] = true;
+              // knownLangArr.push(this.knownLanguages[Index]["key"]);
+              let knownLangData = {
+                value: this.knownLanguages[Index]["value"],
+                checked: false
+              }
+              knownLangArr.push(knownLangData);
+            }
+
+          }
+
+        }
+      }
       localStorage.getItem('image')
+      debugger
       this.profileForm.patchValue({
         "firstName": this.updateNewData.firstname,
         "lastName": this.updateNewData.lastname,
         "bio": this.updateNewData.bio,
         "contactNumber": this.updateNewData.phone_number,
-        "selectedItems": this.updateNewData.known_language,
-        "main_language": this.updateNewData.main_language,
+        "known_language": knownLangArr,
+        "main_language": mainLangArr,
         "skill": "0",
         "address": "Indore",
         "responsibility": this.updateNewData.responsibilities,
@@ -272,6 +410,8 @@ export class StudentProfileComponent implements OnInit {
         "state": this.updateNewData.State,
         "countrys": this.updateNewData.country
       })
+      let el: HTMLElement = this.studentProfileDiv.nativeElement;
+      el.click();
       if (this.updateNewData.State != undefined || this.updateNewData.State != null) {
         this.getState();
       }
@@ -283,7 +423,10 @@ export class StudentProfileComponent implements OnInit {
   languageData() {
     this.service.get('profile-dropdown', 1).subscribe(res => {
       this.language = res.body.language_listing
+      this.knownLanguages = this.mainLanguages = this.language;
+
       this.country = res.body.country_listing
+      this.updateData();
     })
   }
 
