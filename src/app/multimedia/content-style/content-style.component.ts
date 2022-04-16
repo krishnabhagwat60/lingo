@@ -1828,6 +1828,7 @@ export class ContentStyleComponent implements OnInit {
       name: this.imageData.image_name,
     };
     this.service.post('edit-course-multimedia', data, 1).subscribe((res) => {
+      debugger
       this.closePicture.nativeElement.click();
       this.affiliationList();
     });

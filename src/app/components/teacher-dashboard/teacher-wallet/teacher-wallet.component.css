@@ -260,7 +260,13 @@ section {
     left: calc(50% - 25px);
     margin-top: -33px;
 }
-
+.pricing .featured1:hover{ 
+    background-color: #0a576c;
+}
+.pricing .featured1:hover .count-box a { 
+    background-color: #fff;
+    color: #0a576c;
+}
 input[type="radio"]:checked+.span {
     background-color: #0a576c;
 }

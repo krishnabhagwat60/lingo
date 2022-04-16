@@ -136,17 +136,17 @@
                                             </option>
                                         </select> -->
                                         <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language"
-                                         formControlName="mainLanguage"  [ngClass]="{ 'is-invalid': submit && form.mainLanguage.errors }">
+                                         formControlName="main_language"  [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
-                                    <div *ngIf="submit && form.mainLanguage.invalid" class="text-danger mt-1">
-                                        <div *ngIf="form.mainLanguage.errors.required">
+                                    <div *ngIf="submit && form.main_language.invalid" class="text-danger mt-1">
+                                        <div *ngIf="form.main_language.errors.required">
                                             Language is required.
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="submit && form.mainLanguage.errors" class="invalid-feedback">
-                                    <div *ngIf="form.mainLanguage.errors.required">Language is required</div>
+                                <div *ngIf="submit && form.main_language.errors" class="invalid-feedback">
+                                    <div *ngIf="form.main_language.errors.required">Language is required</div>
                                 </div>
                             </div>
                         </div>

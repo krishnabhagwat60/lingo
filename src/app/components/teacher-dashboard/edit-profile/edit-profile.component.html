@@ -113,7 +113,7 @@
                                         <select formControlName="state"
                                             [ngClass]="{ 'is-invalid': submit && form.state.errors }">
                                             <option value="" disabled>State</option>
-                                            <option *ngFor="let stateName of this.allStateList"
+                                            <option *ngFor="let stateName of allStateList"
                                                 [ngValue]="stateName.state_name">
                                                 {{stateName.state_name}}</option>
                                         </select>
@@ -133,21 +133,21 @@
                                         <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-                                        <ng-multiselect-dropdown [placeholder]="'Language'"
+                                        <ng-multiselect-dropdown [placeholder]="'language.key'"
                                             [settings]="dropdownSettings" [data]="language"
-                                            formControlName="knownLanguage" (onSelect)="onItemSelect($event)"
+                                            formControlName="known_language" (onSelect)="onItemSelect($event)"
                                             (onSelectAll)="onSelectAll($event)"
-                                            [ngClass]="{ 'is-invalid': submit && form.knownLanguage.errors }">
+                                            [ngClass]="{ 'is-invalid': submit && form.known_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
-                                    <div *ngIf="submit && form.knownLanguage.invalid" class="text-danger mt-1">
-                                        <div *ngIf="form.knownLanguage.errors.required">
+                                    <div *ngIf="submit && form.known_language.invalid" class="text-danger mt-1">
+                                        <div *ngIf="form.known_language.errors.required">
                                             Language is required.
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="submit && form.knownLanguage.errors" class="invalid-feedback">
-                                    <div *ngIf="form.knownLanguage.errors.required">Language is required</div>
+                                <div *ngIf="submit && form.known_language.errors" class="invalid-feedback">
+                                    <div *ngIf="form.known_language.errors.required">Language is required</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -157,7 +157,6 @@
                                         <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-
                                         <!-- <select formControlName="mainLanguage">
                                             <option value="" disabled>Main Language</option>
                                             <option *ngFor="let data of language" value="{{data.key}}">
@@ -166,19 +165,19 @@
                                         </select> -->
                                         <ng-multiselect-dropdown [placeholder]="'Language'"
                                             [settings]="dropdownSettings" [data]="language"
-                                            formControlName="mainLanguage" (onSelect)="onMainSelect($event)"
+                                            formControlName="main_language" (onSelect)="onMainSelect($event)"
                                             (onSelectAll)="onMainSelectAll($event)"
-                                            [ngClass]="{ 'is-invalid': submit && form.mainLanguage.errors }">
+                                            [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
-                                    <div *ngIf="submit && form.mainLanguage.invalid" class="text-danger mt-1">
-                                        <div *ngIf="form.mainLanguage.errors.required">
+                                    <div *ngIf="submit && form.main_language.invalid" class="text-danger mt-1">
+                                        <div *ngIf="form.main_language.errors.required">
                                             Language is required.
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="submit && form.mainLanguage.errors" class="invalid-feedback">
-                                    <div *ngIf="form.mainLanguage.errors.required">Language is required</div>
+                                <div *ngIf="submit && form.main_language.errors" class="invalid-feedback">
+                                    <div *ngIf="form.main_language.errors.required">Language is required</div>
                                 </div>
                             </div>
                         </div>
@@ -191,10 +190,10 @@
                                 [ngClass]="{ 'is-invalid': submit && form.bio.errors }" id="description"
                                 name="description" type="divarea">
                             </ckeditor>
-                            <div *ngIf="submit && form.bio.errors" class="invalid-feedback">
+                            <!-- <div *ngIf="submit && form.bio.errors" class="invalid-feedback">
                                 <div *ngIf="form.bio.errors.required">Bio is required</div>
-                                <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
-                            </div>
+                                <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> 
+                            </div> -->
                         </div>
 
                         <div class="t-responsiblties">
@@ -204,27 +203,27 @@
                             <!-- <textarea type="text" class="responsiblties-box" formControlName="responsibility">
                                    
                                 </textarea> -->
-                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="responsibility"
+                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="responsibilities"
                                 id="descriptions" name="descriptions" type="divarea"
                                 [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
                             </ckeditor>
-                            <div *ngIf="submit && form.responsibility.errors" class="invalid-feedback">
-                                <div *ngIf="form.responsibility.errors.required">Responsibility is required</div>
-                                <!-- <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> -->
-                            </div>
+                            <!--<div *ngIf="submit && form.responsibility.errors" class="invalid-feedback">
+                                <div *ngIf="form.responsibility.errors.hasError.required">Responsibility is required</div>
+                                 <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div> 
+                            </div>-->
                         </div>
 
                         <div class="edit-skill">
-                            <h4>Skill
+                            <h4>skills
                                 <span class="required-asterisk">*</span>
                             </h4>
                             <!-- <tag-input [(ngModel)]="items"  style="width: 60%;height: 50px;" class="form-control" id="skill" placeholder="SKILL"></tag-input> -->
-                            <input type="text" class="form-control" id="skill" placeholder="SKILL" formControlName="skills"
+                            <input type="text" class="form-control" id="skills" placeholder="SKILL" formControlName="skills"
                                 style="width: 60%;height: 50px;" #tagInput (keyup)="onKeyUp($event)"
-                                [ngClass]="{ 'is-invalid': submit && form.tag.errors }">
-                            <div *ngIf="submit && form.tag.errors" class="invalid-feedback">
-                                <div *ngIf="form.tag.errors.required">Skills is required</div>
-                                <div *ngIf="form.tag.errors.maxlength">Skills should be only 51 characters</div>
+                                [ngClass]="{ 'is-invalid': submit && form.skills.errors }">
+                            <div *ngIf="submit && form.skills.errors" class="invalid-feedback">
+                                <div *ngIf="form.skills.errors.required">Skills is required</div>
+                                <div *ngIf="form.skills.errors.maxlength">Skills should be only 51 characters</div>
                             </div>
                         </div>
 

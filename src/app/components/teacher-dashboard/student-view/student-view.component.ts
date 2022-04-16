@@ -418,6 +418,7 @@ export class StudentViewComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
+      debugger
       this.mainpageLoder = false;
       this.fillTheBlanksData = res.body.result;
       if (!this.fillTheBlanksData.length) {

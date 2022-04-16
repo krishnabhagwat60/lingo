@@ -143,7 +143,7 @@ export class StudentProfileComponent implements OnInit {
   get f() { return this.profileForm.controls; }
 
   studentProfile() {
-   
+   debugger
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -176,7 +176,7 @@ export class StudentProfileComponent implements OnInit {
       "bio": this.profileForm.value.bio,
       "contact_number": this.profileForm.value.contactNumber,
       "knownlanguage": this.selectedLanguage,
-      "mainlanguage": this.selectedMainLanguage,
+      "main_language": this.selectedMainLanguage,
       "skill": "0",
       "address": "Indore",
       "responsibilities": this.profileForm.value.responsibility,
@@ -264,7 +264,7 @@ export class StudentProfileComponent implements OnInit {
         "bio": this.updateNewData.bio,
         "contactNumber": this.updateNewData.phone_number,
         "selectedItems": this.updateNewData.known_language,
-        "mainLanguage": this.updateNewData.main_language,
+        "main_language": this.updateNewData.main_language,
         "skill": "0",
         "address": "Indore",
         "responsibility": this.updateNewData.responsibilities,

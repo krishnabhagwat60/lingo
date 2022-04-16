@@ -52,9 +52,9 @@
                         <div class="col-lg-1">
                         </div>
                         <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(0)" (mouseleave)="getIndex(0)" data-aos="fade-up" data-aos-delay="200">
-                            <label for="a">
+                            <label for="a" class="featured1">
                                 <input type="radio" name="letter" id="a" [class.span]="currentCardIndex==0" [checked]="currentCardIndex==0"  checked>
-                                <div class="featured box  span" [class.span]="currentCardIndex==0">
+                                <div class="box featured span" [class.span]="currentCardIndex==0">
                                     <div class="section10" style="color: red;">
                                         <h3>BASIC</h3>
                                         <h4 class="boder"></h4>
@@ -82,10 +82,10 @@
                                 </div>
                             </label>
                         </div>
-                        <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(1)" (mouseleave)="getIndex(1)" data-aos="fade-up" data-aos-delay="200">
-                            <label for="b">
+                        <div class="col-lg-3 col-md-6 mt-4  mt-md-0" (mouseleave)="getIndex(1)" data-aos="fade-up" data-aos-delay="200">
+                            <label for="b" class="featured1">
                                 <input type="radio" name="letter" id="b"  [checked]="currentCardIndex==1" >
-                                <div class="featured box  span"[class.span]="currentCardIndex==1">
+                                <div class="box featured span" [class.span]="currentCardIndex==1">
                                     <div class="section10" style="color: red;">
                                         <h3>STANDARD</h3>
                                         <h4 class="boder"></h4>
@@ -114,9 +114,9 @@
                             </label>
                         </div>
                         <div class="col-lg-3 col-md-6 mt-4 mt-md-0" (mouseenter)="getIndex(2)" (mouseleave)="getIndex(2)" data-aos="fade-up" data-aos-delay="200">
-                            <label for="c">
+                            <label for="c" class="featured1">
                                 <input type="radio" name="letter" id="c"  [checked]="currentCardIndex==2">
-                                <div class="featured box  span"[class.span]="currentCardIndex==2">
+                                <div class="box featured span"[class.span]="currentCardIndex==2">
                                     <div class="section10" style="color: red;">
                                         <h3>PROFESSIONAL</h3>
                                         <h4 class="boder"></h4>

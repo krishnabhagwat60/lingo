@@ -119,10 +119,12 @@ export class EditProfileComponent implements OnInit {
     };
 
     this.updateData();
+    
     this.languageData();
     this.sidebar();
     this.getNewToken();
     this.username();
+    
     // this.addInitialForms();
   }
   username() {
@@ -134,7 +136,7 @@ export class EditProfileComponent implements OnInit {
   }
   onKeyUp(event: KeyboardEvent): void {
     this.submit = true;
-    const inputValue: string = this.editProfileForm.controls.tag.value;
+    const inputValue: string = this.editProfileForm.controls.taged.value;
     if (event.code === 'Backspace' && !inputValue) {
       this.removeTag();
       return;
@@ -197,9 +199,9 @@ export class EditProfileComponent implements OnInit {
         "last_name": ress.lastname,
         "bio": ress.bio,
         "contact_number": ress.phone_number,
-        "known_language": ress.known_language_id,
-        "main_language": ress.main_language_id,
-        "skills": this.tags,
+        "known_language": ress.known_language,
+        "main_language": ress.main_language,
+        "skills": ress.skills,
         "address": "Indore",
         "responsibilities": ress.responsibilities,
         country: ress.country,
@@ -228,19 +230,20 @@ export class EditProfileComponent implements OnInit {
   }
   // validate edit profile form
   editProfileForm = new FormGroup({
+    
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     contactNumber: new FormControl('', Validators.required),
     state: new FormControl('', Validators.required),
-    knownLanguage: new FormControl('', Validators.required),
-    mainLanguage: new FormControl('', Validators.required),
+    known_language: new FormControl('', Validators.required),
+    main_language: new FormControl('', Validators.required),
     oldPass: new FormControl('',),
     newPass: new FormControl('',),
     confirmPass: new FormControl('',),
     skills: new FormControl('', [Validators.maxLength(51)]),
     bio: new FormControl('', Validators.required),
-    responsibility: new FormControl('', Validators.required),
+    responsibilities: new FormControl('', Validators.required),
     countrys: new FormControl('', Validators.required),
     taged: new FormControl('',),
     image: new FormControl('',),
@@ -270,18 +273,31 @@ export class EditProfileComponent implements OnInit {
   }
 
   editProfile() {
-    
+    debugger
     this.submit = true;
     if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
     }
     this.mainpageLoder = true
-    for (const data of this.selectedArr) {
-      this.selectedLanguage.push(data.key);
+    for (const data of this.editProfileForm.value.known_language) {
+      if(data.key == null)
+      {
+        this.selectedLanguage.push(data);
+      }
+      else{
+        this.selectedLanguage.push(data.key);
+      }
     }
-    for (const data of this.selectedNewArr) {
-      this.selectedMainLanguage.push(data.key);
+    for (const data of this.editProfileForm.value.main_language) {
+      if(data.key == null)
+      {
+        this.selectedMainLanguage.push(data);
+      }
+      else{
+        this.selectedMainLanguage.push(data.key);
+      }
     }
+    //var tmp = this.getDataBlob(this.updateNewDataImage);
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
@@ -292,11 +308,12 @@ export class EditProfileComponent implements OnInit {
       "main_language": this.selectedMainLanguage,
       "skills": this.editProfileForm.value.skills,
       "address": "Indore",
-      "responsibilities": this.editProfileForm.value.responsibility,
+      "responsibilities": this.editProfileForm.value.responsibilities,
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.updateNewDataImage
+      avatar: "",
+      status:1
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -304,7 +321,9 @@ export class EditProfileComponent implements OnInit {
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        this.eventEmitterService.onProfileChanged();
+        window.location.reload();
+       // this.updateData();
+       // this.eventEmitterService.onProfileChanged();
         //this.router.navigate(['/teacherDashboard/teacherProfile'])
         //  window.location.reload()
       }
@@ -315,26 +334,35 @@ export class EditProfileComponent implements OnInit {
 
   // api for edit form
   editProfileById() {
+    debugger
     this.submit = true;
     if (this.editProfileForm.invalid) {
       return;
     }
     this.mainpageLoder = true
-    for (const data of this.selectedArr) {
-      this.selectedLanguage.push(data.key);
+  
+    for (const data of this.editProfileForm.value.main_language) {
+      if(data.key == null)
+      {
+        this.selectingLanguage.push(data);        
+      }
+      else{
+        this.selectingLanguage.push(data.key);
+      }
     }
-    for (const data of this.editProfileForm.value.mainLanguage) {
-      this.selectingLanguage.push(data.key);
+    for (const data of this.editProfileForm.value.known_language) {
+      if(data.key == null)
+      {
+        this.selectsLanguage.push(data);        
+      }
+      else{
+        this.selectsLanguage.push(data.key);
+      }
     }
-    for (const data of this.editProfileForm.value.knownLanguage) {
-      this.selectsLanguage.push(data.key);
-    }
-    for (const data of this.selectedNewArr) {
-      this.selectedMainLanguage.push(data.key);
-    }
-    var teacherLanguage = this.updateNewData.main_language_id.concat(this.selectedMainLanguage)
-    var studentLanguage = this.updateNewData.known_language_id.concat(this.selectedLanguage)
-    var image_description = this.imageUpdate.concat(this.tags)
+    // var teacherLanguage = this.updateNewData.main_language_id.concat(this.selectedMainLanguage)
+    // var studentLanguage = this.updateNewData.known_language_id.concat(this.selectedLanguage)
+    // var image_description = this.imageUpdate.concat(this.tags)
+    //var tmp = this.getDataBlob(this.updateNewDataImage);
     this.imageUpdate = this.tags
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -342,16 +370,16 @@ export class EditProfileComponent implements OnInit {
       "last_name": this.editProfileForm.value.lastName,
       "bio": this.editProfileForm.value.bio,
       "contact_number": this.editProfileForm.value.contactNumber,
-      "known_language": studentLanguage,
-      "main_language": teacherLanguage,
-      "skills": image_description,
+      "known_language":  this.selectsLanguage,
+      "main_language": this.selectingLanguage,
+      "skills":  this.editProfileForm.value.skills,
       "address": "Indore",
-      "responsibilities": this.editProfileForm.value.responsibility,
+      "responsibilities": this.editProfileForm.value.responsibilities,
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: this.updateNewDataImage
-
+      avatar: "",
+      status:1
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
@@ -359,7 +387,7 @@ export class EditProfileComponent implements OnInit {
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        this.eventEmitterService.onProfileChanged();
+        window.location.reload();
 
         //this.router.navigate(['/teacherDashboard/teacherProfile'])
         //window.location.reload();
@@ -367,6 +395,25 @@ export class EditProfileComponent implements OnInit {
     }
     )
   }
+  // async parseURI(d): Promise<any>{
+  //   debugger
+  //   var reader = new FileReader();    /* https://developer.mozilla.org/en-US/docs/Web/API/FileReader */
+  //   reader.readAsDataURL(d);          /* https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL */
+  //   return new Promise((res,rej)=> {  /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise */
+  //     reader.onload = (e) => {        /* https://developer.mozilla.org/en-US/docs/Web/API/FileReader/onload */
+  //       res(e.target.result)
+  //     }
+  //   })
+  // } 
+  
+  // async getDataBlob(url){
+  //   debugger
+  //   var blob = new blob(url, { type: "image/png"});
+  //   var urls = window.URL.createObjectURL(blob);
+  //   var uri = this.parseURI(blob);
+  //   return uri;
+  // }
+  
 
   // get data by id
 
@@ -377,6 +424,7 @@ export class EditProfileComponent implements OnInit {
       "avatar" : this.updateNewDataImage
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
+      debugger
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
@@ -393,15 +441,17 @@ export class EditProfileComponent implements OnInit {
         "lastName": this.updateNewData.lastname,
         "bio": this.updateNewData.bio,
         "contactNumber": this.updateNewData.phone_number,
-        "knownLanguage": this.updateNewData.known_language,
+        "known_language": this.updateNewData.known_language_id,
         "skills": this.updateNewData.skills,
-        "mainLanguage": this.updateNewData.main_language,
+        "main_language": this.updateNewData.main_language_id,
         countrys: this.updateNewData.country,
         state: this.updateNewData.State,
         "address": "Indore",
-        "responsibility": this.updateNewData.responsibilities,
-        email: this.updateNewData.email
-      })
+        "responsibilities": this.updateNewData.responsibilities,
+        email: this.updateNewData.email,
+        status:1
+      });
+      this.getState();
     }
     )
   }
@@ -471,21 +521,26 @@ export class EditProfileComponent implements OnInit {
       this.allCountryList.forEach(element => {
         this.countryss.push(element.country_name)
       });
+      
     })
   }
 
   getState() {
+debugger
     this.isImageShow = true;
     this.allCityList = null;
     this.service.getData('states/' + this.editProfileForm.value.countrys, this.authToken).subscribe(result => {
       this.isImageShow = false;
       this.allStateList = result;
+     console.log(this.allStateList)
+
     })
   }
   getNewToken() {
     this.service.getAuthToken('getaccesstoken/').subscribe(result => {
       this.authToken = result.auth_token;
       this.getCountry();
+      
     })
   }
   showshubmenu() {
