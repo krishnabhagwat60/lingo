@@ -24,6 +24,7 @@ export class EventEmitterService {
   onMenuChanged() {
     this.invokeMenuList.emit();
   }
+  
   onProfileChanged() {
     this.invokeProfileChange.emit();
   }

@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
      if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeProfileChange .subscribe(() => {
-       
+       debugger
           this.profile();
         });
     }
@@ -43,12 +43,17 @@ export class NavbarComponent implements OnInit {
     this.profile(); 
   }
   profile(){
+    debugger
     const data = {
       "user_id": sessionStorage.getItem('uid')
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
-     
+      
       this.updateNewDataImage = res.body.profile.avatar;
+      if(this.updateNewDataImage == null)
+      {
+        this.updateNewDataImage =false;
+      }
     }
     )
   }

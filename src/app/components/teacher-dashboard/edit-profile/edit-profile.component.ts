@@ -75,6 +75,7 @@ export class EditProfileComponent implements OnInit {
   taged: any;
   newTag: any;
   msg: string;
+  isContentloaded:  boolean = false;
   tagedd: any;
   subTitle: any;
   mainpageLoder: boolean = false;
@@ -126,7 +127,13 @@ export class EditProfileComponent implements OnInit {
     this.sidebar();
     this.getNewToken();
     this.username();
-
+    // setInterval (() => {
+    //   if(this.editProfileDiv !=undefined && !this.isContentloaded)
+    //   {
+    //   this.isContentloaded = true
+      
+    //   }
+    // }, 1000);
     // this.addInitialForms();
   }
   username() {
@@ -185,7 +192,7 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-
+debugger
     this.mainpageLoderUpdate = true;
     this.loding = true;
     const datas = {
@@ -195,14 +202,15 @@ export class EditProfileComponent implements OnInit {
 
     this.service.post('get_profile_by_id', datas, 1).subscribe(res => {
       var ress = res.body.profile;
+
       const data = {
         user_id: sessionStorage.getItem('uid'),
         "first_name": ress.firstname,
         "last_name": ress.lastname,
         "bio": ress.bio,
         "contact_number": ress.phone_number,
-        "known_language": ress.known_language,
-        "main_language": ress.main_language,
+        "known_language": ress.known_language_id,
+        "main_language": ress.main_language_id,
         "skills": ress.skills,
         "address": "Indore",
         "responsibilities": ress.responsibilities,
@@ -211,13 +219,14 @@ export class EditProfileComponent implements OnInit {
         email: ress.email,
         avatar: this.updateNewDataImage
       }
+
       this.service.post('profile-update', data, 1).subscribe(res => {
 
         if (res.body.result === 'success') {
           this.loding = false;
           this.mainpageLoderUpdate = false;
           this.msg = 'Profile Updated Successfully'
-          this.updateData();
+          // this.updateData();
           this.eventEmitterService.onProfileChanged();
 
           //window.location.reload();
@@ -343,15 +352,17 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: "",
+      avatar: this.updateNewDataImage,
       status: 1
     }
+    
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
       localStorage.setItem('image', this.updateNewDataImage)
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
+        this.ngOnInit();
         // window.location.reload();
         // this.updateData();
         // this.eventEmitterService.onProfileChanged();
@@ -412,7 +423,7 @@ export class EditProfileComponent implements OnInit {
       });
     }
     this.imageUpdate = this.tags
-    const data = {
+    const data = {   
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
       "last_name": this.editProfileForm.value.lastName,
@@ -426,19 +437,15 @@ export class EditProfileComponent implements OnInit {
       country: this.editProfileForm.value.countrys,
       state: this.editProfileForm.value.state,
       email: this.editProfileForm.value.email,
-      avatar: "",
+      avatar: this.updateNewDataImage,
       status: 1
     }
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
-      localStorage.getItem('image')
       this.editData = res;
       if (res.body.result === 'success') {
         this.mainpageLoder = false;
-        // window.location.reload();
-
-        //this.router.navigate(['/teacherDashboard/teacherProfile'])
-        //window.location.reload();
+        this.eventEmitterService.onProfileChanged();
       }
     }
     )
@@ -473,7 +480,6 @@ export class EditProfileComponent implements OnInit {
       "avatar": this.updateNewDataImage
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
-      debugger
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
@@ -481,7 +487,6 @@ export class EditProfileComponent implements OnInit {
       if (this.updateNewDataImage == undefined) {
         this.updateNewDataImage = res.body.profile.avatar;
       }
-      debugger
       // this.updateNewDataImage = res.body.profile.avatar;
       this.imageUpdate = res.body.profile.skills;
       var main_languages = []; var known_languages = [];
@@ -550,8 +555,7 @@ export class EditProfileComponent implements OnInit {
         email: this.updateNewData.email,
         status: 1
       });
-      let el: HTMLElement = this.editProfileDiv.nativeElement;
-      el.click();
+    
       this.getState();
     }
     )
@@ -609,7 +613,6 @@ export class EditProfileComponent implements OnInit {
   // language api
   languageData() {
     this.service.get('profile-dropdown', 1).subscribe(res => {
-      debugger
       this.language = res.body.language_listing;
       this.knownLanguages = this.mainLanguages = this.language;
       this.country = res.body.country_listing;
@@ -629,14 +632,13 @@ export class EditProfileComponent implements OnInit {
   }
 
   getState() {
-    debugger
     this.isImageShow = true;
     this.allCityList = null;
     this.service.getData('states/' + this.editProfileForm.value.countrys, this.authToken).subscribe(result => {
       this.isImageShow = false;
       this.allStateList = result;
-      console.log(this.allStateList)
-
+      let el: HTMLElement = this.editProfileDiv.nativeElement;
+      el.click();
     })
   }
   getNewToken() {

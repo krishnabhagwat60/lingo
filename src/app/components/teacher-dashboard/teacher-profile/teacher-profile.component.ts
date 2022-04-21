@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-teacher-profile',
   templateUrl: './teacher-profile.component.html',
@@ -11,6 +12,8 @@ export class TeacherProfileComponent implements OnInit {
   profileData: any;
   profileDataa: any;
   sidebarData: any;
+  @ViewChild('editProfileDiv') editProfileDiv: ElementRef<HTMLElement>;
+
   subMenu: any;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
@@ -33,6 +36,15 @@ export class TeacherProfileComponent implements OnInit {
     this.getProfile();
     this.sidebar();
     this.username();
+setInterval (() => {
+  if(this.editProfileDiv !=undefined)
+  {
+
+    let el: HTMLElement = this.editProfileDiv.nativeElement;
+    el.click();
+  }
+}, 1000);
+
   }
 
   username() {
