@@ -884,8 +884,7 @@
                                                 </div>
                                             </div>
                                             <div class="other-links-image-section">
-                                                <p [innerHTML]="getHtml(data.otherlink)"></p>
-                                                <!-- <p [innerHTML]="getHtml(data.other_link_url)"></p> -->
+                                                <p [innerHTML]="getHtml(data.otherlink==null?data.other_link_url:data.otherlink)"></p>
                                             </div>
                                         </div>
                                     </ng-container>
@@ -1153,12 +1152,12 @@
                     <div class="submit">
                         <p *ngIf="otherErr" style="text-align: center;color: red;">{{otherErr}}</p>
                         <button *ngIf="!otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick"
-                            (click)="otherLinkSubmit();OtherClick = true;">Submit
+                            (click)="otherLinkSubmit();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
                         <button *ngIf="otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick"
-                            (click)="updateOtherlink();OtherClick = true;">Submit
+                            (click)="updateOtherlink();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>

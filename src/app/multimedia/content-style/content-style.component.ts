@@ -658,6 +658,7 @@ export class ContentStyleComponent implements OnInit {
   // get multimedia data api
 
   affiliationList() {
+    debugger
     this.titless = sessionStorage.getItem('title');
     this.subtitless = sessionStorage.getItem('subtitle');
     this.courseNameData = sessionStorage.getItem('course_name');
@@ -666,6 +667,7 @@ export class ContentStyleComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
+      debugger
       this.fillTheBlanksData = res.body.result;
       if (res.body.result) {
         this.fillTheBlank = true;
@@ -895,6 +897,7 @@ export class ContentStyleComponent implements OnInit {
     );
     this.sendSrc = this.otherLinkForm.value.otherLinkText;
     this.otherlink = true;
+    this.otherlinkId =0;
     this.showMsg = 'Uploaded Successfully';
     this.uploadData();
   }
@@ -1849,12 +1852,12 @@ export class ContentStyleComponent implements OnInit {
   }
   // update pdf
   updateOtherlink() {
- 
+ debugger
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );
     var newurl = btoa(this.otherLinkForm.value.mediaEmbedding);
-
+    
     var url = btoa(this.otherEditData.other_link_url);
     if (!url.startsWith('http')) {
       if (url.includes('http')) {
@@ -1872,17 +1875,27 @@ export class ContentStyleComponent implements OnInit {
       p_id: this.otherlinkId,
       type: 'otherlink',
       title: this.otherLinkForm.value.questionOtherLink,
+      other_link_url: url,
       // data_value: this.dataUrl,
       data_value: this.safeSrc,
 
       name: 'iframe youtube video',
     };
-    if (this.safeSrc['changingThisBreaksApplicationSecurity'].length > 100) {
-      data.data_value =
-        data.data_value['changingThisBreaksApplicationSecurity'];
+    if(this.safeSrc['changingThisBreaksApplicationSecurity'] !=null)
+    {
+      if (this.safeSrc['changingThisBreaksApplicationSecurity'].length > 100) {
+        data.data_value =
+          data.data_value['changingThisBreaksApplicationSecurity'];
+      }
     }
+    else{
+      delete data.data_value;
+    }
+    
     this.service.post('edit-course-multimedia', data, 1).subscribe((res) => {
       this.closeOtherLink.nativeElement.click();
+      this.otherlinkId =0;
+      this.otherLinkButton =false;
       this.affiliationList();
     });
   }
