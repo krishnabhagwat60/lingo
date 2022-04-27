@@ -55,6 +55,7 @@ import { ThankYouTeacherComponent } from './thank-you-teacher/thank-you-teacher.
         NgMultiSelectDropDownModule.forRoot(),
         TagInputModule,
         NgSelectModule,
+        NgMultiSelectDropDownModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     declarations: [

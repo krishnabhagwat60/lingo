@@ -43,6 +43,7 @@ export class CancelPaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.studentSideBar()
     this.submitEnroll();
     this.user = sessionStorage.getItem('username');

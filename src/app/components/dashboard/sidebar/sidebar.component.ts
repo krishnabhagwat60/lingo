@@ -75,6 +75,7 @@ export class SidebarComponent implements OnInit {
    
   }
   studentSideBar() {
+    debugger
     console.log('sidebar view', this.frontServices.vm);
 
   

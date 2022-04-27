@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,7 +32,9 @@ import { NgxCSVtoJSONModule } from 'ngx-csvto-json';
 import { DatePipe } from '@angular/common';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { FrontService } from './services/front.service';
+
 @NgModule({
+ 
   declarations: [
     AppComponent,
     HomeComponent,
@@ -49,7 +51,9 @@ import { FrontService } from './services/front.service';
     ImageCroppingComponent,
     ThankYouComponent,
     CancelPaymentComponent,
+   
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,

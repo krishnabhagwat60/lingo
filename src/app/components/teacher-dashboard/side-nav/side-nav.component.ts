@@ -46,6 +46,8 @@ export class SideNavComponent implements OnInit {
     this.profile();
   }
   logout() {
+    localStorage.clear();
+
     sessionStorage.clear();
     this.frontServices.vm.sidebarData = null;
 
@@ -53,6 +55,9 @@ export class SideNavComponent implements OnInit {
     this.signOut();
   }
   signOut(): void {
+    sessionStorage.clear();
+
+    localStorage.clear();
     this.authService.signOut();
   }
   // username

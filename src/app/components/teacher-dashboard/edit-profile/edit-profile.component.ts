@@ -192,7 +192,7 @@ export class EditProfileComponent implements OnInit {
 
 
   teacherImage() {
-debugger
+
     this.mainpageLoderUpdate = true;
     this.loding = true;
     const datas = {
@@ -264,7 +264,7 @@ debugger
  
 
   onItemSelect(item: any) {
-    debugger
+    
     this.knownLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
   }
   onSelectAll(items: any) {
@@ -273,7 +273,7 @@ debugger
     }
   }
   onMainSelect(item: any) {
-    debugger
+    
     this.mainLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
 
   }
@@ -292,7 +292,7 @@ debugger
   }
 
   editProfile() {
-    debugger
+    
     this.submit = true;
     if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
@@ -317,7 +317,7 @@ debugger
     let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
         if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-          debugger
+          
           this.selectedLanguage.forEach(element => {
             let kLang = this.knownLanguages.find(x => x.value == element.value);
             if (kLang != null && kLang.key != null) {
@@ -328,7 +328,7 @@ debugger
           });
         }
         if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
-          debugger
+          
           this.selectedMainLanguage.forEach(element => {
             let mLang = this.mainLanguages.find(x => x.value == element.value);
             if (mLang != null && mLang.key != null) {
@@ -376,7 +376,6 @@ debugger
 
   // api for edit form
   editProfileById() {
-    debugger
     this.submit = true;
     if (this.editProfileForm.invalid) {
       return;
@@ -401,7 +400,7 @@ debugger
     let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
     if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-      debugger
+      
       this.selectedLanguage.forEach(element => {
         let kLang = this.knownLanguages.find(x => x.value == element.value);
         if (kLang != null && kLang.key != null) {
@@ -412,7 +411,7 @@ debugger
       });
     }
     if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
-      debugger
+      
       this.selectedMainLanguage.forEach(element => {
         let mLang = this.mainLanguages.find(x => x.value == element.value);
         if (mLang != null && mLang.key != null) {
@@ -451,7 +450,7 @@ debugger
     )
   }
   // async parseURI(d): Promise<any>{
-  //   debugger
+  //   
   //   var reader = new FileReader();    /* https://developer.mozilla.org/en-US/docs/Web/API/FileReader */
   //   reader.readAsDataURL(d);          /* https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL */
   //   return new Promise((res,rej)=> {  /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise */
@@ -462,7 +461,7 @@ debugger
   // } 
 
   // async getDataBlob(url){
-  //   debugger
+  //   
   //   var blob = new blob(url, { type: "image/png"});
   //   var urls = window.URL.createObjectURL(blob);
   //   var uri = this.parseURI(blob);

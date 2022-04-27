@@ -306,7 +306,7 @@ export class StudentsDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-   
+   debugger
     this.msgShow = ''
     this.enrollID = data
     this.enroll = data.id
@@ -318,6 +318,10 @@ export class StudentsDashboardComponent implements OnInit {
         this.refresh();
       
       });
+
+
+
+      
 
       // this.addsidebar.emit({course_name : data.title, enrollId :this.enroll});
     } else {

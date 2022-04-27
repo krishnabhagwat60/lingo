@@ -66,6 +66,7 @@ export class ThankYouComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
+    debugger
     console.log(' thank you view', this.frontServices.vm);
 
     if (
@@ -81,6 +82,7 @@ export class ThankYouComponent implements OnInit {
         this.service.post('student_sidebar', data, 1).subscribe((res) => {
           this.sidebarData = res.body.result;
           this.frontServices.vm.sidebarData = this.sidebarData;
+          
         });
       }, 100);
     } else {
@@ -89,8 +91,8 @@ export class ThankYouComponent implements OnInit {
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
-    this.coursesName = sessionStorage.setItem('course_name', name);
-    this.coursesName = sessionStorage.setItem('course_id', id);
+    // this.coursesName = sessionStorage.setItem('course_name', name);
+    // this.coursesName = sessionStorage.setItem('course_id', id);
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
