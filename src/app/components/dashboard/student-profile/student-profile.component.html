@@ -85,13 +85,13 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group" *ngIf="allStateList && allStateList.length>0">
                                 <div class="course-language-dropdown">
                                     <p>State</p>
                                     <div class="select-dropdown">
                                         <select formControlName="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
                                             <option value="" disabled>State</option>
-                                            <option *ngFor="let stateName of this.allStateList"
+                                            <option *ngFor="let stateName of allStateList"
                                                 [ngValue]="stateName.state_name">
                                                 {{stateName.state_name}}</option>
                                         </select>
@@ -104,23 +104,26 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-6 form-group" *ngIf="knownLanguages && knownLanguages.length>0">
                                 <div class="course-language-dropdown">
                                     <p>KNOWN LANGUAGE
-
+                                        <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-                                        <ng-multiselect-dropdown style="color: black;" [placeholder]="'Select Known Language'" [settings]="dropdownSettings" [data]="knownLanguages" formControlName="known_language" (onSelect)="onItemsSelect($event)" (onSelectAll)="onSelectsAll($event)" [ngClass]="{ 'is-invalid': submit && form.known_language.errors }">
+                                        <ng-multiselect-dropdown [placeholder]="'Select Known Language'" [settings]="dropdownSettings" [data]="knownLanguages" formControlName="known_language" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [ngClass]="{ 'is-invalid': submitted && form.known_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && form.known_language.invalid" class="text-danger mt-1">
                                         <div *ngIf="form.known_language.errors.required">
-                                            Known Language is required.
+                                            Language is required.
                                         </div>
                                     </div>
                                 </div>
+                                <div *ngIf="submitted && form.known_language.errors" class="invalid-feedback">
+                                    <div *ngIf="form.known_language.errors.required">Language is required</div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" *ngIf="mainLanguages && mainLanguages.length>0">
                                 <!-- <label for="known">MAIN LANGUAGE</label> -->
                                 <div class="course-language-dropdown">
                                     <p>MAIN LANGUAGE

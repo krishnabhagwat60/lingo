@@ -41,6 +41,7 @@ export class MyCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.getCourseData(1, 0);
     // this.username();
   }

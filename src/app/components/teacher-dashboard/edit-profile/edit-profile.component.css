@@ -16,7 +16,9 @@
 .prof-btns {
     margin-top: 20px;
 }
-
+::ng-deep .multiselect-dropdown .dropdown-btn {
+   color:black
+}
 .prof-btns .user-cancel {
     margin-right: 10px;
     width: 78px;

@@ -26,6 +26,7 @@ export class NavbarComponent implements OnInit {
   updateNewDataImage :any;
   constructor(private service: ServiceService,private router: Router,     private eventEmitterService: EventEmitterService,private authService: SocialAuthService,private injector: Injector) {
      this.image = localStorage.getItem('image')
+     this.image=null
      if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeProfileChange .subscribe(() => {
@@ -36,8 +37,6 @@ export class NavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("images",this.image)
-    this.usernameData();
     this.walletData();
     this.usernameData();
     this.profile(); 

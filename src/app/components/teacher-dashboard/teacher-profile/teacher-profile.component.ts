@@ -29,21 +29,20 @@ export class TeacherProfileComponent implements OnInit {
   croppedImage: any = '';
   image: string;
   constructor(private service: ServiceService, private router: Router) {
-    this.image = localStorage.getItem('image')
-   }
+    this.image = localStorage.getItem('image');
+  }
 
   ngOnInit(): void {
     this.getProfile();
     this.sidebar();
     this.username();
-setInterval (() => {
-  if(this.editProfileDiv !=undefined)
-  {
+    // setInterval(() => {
+    //   if (this.editProfileDiv != undefined) {
 
-    let el: HTMLElement = this.editProfileDiv.nativeElement;
-    el.click();
-  }
-}, 1000);
+    //     let el: HTMLElement = this.editProfileDiv.nativeElement;
+    //     el.click();
+    //   }
+    // }, 1000);
 
   }
 
@@ -53,34 +52,36 @@ setInterval (() => {
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
     console.log(this.imageChangedEvent)
-    
-}
-imageCropped(event: ImageCroppedEvent) {
+
+  }
+  imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-}
-imageLoaded(image: LoadedImage) {
+  }
+  imageLoaded(image: LoadedImage) {
     // show cropper
-}
-cropperReady() {
+  }
+  cropperReady() {
     // cropper ready
-}
-loadImageFailed() {
+  }
+  loadImageFailed() {
     // show message
-}
+  }
   getChildData(child) {
     sessionStorage.setItem('subId', child);
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
 
   getProfile() {
+    debugger
+
     const data = {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('get_profile_by_id', data, 1).subscribe(res => {
       this.profileData = res.body.profile;
       this.profileDataa = res.body.profile.skills;
-      localStorage.setItem('image',res.body.profile.avatar)
-    this.image = localStorage.getItem('image')
+      localStorage.setItem('image', res.body.profile.avatar)
+      this.image = localStorage.getItem('image')
 
     })
   }

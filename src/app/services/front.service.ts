@@ -13,6 +13,7 @@ export class FrontService {
     courseChanged: false,
     itemModel: [],
     selectedCategoryId: 0,
+    profileImg:'',
     sidebarData: [],
     selectedMenuId: 0,
   };

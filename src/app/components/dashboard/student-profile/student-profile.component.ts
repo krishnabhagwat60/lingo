@@ -48,7 +48,7 @@ export class StudentProfileComponent implements OnInit {
   selectedLanguage = [];
   selectedMainLanguage = [];
   selectedArr = [];
-  allStateList: string;
+  allStateList: any;
   allCityList: any;
   allCountryList: any;
   isImageShow: boolean;
@@ -134,12 +134,12 @@ export class StudentProfileComponent implements OnInit {
       allowSearchFilter: true,
     };
     this.languageData();
-    // this.updateData();
+   // this.updateData();
     this.username();
-  
+
   }
   onItemsSelect(item: any) {
-    debugger;
+    ;
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -182,7 +182,7 @@ export class StudentProfileComponent implements OnInit {
     xhr.send();
   }
   onItemSelect(item: any) {
-    debugger;
+    ;
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -192,7 +192,7 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   onMainSelect(item: any) {
-    debugger;
+    ;
     this.mainLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -212,7 +212,7 @@ export class StudentProfileComponent implements OnInit {
   }
 
   studentProfile() {
-    debugger;
+    ;
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -235,7 +235,7 @@ export class StudentProfileComponent implements OnInit {
     let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
     if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-      debugger;
+      ;
       this.selectedLanguage.forEach((element) => {
         let kLang = this.knownLanguages.find((x) => x.value == element.value);
         if (kLang != null && kLang.key != null) {
@@ -249,7 +249,7 @@ export class StudentProfileComponent implements OnInit {
       this.selectedMainLanguage != null &&
       this.selectedMainLanguage.length > 0
     ) {
-      debugger;
+      ;
       this.selectedMainLanguage.forEach((element) => {
         let mLang = this.mainLanguages.find((x) => x.value == element.value);
         if (mLang != null && mLang.key != null) {
@@ -259,15 +259,7 @@ export class StudentProfileComponent implements OnInit {
         }
       });
     }
-
-    //var image = "";
-    if (this.updateNewDataImage.split('//')[0] == 'http:') {
-      this.toDataURL(this.updateNewDataImage, function (dataUrl) {
-        console.log('base64', dataUrl);
-      });
-
-      //var image =this.getBase64Image(this.updateNewDataImage);
-    }
+    
     this.mainpageLoderOfSave = true;
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -290,24 +282,26 @@ export class StudentProfileComponent implements OnInit {
       if (res.body.result === 'success') {
         this.mainpageLoderOfSave = false;
         this.msg = 'Profile Updated Successfully';
-        this.updateData();
+        this.ngOnInit();
+      //  this.updateData();
         this.submitted = false;
       }
     });
   }
   studentImage() {
+    debugger
     const datas = {
       user_id: sessionStorage.getItem('uid'),
     };
     this.mainpageLoder = true;
     this.service.post('get_profile_by_id', datas, 1).subscribe((res) => {
       var ress = res.body.profile;
-
+debugger
+console.log('get_profile_by_id student image response',ress);
       let selectedknownLanguages = [];
       let selectedMainLanguages = [];
       //var tmp = this.getDataBlob(this.updateNewDataImage);
       if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-        debugger;
         this.selectedLanguage.forEach((element) => {
           let kLang = this.knownLanguages.find((x) => x.value == element.value);
           if (kLang != null && kLang.key != null) {
@@ -321,7 +315,6 @@ export class StudentProfileComponent implements OnInit {
         this.selectedMainLanguage != null &&
         this.selectedMainLanguage.length > 0
       ) {
-        debugger;
         this.selectedMainLanguage.forEach((element) => {
           let mLang = this.mainLanguages.find((x) => x.value == element.value);
           if (mLang != null && mLang.key != null) {
@@ -331,6 +324,8 @@ export class StudentProfileComponent implements OnInit {
           }
         });
       }
+console.log('knownLanguages',this.knownLanguages);
+console.log('mainLanguages',this.mainLanguages);
 
       const data = {
         user_id: sessionStorage.getItem('uid'),
@@ -338,9 +333,9 @@ export class StudentProfileComponent implements OnInit {
         last_name: ress.lastname,
         bio: ress.bio,
         contact_number: ress.phone_number,
-        known_language: ress.known_language,
+        //  known_language: ress.known_language,
         known_language_id: ress.known_language_id,
-        main_language: ress.main_language,
+        // main_language: ress.main_language,
         main_language_id: ress.main_language_id,
         skill: '0',
         address: 'Indore',
@@ -354,7 +349,6 @@ export class StudentProfileComponent implements OnInit {
         if (res.body.result === 'success') {
           this.mainpageLoder = false;
           this.msg = 'Profile Updated Successfully';
-          //
           this.eventEmitterService.onProfileChanged();
           this.submitted = false;
         }
@@ -377,6 +371,7 @@ export class StudentProfileComponent implements OnInit {
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
+      debugger
       this.updateNewData = res.body.profile;
       this.updateNewDataImage = res.body.profile.avatar;
       localStorage.setItem('image', this.updateNewDataImage);
@@ -433,7 +428,7 @@ export class StudentProfileComponent implements OnInit {
           }
         }
       }
-      debugger;
+      ;
       this.profileForm.patchValue({
         firstName: this.updateNewData.firstname,
         lastName: this.updateNewData.lastname,
@@ -449,12 +444,13 @@ export class StudentProfileComponent implements OnInit {
         countrys: this.updateNewData.country,
       });
 
-      if (
-        this.updateNewData.State != undefined ||
-        this.updateNewData.State != null
-      ) {
-        this.getState();
-      }
+      // if (
+      //   this.updateNewData.State != undefined ||
+      //   this.updateNewData.State != null
+      // ) {
+      // }
+      this.getState();
+
     });
   }
 
@@ -463,7 +459,6 @@ export class StudentProfileComponent implements OnInit {
     this.service.get('profile-dropdown', 1).subscribe((res) => {
       this.language = res.body.language_listing;
       this.knownLanguages = this.mainLanguages = this.language;
-
       this.country = res.body.country_listing;
       this.updateData();
     });
@@ -503,7 +498,7 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   getCountry() {
-    this.allStateList = '';
+    this.allStateList ='';
     this.allCityList = null;
     this.service.getData('countries/', this.authToken).subscribe((res) => {
       this.allCountryList = res;
@@ -522,6 +517,8 @@ export class StudentProfileComponent implements OnInit {
         this.isImageShow = false;
         this.allStateList = result;
         // console.log(result)
+        let el: HTMLElement = this.studentProfileDiv.nativeElement;
+        el.click();
       });
   }
   getNewToken() {
