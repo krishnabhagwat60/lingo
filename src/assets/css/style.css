@@ -186,7 +186,6 @@ a {
     background-color: #f2fbff;
     border-top-left-radius: 45px;
     /* height: calc(500px + 74px) !important; */
-    height: 804px;
     position: relative;
 }
 
@@ -2667,6 +2666,7 @@ a {
     font-family: 'poppins Medium';
     font-weight: 500;
 }
+
 #view-btn {
     width: 197px;
     height: 30px;
@@ -2686,7 +2686,7 @@ a {
     height: auto;
     width: 50px;
     float: right;
-    margin-top:  -64px;
+    margin-top: -64px;
 }
 
 #edit-button {

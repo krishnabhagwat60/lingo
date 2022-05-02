@@ -67,13 +67,8 @@
 }
 
 #disabledbutton {
-    width: 160px;
-    border-radius: 30px;
-    background-color: #cbcecf;
-    border: 1px solid #9dd0e7;
     text-align: center;
-    height: 30px;
-    margin-top: 8px;
+    margin-top: 30px;
     font-size: 12px;
     text-transform: uppercase;
     color: #000000;

@@ -16,9 +16,11 @@
 .prof-btns {
     margin-top: 20px;
 }
+
 ::ng-deep .multiselect-dropdown .dropdown-btn {
-   color:black
+    color: black
 }
+
 .prof-btns .user-cancel {
     margin-right: 10px;
     width: 78px;
@@ -267,6 +269,7 @@ image-cropper {
     height: 100%;
     /* margin: 0 auto; */
     border-radius: 50%;
+    border: 5px solid #136980;
 }
 
 .multiselect-dropdown {
@@ -280,11 +283,10 @@ image-cropper {
 
 .circle label {
     position: absolute;
-    bottom: 7px;
-    right: -4px;
-    /* left: 105px; */
-    font-size: 23px;
-    color: #136980
+    bottom: -5px;
+    right: -20px;
+    font-size: 25px;
+    color: #136980;
 }
 
 .loader {
@@ -302,4 +304,4 @@ image-cropper {
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
-  }
+}

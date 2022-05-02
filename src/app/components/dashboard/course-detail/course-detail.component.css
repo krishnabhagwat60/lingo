@@ -19,10 +19,6 @@
     margin-bottom: 20px;
 }
 
-.row-accordian .faq-box .faq-wrap {
-    background-color: #f2fbff;
-}
-
 .row-accordian .faq-box .faq-wrap .card-header {
     margin-bottom: 5px;
     border: 2px solid #d2dfe2;
@@ -50,14 +46,19 @@
     overflow-wrap: break-word;
 }
 
-.row-accordian .faq-box .faq-wrap2 {
-    background-color: #f2fbff;
-}
-
 .row-accordian .faq-box .faq-wrap2 .card-header {
     margin-bottom: 5px;
     border: 2px solid #d2dfe2;
     width: 50%;
+}
+
+.main {
+    /* width: 100%; */
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    /* height: calc(500px + 74px) !important; */
+    position: relative;
 }
 
 .row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {

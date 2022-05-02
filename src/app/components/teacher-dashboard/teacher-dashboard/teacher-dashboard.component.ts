@@ -22,6 +22,7 @@ export class TeacherDashboardComponent implements OnInit {
   sidebarData: any;
   current_page = 1;
   totalPages: any[];
+  isShowLoader = false;
   pageno: any;
   buttonColor: number;
   mainpageLoder: boolean = true;
@@ -121,7 +122,9 @@ export class TeacherDashboardComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.buttonColor = i;
+    this.isShowLoader = true;
     this.service.post('get-teacher-course', data, 1).subscribe(res => {
+      this.isShowLoader = false;
       this.getCourse = res.body.data;
       console.log(this.getCourse)
       if (!this.getCourse.length && this.getCourse != undefined) {
