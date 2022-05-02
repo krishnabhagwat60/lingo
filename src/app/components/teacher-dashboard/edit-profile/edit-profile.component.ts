@@ -75,7 +75,7 @@ export class EditProfileComponent implements OnInit {
   taged: any;
   newTag: any;
   msg: string;
-  isContentloaded:  boolean = false;
+  isContentloaded:boolean = false;
   tagedd: any;
   subTitle: any;
   mainpageLoder: boolean = false;
@@ -131,7 +131,7 @@ export class EditProfileComponent implements OnInit {
     //   if(this.editProfileDiv !=undefined && !this.isContentloaded)
     //   {
     //   this.isContentloaded = true
-      
+
     //   }
     // }, 1000);
     // this.addInitialForms();
@@ -261,11 +261,25 @@ export class EditProfileComponent implements OnInit {
     fileSource: new FormControl('',),
   })
 
- 
+
 
   onItemSelect(item: any) {
-    
+
     this.knownLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
+  }
+  onDeSelectKnownLang(item: any, i: any) {
+    this.knownLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
+
+  }
+  onDeSelectKnownLangAllItem(item: any) {
+    this.knownLanguages.map(x => x.checked = false);
+  }
+  onDeSelectMainLang(item: any, i: any) {
+    this.mainLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
+
+  }
+  onDeSelectMainLangAllItem(item: any) {
+    this.mainLanguages.map(x => x.checked = false);
   }
   onSelectAll(items: any) {
     for (var i = 0; i < this.knownLanguages.length; i++) {
@@ -273,10 +287,11 @@ export class EditProfileComponent implements OnInit {
     }
   }
   onMainSelect(item: any) {
-    
+
     this.mainLanguages.filter(x => x.value == item.value)[0]["checked"] = true;
 
   }
+
   onMainSelectAll(items: any) {
     for (var i = 0; i < this.mainLanguages.length; i++) {
       this.mainLanguages[i]["checked"] = true;
@@ -292,7 +307,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   editProfile() {
-    
+
     this.submit = true;
     if (this.editProfileForm.invalid && this.updateNewDataImage) {
       return;
@@ -316,28 +331,28 @@ export class EditProfileComponent implements OnInit {
     }
     let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
-        if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-          
-          this.selectedLanguage.forEach(element => {
-            let kLang = this.knownLanguages.find(x => x.value == element.value);
-            if (kLang != null && kLang.key != null) {
-              if (!selectedknownLanguages.includes(kLang.key)) {
-                selectedknownLanguages.push(kLang.key);
-              }
-            }
-          });
+    if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+
+      this.selectedLanguage.forEach(element => {
+        let kLang = this.knownLanguages.find(x => x.value == element.value);
+        if (kLang != null && kLang.key != null) {
+          if (!selectedknownLanguages.includes(kLang.key)) {
+            selectedknownLanguages.push(kLang.key);
+          }
         }
-        if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
-          
-          this.selectedMainLanguage.forEach(element => {
-            let mLang = this.mainLanguages.find(x => x.value == element.value);
-            if (mLang != null && mLang.key != null) {
-              if (!selectedMainLanguages.includes(mLang.key)) {
-                selectedMainLanguages.push(mLang.key);
-              }
-            }
-          });
+      });
+    }
+    if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+
+      this.selectedMainLanguage.forEach(element => {
+        let mLang = this.mainLanguages.find(x => x.value == element.value);
+        if (mLang != null && mLang.key != null) {
+          if (!selectedMainLanguages.includes(mLang.key)) {
+            selectedMainLanguages.push(mLang.key);
+          }
         }
+      });
+    }
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
@@ -355,7 +370,7 @@ export class EditProfileComponent implements OnInit {
       avatar: this.updateNewDataImage,
       status: 1
     }
-    
+
     // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
       localStorage.setItem('image', this.updateNewDataImage)
@@ -400,7 +415,7 @@ export class EditProfileComponent implements OnInit {
     let selectedknownLanguages = []; let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
     if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-      
+
       this.selectedLanguage.forEach(element => {
         let kLang = this.knownLanguages.find(x => x.value == element.value);
         if (kLang != null && kLang.key != null) {
@@ -411,7 +426,7 @@ export class EditProfileComponent implements OnInit {
       });
     }
     if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
-      
+
       this.selectedMainLanguage.forEach(element => {
         let mLang = this.mainLanguages.find(x => x.value == element.value);
         if (mLang != null && mLang.key != null) {
@@ -422,7 +437,7 @@ export class EditProfileComponent implements OnInit {
       });
     }
     this.imageUpdate = this.tags
-    const data = {   
+    const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
       "last_name": this.editProfileForm.value.lastName,
@@ -554,7 +569,7 @@ export class EditProfileComponent implements OnInit {
         email: this.updateNewData.email,
         status: 1
       });
-    
+
       this.getState();
     }
     )

@@ -20,7 +20,7 @@
           </button>
           <div class="for-scroll">
             <ng-container *ngFor="let data of sidebarData; index as j">
-              <button class="title-dropdown" (click)="
+              <button class="title-dropdown"  *ngIf="data && data.course_name" (click)="
                   toggleAccordian($event, j, data.course_name, data.course_id)
                 ">
                 {{
