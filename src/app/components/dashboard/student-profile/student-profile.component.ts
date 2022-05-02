@@ -198,6 +198,30 @@ export class StudentProfileComponent implements OnInit {
       this.mainLanguages[i]['checked'] = true;
     }
   }
+  onDeSelectKnownLang(item: any, i: any) {
+    console.log(item)
+    debugger
+    this.knownLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
+
+  }
+  onDeSelectKnownLangAllItem(item: any) {
+    console.log(item)
+    debugger
+    this.knownLanguages.map(x => x.checked = false);
+  }
+  onDeSelectMainLang(item: any, i: any) {
+    console.log(item)
+    debugger
+    this.mainLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
+
+  }
+  onDeSelectMainLangAllItem(item: any) {
+    console.log(item)
+    debugger
+    this.mainLanguages.map(x => x.checked = false);
+  }
+
+
   // view page
   view(id) {
     this.router.navigate(['/teacherDashboard/student-view'], {
@@ -328,9 +352,9 @@ export class StudentProfileComponent implements OnInit {
         bio: ress.bio,
         contact_number: ress.phone_number,
         //  known_language: ress.known_language,
-        known_language_id: ress.known_language_id,
+        known_language: ress.known_language_id,
         // main_language: ress.main_language,
-        main_language_id: ress.main_language_id,
+        main_language: ress.main_language_id,
         skill: '0',
         address: 'Indore',
         responsibilities: ress.responsibilities,
