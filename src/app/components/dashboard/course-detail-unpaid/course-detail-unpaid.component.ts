@@ -113,14 +113,19 @@ export class CourseDetailUnpaidComponent implements OnInit {
   }
   //enroll api
   enrollId(data) {
-   
-    this.enrollID = this.courseData;
+   debugger
+      this.enrollID = this.courseData;
     this.enroll = data.course_id;
     localStorage.setItem('enrollId', this.enroll)
     localStorage.setItem('course_name', data.title)
     if (data.field_course_fees == 'Free' || data.field_course_fees == 'free' || data.field_course_fees == '50 cent') {
       this.submitEnrolls(this.amount)
-      this.router.navigateByUrl('/thank-you?url=' + this.enroll);
+    
+   this.router.navigateByUrl('/thank-you?url=' + this.enroll) .then(() => {
+    this.refresh();
+  
+  });
+
     } else {
       this.router.navigate(['/dashboard/payment'], { queryParams: { url: this.enroll, id: data.course_id } })
     }
@@ -147,6 +152,12 @@ export class CourseDetailUnpaidComponent implements OnInit {
     setTimeout(() => {
       jQuery('#summary').modal('show');
     }, 1);
+  }
+refresh()
+  {
+    setTimeout(()=>{                          
+   window.location.reload();
+  }, 2000);
   }
 
   // paypal api

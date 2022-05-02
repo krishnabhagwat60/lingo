@@ -280,7 +280,7 @@ export class StudentDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-    
+    debugger
     this.enrollID = data
     this.enroll = data.id
     localStorage.setItem('enrollId',this.enroll)

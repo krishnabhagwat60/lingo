@@ -134,12 +134,11 @@ export class StudentProfileComponent implements OnInit {
       allowSearchFilter: true,
     };
     this.languageData();
-   // this.updateData();
-    this.username();
+    // this.updateData();
 
+    this.username();
   }
   onItemsSelect(item: any) {
-    ;
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -182,7 +181,6 @@ export class StudentProfileComponent implements OnInit {
     xhr.send();
   }
   onItemSelect(item: any) {
-    ;
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -192,7 +190,6 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   onMainSelect(item: any) {
-    ;
     this.mainLanguages.filter((x) => x.value == item.value)[0]['checked'] =
       true;
   }
@@ -212,7 +209,6 @@ export class StudentProfileComponent implements OnInit {
   }
 
   studentProfile() {
-    ;
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -235,7 +231,6 @@ export class StudentProfileComponent implements OnInit {
     let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
     if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-      ;
       this.selectedLanguage.forEach((element) => {
         let kLang = this.knownLanguages.find((x) => x.value == element.value);
         if (kLang != null && kLang.key != null) {
@@ -249,7 +244,6 @@ export class StudentProfileComponent implements OnInit {
       this.selectedMainLanguage != null &&
       this.selectedMainLanguage.length > 0
     ) {
-      ;
       this.selectedMainLanguage.forEach((element) => {
         let mLang = this.mainLanguages.find((x) => x.value == element.value);
         if (mLang != null && mLang.key != null) {
@@ -259,7 +253,7 @@ export class StudentProfileComponent implements OnInit {
         }
       });
     }
-    
+
     this.mainpageLoderOfSave = true;
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -283,21 +277,21 @@ export class StudentProfileComponent implements OnInit {
         this.mainpageLoderOfSave = false;
         this.msg = 'Profile Updated Successfully';
         this.ngOnInit();
-      //  this.updateData();
+        //  this.updateData();
         this.submitted = false;
       }
     });
   }
   studentImage() {
-    debugger
+    debugger;
     const datas = {
       user_id: sessionStorage.getItem('uid'),
     };
     this.mainpageLoder = true;
     this.service.post('get_profile_by_id', datas, 1).subscribe((res) => {
       var ress = res.body.profile;
-debugger
-console.log('get_profile_by_id student image response',ress);
+      debugger;
+      console.log('get_profile_by_id student image response', ress);
       let selectedknownLanguages = [];
       let selectedMainLanguages = [];
       //var tmp = this.getDataBlob(this.updateNewDataImage);
@@ -324,8 +318,8 @@ console.log('get_profile_by_id student image response',ress);
           }
         });
       }
-console.log('knownLanguages',this.knownLanguages);
-console.log('mainLanguages',this.mainLanguages);
+      console.log('knownLanguages', this.knownLanguages);
+      console.log('mainLanguages', this.mainLanguages);
 
       const data = {
         user_id: sessionStorage.getItem('uid'),
@@ -371,7 +365,7 @@ console.log('mainLanguages',this.mainLanguages);
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
-      debugger
+      debugger;
       this.updateNewData = res.body.profile;
       this.updateNewDataImage = res.body.profile.avatar;
       localStorage.setItem('image', this.updateNewDataImage);
@@ -428,7 +422,6 @@ console.log('mainLanguages',this.mainLanguages);
           }
         }
       }
-      ;
       this.profileForm.patchValue({
         firstName: this.updateNewData.firstname,
         lastName: this.updateNewData.lastname,
@@ -450,7 +443,6 @@ console.log('mainLanguages',this.mainLanguages);
       // ) {
       // }
       this.getState();
-
     });
   }
 
@@ -498,7 +490,7 @@ console.log('mainLanguages',this.mainLanguages);
     }
   }
   getCountry() {
-    this.allStateList ='';
+    this.allStateList = '';
     this.allCityList = null;
     this.service.getData('countries/', this.authToken).subscribe((res) => {
       this.allCountryList = res;
