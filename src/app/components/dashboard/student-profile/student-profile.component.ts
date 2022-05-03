@@ -199,25 +199,16 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   onDeSelectKnownLang(item: any, i: any) {
-    console.log(item)
-    debugger
     this.knownLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
 
   }
   onDeSelectKnownLangAllItem(item: any) {
-    console.log(item)
-    debugger
     this.knownLanguages.map(x => x.checked = false);
   }
   onDeSelectMainLang(item: any, i: any) {
-    console.log(item)
-    debugger
     this.mainLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
-
   }
   onDeSelectMainLangAllItem(item: any) {
-    console.log(item)
-    debugger
     this.mainLanguages.map(x => x.checked = false);
   }
 
@@ -233,50 +224,68 @@ export class StudentProfileComponent implements OnInit {
   }
 
   studentProfile() {
+    debugger
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
     }
-    for (const data of this.profileForm.value.known_language) {
-      if (data.key == null) {
-        this.selectedLanguage.push(data);
-      } else {
-        this.selectedLanguage.push(data.key);
-      }
-    }
-    for (const data of this.profileForm.value.main_language) {
-      if (data.key == null) {
-        this.selectedMainLanguage.push(data);
-      } else {
-        this.selectedMainLanguage.push(data.key);
-      }
-    }
     let selectedknownLanguages = [];
     let selectedMainLanguages = [];
+
+    for (const data of this.profileForm.value.known_language) {
+      let kLang = this.knownLanguages.find((x) => x.value == data.value);
+      if (kLang != null && kLang.key != null) {
+        // if (!selectedknownLanguages.includes(kLang.key)) {
+          selectedknownLanguages.push(kLang.key);
+        // }
+      }
+
+      // if (data.key == null) {
+      //   this.selectedLanguage.push(data);
+      // } else {
+      //   this.selectedLanguage.push(data.key);
+      // }
+    }
+    for (const data of this.profileForm.value.main_language) {
+      let mLang = this.mainLanguages.find((x) => x.value == data.value);
+      if (mLang != null && mLang.key != null) {
+        // if (!selectedknownLanguages.includes(mLang.key)) {
+          selectedMainLanguages.push(mLang.key);
+        // }
+      }
+
+      // if (data.key == null) {
+      //   this.selectedMainLanguage.push(data);
+      // } else {
+      //   this.selectedMainLanguage.push(data.key);
+      // }
+    }
+    // let selectedknownLanguages = [];
+    // let selectedMainLanguages = [];
     //var tmp = this.getDataBlob(this.updateNewDataImage);
-    if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-      this.selectedLanguage.forEach((element) => {
-        let kLang = this.knownLanguages.find((x) => x.value == element.value);
-        if (kLang != null && kLang.key != null) {
-          if (!selectedknownLanguages.includes(kLang.key)) {
-            selectedknownLanguages.push(kLang.key);
-          }
-        }
-      });
-    }
-    if (
-      this.selectedMainLanguage != null &&
-      this.selectedMainLanguage.length > 0
-    ) {
-      this.selectedMainLanguage.forEach((element) => {
-        let mLang = this.mainLanguages.find((x) => x.value == element.value);
-        if (mLang != null && mLang.key != null) {
-          if (!selectedMainLanguages.includes(mLang.key)) {
-            selectedMainLanguages.push(mLang.key);
-          }
-        }
-      });
-    }
+    // if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+    //   this.selectedLanguage.forEach((element) => {
+    //     let kLang = this.knownLanguages.find((x) => x.value == element.value);
+    //     if (kLang != null && kLang.key != null) {
+    //       if (!selectedknownLanguages.includes(kLang.key)) {
+    //         selectedknownLanguages.push(kLang.key);
+    //       }
+    //     }
+    //   });
+    // }
+    // if (
+    //   this.selectedMainLanguage != null &&
+    //   this.selectedMainLanguage.length > 0
+    // ) {
+    //   this.selectedMainLanguage.forEach((element) => {
+    //     let mLang = this.mainLanguages.find((x) => x.value == element.value);
+    //     if (mLang != null && mLang.key != null) {
+    //       if (!selectedMainLanguages.includes(mLang.key)) {
+    //         selectedMainLanguages.push(mLang.key);
+    //       }
+    //     }
+    //   });
+    // }
 
     this.mainpageLoderOfSave = true;
     const data = {
@@ -315,35 +324,81 @@ export class StudentProfileComponent implements OnInit {
     this.service.post('get_profile_by_id', datas, 1).subscribe((res) => {
       var ress = res.body.profile;
       debugger;
-      console.log('get_profile_by_id student image response', ress);
+
       let selectedknownLanguages = [];
       let selectedMainLanguages = [];
+  
+      for (const data of this.profileForm.value.known_language) {
+        let kLang = this.knownLanguages.find((x) => x.value == data.value);
+        if (kLang != null && kLang.key != null) {
+          // if (!selectedknownLanguages.includes(kLang.key)) {
+            selectedknownLanguages.push(kLang.key);
+          // }
+        }
+  
+        // if (data.key == null) {
+        //   this.selectedLanguage.push(data);
+        // } else {
+        //   this.selectedLanguage.push(data.key);
+        // }
+      }
+      for (const data of this.profileForm.value.main_language) {
+        let mLang = this.mainLanguages.find((x) => x.value == data.value);
+        if (mLang != null && mLang.key != null) {
+          // if (!selectedknownLanguages.includes(mLang.key)) {
+            selectedMainLanguages.push(mLang.key);
+          // }
+        }
+  
+        // if (data.key == null) {
+        //   this.selectedMainLanguage.push(data);
+        // } else {
+        //   this.selectedMainLanguage.push(data.key);
+        // }
+      }
+      // for (const data of this.profileForm.value.known_language) {
+      //   if (data.key == null) {
+      //     this.selectedLanguage.push(data);
+      //   } else {
+      //     this.selectedLanguage.push(data.key);
+      //   }
+      // }
+      // for (const data of this.profileForm.value.main_language) {
+      //   if (data.key == null) {
+      //     this.selectedMainLanguage.push(data);
+      //   } else {
+      //     this.selectedMainLanguage.push(data.key);
+      //   }
+      // }
+
       //var tmp = this.getDataBlob(this.updateNewDataImage);
-      if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
-        this.selectedLanguage.forEach((element) => {
-          let kLang = this.knownLanguages.find((x) => x.value == element.value);
-          if (kLang != null && kLang.key != null) {
-            if (!selectedknownLanguages.includes(kLang.key)) {
-              selectedknownLanguages.push(kLang.key);
-            }
-          }
-        });
-      }
-      if (
-        this.selectedMainLanguage != null &&
-        this.selectedMainLanguage.length > 0
-      ) {
-        this.selectedMainLanguage.forEach((element) => {
-          let mLang = this.mainLanguages.find((x) => x.value == element.value);
-          if (mLang != null && mLang.key != null) {
-            if (!selectedMainLanguages.includes(mLang.key)) {
-              selectedMainLanguages.push(mLang.key);
-            }
-          }
-        });
-      }
-      console.log('knownLanguages', this.knownLanguages);
-      console.log('mainLanguages', this.mainLanguages);
+      // if (this.knownLanguages != null && this.knownLanguages.length > 0) {
+      //   var onlyCheckedKnownLanguages = this.knownLanguages.filter(x => x.checked);
+
+      //   onlyCheckedKnownLanguages.forEach((element) => {
+      //     let kLang = onlyCheckedKnownLanguages.find((x) => x.value == element.value);
+      //     if (kLang != null && kLang.key != null) {
+      //       if (!selectedknownLanguages.includes(kLang.key)) {
+      //         selectedknownLanguages.push(kLang.key);
+      //       }
+      //     }
+      //   });
+      // }
+      // if (
+      //   this.mainLanguages != null &&
+      //   this.mainLanguages.length > 0
+      // ) {
+      //   var onlyCheckedMainLanguages = this.mainLanguages.filter(x => x.checked);
+
+      //   onlyCheckedMainLanguages.forEach((element) => {
+      //     let mLang = onlyCheckedMainLanguages.find((x) => x.value == element.value);
+      //     if (mLang != null && mLang.key != null) {
+      //       if (!selectedMainLanguages.includes(mLang.key)) {
+      //         selectedMainLanguages.push(mLang.key);
+      //       }
+      //     }
+      //   });
+      // }
 
       const data = {
         user_id: sessionStorage.getItem('uid'),
@@ -352,9 +407,9 @@ export class StudentProfileComponent implements OnInit {
         bio: ress.bio,
         contact_number: ress.phone_number,
         //  known_language: ress.known_language,
-        known_language: ress.known_language_id,
+        known_language: selectedknownLanguages,
         // main_language: ress.main_language,
-        main_language: ress.main_language_id,
+        main_language: selectedMainLanguages,
         skill: '0',
         address: 'Indore',
         responsibilities: ress.responsibilities,
@@ -363,6 +418,7 @@ export class StudentProfileComponent implements OnInit {
         email: ress.email,
         avatar: this.updateNewDataImage,
       };
+     
       this.service.post('profile-update', data, 1).subscribe((res) => {
         if (res.body.result === 'success') {
           this.mainpageLoder = false;
