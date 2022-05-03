@@ -9,67 +9,76 @@ import { ServiceService } from '../../service.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
   username: string;
   wallet: string;
-   term:string
+  term: string;
   image: string;
   subscription: Subscription;
 
   private _frontService: FrontService;
   public get frontServices(): FrontService {
-    if (this._frontService) { return this._frontService };
-    return this._frontService = this.injector.get(FrontService);
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
   }
-  updateNewDataImage :any;
-  constructor(private service: ServiceService,private router: Router,     private eventEmitterService: EventEmitterService,private authService: SocialAuthService,private injector: Injector) {
-     this.image = localStorage.getItem('image')
-     this.image=null
-     if (this.subscription == undefined) {
-      this.subscription = this.eventEmitterService.
-        invokeProfileChange .subscribe(() => {
-       debugger
+  updateNewDataImage: any;
+  constructor(
+    private service: ServiceService,
+    private router: Router,
+    private eventEmitterService: EventEmitterService,
+    private authService: SocialAuthService,
+    private injector: Injector
+  ) {
+    this.image = localStorage.getItem('image');
+    this.image = null;
+    if (this.subscription == undefined) {
+      this.subscription =
+        this.eventEmitterService.invokeProfileChange.subscribe(() => {
+          debugger;
           this.profile();
         });
     }
-   }
+  }
 
   ngOnInit(): void {
+    debugger
     this.walletData();
     this.usernameData();
-    this.profile(); 
+    this.profile();
   }
-  profile(){
-    debugger
+  profile() {
+    debugger;
     const data = {
-      "user_id": sessionStorage.getItem('uid')
-    }
-    this.service.post('get_profile_by_id', data, 1).subscribe(res => {
-      
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('get_profile_by_id', data, 1).subscribe((res) => {
       this.updateNewDataImage = res.body.profile.avatar;
-      if(this.updateNewDataImage == null)
-      {
-        this.updateNewDataImage =false;
+      if (this.updateNewDataImage == null) {
+        this.updateNewDataImage = false;
       }
-    }
-    )
+    });
+    setInterval(() => {
+      console.log(this.updateNewDataImage.substring(0,23))
+    }, 5000);
   }
-  logout(){
+  logout() {
     sessionStorage.clear();
     this.signOutFunc();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
   signOutFunc(): void {
-    this.frontServices.vm.sidebarData =null;
+    this.frontServices.vm.sidebarData = null;
 
     this.authService.signOut();
   }
-  usernameData(){
+  usernameData() {
     this.username = sessionStorage.getItem('username');
   }
-  walletData(){
+  walletData() {
     this.wallet = sessionStorage.getItem('wallet');
   }
 }

@@ -121,7 +121,7 @@ export class StudentViewComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
-  
+
   constructor(
     private router: Router,
     private service: ServiceService,
@@ -131,21 +131,23 @@ export class StudentViewComponent implements OnInit {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private _sanitizer: DomSanitizer,
-    private eventEmitterService: EventEmitterService,
+    private eventEmitterService: EventEmitterService
   ) {
     this.route.queryParamMap.subscribe((queryParams) => {
       this.id = queryParams.get('id');
     });
     this.images = localStorage.getItem('image');
-    	
- if (this.subscription == undefined) {
-  this.subscription = this.eventEmitterService.
-    invokeMenuList.subscribe(() => {
-      
-      this.frontServices.vm.courseChanged = false;
-      this.studentSideBar();
-    });
-}
+
+    if (this.subscription == undefined) {
+      this.subscription = this.eventEmitterService.invokeMenuList.subscribe(
+        () => {
+          debugger;
+
+          this.frontServices.vm.courseChanged = false;
+          this.studentSideBar();
+        }
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -216,7 +218,12 @@ export class StudentViewComponent implements OnInit {
       (this.questionDropDown = res.body.result),
         (this.dropDataTitle = sessionStorage.setItem(
           'question_title',
-          res.body.result[0].title
+          res.body &&
+            res.body.result &&
+            res.body.result[0] &&
+            res.body.result[0].title
+            ? res.body.result[0].title
+            : ''
         ));
       if (res.body.result) {
         this.questionDrop = true;
@@ -273,7 +280,12 @@ export class StudentViewComponent implements OnInit {
       this.textDrag = res.body.result;
       this.textDataTitle = sessionStorage.setItem(
         'text_title',
-        res.body.result[0].title
+        res.body &&
+          res.body.result &&
+          res.body.result[0] &&
+          res.body.result[0].title
+          ? res.body.result[0].title
+          : ''
       );
       if (res.body.result) {
         this.dragText = true;
@@ -289,7 +301,12 @@ export class StudentViewComponent implements OnInit {
       this.imageDrag = res.body.result;
       this.imageDataTitle = sessionStorage.setItem(
         'image_title',
-        res.body.result[0].title
+        res.body &&
+          res.body.result &&
+          res.body.result[0] &&
+          res.body.result[0].title
+          ? res.body.result[0].title
+          : ''
       );
       if (res.body.result) {
         this.dragImage = true;
@@ -307,7 +324,7 @@ export class StudentViewComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
-    this.frontServices.vm.sidebarData =null;
+    this.frontServices.vm.sidebarData = null;
 
     this.router.navigate(['/login']);
     this.signOut();
@@ -323,7 +340,6 @@ export class StudentViewComponent implements OnInit {
     this.wallet = sessionStorage.getItem('wallet');
   }
   sidebar() {
-    
     console.log(' student  view', this.frontServices.vm);
 
     if (
@@ -352,7 +368,15 @@ export class StudentViewComponent implements OnInit {
     };
     this.service.post('exercises-get', data, 1).subscribe((res) => {
       this.affiliationData = res.body.result;
-      this.affiData = sessionStorage.setItem('title', res.body.result[0].title);
+      this.affiData = sessionStorage.setItem(
+        'title',
+        res.body &&
+          res.body.result &&
+          res.body.result[0] &&
+          res.body.result[0].title
+          ? res.body.result[0].title
+          : ''
+      );
       if (this.affiliationData) {
         this.affi = true;
       }
@@ -366,9 +390,15 @@ export class StudentViewComponent implements OnInit {
 
     this.service.post('radio-button-get', data, 1).subscribe((res) => {
       this.questionRadioButton = res.body.result;
+
       this.radioData = sessionStorage.setItem(
         'radio_title',
-        res.body.result[0].title
+        res.body &&
+          res.body.result &&
+          res.body.result[0] &&
+          res.body.result[0].title
+          ? res.body.result[0].title
+          : ''
       );
 
       if (res.body.result) {
@@ -418,24 +448,26 @@ export class StudentViewComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
-      debugger
+      debugger;
       this.mainpageLoder = false;
       this.fillTheBlanksData = res.body.result;
-      if (!this.fillTheBlanksData.length) {
+      if (this.fillTheBlanksData && !this.fillTheBlanksData.length) {
         this.errMsg = 'Data Not Found';
       }
-      // this.mainpageLoder = false;
-      this.fillTheBlanksData.forEach((element, index) => {
-        if (element.type === 'fill_in_the_blanks') {
-          if (element.question.includes('*')) {
-            element.question = this.findStarWord(
-              element.question,
-              index,
-              element.p_id
-            );
+      if (this.fillTheBlanksData && this.fillTheBlanksData.length > 0) {
+        // this.mainpageLoder = false;
+        this.fillTheBlanksData.forEach((element, index) => {
+          if (element.type === 'fill_in_the_blanks') {
+            if (element.question.includes('*')) {
+              element.question = this.findStarWord(
+                element.question,
+                index,
+                element.p_id
+              );
+            }
           }
-        }
-      });
+        });
+      }
     });
   }
 
@@ -444,13 +476,19 @@ export class StudentViewComponent implements OnInit {
       subtitle_id: sessionStorage.getItem('subId'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
-      this.pickTheRight = res.body.result.pick_up_right_word;
-      if (res.body.result.pick_up_right_word) {
+      this.pickTheRight = res?.body?.result?.pick_up_right_word;
+      if (this.pickTheRight) {
         this.pick = true;
       }
       this.pickData = sessionStorage.setItem(
         'pick_title',
-        res.body.result.pick_up_right_word[0].title
+        // res.body.result.pick_up_right_word[0].title
+        res.body &&
+          res.body.result &&
+          res.body.pick_up_right_word &&
+          res.body.pick_up_right_word[0].title
+          ? res.body.pick_up_right_word[0].title
+          : ''
       );
     });
   }
@@ -506,18 +544,23 @@ export class StudentViewComponent implements OnInit {
   }
   // show result route
   showResult(titleid, title) {
+    debugger
     this.imageDataTitle = sessionStorage.setItem('title', title);
     this.router.navigate(['/teacherDashboard/affiliation-result'], {
       queryParams: { id: this.id, titleid: titleid },
     });
   }
   imageShowResult(titleid, title) {
+    debugger
+
     this.imageDataTitle = sessionStorage.setItem('image_title', title);
     this.router.navigate(['/teacherDashboard/image-drag-result'], {
       queryParams: { id: this.id, titleid: titleid },
     });
   }
   dragShowResult(titleid) {
+    debugger
+
     this.router.navigate(['/teacherDashboard/drag-word'], {
       queryParams: { id: this.id, titleid: titleid },
     });
@@ -788,7 +831,6 @@ export class StudentViewComponent implements OnInit {
     }
   }
   studentSideBar() {
-    
     console.log('sidebar -student view', this.frontServices.vm);
     if (
       this.frontServices == null ||
@@ -857,7 +899,8 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    this.router.navigateByUrl('/multimedia/contentStyle')
+    
+    this.router.navigateByUrl(this.frontServices.navigation.url);
   }
 
   // open pdf in new tab
@@ -867,6 +910,8 @@ export class StudentViewComponent implements OnInit {
 
   // api's for perentage
   getPickData(id) {
+    this.frontServices.navigation.url = this.router['url'];
+
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),
@@ -876,6 +921,8 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getFillData(id) {
+    this.frontServices.navigation.url = this.router['url'];
+
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),
@@ -885,6 +932,9 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getAffilitionData(id) {
+    debugger
+    this.frontServices.navigation.url = this.router['url'];
+
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),
@@ -894,6 +944,9 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getDragDropData(id) {
+    debugger
+    this.frontServices.navigation.url = this.router['url'];
+
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),
@@ -903,6 +956,9 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getQuesDropdownData(id) {
+    debugger
+    this.frontServices.navigation.url = this.router['url'];
+
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),
@@ -912,6 +968,8 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getRadioData(id) {
+    debugger
+    this.frontServices.navigation.url = this.router['url'];
     const data = {
       course_id: sessionStorage.getItem('course_id'),
       subtitle_id: sessionStorage.getItem('subId'),

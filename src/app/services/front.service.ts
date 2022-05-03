@@ -11,12 +11,16 @@ export class FrontService {
     clientModel: {},
     categoryModel: [],
     courseChanged: false,
+    courseSubmitted: false,
     itemModel: [],
     selectedCategoryId: 0,
     profileImg:'',
     sidebarData: [],
     selectedMenuId: 0,
   };
+  navigation={
+    url:''
+  }
   private contactsSubject = new Subject<number>();
   contactArrived$ = this.contactsSubject.asObservable();
 

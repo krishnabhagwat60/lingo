@@ -230,7 +230,9 @@ export class PaymentComponent implements AfterViewInit, OnInit {
   }
 
   private prettify(): void {
-    this.hljs.initHighlightingOnLoad();
+    if (this.hljs != undefined) {
+      this.hljs.initHighlightingOnLoad();
+    }
   }
 
   paymentFun() {
@@ -242,10 +244,10 @@ export class PaymentComponent implements AfterViewInit, OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('course-details', data, 1).subscribe((res) => {
-     
-      localStorage.setItem('enrollId', this.enrollId),
-        (this.courseDetail = res.body.result);
-       console.log(this.courseDetail)
+      localStorage.setItem('enrollId', this.enrollId);
+    
+        this.courseDetail = res?.body?.result
+      console.log(this.courseDetail);
     });
   }
 }
