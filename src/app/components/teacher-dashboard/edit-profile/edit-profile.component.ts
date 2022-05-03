@@ -313,46 +313,61 @@ export class EditProfileComponent implements OnInit {
       return;
     }
     this.mainpageLoder = true
+    let selectedknownLanguages = [];
+     let selectedMainLanguages = [];
+    // for (const data of this.editProfileForm.value.known_language) {
+    //   if (data.key == null) {
+    //     this.selectedLanguage.push(data);
+    //   }
+    //   else {
+    //     this.selectedLanguage.push(data.key);
+    //   }
+    // }
+    // for (const data of this.editProfileForm.value.main_language) {
+    //   if (data.key == null) {
+    //     this.selectedMainLanguage.push(data);
+    //   }
+    //   else {
+    //     this.selectedMainLanguage.push(data.key);
+    //   }
+    // }
+
     for (const data of this.editProfileForm.value.known_language) {
-      if (data.key == null) {
-        this.selectedLanguage.push(data);
-      }
-      else {
-        this.selectedLanguage.push(data.key);
+      let kLang = this.knownLanguages.find((x) => x.value == data.value);
+      if (kLang != null && kLang.key != null) {
+          selectedknownLanguages.push(kLang.key);
       }
     }
     for (const data of this.editProfileForm.value.main_language) {
-      if (data.key == null) {
-        this.selectedMainLanguage.push(data);
-      }
-      else {
-        this.selectedMainLanguage.push(data.key);
+      let mLang = this.mainLanguages.find((x) => x.value == data.value);
+      if (mLang != null && mLang.key != null) {
+          selectedMainLanguages.push(mLang.key);
       }
     }
-    let selectedknownLanguages = []; let selectedMainLanguages = [];
+
     //var tmp = this.getDataBlob(this.updateNewDataImage);
-    if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+    // if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
 
-      this.selectedLanguage.forEach(element => {
-        let kLang = this.knownLanguages.find(x => x.value == element.value);
-        if (kLang != null && kLang.key != null) {
-          if (!selectedknownLanguages.includes(kLang.key)) {
-            selectedknownLanguages.push(kLang.key);
-          }
-        }
-      });
-    }
-    if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+    //   this.selectedLanguage.forEach(element => {
+    //     let kLang = this.knownLanguages.find(x => x.value == element.value);
+    //     if (kLang != null && kLang.key != null) {
+    //       if (!selectedknownLanguages.includes(kLang.key)) {
+    //         selectedknownLanguages.push(kLang.key);
+    //       }
+    //     }
+    //   });
+    // }
+    // if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
 
-      this.selectedMainLanguage.forEach(element => {
-        let mLang = this.mainLanguages.find(x => x.value == element.value);
-        if (mLang != null && mLang.key != null) {
-          if (!selectedMainLanguages.includes(mLang.key)) {
-            selectedMainLanguages.push(mLang.key);
-          }
-        }
-      });
-    }
+    //   this.selectedMainLanguage.forEach(element => {
+    //     let mLang = this.mainLanguages.find(x => x.value == element.value);
+    //     if (mLang != null && mLang.key != null) {
+    //       if (!selectedMainLanguages.includes(mLang.key)) {
+    //         selectedMainLanguages.push(mLang.key);
+    //       }
+    //     }
+    //   });
+    // }
     const data = {
       user_id: sessionStorage.getItem('uid'),
       "first_name": this.editProfileForm.value.firstName,
@@ -396,46 +411,59 @@ export class EditProfileComponent implements OnInit {
       return;
     }
     this.mainpageLoder = true
+    let selectedknownLanguages = [];
+     let selectedMainLanguages = [];
+    // for (const data of this.editProfileForm.value.known_language) {
+    //   if (data.key == null) {
+    //     this.selectedLanguage.push(data);
+    //   }
+    //   else {
+    //     this.selectedLanguage.push(data.key);
+    //   }
+    // }
+    // for (const data of this.editProfileForm.value.main_language) {
+    //   if (data.key == null) {
+    //     this.selectedMainLanguage.push(data);
+    //   }
+    //   else {
+    //     this.selectedMainLanguage.push(data.key);
+    //   }
+    // }
+    //var tmp = this.getDataBlob(this.updateNewDataImage);
     for (const data of this.editProfileForm.value.known_language) {
-      if (data.key == null) {
-        this.selectedLanguage.push(data);
-      }
-      else {
-        this.selectedLanguage.push(data.key);
+      let kLang = this.knownLanguages.find((x) => x.value == data.value);
+      if (kLang != null && kLang.key != null) {
+          selectedknownLanguages.push(kLang.key);
       }
     }
     for (const data of this.editProfileForm.value.main_language) {
-      if (data.key == null) {
-        this.selectedMainLanguage.push(data);
-      }
-      else {
-        this.selectedMainLanguage.push(data.key);
+      let mLang = this.mainLanguages.find((x) => x.value == data.value);
+      if (mLang != null && mLang.key != null) {
+          selectedMainLanguages.push(mLang.key);
       }
     }
-    let selectedknownLanguages = []; let selectedMainLanguages = [];
-    //var tmp = this.getDataBlob(this.updateNewDataImage);
-    if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
+    // if (this.selectedLanguage != null && this.selectedLanguage.length > 0) {
 
-      this.selectedLanguage.forEach(element => {
-        let kLang = this.knownLanguages.find(x => x.value == element.value);
-        if (kLang != null && kLang.key != null) {
-          if (!selectedknownLanguages.includes(kLang.key)) {
-            selectedknownLanguages.push(kLang.key);
-          }
-        }
-      });
-    }
-    if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
+    //   this.selectedLanguage.forEach(element => {
+    //     let kLang = this.knownLanguages.find(x => x.value == element.value);
+    //     if (kLang != null && kLang.key != null) {
+    //       if (!selectedknownLanguages.includes(kLang.key)) {
+    //         selectedknownLanguages.push(kLang.key);
+    //       }
+    //     }
+    //   });
+    // }
+    // if (this.selectedMainLanguage != null && this.selectedMainLanguage.length > 0) {
 
-      this.selectedMainLanguage.forEach(element => {
-        let mLang = this.mainLanguages.find(x => x.value == element.value);
-        if (mLang != null && mLang.key != null) {
-          if (!selectedMainLanguages.includes(mLang.key)) {
-            selectedMainLanguages.push(mLang.key);
-          }
-        }
-      });
-    }
+    //   this.selectedMainLanguage.forEach(element => {
+    //     let mLang = this.mainLanguages.find(x => x.value == element.value);
+    //     if (mLang != null && mLang.key != null) {
+    //       if (!selectedMainLanguages.includes(mLang.key)) {
+    //         selectedMainLanguages.push(mLang.key);
+    //       }
+    //     }
+    //   });
+    // }
     this.imageUpdate = this.tags
     const data = {
       user_id: sessionStorage.getItem('uid'),
