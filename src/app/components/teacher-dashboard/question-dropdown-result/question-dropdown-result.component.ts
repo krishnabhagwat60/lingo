@@ -66,7 +66,7 @@ export class QuestionDropdownResultComponent implements OnInit {
   }
 
   gotoBack(){
-    this.router.navigateByUrl('/multimedia/contentStyle');
+    this.router.navigateByUrl(this.frontServices.navigation.url);
   }
 
   studentSideBar() {

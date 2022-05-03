@@ -134,7 +134,9 @@ export class QuestionRadioResultComponent implements OnInit {
   }
 
   gotoBack(){
-    this.router.navigateByUrl('/multimedia/contentStyle')
+    this.router.navigateByUrl(this.frontServices.navigation.url);
+    
+    // this.router.navigateByUrl('/multimedia/contentStyle')
   }
 
   showsubmenu(){

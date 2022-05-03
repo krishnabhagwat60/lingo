@@ -230,7 +230,8 @@ export class SolutionAffiliationComponent implements OnInit {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
   gotoBack(){
+    this.router.navigateByUrl(this.frontServices.navigation.url);
     
-    this.router.navigate(['/multimedia/contentStyle']);
+    // this.router.navigate(['/multimedia/contentStyle']);
   }
 }

@@ -73,8 +73,18 @@ export class QuesRadioSolutionComponent implements OnInit {
       this.sidebarData2 = res.body.result;
     })
   }
+
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   gotoBack(){
-    this.router.navigateByUrl('/multimedia/contentStyle')
+    debugger
+    // this.router.navigateByUrl('/multimedia/contentStyle')
+    this.router.navigateByUrl(this.frontServices.navigation.url);
   }
 
   toggleAccordian2(event, index) {

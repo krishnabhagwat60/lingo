@@ -75,6 +75,7 @@ export class ImageDragResultComponent implements OnInit {
   }
 
   gotoBack() {
+    debugger
     this.route.navigateByUrl(this.frontServices.navigation.url);
   }
 
