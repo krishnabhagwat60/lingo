@@ -70,7 +70,7 @@ export class PickRightResultComponent implements OnInit {
   }
 
   gotoBack(){
-    this._location.back();
+    this.router.navigateByUrl(this.frontServices.navigation.url);
   }
   studentSideBar() {
     const data={

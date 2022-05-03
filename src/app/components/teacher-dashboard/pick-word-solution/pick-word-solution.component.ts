@@ -68,7 +68,8 @@ export class PickWordSolutionComponent implements OnInit {
   }
 
   gotoBack(){
-    this._location.back();
+    this.router.navigateByUrl(this.frontServices.navigation.url);
+
   }
   username(){
     this.user = sessionStorage.getItem('username');

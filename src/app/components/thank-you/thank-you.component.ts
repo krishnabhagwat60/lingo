@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FrontService } from 'src/app/services/front.service';
 import { ServiceService } from '../service.service';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-thank-you',
@@ -14,6 +15,7 @@ import { EventEmitterService } from 'src/app/services/event-emitter.service';
 export class ThankYouComponent implements OnInit {
   url: string;
   mainpageLod: boolean = false;
+  updateNewDataImage: any;
 
   user: string;
   sidebarData: any;
@@ -31,39 +33,55 @@ export class ThankYouComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
- 
+
   constructor(
     private service: ServiceService,
+    private authService: SocialAuthService,
     private route: ActivatedRoute,
     private eventEmitterService: EventEmitterService,
     private router: Router,
-    private injector: Injector,
-   
+    private injector: Injector
   ) {
     this.route.queryParams.subscribe((params) => {
       this.url = params['url'];
     });
     if (this.subscription == undefined) {
-      this.subscription = this.eventEmitterService.
-        invokeMenuList.subscribe(() => {
-          
-          this.frontServices.vm.courseChanged = false;
+      this.subscription = this.eventEmitterService.invokeMenuList.subscribe(
+        () => {
+          debugger;
+
           this.studentSideBar();
-        });
+        }
+      );
     }
   }
 
   ngOnInit(): void {
-    this.submitEnroll();
+    if (!this.frontServices.vm.courseSubmitted) {
+      this.submitEnroll();
+    }
     this.user = sessionStorage.getItem('username');
+
+    this.updateNewDataImage = localStorage.getItem('image');
+    if(this.updateNewDataImage == null)
+    {
+      this.updateNewDataImage = false;
+    }
+
     this.courseName = localStorage.getItem('course_name');
     this.studentSideBar();
   }
   logout() {
     sessionStorage.clear();
-    this.frontServices.vm.sidebarData = null;
+    this.signOutFunc();
     this.router.navigate(['/login']);
     // this.signOut();
+  }
+ 
+  signOutFunc(): void {
+    this.frontServices.vm.sidebarData = null;
+
+    this.authService.signOut();
   }
   studentSideBar() {
     console.log(' thank you view', this.frontServices.vm);
@@ -72,7 +90,8 @@ export class ThankYouComponent implements OnInit {
       this.frontServices == null ||
       this.frontServices.vm == null ||
       this.frontServices.vm.sidebarData == null ||
-      this.frontServices.vm.sidebarData.length == 0
+      this.frontServices.vm.sidebarData.length == 0 ||
+      this.frontServices.vm.courseChanged
     ) {
       const data = {
         user_id: sessionStorage.getItem('uid'),
@@ -81,7 +100,7 @@ export class ThankYouComponent implements OnInit {
         this.service.post('student_sidebar', data, 1).subscribe((res) => {
           this.sidebarData = res.body.result;
           this.frontServices.vm.sidebarData = this.sidebarData;
-          
+          this.frontServices.vm.courseChanged = false;
         });
       }, 100);
     } else {
@@ -146,13 +165,15 @@ export class ThankYouComponent implements OnInit {
     };
     this.service.post('course-enroll', data, 1).subscribe((res) => {
       if (res.body.message === 'success') {
-        this.eventEmitterService.onMenuChanged();
         this.frontServices.vm.courseChanged = true;
+        this.eventEmitterService.onMenuChanged();
         this.mainpageLod = false;
       }
     });
   }
   ngOnDestroy() {
+    localStorage.removeItem('course_name')
+    localStorage.removeItem('enrollId')
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
     }

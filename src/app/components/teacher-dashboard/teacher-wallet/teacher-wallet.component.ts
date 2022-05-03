@@ -10,7 +10,7 @@ import { ServiceService } from '../../service.service';
 })
 export class TeacherWalletComponent implements OnInit {
   walletData: any;
-  historyData: any;
+  historyData: [];
   currentCardIndex = 0;
   errMsg: string;
   sidebarData: any;
