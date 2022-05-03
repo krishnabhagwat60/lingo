@@ -110,12 +110,8 @@
                                         <span class="required-asterisk">*</span>
                                     </p>
                                     <div class="select-dropdown-language multiselect-dropdown">
-                                        <ng-multiselect-dropdown [placeholder]="'Select Known Language'" [settings]="dropdownSettings" [data]="knownLanguages" formControlName="known_language"
-                                         (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" 
-                                         (onSelect)="onDeSelectKnownLang($event)"
-                                         (onDeSelect)="onDeSelectMainLang($event)"
-                                         (onDeSelectAll)="onDeSelectKnownLangAllItem($event)"
-                                          [ngClass]="{ 'is-invalid': submitted && form.known_language.errors }">
+                                        <ng-multiselect-dropdown [placeholder]="'Select Known Language'" [settings]="dropdownSettings" [data]="knownLanguages" formControlName="known_language" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (onSelect)="onDeSelectKnownLang($event)"
+                                            (onDeSelect)="onDeSelectMainLang($event)" (onDeSelectAll)="onDeSelectKnownLangAllItem($event)" [ngClass]="{ 'is-invalid': submitted && form.known_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && form.known_language.invalid" class="text-danger mt-1">
@@ -144,12 +140,8 @@
                                         <!-- <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language"
                                          formControlName="main_language"  [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
                                         </ng-multiselect-dropdown> -->
-                                        <ng-multiselect-dropdown [placeholder]="'Select Main Language'" [settings]="dropdownSettings" [data]="mainLanguages" formControlName="main_language"
-                                         (onSelect)="onMainSelect($event)"
-                                          (onSelectAll)="onMainSelectAll($event)"
-                                        (onDeSelect)="onDeSelectMainLang($event)"
-                                            (onDeSelectAll)="onDeSelectMainLangAllItem($event)" 
-                                            [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
+                                        <ng-multiselect-dropdown [placeholder]="'Select Main Language'" [settings]="dropdownSettings" [data]="mainLanguages" formControlName="main_language" (onSelect)="onMainSelect($event)" (onSelectAll)="onMainSelectAll($event)" (onDeSelect)="onDeSelectMainLang($event)"
+                                            (onDeSelectAll)="onDeSelectMainLangAllItem($event)" [ngClass]="{ 'is-invalid': submit && form.main_language.errors }">
                                         </ng-multiselect-dropdown>
                                     </div>
                                     <div *ngIf="submitted && form.main_language.invalid" class="text-danger mt-1">
