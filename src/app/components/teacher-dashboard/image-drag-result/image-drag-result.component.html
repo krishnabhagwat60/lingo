@@ -1,10 +1,10 @@
 <app-side-nav></app-side-nav>
-<app-task-editor *ngIf="!courses"></app-task-editor>
-<app-student-header *ngIf="courses"></app-student-header>
+<app-task-editor *ngIf="!isStudent()"></app-task-editor>
+<app-student-header *ngIf="isStudent()"></app-student-header>
 
 
 <div id="right-panel" class="right-panel">
-    <div class="breadcrumbs" *ngIf="!courses">
+    <div class="breadcrumbs" *ngIf="!isStudent()">
         <div class="col-sm-6">
             <div class="page-header">
                 <div class="page-title-left">
@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div class="breadcrumbs" *ngIf="courses">
+    <div class="breadcrumbs" *ngIf="isStudent()">
         <div class="col-sm-6">
             <div class="page-header float-left">
                 <div class="page-title-left">

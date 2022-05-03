@@ -15,7 +15,7 @@ export class SideNavComponent implements OnInit {
   user: string;
   wallet: string;
   image: string;
-  updateNewDataImage: any;
+  updateNewDataImage: '';
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -40,6 +40,7 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger;
     console.log('Images', this.image);
     this.username();
     this.walletData();
@@ -74,9 +75,8 @@ export class SideNavComponent implements OnInit {
     };
     this.service.post('get_profile_by_id', data, 1).subscribe((res) => {
       this.updateNewDataImage = res.body.profile.avatar;
-      if(this.updateNewDataImage == null)
-      {
-        this.updateNewDataImage = false;
+      if (this.updateNewDataImage == null) {
+        this.updateNewDataImage = '';
       }
     });
   }

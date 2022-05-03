@@ -11,7 +11,7 @@ import { ServiceService } from '../../service.service';
 })
 export class MyWalletComponent implements OnInit {
   walletData: any;
-  historyData: any;
+  historyData: [];
   errMsg: string;
   totalPages: any[];
   buttonColor: any;
