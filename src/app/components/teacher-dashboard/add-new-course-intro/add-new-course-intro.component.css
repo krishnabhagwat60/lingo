@@ -79,6 +79,15 @@
     width: auto;
 }
 
+.main {
+    width: 97.8%;
+    margin-left: 25px;
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    height: 100%;
+}
+
 .main-wrapper ul {
     list-style-type: none;
     margin: 0;

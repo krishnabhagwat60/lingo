@@ -1,9 +1,20 @@
-.button-actives{
-    background-color:#136980;
+.button-actives {
+    background-color: #136980;
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
 }
-.active-plan-data tr th{
+
+.active-plan-data tr th {
     width: 40% !important;
+}
+
+.main {
+    width: 97.8%;
+    margin-left: 25px;
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    height: 85vh;
 }

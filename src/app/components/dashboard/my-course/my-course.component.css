@@ -13,6 +13,16 @@
     /* color: white; */
 }
 
+.main {
+    /* width: 100%; */
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    /* height: calc(500px + 74px) !important; */
+    position: relative;
+    height: 85vh;
+}
+
 .button-standard {
     background-color: gray;
     /* color: #fff;  */

@@ -1,8 +1,19 @@
-.button-actives{
-    background-color:#136980;
+.button-actives {
+    background-color: #136980;
     /* color: white; */
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
     /* color: #fff;  */
+}
+
+.main {
+    /* width: 100%; */
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    /* height: calc(500px + 74px) !important; */
+    position: relative;
+    height: 85vh;
 }
