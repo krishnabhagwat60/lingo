@@ -1913,7 +1913,10 @@ export class ContentStyleComponent implements OnInit {
 
   // go to back
   gotoBack() {
-    this._location.back();
+    console.log(' this.subIds', this.subIds);
+    console.log('this.route.queryParams',this.route.queryParams)
+    //this._location.back();
+    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: sessionStorage.getItem('course_id') } });
   }
 
   getSubTitles(data) {
