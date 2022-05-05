@@ -14,17 +14,16 @@ export class CreatCourseDashboardComponent implements OnInit {
   ismenusub: boolean = false;
   ismenu: boolean = false;
   ismenuShow: boolean = false;
-  currentCardIndex = 0;
   subTitle: any;
   user: string;
 
-  constructor(private service: ServiceService, private router: Router) { }
+  constructor(private service: ServiceService,private router:Router) { }
 
   ngOnInit(): void {
     this.sidebar();
     this.username();
   }
-  username() {
+  username(){
     this.user = sessionStorage.getItem('username');
   }
   getChildData(child) {
@@ -44,73 +43,42 @@ export class CreatCourseDashboardComponent implements OnInit {
 
   // sidebar api
   sidebar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    const data ={
+      user_id : sessionStorage.getItem('uid')
     }
-    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
+    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
     })
   }
-  //sidebar accordion
-  toggleAccordian(event, index) {
-    const element = event.target;
-    element.classList.toggle('active');
-    if (this.sidebarData[index].isActive) {
-      this.sidebarData[index].isActive = false;
-    } else {
-      this.sidebarData[index].isActive = true;
+    //sidebar accordion
+    toggleAccordian(event, index) {
+      const element = event.target;
+      element.classList.toggle('active');
+      if (this.sidebarData[index].isActive) {
+        this.sidebarData[index].isActive = false;
+      } else {
+        this.sidebarData[index].isActive = true;
+      }
     }
-  }
-  getIndex(activeIndex){
-    this.currentCardIndex = activeIndex;
-  }
-  prev() {
-    console.log('prev')
-    this.currentCardIndex = this.currentCardIndex--;
-    if (this.currentCardIndex != 0) {
-
-      this.currentCardIndex = this.currentCardIndex - 1;
-    }
-    else {
-      this.currentCardIndex =2;
-    }
-    console.log(this.currentCardIndex)
-
-  }
-  next() {
-    console.log('next')
-    if (this.currentCardIndex >= 0 && this.currentCardIndex < 2) {
-
-      this.currentCardIndex = this.currentCardIndex + 1;
-    }
-    else {
-      this.currentCardIndex = 0;
-    }
-    console.log(this.currentCardIndex)
-  }
-  toggleSubTitle(event, index, data) {
-    for (let i = 0; i < this.sidebarData.length; i++) {
-      const title = this.sidebarData[i].title;
-      for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
-        if (data === id) {
-          const element = event.target;
-          element.classList.toggle('active');
-          if (title[j].isActive) {
-            title[j].isActive = false;
-          } else {
-            title[j].isActive = true;
+    toggleSubTitle(event, index, data) {
+      for (let i = 0; i < this.sidebarData.length; i++) {
+        const title = this.sidebarData[i].title;
+        for (let j = 0; j < title.length; j++) {
+          const id = title[j].titleid
+          if (data === id) {
+            const element = event.target;
+            element.classList.toggle('active');
+            if (title[j].isActive) {
+              title[j].isActive = false;
+            } else {
+              title[j].isActive = true;
+            }
           }
         }
       }
     }
-  }
-  getChildSData(child) {
-    sessionStorage.setItem('subId', child);
-    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
-  }
-  // btnClick(){
-  //   debugger
-  //   this.router.navigateByUrl('/teacherDashboard/plansAndPricing');
-  // };
+    getChildSData(child) {
+      sessionStorage.setItem('subId', child);
+      this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    }
 }

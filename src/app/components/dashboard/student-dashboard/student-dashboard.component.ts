@@ -124,7 +124,6 @@ export class StudentDashboardComponent implements OnInit {
   }
   // student course details api
   studentCourseDetail(page = 1, i) {
-   
     window.scrollTo(0, 0)
     this.pages = page
     this.index = i
@@ -160,8 +159,6 @@ export class StudentDashboardComponent implements OnInit {
       this.totalPages = [];
       for (let i = 0; i < res.body.total_course; i++) {
         this.totalPages.push(i + 1);
-      
-      
       }
     })
   }
@@ -194,7 +191,6 @@ export class StudentDashboardComponent implements OnInit {
   })
 
   searchDatas() {
-    
     this.mainpageLoder = true;
     const data =
     {
@@ -228,8 +224,6 @@ export class StudentDashboardComponent implements OnInit {
   }
   // search filter api
   search() {
-   
-    this.buttonColor = 1;
     this.mainpageLoder = true;
     const data =
     {
@@ -239,7 +233,7 @@ export class StudentDashboardComponent implements OnInit {
       "teacher_id": this.searchForm.value.teacher,
       "level_id": this.searchForm.value.level,
       "rating": this.searchForm.value.rating,
-      "page": 1,
+      "page": this.pages,
     }
     // this.buttonColor = i;
     this.service.post('course-filter', data, 1).subscribe(res => {
@@ -247,8 +241,6 @@ export class StudentDashboardComponent implements OnInit {
       this.searchDataBtn = true
       this.courseDetail = res.body.data;
       this.totalPages = [];
-      this.pages = 1;
-      this.current_page = Number(1);
       for (let i = 0; i < res.body.total_course; i++) {
         this.totalPages.push(i + 1);
       }
@@ -280,7 +272,6 @@ export class StudentDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-    debugger
     this.enrollID = data
     this.enroll = data.id
     localStorage.setItem('enrollId',this.enroll)

@@ -2,11 +2,9 @@
     <div class="container-fluid d-flex">
         <div id="main-header">
             <input id="nav-toggle" type="checkbox">
-            <div class="logo">
-                <a href="index.html">
+            <div class="logo"><a href="index.html">
                     <img src="assets/img/logo.png">
-                </a>
-            </div>
+                </a></div>
             <ul class="links">
 
                 <li class="active"><a routerLink="/register" style="background-color: #008ad2;"><i
@@ -47,8 +45,10 @@
                     <form [formGroup]="registerForm">
 
                         <div class="wrapper_register">
-                            <input type="radio" id="option-1" (change)="validateData()" formControlName="remember" value="student" checked>
-                            <input type="radio" id="option-2" (change)="validateData()" formControlName="remember" value="teacher">
+                            <input type="radio" id="option-1" (change)="validateData()" formControlName="remember"
+                                value="student" checked>
+                            <input type="radio" id="option-2" (change)="validateData()" formControlName="remember"
+                                value="teacher">
                             <label for="option-1" class="option option-1">
                                 <div class="dot"></div>
                                 <span>As A Student</span>
@@ -64,7 +64,8 @@
                                 <a><img src="assets/img/icons/google.png">Sign Up With<span>Google</span></a>
                             </div>
                             <div class="facebook-right" (click)="signInWithFB()">
-                                <a><img src="assets/img/icons/facebook.png">Sign Up With <span>Facebook</span></a>
+                                <a><img src="assets/img/icons/facebook.png">Sign
+                                    Up With <span>Facebook</span></a>
                             </div>
                             <h6>OR</h6>
                         </div>
@@ -72,8 +73,10 @@
                             <label for="username">User Name :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="text" class="form-control" id="username" placeholder="abc" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                            <img src="assets/images/icons/user-icon.png" style="float: right; margin-right:10px;margin-top:-35px; width: 21px;">
+                            <input type="text" class="form-control" id="username" placeholder="abc"
+                                formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                            <img src="assets/images/icons/user-icon.png"
+                                style="float: right; margin-right:10px;margin-top:-35px; width: 21px;">
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div *ngIf="f.username.errors.required">User Name is required</div>
                                 <div *ngIf="f.username.errors.maxlength">User name should be only 25 characters</div>
@@ -84,19 +87,22 @@
                             <label for="email">EMAIL :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="text" class="form-control" id="email" placeholder="email@1234.com" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            <input type="text" class="form-control" id="email" placeholder="email@1234.com"
+                                formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                             <img src="assets/images/icons/email-icon.png" style="float: right; margin-top:-40px;">
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
-                                <div *ngIf=" registerForm.get('email').hasError('pattern')" style=" color:#dc3545; font-size: 12px;" padding>*Please enter correct e-mail address
-                                </div>
+                                <div *ngIf=" registerForm.get('email').hasError('pattern')"
+                                    style=" color:#dc3545; font-size: 12px;" padding>*Please enter correct e-mail
+                                    address</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pwd">CREATE PASSWORD :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="password" class="form-control" placeholder="******" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
+                            <input type="password" class="form-control" placeholder="******" formControlName="pwd"
+                                [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }">
                             <img src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
                             <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
                                 <div *ngIf="f.pwd.errors.required">Password is required</div>
@@ -108,14 +114,19 @@
                             <label for="pwd">CONFIRM PASSWORD :
                                 <span class="required-asterisk">*</span>
                             </label>
-                            <input type="password" class="form-control" placeholder="******" formControlName="confirm_password" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"> <img src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
+                            <input type="password" class="form-control" placeholder="******"
+                                formControlName="confirm_password"
+                                [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"> <img
+                                src="assets/images/icons/lock.png" style="float: right; margin-top:-45px;">
                             <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
                                 <div *ngIf="f.confirm_password.errors.required">Password is required</div>
-                                <div *ngIf="f.confirm_password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                                <div *ngIf="f.confirm_password.errors.confirmedValidator">Password and Confirm Password
+                                    must be match.</div>
                             </div>
                         </div>
                         <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" (change)="updateStatus($event)" formControlName="checkbox" [(ngModel)]="isDisableds">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                (change)="updateStatus($event)" formControlName="checkbox" [(ngModel)]="isDisableds">
                             <label class="custom-control-label" for="customCheck1"><span>I agree to the lingolista's <a
                                         routerLink="/term_condition">Terms & Conditions</a>&nbsp;<span
                                         style="color: black;">and</span>&nbsp;<a routerLink="/privacy_policy">Privacy
@@ -128,7 +139,8 @@
 
                         <div class="row">
                             <div class="register-btn">
-                                <button id="register-btn" type="submit" [disabled]="!isDisableds" (click)="register()">Join Lingolista <i class="fa fa-spinner fa-spin loder-color"
+                                <button id="register-btn" type="submit" [disabled]="!isDisableds"
+                                    (click)="register()">Join Lingolista <i class="fa fa-spinner fa-spin loder-color"
                                         style="font-size:10px" *ngIf="mainpageLoder"></i></button>
                             </div>
                         </div>
@@ -138,7 +150,8 @@
                     <div class="row">
                         <div class="footer-text-1">
                             <hr>
-                            <p>Already have an account? <a routerLink="/login" style="color: #136980;font-weight: bold;">Login</a></p>
+                            <p>Already have an account? <a routerLink="/login"
+                                    style="color: #136980;font-weight: bold;">Login</a></p>
                         </div>
                     </div>
                 </div>
@@ -154,7 +167,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="col-lg-12 pop-show mt-5 mb-5">
-                    <h5>'Google Login Failed', <br> 'The Google Login failed. Please make sure that 3rd party cookies have not been blocked.');</h5>
+                    <h5>'Google Login Failed', <br>
+                        'The Google Login failed. Please make sure that 3rd party cookies have not been blocked.');</h5>
                 </div>
             </div>
         </div>

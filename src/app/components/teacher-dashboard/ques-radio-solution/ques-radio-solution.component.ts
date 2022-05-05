@@ -1,10 +1,7 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import {Location} from '@angular/common';
-import { FrontService } from 'src/app/services/front.service';
-import { EventEmitterService } from 'src/app/services/event-emitter.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ques-radio-solution',
@@ -32,28 +29,12 @@ export class QuesRadioSolutionComponent implements OnInit {
   sidebarData2: any;
   coursesName: void;
   titleid: string;
-  subscription: Subscription;
-  private _frontService: FrontService;
-  public get frontServices(): FrontService {
-    if (this._frontService) {
-      return this._frontService;
-    }
-    return (this._frontService = this.injector.get(FrontService));
-  }
-  constructor(private service: ServiceService,private eventEmitterService: EventEmitterService,private route: ActivatedRoute,private router:Router,private _location: Location,  private injector: Injector) { 
+  constructor(private service: ServiceService,private route: ActivatedRoute,private router:Router,private _location: Location) { 
     this.route.queryParamMap.subscribe(queryParams => {
       this.id = queryParams.get("id");
       this.titleid = queryParams.get("titleid");
     })
     this.courseNameData= sessionStorage.getItem('course_name')
-    if (this.subscription == undefined) {
-      this.subscription = this.eventEmitterService.
-        invokeMenuList.subscribe(() => {
-          
-          this.frontServices.vm.courseChanged = false;
-          this.studentSideBar();
-        });
-    }
   }
 
   ngOnInit(): void {
@@ -73,18 +54,8 @@ export class QuesRadioSolutionComponent implements OnInit {
       this.sidebarData2 = res.body.result;
     })
   }
-
-  isStudent() {
-    if ('student' in sessionStorage) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   gotoBack(){
-    debugger
-    // this.router.navigateByUrl('/multimedia/contentStyle')
-    this.router.navigateByUrl(this.frontServices.navigation.url);
+    this._location.back();
   }
 
   toggleAccordian2(event, index) {

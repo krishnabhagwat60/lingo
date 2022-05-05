@@ -65,9 +65,11 @@
                 <hr style="width: 100%; height: 1px; background-color: #efeef4;">
             </div>
             <div class="rating-point">
-                <p>You Got <strong style="color: #18af14;font-weight: 700;">{{totalRightAnswer}}</strong> of <span style="font-weight: 700; color: #000000;">{{totalQuestion}}</span> Points.</p>
+                <p>You Got <strong style="color: #18af14;font-weight: 700;">{{totalRightAnswer}}</strong> of <span
+                        style="font-weight: 700; color: #000000;">{{totalQuestion}}</span> Points.</p>
                 <div class="range">
-                    <input type="range" value="{{totalRightAnswer}}" max="{{totalQuestion}}" class="rating"><span>{{totalRightAnswer}}/<strong
+                    <input type="range" value="{{totalRightAnswer}}" max="{{totalQuestion}}"
+                        class="rating"><span>{{totalRightAnswer}}/<strong
                             style="font-weight: 700; color: #000000;">{{totalQuestion}}</strong></span>
                 </div>
                 <button type="button" id="retry-btn" (click)="retry()"><span class="fa fa-repeat"></span>Retry</button>

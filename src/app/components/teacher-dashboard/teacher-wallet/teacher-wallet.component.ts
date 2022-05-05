@@ -10,8 +10,7 @@ import { ServiceService } from '../../service.service';
 })
 export class TeacherWalletComponent implements OnInit {
   walletData: any;
-  historyData: [];
-  currentCardIndex = 0;
+  historyData: any;
   errMsg: string;
   sidebarData: any;
   buttonColor: any;
@@ -37,7 +36,7 @@ export class TeacherWalletComponent implements OnInit {
     this.username();
     // this.addInitialForms();
   }
-  username() {
+  username(){
     this.user = sessionStorage.getItem('username');
   }
   getChildData(child) {
@@ -53,32 +52,32 @@ export class TeacherWalletComponent implements OnInit {
       this.subTitle = res.body.result
     })
   }
-
-  showshubmenu() {
-    this.ismenuShow = !this.ismenuShow
+  
+  showshubmenu(){
+    this.ismenuShow=!this.ismenuShow
   }
 
-  showsubmenu() {
-    this.ismenu = !this.ismenu
+  showsubmenu(){
+    this.ismenu=!this.ismenu
   }
 
-  showsub() {
-    this.ismenusub = !this.ismenusub
+  showsub(){
+    this.ismenusub=!this.ismenusub
   }
 
-  dashboardShow1() {
-    this.dashboardShow = !this.dashboardShow
+  dashboardShow1(){
+    this.dashboardShow=!this.dashboardShow
   }
 
-  profileShow1() {
-    this.profileShow = !this.profileShow
+  profileShow1(){
+    this.profileShow=!this.profileShow
   }
   // sidebar api
   sidebar() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    const data ={
+      user_id : sessionStorage.getItem('uid')
     }
-    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
+    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
     })
   }
@@ -88,10 +87,10 @@ export class TeacherWalletComponent implements OnInit {
   }
   // get wallet api
   getWallet() {
-    const data = {
-      user_id: sessionStorage.getItem('uid')
+    const data ={
+      user_id : sessionStorage.getItem('uid')
     }
-    this.service.post('wallet', data, 1).subscribe(res => {
+    this.service.post('wallet', data,1).subscribe(res => {
       this.walletData = res.body.result;
     })
   }
@@ -138,7 +137,7 @@ export class TeacherWalletComponent implements OnInit {
       if (res.body.total === 1 || res.body.total === 0) {
         this.buttonShow = false;
       }
-      if (res.body.result.message == 'No Transaction Yet.') {
+      if( res.body.result.message == 'No Transaction Yet.'){
         this.errMsg = 'No Transaction Yet.'
       }
       this.totalPages = [];
@@ -163,67 +162,39 @@ export class TeacherWalletComponent implements OnInit {
       }
     }
   }
-  //sidebar accordion
-  toggleAccordian(event, index, name, id) {
-    this.coursesName = sessionStorage.setItem('course_name', name)
-    sessionStorage.setItem('course-id', id)
-    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
-    const element = event.target;
-    element.classList.toggle('active');
-    if (this.sidebarData[index].isActive) {
-      this.sidebarData[index].isActive = false;
-    } else {
-      this.sidebarData[index].isActive = true;
+    //sidebar accordion
+    toggleAccordian(event, index,name,id) {
+     this.coursesName = sessionStorage.setItem('course_name',name)
+     sessionStorage.setItem('course-id',id)
+   this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+      const element = event.target;
+      element.classList.toggle('active');
+      if (this.sidebarData[index].isActive) {
+        this.sidebarData[index].isActive = false;
+      } else {
+        this.sidebarData[index].isActive = true;
+      }
     }
-  }
-  getIndex(activeIndex){
-    debugger
-    this.currentCardIndex = activeIndex;
-  }
-  prev() {
-    console.log('prev')
-    this.currentCardIndex = this.currentCardIndex--;
-    if (this.currentCardIndex != 0) {
-
-      this.currentCardIndex = this.currentCardIndex - 1;
-    }
-    else {
-      this.currentCardIndex =2;
-    }
-    console.log(this.currentCardIndex)
-
-  }
-  next() {
-    console.log('next')
-    if (this.currentCardIndex >= 0 && this.currentCardIndex < 2) {
-
-      this.currentCardIndex = this.currentCardIndex + 1;
-    }
-    else {
-      this.currentCardIndex = 0;
-    }
-    console.log(this.currentCardIndex)
-  }
-  toggleSubTitle(event, index, data, title) {
-    this.title = sessionStorage.setItem('title', title)
-    for (let i = 0; i < this.sidebarData.length; i++) {
-      const title = this.sidebarData[i].title;
-      for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
-        if (data === id) {
-          const element = event.target;
-          element.classList.toggle('active');
-          if (title[j].isActive) {
-            title[j].isActive = false;
-          } else {
-            title[j].isActive = true;
+    toggleSubTitle(event, index, data,title) {
+      this.title = sessionStorage.setItem('title',title)
+      for (let i = 0; i < this.sidebarData.length; i++) {
+        const title = this.sidebarData[i].title;
+        for (let j = 0; j < title.length; j++) {
+          const id = title[j].titleid
+          if (data === id) {
+            const element = event.target;
+            element.classList.toggle('active');
+            if (title[j].isActive) {
+              title[j].isActive = false;
+            } else {
+              title[j].isActive = true;
+            }
           }
         }
       }
     }
-  }
-  getChildSData(child) {
-    sessionStorage.setItem('subId', child);
-    this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
-  }
+    getChildSData(child) {
+      sessionStorage.setItem('subId', child);
+      this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    }
 }

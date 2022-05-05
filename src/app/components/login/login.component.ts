@@ -113,8 +113,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
       sessionStorage.setItem('wallet', res.current_user.wallet);
       localStorage.setItem('image',res.current_user.image_link)
-      localStorage.setItem('images',res.current_user.image_link);
-      console.log('response',res)
+      localStorage.setItem('images',res.current_user.image_link)
       setTimeout(() => {
         if (res.current_user.dashboard === 'dashboard') {
           this.router.navigate(['teacherDashboard/teachersDashboard']);

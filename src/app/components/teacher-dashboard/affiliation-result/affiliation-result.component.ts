@@ -131,6 +131,8 @@ export class AffiliationResultComponent implements OnInit {
   //   this._location.back();
   // }
   gotoBack(){
+    debugger
+    alert(this.frontServices.navigation.url)
     this.router.navigateByUrl(this.frontServices.navigation.url);
 
     // this.router.navigate(['/multimedia/contentStyle']);

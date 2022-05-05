@@ -32,8 +32,12 @@
                             <hr>
                         </div>
                         <div class="col-md-3">
-                            <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.student_enroll  == '1'" style="color: #fff; background-color: #3c96ccbf;">Enrolled</button>
-                            <button type="button" id="course-detail-enroll-btn" *ngIf="courseData?.student_enroll  == '0'" (click)="enrollId(courseData)" style="color: #fff;">Enroll Now </button>
+                            <button type="button" id="course-detail-enroll-btn"
+                                *ngIf="courseData?.student_enroll  == '1'"
+                                style="color: #fff; background-color: #3c96ccbf;">Enrolled</button>
+                            <button type="button" id="course-detail-enroll-btn"
+                                *ngIf="courseData?.student_enroll  == '0'" (click)="enrollId(courseData)"
+                                style="color: #fff;">Enroll Now</button>
 
                         </div>
                     </div>
@@ -46,7 +50,7 @@
                         <table>
                             <tr class="table-1">
                                 <th>Language: <span>{{courseData?.field_language}}</span></th>
-                                <td>Teaching Language: <span>{{courseData?.teaching_language}}</span></td>
+                                <td>Teaching Language : <span>{{courseData?.teaching_language}}</span></td>
                             </tr>
                             <tr class="table-1" style="background-color: #fff;">
                                 <th>Level : <span>{{courseData?.field_level}}</span></th>
@@ -56,7 +60,8 @@
                                 <th class="table-1" style="  border-right: 1px solid #d2dfe2;">Course Type :
                                     <span>{{courseData?.course_type}}</span>
                                 </th>
-                                <td><span style="font-size:13px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
+                                <td><span
+                                        style="font-size:13px;color: #136980; font-weight: 700; text-transform: uppercase;">Course
                                         Fees:</span>
                                     <p>{{courseData?.field_course_fees}}</p> <span>per month</span>
                                 </td>
@@ -77,14 +82,17 @@
                                 <div class="faq-wrap" *ngFor="let data of courseSubdata;let i = index">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
-                                            <a (click)="toggleShowTitle(i)">
+                                            <a data-toggle="collapse" data-parent="#accordion"
+                                                [attr.data-target]="'#collapesDetails' + i" aria-expanded="true"
+                                                aria-controls="collapseOne">
                                                 <div class="accord-content">{{data.title}}
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
                                             </a>
                                         </h5>
                                     </div>
-                                    <div *ngIf="expandedIndexTitle===i">
+                                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
+                                        [attr.id]="'collapesDetails' + i">
                                         <div class="card-block" *ngFor="let data1 of data.submenu">{{data1.name}}</div>
                                     </div>
                                 </div>
@@ -102,14 +110,17 @@
                                 <div class="faq-wrap2" *ngFor="let data of courseFaqdata;let j = index">
                                     <div class="card-header" role="tab" id="headingTwo">
                                         <h5 class="mb-0">
-                                            <a (click)="toggleShow(j)">
+                                            <a data-toggle="collapse" data-parent="#faq"
+                                                [attr.data-target]="'#collapesDetail' + j" aria-expanded="true"
+                                                aria-controls="collapseTwo+ j">
                                                 <div class="accord-content">{{data.title}}
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
                                             </a>
                                         </h5>
                                     </div>
-                                    <div *ngIf="expandedIndex===j">
+                                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                                        [attr.id]="'collapesDetail' + j">
                                         <div class="card-block">{{data.text}}</div>
                                     </div>
                                 </div>
@@ -119,13 +130,16 @@
                 </ng-container>
                 <!-- <button type="button" id="enroll-btn-bottom" data-target="#enroll" data-toggle="modal">Enroll
                     Now</button> -->
-                <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '1'" style="color: #fff; background-color: #3c96ccbf;">Enrolled</button>
-                <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '0'" (click)="enrollId(courseData)" style="color: #fff;">Enroll Now</button>
+                <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '1'"
+                    style="color: #fff; background-color: #3c96ccbf;">Enrolled</button>
+                <button type="button" id="enroll-btn-bottom" *ngIf="courseData?.student_enroll  == '0'"
+                    (click)="enrollId(courseData)" style="color: #fff;">Enroll Now</button>
             </div>
 
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="enroll" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
@@ -157,9 +171,10 @@
                         </tr>
 
                         <tr>
-                            <td style="border-bottom:transparent">Approximated Duration :
-                                <span>{{courseData?.time_duration}}</span></td>
-                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
+                            <td style="border-bottom:transparent">Approximated Duration
+                                :<span>{{courseData?.time_duration}}</span></td>
+                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
+                                    style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{courseData?.field_course_fees}}
                                 </span></td>
                         </tr>
                     </table>
@@ -169,13 +184,16 @@
                     <span>
                         <img src="assets/images/icons/pay.png">Bill monthly
                     </span>
-                    <strong class="text-right" style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
+                    <strong class="text-right"
+                        style="float: right;"><span>{{courseData?.field_course_fees}}/</span>&nbsp;<span id="month">1
                             months</span></strong>
                 </div>
                 <p *ngIf="msgShow" style="color: red; text-align: center;">{{msgShow}}</p>
                 <div class="enrollnow">
-                    <a style="color: #fff;  background-color: #3c96ccbf;" *ngIf="courseData?.student_enroll  == '1'">Enrolled</a>
-                    <a (click)="enrollId(courseData)" style="color: #fff;" *ngIf="courseData?.student_enroll  == '0'">Enroll Now
+                    <a style="color: #fff;  background-color: #3c96ccbf;"
+                        *ngIf="courseData?.student_enroll  == '1'">Enrolled</a>
+                    <a (click)="enrollId(courseData)" style="color: #fff;"
+                        *ngIf="courseData?.student_enroll  == '0'">Enroll Now
                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px" *ngIf="mainpageLod"></i>
                     </a>
                 </div>
@@ -202,7 +220,8 @@
                             <div class="summary-2">
                                 <p>{{courseData?.title}}</p>
                                 <ul>
-                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
                                         {{courseData?.teacher_name}} </li>
                                     <li style="border-bottom: transparent;"><span>{{courseData?.course_id}}</span></li>
                                     <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
@@ -256,7 +275,8 @@
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                         </ng-container>
-                                        <a style="color: grey;" *ngIf="courseData?.review_count != '0'">({{courseData?.review_count}})</a>
+                                        <a style="color: grey;"
+                                            *ngIf="courseData?.review_count != '0'">({{courseData?.review_count}})</a>
                                     </li>
                                 </ul>
                             </div>
@@ -266,10 +286,12 @@
                                 <div class="vl"></div>
                                 <p>Payment Review</p>
                                 <ul>
-                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
+                                    <li
+                                        style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
                                         Course fees : <span>{{courseData?.field_course_fees}}</span></li>
                                     <li style="border-bottom: transparent;">Tax <span>€0.00</span></li>
-                                    <li style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                    <li
+                                        style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
                                         Total <span>{{courseData?.field_course_fees}}</span></li>
                                 </ul>
                             </div>

@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="main">
+    <div class="main main-height">
         <div class="container-fluid">
             <div class="dashboard">
                 <div class="add-new-course-heading">
@@ -37,7 +37,8 @@
                                 <p>COURSE NAME
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <input type="name" placeholder="Enter Course Name" id="courseName" name="courseName" formControlName="courseName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.courseName.errors }">
+                                <input type="name" placeholder="Enter Course Name" formControlName="courseName"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.courseName.errors }">
                                 <div *ngIf="submitted && f.courseName.errors" class="invalid-feedback">
                                     <div *ngIf="f.courseName.errors.required">Course Name is required</div>
                                     <!-- <div *ngIf="f.email.errors.maxlength">User name should be only 25 characters</div> -->
@@ -48,7 +49,8 @@
                                     <span class="required-asterisk">*</span>
                                 </p>
                                 <div class="select-dropdown">
-                                    <select name="combo box" formControlName="level" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
+                                    <select name="combo box" formControlName="level" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
                                         <option value="" disabled>Choose Level</option>
                                         <option *ngFor="let data of level" value="{{data.id}}">{{data.name}}</option>
                                     </select>
@@ -63,7 +65,7 @@
                                 <p for="language">LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown-language">
+                                <div class="select-dropdown">
                                     <!-- <select formControlName="language" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && f.language.errors }">
                                         <option value="" disabled>Language</option>
@@ -71,7 +73,10 @@
                                             {{data.value}}
                                         </option>
                                     </select> -->
-                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectLangAll($event,i)" (onDeSelect)="onLangDeSelect($event,i)" [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
+                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings"
+                                        [data]="language" formControlName="selectedItems"
+                                        (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                     </ng-multiselect-dropdown>
                                 </div>
                                 <div *ngIf="submitted && f.selectedItems.invalid" class="text-danger mt-1">
@@ -85,8 +90,10 @@
                                 <p for="language">TEACHING LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown-language">
-                                    <ng-multiselect-dropdown [placeholder]="'Teaching Language'" [settings]="dropdownSettings" [data]="language" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event,i)" (onSelectAll)="onSelectTeacherLangAll($event,i)" (onDeSelect)="onTeacherLangDeSelect($event,i)"
+                                <div class="select-dropdown">
+                                    <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings"
+                                        [data]="language" formControlName="teachingLanguage"
+                                        (onSelect)="onTeacherSelect($event)"
                                         [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>
                                 </div>
@@ -102,7 +109,9 @@
                                     <span class="required-asterisk">*</span>
                                 </p>
                                 <div class="select-dropdown">
-                                    <select name="combo box" class="form-control" formControlName="courseType" (change)="showValue($event)" [ngClass]="{ 'is-invalid': submitted && f.courseType.errors }">
+                                    <select name="combo box" class="form-control" formControlName="courseType"
+                                        (change)="showValue($event)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.courseType.errors }">
                                         <!-- <option value="Combo Box" disabled></option> -->
                                         <option value="" disabled>Course Type</option>
                                         <option value="public">Public</option>
@@ -117,17 +126,21 @@
                             <div class="col-md-6 course-free" *ngIf="courseFee">
                                 <p>COURSE FEES</p>
                                 <div class="radio_FreeCourse">
-                                    <input id="radio-2" type="radio" formControlName="radio" value="monthly" (click)="showInput($event)">
+                                    <input id="radio-2" type="radio" formControlName="radio" value="monthly"
+                                        (click)="showInput($event)">
                                     <label for="radio-2" class="radio-label"><span
                                             style="margin-right: 5px;">Monthly</span></label>
 
                                 </div>
                                 <div class="radio_FreeCourse">
-                                    <input id="free" type="radio" formControlName="radio" value="free" (click)="showInput($event)">
+                                    <input id="free" type="radio" formControlName="radio" value="free"
+                                        (click)="showInput($event)">
                                     <label for="free" class="radio-label"><span>Free</span></label>
                                 </div>
                                 <div class="fees-rype">
-                                    <input type="course type" id="monthly-input-box" class="form-control" formControlName="radio" id="radio" name="radio" placeholder="€" *ngIf="feeBox" [ngClass]="{ 'is-invalid': submitted && f.radio.errors }">
+                                    <input type="course type" id="monthly-input-box" class="form-control"
+                                        formControlName="radio" placeholder="€" *ngIf="feeBox"
+                                        [ngClass]="{ 'is-invalid': submitted && f.radio.errors }">
                                     <div *ngIf="submitted && f.radio.errors" class="invalid-feedback">
                                         <div *ngIf="f.radio.errors.pattern">Number Only</div>
                                     </div>
@@ -141,7 +154,8 @@
                             <div class="col-md-6 course-fees" *ngIf="teacherFees">
                                 <p for="course">course Fee for Teachers</p>
                                 <div class="radio_FreeCourse">
-                                    <input id="free-1" formControlName="radio" type="radio" value="50 cent" (click)="showInput($event)">
+                                    <input id="free-1" formControlName="radio" type="radio" value="50 cent"
+                                        (click)="showInput($event)">
                                     <label for="free-1" class="radio-label"><span>50 Cent / Student /
                                             Month</span></label>
                                 </div>
@@ -158,17 +172,17 @@
                                     <span class="required-asterisk">*</span>
                                 </p>
                                 <div class="time-in">
-                                    <input type="number" id="timeDurationHr" name="timeDurationHr" min="01" max="500" formControlName="timeDurationHr" [ngClass]="{ 'is-invalid': submitted && f.timeDurationHr.errors }">
+                                    <input type="number" id="quantity" name="quantity" min="01" max="500" formControlName="timeDurationHr" [ngClass]="{ 'is-invalid': submitted && f.timeDurationHr.errors }">
                                     <span>hrs</span>
                                     <div *ngIf="submitted && f.timeDurationHr.errors" class="invalid-feedback">
                                         <div *ngIf="f.timeDurationHr.errors.required">Time Duration is required</div>
                                     </div>
-                                    <input type="number" id="timeDurationMin" name="timeDurationMin" min="01" max="60" formControlName="timeDurationMin" [ngClass]="{ 'is-invalid': submitted && f.timeDurationMin.errors }">
+                                    <input type="number" id="quantity" name="quantity" min="01" max="60" formControlName="timeDurationMin"  [ngClass]="{ 'is-invalid': submitted && f.timeDurationMin.errors }">
                                     <span>min</span>
                                     <div *ngIf="submitted && f.timeDurationMin.errors" class="invalid-feedback">
                                         <div *ngIf="f.timeDurationMin.errors.required">Time Duration is required</div>
                                     </div>
-                                </div>
+                                    </div>
                                 <!-- <input type="time" formControlName="timeDuration" id="time" class="form-control without_ampm "
                                     value="Time Duration"
                                     [ngClass]="{ 'is-invalid': submitted && f.timeDuration.errors }">
@@ -184,7 +198,9 @@
                             <span class="required-asterisk">*</span>
                         </p>
                         <div class="course-des-content">
-                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="otherLinkTextDescription" id="otherLinkTextDescription" name="otherLinkTextDescription" type="divarea">
+                            <ckeditor [config]="editorConfig1" [editor]="Editor"
+                                formControlName="otherLinkTextDescription" id="description" name="description"
+                                type="divarea">
                             </ckeditor>
                         </div>
                     </div>
@@ -197,32 +213,42 @@
                                         <p>Title {{empIndex + 1}}
                                             <span class="required-asterisk">*</span>
                                         </p>
-                                        <input type="hidden" formControlName="titleid" id="titleid" name="titleid">
-                                        <input type="course type" class="form-control" formControlName="title" id="title" name="title" placeholder="Title" [ngClass]="{ 'is-invalid': employee.get('title').hasError('required') && submitted}">
-                                        <div class="fieldRequired" *ngIf="employee.get('title').hasError('required') && submitted" style="font-size: 10px;
+                                        <input type="hidden" formControlName="titleid">
+                                        <input type="course type" class="form-control" formControlName="title"
+                                            placeholder="Title"
+                                            [ngClass]="{ 'is-invalid': employee.get('title').hasError('required') && submitted}">
+                                        <div class="fieldRequired"
+                                            *ngIf="employee.get('title').hasError('required') && submitted" style="font-size: 10px;
                                            color: #ec3232; font-size: 13px; ">
                                             Title is required.
                                         </div>
                                     </div>
                                     <div class="sub-title-remove col-md-2">
-                                        <button type="button" id="sub-title-remove-btn" (click)="deleteTitles(empIndex)">Remove</button>
+                                        <button type="button" id="sub-title-remove-btn"
+                                            (click)="deleteTitles(empIndex)">Remove</button>
                                     </div>
                                     <div class="col-md-4"></div>
                                 </div>
                                 <div class="row">
                                     <ng-container formArrayName="sub_title">
-                                        <div class="col-md-6 form-group" *ngFor="let skill of employeeSkills(empIndex).controls; let skillIndex=index" [formGroupName]="skillIndex">
+                                        <div class="col-md-6 form-group"
+                                            *ngFor="let skill of employeeSkills(empIndex).controls; let skillIndex=index"
+                                            [formGroupName]="skillIndex">
                                             <p>Sub Menu {{skillIndex + 1}}
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <input type="hidden" formControlName="submenuId" name="submenuId" id="submenuId">
-                                            <input type="sub-menu" class="form-control" formControlName="sub_title" name="sub_title" id="sub_title" placeholder="Sub Menu" [ngClass]="{ 'is-invalid': skill.get('sub_title').hasError('required') && submitted}">
-                                            <div class="fieldRequired" *ngIf="skill.get('sub_title').hasError('required') && submitted" style="font-size: 10px;
+                                            <input type="hidden" formControlName="submenuId">
+                                            <input type="sub-menu" class="form-control" formControlName="sub_title"
+                                                placeholder="Sub Menu"
+                                                [ngClass]="{ 'is-invalid': skill.get('sub_title').hasError('required') && submitted}">
+                                            <div class="fieldRequired"
+                                                *ngIf="skill.get('sub_title').hasError('required') && submitted" style="font-size: 10px;
                                                color: #ec3232; font-size: 13px; ">
                                                 Sub Title is required.
                                             </div>
                                             <div class="sub-title-remove" *ngIf="deleteBttons">
-                                                <img src="assets/images/icons/x-button.png" class="x-button" (click)="deleteSubTitles(empIndex,skillIndex)">
+                                                <img src="assets/images/icons/x-button.png" class="x-button"
+                                                    (click)="deleteSubTitles(empIndex,skillIndex)">
                                             </div>
                                         </div>
                                     </ng-container>
@@ -239,7 +265,7 @@
                         <button type="button" id="addmore-btn" (click)="addInitialForm()"><span
                                 class="fa fa-plus"></span>Add More Title</button>
                     </div>
-
+                  
                     <div class="faqs-sec">
                         <div class="faq-title">
                             <p>FAQ</p>
@@ -247,18 +273,18 @@
                         <div formArrayName="faq">
                             <div class="faq-row" *ngFor="let faqData of faq().controls; let faqIndex=index">
                                 <ng-container [formGroupName]="faqIndex">
-                                    <input type="hidden" formControlName="id" id="id" name="id">
+                                    <input type="hidden" formControlName="id">
                                     <div class="faqs-more">
                                         <div class="card-1">
                                             <div id="faq-accordn" class="card-accr-1">
-                                                <a href="" [attr.data-target]="'#collapesDetail0' + faqIndex" data-toggle="collapse" data-target="#collapesDetail0" aria-expanded="false" aria-controls="accordion-1" class="collapsed">
-                                                    <input type="text" id="accordion-input" class="form-control" id="title" name="title" formControlName="title" style="border: 0;">
+                                                <a href=""  [attr.data-target]="'#collapesDetail0' + faqIndex" data-toggle="collapse" data-target="#collapesDetail0" aria-expanded="false" aria-controls="accordion-1" class="collapsed">
+                                                    <input type="text" id="accordion-input" class="form-control" formControlName="title" style="border: 0;">
                                                     <i class="fa fa-angle-down"></i>
-                                                </a>
+                                                </a>                          
                                             </div>
                                             <div id="collapesDetail0" [attr.id]="'collapesDetail0' + faqIndex" aria-labelledby="headingOne" data-parent=".card-1" class="collapse">
                                                 <div class="card-body-2">
-                                                    <textarea id="accordion-textarea" formControlName="text" id="text" name="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
+                                                    <textarea id="accordion-textarea" formControlName="text" class="form-control"  [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
                                                     <div *ngIf="submitted && faqData.get('text').invalid" class="text-danger mt-1">
                                                         <div *ngIf="faqData.get('text').errors.required">
                                                             Text is required.
@@ -268,13 +294,13 @@
                                             </div>
                                         </div>
                                         <div class="x-remove" (click)="removeFaq(faqIndex)"><img _ngcontent-cda-c64="" src="assets/images/icons/x-button.png" class="xr-btn"></div>
-                                    </div>
+                                </div>
 
                                 </ng-container>
                             </div>
                         </div>
                     </div>
-
+                   
                     <div class="add-faq">
                         <div class="addmore"><button type="button" id="addmore-btn" (click)="addFaq()"><span class="fa fa-plus"></span>Add More FAQ</button></div>
                     </div>

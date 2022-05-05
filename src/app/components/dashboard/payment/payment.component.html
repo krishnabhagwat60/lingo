@@ -19,32 +19,32 @@
             </div>
         </div>
     </div>
-    <div class="main main-height" >
+    <div class="main main-height">
         <div class="container-fluid">
             <div class="dashboard">
                 <div class="passage-section">
                     <div class="pa-courset">
-                        <h2 *ngIf="courseDetail && courseDetail.title">{{courseDetail.title}}</h2>
+                        <h2>{{courseDetail?.title}}</h2>
                     </div>
                     <div class="sumry-sectn">
                         <div class="summry-detl">
                             <h4>Summary of Course</h4>
                             <ul>
-                                <li *ngIf="courseDetail && courseDetail.title">
+                                <li>
                                     <p>Course Name :</p>
-                                    <span >{{courseDetail.title}}</span>
+                                    <span>{{courseDetail?.title}}</span>
                                 </li>
-                                <li *ngIf="courseDetail && courseDetail.field_course_fees">
+                                <li>
                                     <p>Course Fees :</p>
-                                    <span>{{courseDetail.field_course_fees}}</span>
+                                    <span>{{courseDetail?.field_course_fees}}</span>
                                 </li>
-                                <li >
+                                <li>
                                     <p>Tax :</p>
                                     <span>€0.00</span>
                                 </li>
-                                <li class="btn-totl" *ngIf="courseDetail && courseDetail.field_course_fees">
+                                <li class="btn-totl">
                                     <p class="totl-text">Total Amount :</p>
-                                    <span class="totl-text-2">{{courseDetail.field_course_fees}}</span>
+                                    <span class="totl-text-2">{{courseDetail?.field_course_fees}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -52,78 +52,74 @@
                             <h4>Enroll Details</h4>
                             <ul>
                                 <li class="subj-names">
-                                    <p class="subj-t" *ngIf="courseDetail && courseDetail.title">{{courseDetail.title}}</p>
+                                    <p class="subj-t">{{courseDetail?.title}}</p>
                                     <p class="subj-star">
-                                        <span style="color: #fff;" *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating != '0'">{{courseDetail.rating}}</span>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '1'">
+                                        <ng-container *ngIf="courseDetail?.rating === '1'">
                                             <i class="fa fa-star" style="color:#ff4545 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '1.5'">
+                                        <ng-container *ngIf="courseDetail?.rating === '1.5'">
                                             <i class="fa fa-star" style="color:#ffa534 !important;"></i>
                                             <i class="fa fa-star-half-o" style="color:#ffa534 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '2'">
+                                        <ng-container *ngIf="courseDetail?.rating === '2'">
                                             <i class="fa fa-star" style="color:#ffa534 !important;"></i>
                                             <i class="fa fa-star" style="color:#ffa534 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '2.5'">
+                                        <ng-container *ngIf="courseDetail?.rating === '2.5'">
                                             <i class="fa fa-star" style="color:#ffe234 !important;"></i>
                                             <i class="fa fa-star" style="color:#ffe234 !important;"></i>
                                             <i class="fa fa-star-half-o" style="color:#ffe234 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '3'">
+                                        <ng-container *ngIf="courseDetail?.rating === '3'">
                                             <i class="fa fa-star" style="color:#ffe234 !important;"></i>
                                             <i class="fa fa-star" style="color:#ffe234 !important;"></i>
                                             <i class="fa fa-star" style="color:#ffe234 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '3.5'">
+                                        <ng-container *ngIf="courseDetail?.rating === '3.5'">
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star-half-o" style="color:#b7dd29 !important;"></i>
 
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '4'">
+                                        <ng-container *ngIf="courseDetail?.rating === '4'">
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                             <i class="fa fa-star" style="color:#b7dd29 !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf="courseDetail && courseDetail.rating &&courseDetail.rating === '4.5'">
-                                            <i class="fa fa-star" style="color:#57e32c !important;"></i>
+                                        <ng-container *ngIf="courseDetail?.rating === '4.5'">
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star-half-o" style="color:#57e32c !important;"></i>
                                         </ng-container>
-                                        <ng-container *ngIf=" courseDetail && courseDetail.rating &&courseDetail.rating === '5'">
+                                        <ng-container *ngIf="courseDetail?.rating === '5'">
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                             <i class="fa fa-star" style="color:#57e32c !important;"></i>
                                         </ng-container>
-                                        <a style="color: grey;" *ngIf="courseDetail.review_count != '0'">({{courseDetail.review_count}})</a>
-
                                     </p>
                                 </li>
-                                <li  *ngIf="courseDetail && courseDetail.course_id">
+                                <li>
                                     <p>Course ID :</p>
-                                    <span>{{courseDetail.course_id}}</span>
+                                    <span>{{courseDetail?.course_id}}</span>
                                 </li>
-                                <li *ngIf="courseDetail && courseDetail.teacher_name">
+                                <li>
                                     <p>Created by :</p>
-                                    <span>{{courseDetail.teacher_name}}</span>
+                                    <span>{{courseDetail?.teacher_name}}</span>
                                 </li>
-                                <li *ngIf="courseDetail && courseDetail.total_enroll">
+                                <li>
                                     <p>Currently Enrolled :</p>
-                                    <span>{{courseDetail.total_enroll}}</span>
+                                    <span>{{courseDetail?.total_enroll}}</span>
                                 </li>
-                                <li *ngIf="courseDetail && courseDetail.time_duration">
+                                <li>
                                     <p>Duration :</p>
-                                    <span>{{courseDetail.time_duration}}</span>
+                                    <span>{{courseDetail?.time_duration}}</span>
                                 </li>
-                                <li *ngIf="courseDetail && courseDetail.date">
+                                <li>
                                     <p>Last Time Updated :</p>
                                     <span>{{courseDetail.date}}</span>
                                 </li>

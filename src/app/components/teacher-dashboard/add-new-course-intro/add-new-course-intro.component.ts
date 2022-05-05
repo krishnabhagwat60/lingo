@@ -395,7 +395,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   editSubmit() {
-    debugger
     this.submitted = true;
     if (this.addCourseForm.invalid) {
       return;
@@ -451,7 +450,6 @@ export class AddNewCourseIntroComponent implements OnInit {
 
   // patch data
   updateData() {
-    debugger
     this.employees().clear();
     this.faq().clear();
 

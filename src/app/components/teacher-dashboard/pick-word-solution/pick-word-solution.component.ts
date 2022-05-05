@@ -1,11 +1,8 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 import {Location} from '@angular/common';
-import { FrontService } from 'src/app/services/front.service';
-import { EventEmitterService } from 'src/app/services/event-emitter.service';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -34,27 +31,12 @@ export class PickWordSolutionComponent implements OnInit {
   user: string;
   coursesName: void;
   titleid: any;
-  subscription: Subscription;
-  private _frontService: FrontService;
-  public get frontServices(): FrontService {
-    if (this._frontService) {
-      return this._frontService;
-    }
-    return (this._frontService = this.injector.get(FrontService));
-  }
-  constructor(private service: ServiceService,private eventEmitterService: EventEmitterService,private route:ActivatedRoute,private _sanitizer: DomSanitizer,private router: Router,private _location: Location,  private injector: Injector) {
+
+  constructor(private service: ServiceService,private route:ActivatedRoute,private _sanitizer: DomSanitizer,private router: Router,private _location: Location) {
     this.courseNameData= sessionStorage.getItem('course_name')
     this.route.queryParamMap.subscribe(queryParams => {
       this.titleid = queryParams.get("titleid")
     })
-    if (this.subscription == undefined) {
-      this.subscription = this.eventEmitterService.
-        invokeMenuList.subscribe(() => {
-          
-          this.frontServices.vm.courseChanged = false;
-          this.studentSideBar();
-        });
-    }
    }
 
   ngOnInit(): void {
@@ -68,8 +50,7 @@ export class PickWordSolutionComponent implements OnInit {
   }
 
   gotoBack(){
-    this.router.navigateByUrl(this.frontServices.navigation.url);
-
+    this._location.back();
   }
   username(){
     this.user = sessionStorage.getItem('username');
@@ -80,21 +61,7 @@ export class PickWordSolutionComponent implements OnInit {
     }
     this.service.post('student_sidebar',data, 1).subscribe(res => {
       this.sidebarData2 = res.body.result;
-      if (this.sidebarData2 != null && this.sidebarData2.length > 0) {
-        var filteredData = this.unique(this.sidebarData2, ['course_id']);
-        this.sidebarData2 = filteredData;
-        this.frontServices.vm.sidebarData = this.sidebarData2;
-      }
     })
-  }
-  unique(arr, keyProps) {
-    return Object.values(
-      arr.reduce((uniqueMap, entry) => {
-        const key = keyProps.map((k) => entry[k]).join('|');
-        if (!(key in uniqueMap)) uniqueMap[key] = entry;
-        return uniqueMap;
-      }, {})
-    );
   }
   toggleAccordian2(event, index) {
     const element = event.target;
@@ -200,7 +167,7 @@ export class PickWordSolutionComponent implements OnInit {
       var rightAnswer = index[i]
       var userAnswer =  array1[array1.length -1]
       var tag = ''
-      tag = '<span class="fib" role="textbox" contenteditable = false/> ' + rightAnswer + '' + '<i class="fa fa-check" style="margin-top: 10px; color: #18af14;"></i>' + '</span>'
+      tag = '<span class="fib" role="textbox" contenteditable = false/> ' + rightAnswer + '"' + '<i class="fa fa-check" style="margin-top: 10px; color: #18af14;"></i>' + '</span>'
       // tag ='<input type="text" class="answer" value="' + rightAnswer + '"' + ' disabled/><i class="fa fa-check" style="margin-left: -30px;margin-top: 10px; color: #18af14;"></i>'
       this.replaceData = word1.replace(/\*(.*?)\*/, tag)
       word1 = this.replaceData;
@@ -248,7 +215,6 @@ titleName(){
   }
 
   editFillBlanks() {
-    
     // this.resetPickModalData();
     const data = {
       // "subtitle_id": localStorage.getItem('subId')

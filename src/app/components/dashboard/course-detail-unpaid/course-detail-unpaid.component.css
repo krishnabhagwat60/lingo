@@ -25,9 +25,8 @@
 
 .row-accordian .faq-box .faq-wrap .card-header {
     margin-bottom: 5px;
-    overflow-wrap: break-word;
     border: 2px solid #d2dfe2;
-   width: 50%;
+    width: 50%;
 }
 
 .row-accordian .faq-box .faq-wrap .card-header h5 a .accord-content {
@@ -42,27 +41,23 @@
 }
 
 .row-accordian .faq-box .card-block {
-    width: 50%;
+    width: 100%;
     background-color: #fff;
     border: 2px solid #d2dfe2;
     padding: 10px 15px;
     margin-bottom: 5px;
-    overflow-wrap: break-word;
 }
-
-.row-accordian .faq-box .faq-wrap2 {
+.row-accordian .faq-box .faq-wrap2{
     background-color: #f2fbff;
-}
-
-.row-accordian .faq-box .faq-wrap2 .card-header {
+    }
+    .row-accordian .faq-box .faq-wrap2 .card-header{
     margin-bottom: 5px;
     border: 2px solid #d2dfe2;
-    width: 50%;
-}
-
-.row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 500;
-    color: #000;
-}
+    width: 100%;
+    }
+    .row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        color: #000;
+        }

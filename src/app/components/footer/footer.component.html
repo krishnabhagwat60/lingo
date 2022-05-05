@@ -1,62 +1,62 @@
 <footer id="footer">
-    <div class="footer-newsletter">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <h1>Newsletter Subscribe</h1>
-                    <p>Subscribe to get the latest information </p>
-                    <form [formGroup]="subscribeForm">
-                        <span class="newsletter-icon">
+  <div class="footer-newsletter">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h1>Newsletter Subscribe</h1>
+          <p>Subscribe to get the latest information </p>
+          <form [formGroup]="subscribeForm">
+            <span class="newsletter-icon">
               <img src="assets/images/imgpsh_fullsize_anim.png">
             </span>
-                        <input type="email" formControlName="email" id="email" name="email" placeholder="ENTER EMAIL ADDRESS" style="color: #fff;">
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">Email is required</div>
-                            <div *ngIf=" subscribeForm.get('email').hasError('pattern')" style="color: #fff; font-size: 12px;" padding>*Please enter correct e-mail address</div>
-                        </div>
-                        <button type="submit" id="subscribe-btn" (click)="subscribe()">Subscribe</button>
-                    </form>
-                    <p style="color: #fff;" *ngIf="message">Subscribe Successfully</p>
-                </div>
-            </div>
+            <input type="email" formControlName="email" placeholder="ENTER EMAIL ADDRESS" style="color: #fff;">
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf=" subscribeForm.get('email').hasError('pattern')" style="color: #fff; font-size: 12px;" padding>*Please enter correct e-mail address</div>
+          </div>
+            <button type="submit" id="subscribe-btn" (click)="subscribe()">Subscribe</button>
+          </form>
+          <p style="color: #fff;" *ngIf="message">Subscribe Successfully</p>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 footer-contact">
+          <img src="assets/img/footer-logo.png">
+          <p class="footer-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscin elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4 style="margin-left:-5px;">Quick Links</h4>
+          <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/faq">Faq's</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Terms of Use</h4>
+          <ul>
+            <li><a routerLink="/privacy_policy">Privacy Policy</a></li>
+            <li><a routerLink="/term_condition">Terms And Conditions</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <hr style="background-color: #95b3ba;">
     </div>
 
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 footer-contact">
-                    <img src="assets/img/footer-logo.png">
-                    <p class="footer-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-                    </p>
-                </div>
-
-                <div class="col-lg-3 col-md-6 footer-links">
-                    <h4 style="margin-left:-5px;">Quick Links</h4>
-                    <ul>
-                        <li><a routerLink="/">Home</a></li>
-                        <li><a routerLink="/faq">Faq's</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Terms of Use</h4>
-                    <ul>
-                        <li><a routerLink="/privacy_policy">Privacy Policy</a></li>
-                        <li><a routerLink="/term_condition">Terms And Conditions</a></li>
-                    </ul>
-                </div>
-
-            </div>
-            <hr style="background-color: #95b3ba;">
-        </div>
-
-        <div class="container py-3">
-            <div class="copyright">
-                Copyright &copy; Lingolista <strong><span></span></strong>. All Rights Reserved
-            </div>
-        </div>
+    <div class="container py-3">
+      <div class="copyright">
+        Copyright &copy; Lingolista <strong><span></span></strong>. All Rights Reserved
+      </div>
     </div>
-</footer>
-<!-- End Footer -->
+  </div>
+</footer><!-- End Footer -->
