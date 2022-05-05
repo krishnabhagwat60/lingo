@@ -96,6 +96,24 @@ export class TeacherWalletComponent implements OnInit {
     })
   }
 
+  subscription(planid)
+  {
+    debugger
+    const data = {
+      plan_id:planid,
+      current_user_id: sessionStorage.getItem('uid')
+    }
+    debugger
+    this.service.post('Applied-Subscription-plan', data,1).subscribe(res => {
+      if(res.body.user_login_status == 1 && res.body.result == 'success')
+      debugger
+      {
+        this.router.navigate(['/teacherDashboard/thank-you-teacher']);
+      }
+    }); 
+    
+  }
+
   addAmountForm = new FormGroup({
     amount: new FormControl('',)
   })
@@ -177,7 +195,6 @@ export class TeacherWalletComponent implements OnInit {
     }
   }
   getIndex(activeIndex){
-    debugger
     this.currentCardIndex = activeIndex;
   }
   prev() {
