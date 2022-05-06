@@ -96,22 +96,18 @@ export class TeacherWalletComponent implements OnInit {
     })
   }
 
-  subscription(planid)
-  {
-    debugger
+  subscription(planid) {
     const data = {
-      plan_id:planid,
+      plan_id: planid,
       current_user_id: sessionStorage.getItem('uid')
     }
-    debugger
-    this.service.post('Applied-Subscription-plan', data,1).subscribe(res => {
-      if(res.body.user_login_status == 1 && res.body.result == 'success')
-      debugger
+    this.service.post('Applied-Subscription-plan', data, 1).subscribe(res => {
+      if (res.body.user_login_status == 1 && res.body.result == 'success')
       {
         this.router.navigate(['/teacherDashboard/thank-you-teacher']);
       }
-    }); 
-    
+    });
+
   }
 
   addAmountForm = new FormGroup({
@@ -194,7 +190,7 @@ export class TeacherWalletComponent implements OnInit {
       this.sidebarData[index].isActive = true;
     }
   }
-  getIndex(activeIndex){
+  getIndex(activeIndex) {
     this.currentCardIndex = activeIndex;
   }
   prev() {
@@ -205,7 +201,7 @@ export class TeacherWalletComponent implements OnInit {
       this.currentCardIndex = this.currentCardIndex - 1;
     }
     else {
-      this.currentCardIndex =2;
+      this.currentCardIndex = 2;
     }
     console.log(this.currentCardIndex)
 

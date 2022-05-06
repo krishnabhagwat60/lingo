@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-2" style="padding:0;">
             <ul class="user-area">
-                <li class="markus">
+                <li class="markus" id="side-nav-markus">
                     <a class="context-menu">{{user | titlecase}}</a>
                 </li>
                 <!-- <li>
@@ -22,17 +22,18 @@
                         <span *ngIf="updateNewDataImage" class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span>
                     </a>
                 </li> -->
-                <li>
+                <!-- <li>
                     <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" *ngIf="updateNewDataImage">
-                <li *ngIf="updateNewDataImage.length==0">
+                        aria-expanded="false" *ngIf="updateNewDataImage"> -->
+
+                <li *ngIf="updateNewDataImage!=undefined &&updateNewDataImage.length==0" style="display: block" id="no-image">
                     <a href="#" class="dropdown-toggle" id="defaultImageSide-nav" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar" src="assets/images/teacher-icon.png">
                     </a>
                 </li>
                 <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
-                <li *ngIf="updateNewDataImage.length>10">
+                <li *ngIf="updateNewDataImage!=undefined &&updateNewDataImage.length>10" id="image-exist">
                     <a href="#" class="dropdown-toggle" id="imageExistSide-nav" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img class="user-avatar" [src]="updateNewDataImage">
@@ -40,8 +41,8 @@
                 </li>
 
                 <!-- <span  class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span> -->
-                </a>
-                </li>
+                <!-- </a>
+                </li> -->
                 <li>
                     <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">

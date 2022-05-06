@@ -44,7 +44,8 @@
                             <tr id="active-plan-data">
                                 <th><span>{{data.title}}</span></th>
                                 <th style="text-transform: uppercase;color: #6b6b6b;">Course ID :
-                                    <span>{{data.course_id}}</span></th>
+                                    <span>{{data.course_id}}</span>
+                                </th>
                                 <th style="color: #6b6b6b;">Monthly Price : <span>{{data.course_fee}}</span></th>
                             </tr>
                             <tr id="active-plan-data">
@@ -57,8 +58,8 @@
                         </table>
                     </div>
                     <div class="re-sub">
-                             <button *ngIf="data.course_type == 'public' && data.button =='0'" type="submit" (click)="resubscribeId(data)"
-                              id="re-sub">re-subscribe</button>
+                        <button *ngIf="data.course_type == 'public' && data.button =='0'" type="submit"
+                            (click)="resubscribeId(data)" id="re-sub">re-subscribe</button>
                     </div>
                 </ng-container>
                 <div class="container-fluid">
@@ -113,7 +114,8 @@
                         <tr>
                             <td><span>{{enrollID?.title}}</span></td>
                             <td style="text-transform: uppercase;border-right: transparent;">Course Id :
-                                <span>{{enrollID?.course_id}}</span></td>
+                                <span>{{enrollID?.course_id}}</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Currently Enrolled <span>{{enrollID?.total_enroll}}</span></td>
@@ -122,7 +124,8 @@
                         </tr>
                         <tr>
                             <td style="border-bottom:transparent">Approximated Duration
-                                <span>{{enrollID?.time_duration}}</span></td>
+                                <span>{{enrollID?.time_duration}}</span>
+                            </td>
                             <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
                                     style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{enrollID?.course_fee}}
                                     USD</span></td>
@@ -171,7 +174,8 @@
                                     <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
                                         <strong>{{enrollID?.rating}}</strong><i class="fa fa-star"></i> <i
                                             class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                                            class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

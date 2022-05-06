@@ -14,6 +14,7 @@ import { EventEmitterService } from 'src/app/services/event-emitter.service';
 export class ThankYouTeacherComponent implements OnInit {
   url: string;
   mainpageLod: boolean = false;
+  updateNewDataImage: any;
 
   user: string;
   sidebarData: any;
@@ -57,6 +58,12 @@ export class ThankYouTeacherComponent implements OnInit {
     this.submitEnroll();
     this.user = sessionStorage.getItem('username');
     this.courseName = localStorage.getItem('course_name');
+    this.updateNewDataImage = localStorage.getItem('image');
+    if(this.updateNewDataImage == null)
+    {
+      this.updateNewDataImage = false;
+    }
+
     this.studentSideBar();
   }
   logout() {

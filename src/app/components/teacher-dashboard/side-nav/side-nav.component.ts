@@ -41,7 +41,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     debugger;
-    console.log('Images', this.image);
+    ;
     this.username();
     this.walletData();
     this.profile();
@@ -68,6 +68,13 @@ export class SideNavComponent implements OnInit {
   walletData() {
     this.wallet = sessionStorage.getItem('wallet');
   }
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   profile() {
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -79,6 +86,7 @@ export class SideNavComponent implements OnInit {
       if (this.updateNewDataImage == null) {
         this.updateNewDataImage = '';
       }
+      console.log('updateNewDataImage',this.updateNewDataImage.length)
     });
   }
 }

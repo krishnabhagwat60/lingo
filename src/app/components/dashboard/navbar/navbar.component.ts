@@ -62,7 +62,9 @@ export class NavbarComponent implements OnInit {
       }
     });
     setInterval(() => {
-      console.log(this.updateNewDataImage.substring(0,23))
+      if (this.updateNewDataImage) {
+        console.log(this.updateNewDataImage.substring(0, 23))
+      }
     }, 5000);
   }
   logout() {

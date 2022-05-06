@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
   email: string;
 
   constructor(private service: ServiceService, private router: Router,
-  private authService: SocialAuthService, private sanitizer: DomSanitizer) {
-  this.show = false;
+    private authService: SocialAuthService, private sanitizer: DomSanitizer) {
+    this.show = false;
   }
 
   ngOnInit(): void {
@@ -107,28 +107,36 @@ export class LoginComponent implements OnInit {
         this.ErrMsg = ''
         this.errMsg = 'Login Successfully'
       }
-      sessionStorage.setItem('token', res.current_user.csrf_token);
-      sessionStorage.setItem('username', res.current_user.name);
-      sessionStorage.setItem('uid', res.current_user.uid);
-      sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
-      sessionStorage.setItem('wallet', res.current_user.wallet);
-      localStorage.setItem('image',res.current_user.image_link)
-      localStorage.setItem('images',res.current_user.image_link);
-      console.log('response',res)
+      if (res?.current_user) {
+
+        sessionStorage.setItem('token', res.current_user.csrf_token);
+        sessionStorage.setItem('username', res.current_user.name);
+        sessionStorage.setItem('uid', res.current_user.uid);
+        sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
+        sessionStorage.setItem('wallet', res.current_user.wallet);
+        localStorage.setItem('image', res.current_user.image_link)
+        localStorage.setItem('images', res.current_user.image_link);
+      }
+
       setTimeout(() => {
-        debugger
-        if (res.current_user.subscription) {
-          this.router.navigate(['/teacherDashboard/teachersDashboard']);
+        if (res.current_user.roles.includes("teacher")) {
+          if (res.current_user.subscription) {
+            this.router.navigate(['teacherDashboard/teachersDashboard']);
+            return;
+          }
+          if (!res.current_user.subscription) {
+            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+            return;
+
+          }
+          if (res.current_user.dashboard === 'dashboard') {
+            this.router.navigate(['teacherDashboard/teachersDashboard']);
+          } if (res.current_user.dashboard === 'create dashboard') {
+            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+          }
         }
-        if (!res.current_user.subscription ) {
-          this.router.navigate(['teacherDashboard/creatCourseDashboard']);
-        }
-        if (res.current_user.dashboard === 'dashboard') {
-          this.router.navigate(['teacherDashboard/teachersDashboard']);
-        } if (res.current_user.dashboard === 'create dashboard') {
-          this.router.navigate(['teacherDashboard/creatCourseDashboard']);
-        }
-        if (res.current_user.roles[1] === 'student') {
+
+        if (res.current_user.roles.includes('student')) {
           sessionStorage.setItem('student', res.current_user.roles[1])
           this.router.navigate(['dashboard/studentDashboard']);
         }
@@ -168,8 +176,8 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
       sessionStorage.setItem('username', res.current_user.name);
       sessionStorage.setItem('uid', res.current_user.uid);
-      localStorage.setItem('image',res.current_user.image_link)
-      localStorage.setItem('images',res.current_user.image_link)
+      localStorage.setItem('image', res.current_user.image_link)
+      localStorage.setItem('images', res.current_user.image_link)
 
     })
   }
@@ -183,12 +191,13 @@ export class LoginComponent implements OnInit {
         this.socialLogin();
       }, 100);
     },
-     err => {
-      if(err.error == 'idpiframe_initialization_failed'){
-        $('#invitesuccess').modal('show'); 
+      err => {
+        if (err.error == 'idpiframe_initialization_failed') {
+          $('#invitesuccess').modal('show');
+        }
       }
-    }
-    );}
+    );
+  }
   // signInWithFB(): void {
   //    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   //   this.authService.authState.subscribe(user => {
@@ -198,13 +207,13 @@ export class LoginComponent implements OnInit {
   //         this.socialLogin();
   //      }
   //   })
-    // this.authService.authState.subscribe((user) => {
-    //   if(user != null){
-    //     this.userName  = user.name
-    //     this.email = user.email
-    //      this.socialLogin();
-    //   }
-    //       });
+  // this.authService.authState.subscribe((user) => {
+  //   if(user != null){
+  //     this.userName  = user.name
+  //     this.email = user.email
+  //      this.socialLogin();
+  //   }
+  //       });
   // }
 
   signInWithFB(): void {

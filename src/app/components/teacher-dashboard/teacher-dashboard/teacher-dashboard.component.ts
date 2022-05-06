@@ -75,6 +75,7 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    debugger
     this.getTeacherCourse(1, 0);
     this.AccordionInitialForms(0);
     this.username();
