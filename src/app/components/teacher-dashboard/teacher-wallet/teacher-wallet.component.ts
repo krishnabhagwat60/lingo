@@ -6,7 +6,7 @@ import { ServiceService } from '../../service.service';
 @Component({
   selector: 'app-teacher-wallet',
   templateUrl: './teacher-wallet.component.html',
-  styleUrls: ['./teacher-wallet.component.css']
+  styleUrls: ['./teacher-wallet.component.css'],
 })
 export class TeacherWalletComponent implements OnInit {
   walletData: any;
@@ -28,7 +28,7 @@ export class TeacherWalletComponent implements OnInit {
   coursesName: void;
   title: void;
 
-  constructor(private service: ServiceService, private router: Router) { }
+  constructor(private service: ServiceService, private router: Router) {}
 
   ngOnInit(): void {
     this.getWallet();
@@ -42,58 +42,62 @@ export class TeacherWalletComponent implements OnInit {
   }
   getChildData(child) {
     sessionStorage.setItem('subId', child);
-    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.router.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
   getSubTitle(parent) {
     const data = {
-      "title_id": parent,
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('submenu-listing', data, 1).subscribe(res => {
-      this.subTitle = res.body.result
-    })
+      title_id: parent,
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('submenu-listing', data, 1).subscribe((res) => {
+      this.subTitle = res.body.result;
+    });
   }
 
   showshubmenu() {
-    this.ismenuShow = !this.ismenuShow
+    this.ismenuShow = !this.ismenuShow;
   }
 
   showsubmenu() {
-    this.ismenu = !this.ismenu
+    this.ismenu = !this.ismenu;
   }
 
   showsub() {
-    this.ismenusub = !this.ismenusub
+    this.ismenusub = !this.ismenusub;
   }
 
   dashboardShow1() {
-    this.dashboardShow = !this.dashboardShow
+    this.dashboardShow = !this.dashboardShow;
   }
 
   profileShow1() {
-    this.profileShow = !this.profileShow
+    this.profileShow = !this.profileShow;
   }
   // sidebar api
   sidebar() {
     const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('teacher_sidebar', data, 1).subscribe((res) => {
       this.sidebarData = res.body.result;
-    })
+    });
   }
   // view page
   view(id) {
-    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { viewpage: id } });
+    this.router.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { viewpage: id },
+    });
   }
   // get wallet api
   getWallet() {
     const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('wallet', data, 1).subscribe(res => {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('wallet', data, 1).subscribe((res) => {
       this.walletData = res.body.result;
-    })
+    });
   }
 
   subscription(planid) {
@@ -111,32 +115,31 @@ export class TeacherWalletComponent implements OnInit {
   }
 
   addAmountForm = new FormGroup({
-    amount: new FormControl('',)
-  })
+    amount: new FormControl(''),
+  });
   // add amount api
   addAmount() {
     const data = {
-      amount: this.addAmountForm.value.amount
-    }
-    this.service.post('amount-add', data, 1).subscribe(res => {
+      amount: this.addAmountForm.value.amount,
+    };
+    this.service.post('amount-add', data, 1).subscribe((res) => {
       this.getWallet();
-    })
+    });
   }
 
   addWallet = new FormGroup({
-    withdraw: new FormControl('',)
-  })
+    withdraw: new FormControl(''),
+  });
   // withdraw money
   withdrawAmount() {
     const data = {
-      amount: this.addWallet.value.withdraw
-    }
-    this.service.post('amount-withdraw', data, 1).subscribe(res => {
+      amount: this.addWallet.value.withdraw,
+    };
+    this.service.post('amount-withdraw', data, 1).subscribe((res) => {
       if (res.body.result === 'Reedeem Balance Is Low') {
-        this.errMsg = 'Redeem Balance Is Low'
+        this.errMsg = 'Redeem Balance Is Low';
       }
-
-    })
+    });
   }
 
   // history transaction api
@@ -144,44 +147,45 @@ export class TeacherWalletComponent implements OnInit {
     this.current_page = Number(page);
     const data = {
       page: page,
-      user_id: sessionStorage.getItem('uid')
-    }
+      user_id: sessionStorage.getItem('uid'),
+    };
     this.buttonColor = i;
-    this.service.post('transaction', data, 1).subscribe(res => {
+    this.service.post('transaction', data, 1).subscribe((res) => {
       this.historyData = res.body.result;
       if (res.body.total === 1 || res.body.total === 0) {
         this.buttonShow = false;
       }
       if (res.body.result.message == 'No Transaction Yet.') {
-        this.errMsg = 'No Transaction Yet.'
+        this.errMsg = 'No Transaction Yet.';
       }
       this.totalPages = [];
       for (let i = 0; i < res.body.total; i++) {
         this.totalPages.push(i + 1);
       }
-    })
+    });
   }
 
   // pagination
   direction(direction) {
     if (direction == 0) {
       if (this.current_page > 1) {
-        this.current_page = this.current_page - 1
+        this.current_page = this.current_page - 1;
         this.getHistory(this.current_page, 0);
       }
-
     } else {
       if (this.current_page < this.totalPages.length) {
-        this.current_page = this.current_page + 1
+        this.current_page = this.current_page + 1;
         this.getHistory(this.current_page, 0);
       }
     }
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
-    this.coursesName = sessionStorage.setItem('course_name', name)
-    sessionStorage.setItem('course-id', id)
-    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+    this.coursesName = sessionStorage.setItem('course_name', name);
+    sessionStorage.setItem('course-id', id);
+    this.router.navigate(['/teacherDashboard/editCourse'], {
+      queryParams: { id: id },
+    });
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -194,35 +198,26 @@ export class TeacherWalletComponent implements OnInit {
     this.currentCardIndex = activeIndex;
   }
   prev() {
-    console.log('prev')
     this.currentCardIndex = this.currentCardIndex--;
     if (this.currentCardIndex != 0) {
-
       this.currentCardIndex = this.currentCardIndex - 1;
-    }
-    else {
+    } else {
       this.currentCardIndex = 2;
     }
-    console.log(this.currentCardIndex)
-
   }
   next() {
-    console.log('next')
     if (this.currentCardIndex >= 0 && this.currentCardIndex < 2) {
-
       this.currentCardIndex = this.currentCardIndex + 1;
-    }
-    else {
+    } else {
       this.currentCardIndex = 0;
     }
-    console.log(this.currentCardIndex)
   }
   toggleSubTitle(event, index, data, title) {
-    this.title = sessionStorage.setItem('title', title)
+    this.title = sessionStorage.setItem('title', title);
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
+        const id = title[j].titleid;
         if (data === id) {
           const element = event.target;
           element.classList.toggle('active');
@@ -237,6 +232,8 @@ export class TeacherWalletComponent implements OnInit {
   }
   getChildSData(child) {
     sessionStorage.setItem('subId', child);
-    this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.router.navigate(['/multimedia/contentStyle'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
 }
