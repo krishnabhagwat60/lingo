@@ -5,24 +5,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    }
-    
-    
-    
-    .display-center {
+}
+
+.display-center {
     display: flex;
     align-items: center;
-    }
-    
-    
-    
-    .prof-btns {
+}
+
+.prof-btns {
     margin-top: 20px;
-    }
-    
-    
-    
-    .prof-btns .user-cancel {
+}
+
+.prof-btns .user-cancel {
     margin-right: 10px;
     width: 78px;
     height: 40px;
@@ -36,18 +30,18 @@
     letter-spacing: 1px;
     border: 2px solid #008ad2;
     cursor: pointer;
-    }
-    
-    
-    
-    .prof-btns .user-cancel:hover {
+}
+
+.main {
+    height: calc(500px + 314px) !important;
+}
+
+.prof-btns .user-cancel:hover {
     color: #fff;
     background-color: #008ad2;
-    }
-    
-    
-    
-    .prof-btns .user-save {
+}
+
+.prof-btns .user-save {
     width: 78px;
     height: 40px;
     background-color: #008ad2;
@@ -60,11 +54,9 @@
     letter-spacing: 1px;
     border: 2px solid #008ad2;
     cursor: pointer;
-    }
-    
-    
-    
-    .prof-btns .user-save:hover {
+}
+
+.prof-btns .user-save:hover {
     color: #008ad2;
     background-color: #fff;
-    }
+}

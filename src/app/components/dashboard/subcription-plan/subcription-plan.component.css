@@ -1,9 +1,15 @@
-.button-actives{
-    background-color:#136980;
+.button-actives {
+    background-color: #136980;
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
 }
-.active-plan-data tr th{
+
+.active-plan-data tr th {
     width: 40% !important;
+}
+
+.main {
+    height: calc(500px + 900px) !important;
 }

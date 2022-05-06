@@ -1,8 +1,13 @@
-.button-actives{
-    background-color:#136980;
+.button-actives {
+    background-color: #136980;
     /* color: white; */
 }
-.button-standard{
+
+.button-standard {
     background-color: gray;
     /* color: #fff;  */
+}
+
+.main {
+    height: calc(500px + 314px) !important;
 }

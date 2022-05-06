@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>
-    <div class="main main-height">
+    <div class="main">
         <div class="dashboard" style="padding: 10px;">
             <div class="excercises-view">
                 <div class="excercises-left-data"></div>
@@ -208,7 +208,8 @@
                     </ul>
                 </div>
             </div>
-            <button type="button" id="back-btn" (click)="gotoBack()">Back</button>
+
+            <button type="button" class="student-view-btn back" id="back-btn" (click)="gotoBack()">Back</button>
             <!-- </div> -->
             <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoder">
                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
