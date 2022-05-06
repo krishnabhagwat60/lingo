@@ -8,3 +8,6 @@
 }
 
 
+.main{
+    height: calc(500px + 314px) !important;
+}
