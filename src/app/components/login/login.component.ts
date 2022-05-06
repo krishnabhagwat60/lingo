@@ -127,7 +127,6 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('wallet', res.current_user.wallet);
         localStorage.setItem('image', res.current_user.image_link);
         localStorage.setItem('images', res.current_user.image_link);
-        console.log('dashboard', res.current_user.dashboard);
         setTimeout(() => {
           if (
             res.current_user.subscription &&
