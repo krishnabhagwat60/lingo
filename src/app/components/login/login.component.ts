@@ -116,6 +116,13 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('images',res.current_user.image_link);
       console.log('response',res)
       setTimeout(() => {
+        debugger
+        if (res.current_user.subscription) {
+          this.router.navigate(['/teacherDashboard/teachersDashboard']);
+        }
+        if (!res.current_user.subscription ) {
+          this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+        }
         if (res.current_user.dashboard === 'dashboard') {
           this.router.navigate(['teacherDashboard/teachersDashboard']);
         } if (res.current_user.dashboard === 'create dashboard') {
