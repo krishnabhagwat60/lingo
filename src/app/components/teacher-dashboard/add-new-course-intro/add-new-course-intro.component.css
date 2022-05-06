@@ -402,4 +402,6 @@
     padding: 0 7px;
     text-transform: lowercase;
     font-size: 14px;
+}::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: black
 }

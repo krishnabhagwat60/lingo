@@ -14,18 +14,37 @@
         <div class="col-md-2" style="padding: 0;">
             <ul class="user-area">
                 <li class="markus">
-                    <a href="">{{user | titlecase}}</a>
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16" style="fill:#000000; font-weight: bold;">
-                   <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/> </svg> -->
-                    <!-- <p><span>{{wallet}} cent</span></p>                               -->
+                    <a class="context-menu">{{user | titlecase}}</a>
                 </li>
+                <!-- <li>
+                    <a  class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets/images/student-icon.png"></span>
+                        <span *ngIf="updateNewDataImage" class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span>
+                    </a>
+                </li> -->
+
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar" [src]="images">
+                    <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                <li *ngIf="!updateNewDataImage">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" src="assets\images\teacher-icon.png">
                     </a>
                 </li>
+                <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
+                <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" [src]="updateNewDataImage">
+                    </a>
+                </li>
+                <!-- <span  class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span> -->
+                </a>
+                </li>
                 <li>
-                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
                     </a>
                 </li>

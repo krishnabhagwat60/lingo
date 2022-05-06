@@ -126,7 +126,7 @@
                                 <p for="language">LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown multiselect-dropdown">
                                     <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" id="selectedItems" name="selectedItems" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemStudentDeSelect($event)"
                                         [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                     </ng-multiselect-dropdown>
@@ -142,7 +142,7 @@
                                 <p for="language">TEACHING LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown multiselect-dropdown">
                                     <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" id="teachingLanguage" name="teachingLanguage" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                                         [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>

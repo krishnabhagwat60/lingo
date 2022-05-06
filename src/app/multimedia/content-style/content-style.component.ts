@@ -377,6 +377,8 @@ export class ContentStyleComponent implements OnInit {
   backBtn = false;
   backBtns: boolean;
   audioData: any;
+  updateNewDataImage: any;
+
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
@@ -432,8 +434,12 @@ export class ContentStyleComponent implements OnInit {
     this.AccordionInitialForms();
     this.setTitleName();
     this.affiliationList();
-    
-    
+    this.updateNewDataImage = localStorage.getItem('image');
+    if(this.updateNewDataImage == null)
+    {
+      this.updateNewDataImage = false;
+    }
+
     // this.getImageBox();
     // this.getAudioBox();
     if (sessionStorage.getItem('course_id')) {
@@ -658,7 +664,7 @@ export class ContentStyleComponent implements OnInit {
   // get multimedia data api
 
   affiliationList() {
-    debugger
+    debugger;
     this.titless = sessionStorage.getItem('title');
     this.subtitless = sessionStorage.getItem('subtitle');
     this.courseNameData = sessionStorage.getItem('course_name');
@@ -667,18 +673,20 @@ export class ContentStyleComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
-      debugger
+      debugger;
       this.fillTheBlanksData = res.body.result;
       if (res.body.result) {
         this.fillTheBlank = true;
       }
-      this.fillTheBlanksData.forEach((element, index) => {
-        if (element.type === 'fill_in_the_blanks') {
-          if (element.question.includes('*')) {
-            element.question = this.findStarWord(element.question, index);
+      if (this.fillBlanksClick != undefined && this.fillBlanksClick != null) {
+        this.fillTheBlanksData.forEach((element, index) => {
+          if (element.type === 'fill_in_the_blanks') {
+            if (element.question.includes('*')) {
+              element.question = this.findStarWord(element.question, index);
+            }
           }
-        }
-      });
+        });
+      }
     });
   }
 
@@ -694,14 +702,15 @@ export class ContentStyleComponent implements OnInit {
       if (res.body.result) {
         this.fillTheBlank = true;
       }
-
-      this.fillTheBlanksData.forEach((element, index) => {
-        if (element.type === 'fill_in_the_blanks') {
-          if (element.question.includes('*')) {
-            element.question = this.findStarWord(element.question, index);
+      if (this.fillBlanksClick != undefined && this.fillBlanksClick != null) {
+        this.fillTheBlanksData.forEach((element, index) => {
+          if (element.type === 'fill_in_the_blanks') {
+            if (element.question.includes('*')) {
+              element.question = this.findStarWord(element.question, index);
+            }
           }
-        }
-      });
+        });
+      }
     });
   }
 
@@ -821,7 +830,7 @@ export class ContentStyleComponent implements OnInit {
   // subtitle api
   getSubTitle(parent) {
     // this.getTitles(parent);
-    sessionStorage.setItem('selectedsubTitle',parent);
+    sessionStorage.setItem('selectedsubTitle', parent);
     this.topButton = true;
     const data = {
       title_id: parent,
@@ -829,9 +838,11 @@ export class ContentStyleComponent implements OnInit {
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
       this.subTitle = res.body.result;
-      
+
       if (sessionStorage.getItem('subId')) {
-        this.titleForm.controls.subTitle.setValue(sessionStorage.getItem('subId'));
+        this.titleForm.controls.subTitle.setValue(
+          sessionStorage.getItem('subId')
+        );
       }
       // sessionStorage.setItem('title',data)
       // this.titless = sessionStorage.getItem('title')
@@ -848,22 +859,20 @@ export class ContentStyleComponent implements OnInit {
     });
   }
   getChildData(child) {
-    
     this.titles = false;
     sessionStorage.setItem('subId', child);
     this.subCatSelected = true;
     this.affiliationList();
   }
   ngOnDestroy(): void {
-    if(sessionStorage.getItem("studentView")==null)
-    {
+    if (sessionStorage.getItem('studentView') == null) {
       sessionStorage.removeItem('selectedsubTitle');
       sessionStorage.removeItem('subId');
     }
     //sessionStorage.clear();
   }
   studentView() {
-    sessionStorage.setItem("studentView","true");
+    sessionStorage.setItem('studentView', 'true');
     this.router.navigate(['/teacherDashboard/student-view'], {
       queryParams: { id: sessionStorage.getItem('subId') },
     });
@@ -891,13 +900,12 @@ export class ContentStyleComponent implements OnInit {
   });
   // upload other link
   otherLinkSubmit() {
-   
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );
     this.sendSrc = this.otherLinkForm.value.otherLinkText;
     this.otherlink = true;
-    this.otherlinkId =0;
+    this.otherlinkId = 0;
     this.showMsg = 'Uploaded Successfully';
     this.uploadData();
   }
@@ -1583,10 +1591,11 @@ export class ContentStyleComponent implements OnInit {
     // this.titleForm.controls.title.setValue(localStorage.getItem('courseName'));
     // this.titleForm.controls.subTitle.setValue(localStorage.getItem('subtitle'));
     if (sessionStorage.getItem('selectedsubTitle')) {
-      this.titleForm.controls.title.setValue(sessionStorage.getItem('selectedsubTitle'));
+      this.titleForm.controls.title.setValue(
+        sessionStorage.getItem('selectedsubTitle')
+      );
       this.getSubTitle(sessionStorage.getItem('selectedsubTitle'));
     }
-   
   }
   // open pdf in new tab
   pdfDatas(e) {
@@ -1831,7 +1840,7 @@ export class ContentStyleComponent implements OnInit {
       name: this.imageData.image_name,
     };
     this.service.post('edit-course-multimedia', data, 1).subscribe((res) => {
-      debugger
+      debugger;
       this.closePicture.nativeElement.click();
       this.affiliationList();
     });
@@ -1852,12 +1861,12 @@ export class ContentStyleComponent implements OnInit {
   }
   // update pdf
   updateOtherlink() {
- debugger
+    debugger;
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );
     var newurl = btoa(this.otherLinkForm.value.mediaEmbedding);
-    
+
     var url = btoa(this.otherEditData.other_link_url);
     if (!url.startsWith('http')) {
       if (url.includes('http')) {
@@ -1881,21 +1890,19 @@ export class ContentStyleComponent implements OnInit {
 
       name: 'iframe youtube video',
     };
-    if(this.safeSrc['changingThisBreaksApplicationSecurity'] !=null)
-    {
+    if (this.safeSrc['changingThisBreaksApplicationSecurity'] != null) {
       if (this.safeSrc['changingThisBreaksApplicationSecurity'].length > 100) {
         data.data_value =
           data.data_value['changingThisBreaksApplicationSecurity'];
       }
-    }
-    else{
+    } else {
       delete data.data_value;
     }
-    
+
     this.service.post('edit-course-multimedia', data, 1).subscribe((res) => {
       this.closeOtherLink.nativeElement.click();
-      this.otherlinkId =0;
-      this.otherLinkButton =false;
+      this.otherlinkId = 0;
+      this.otherLinkButton = false;
       this.affiliationList();
     });
   }
@@ -1914,9 +1921,11 @@ export class ContentStyleComponent implements OnInit {
   // go to back
   gotoBack() {
     console.log(' this.subIds', this.subIds);
-    console.log('this.route.queryParams',this.route.queryParams)
+    console.log('this.route.queryParams', this.route.queryParams);
     //this._location.back();
-    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: sessionStorage.getItem('course_id') } });
+    this.router.navigate(['/teacherDashboard/editCourse'], {
+      queryParams: { id: sessionStorage.getItem('course_id') },
+    });
   }
 
   getSubTitles(data) {

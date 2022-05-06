@@ -5,13 +5,16 @@ import { ServiceService } from '../service.service';
 import * as $ from 'jquery';
 declare var $: any;
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { SocialAuthService } from 'angularx-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   @ViewChild('loginFail') loginFail;
@@ -32,35 +35,38 @@ export class LoginComponent implements OnInit {
   userName: string;
   email: string;
 
-  constructor(private service: ServiceService, private router: Router,
-    private authService: SocialAuthService, private sanitizer: DomSanitizer) {
+  constructor(
+    private service: ServiceService,
+    private router: Router,
+    private authService: SocialAuthService,
+    private sanitizer: DomSanitizer
+  ) {
     this.show = false;
   }
 
   ngOnInit(): void {
-    $(".toggle-password").click(function () {
-
-      $(this).toggleClass("fa-eye fa-eye-slash");
-      var input = $($(this).attr("toggle"));
-      if (input.attr("type") == "password") {
-        input.attr("type", "text");
+    $('.toggle-password').click(function () {
+      $(this).toggleClass('fa-eye fa-eye-slash');
+      var input = $($(this).attr('toggle'));
+      if (input.attr('type') == 'password') {
+        input.attr('type', 'text');
       } else {
-        input.attr("type", "password");
+        input.attr('type', 'password');
       }
-      $
+      $;
     });
     this.setPassword();
     if (sessionStorage.getItem('loginmsg')) {
-      this.msg = 'Thank you for joining Lingolista'
+      this.msg = 'Thank you for joining Lingolista';
       setTimeout(() => {
-        this.msg = ''
-        sessionStorage.removeItem('loginmsg')
+        this.msg = '';
+        sessionStorage.removeItem('loginmsg');
       }, 100000);
     }
     this.authService.authState.subscribe((user) => {
       if (user != null) {
-        this.userName = user.name
-        this.email = user.email
+        this.userName = user.name;
+        this.email = user.email;
         this.socialLogin();
       }
     });
@@ -82,11 +88,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/[!^\w\s]$/)]),
-    pwd: new FormControl('', [Validators.required, Validators.minLength(3)])
-  })
+    email: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(25),
+      Validators.pattern(/[!^\w\s]$/),
+    ]),
+    pwd: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  });
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   login() {
     this.submitted = true;
@@ -96,102 +108,104 @@ export class LoginComponent implements OnInit {
     this.mainpageLoder = true;
     const data = {
       name: this.loginForm.value.email,
-      pass: this.loginForm.value.pwd
-    }
-    this.service.post('user/login', data, 0).subscribe(res => {
+      pass: this.loginForm.value.pwd,
+    };
+    this.service.post('user/login', data, 0).subscribe((res) => {
       this.mainpageLoder = false;
       if (res.mesaage == 'Username/Password is Incorrect') {
-        this.ErrMsg = 'Username/Password is Incorrect'
+        this.ErrMsg = 'Username/Password is Incorrect';
       }
       if (res.message == 'Login Successfully') {
-        this.ErrMsg = ''
-        this.errMsg = 'Login Successfully'
+        this.ErrMsg = '';
+        this.errMsg = 'Login Successfully';
       }
-      if (res?.current_user) {
-
+      if (res.current_user) {
         sessionStorage.setItem('token', res.current_user.csrf_token);
         sessionStorage.setItem('username', res.current_user.name);
         sessionStorage.setItem('uid', res.current_user.uid);
         sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
         sessionStorage.setItem('wallet', res.current_user.wallet);
-        localStorage.setItem('image', res.current_user.image_link)
+        localStorage.setItem('image', res.current_user.image_link);
         localStorage.setItem('images', res.current_user.image_link);
+        console.log('dashboard', res.current_user.dashboard);
+        setTimeout(() => {
+          if (
+            res.current_user.subscription &&
+            res.current_user.dashboard === 'dashboard'
+          ) {
+            this.router.navigate(['/teacherDashboard/teachersDashboard']);
+          } else if (
+            res.current_user.subscription &&
+            res.current_user.dashboard === 'create dashboard'
+          ) {
+            this.router.navigate(['/teacherDashboard/plansAndPricing']);
+          } else if (
+            !res.current_user.subscription &&
+            res.current_user.dashboard === 'dashboard'
+          ) {
+            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+          } else {
+            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+          }
+          if (res.current_user.roles[1] === 'student') {
+            sessionStorage.setItem('student', res.current_user.roles[1]);
+            this.router.navigate(['dashboard/studentDashboard']);
+          }
+        }, 100);
       }
-
-      setTimeout(() => {
-        if (res.current_user.roles.includes("teacher")) {
-          if (res.current_user.subscription) {
-            this.router.navigate(['teacherDashboard/teachersDashboard']);
-            return;
-          }
-          if (!res.current_user.subscription) {
-            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
-            return;
-
-          }
-          if (res.current_user.dashboard === 'dashboard') {
-            this.router.navigate(['teacherDashboard/teachersDashboard']);
-          } if (res.current_user.dashboard === 'create dashboard') {
-            this.router.navigate(['teacherDashboard/creatCourseDashboard']);
-          }
-        }
-
-        if (res.current_user.roles.includes('student')) {
-          sessionStorage.setItem('student', res.current_user.roles[1])
-          this.router.navigate(['dashboard/studentDashboard']);
-        }
-      }, 100);
-    })
+    });
   }
   // get teacher course api
   getTeacherCourse(page = 1) {
     const data = {
-      "id": "1",
-      "page": 1
-    }
-    this.service.post('get-teacher-course', data, 1).subscribe(res => {
+      id: '1',
+      page: 1,
+    };
+    this.service.post('get-teacher-course', data, 1).subscribe((res) => {
       this.getCourse = res.body.data;
       // console.log(this.getCourse);
-    })
+    });
   }
 
   // social login
   socialLogin() {
     const data = {
-      "username": this.userName,
-      "email": this.email,
-      "role": sessionStorage.getItem('userRoles')
-    }
-    this.service.post('social-signup', data, 0).subscribe(res => {
-      if (res.current_user.dashboard === 'dashboard') {
-        this.router.navigate(['teacherDashboard/teachersDashboard']);
-      } if (res.current_user.dashboard === 'create dashboard') {
-        this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+      username: this.userName,
+      email: this.email,
+      role: sessionStorage.getItem('userRoles'),
+    };
+    this.service.post('social-signup', data, 0).subscribe((res) => {
+      if (res.current_user) {
+        if (res.current_user.dashboard === 'dashboard') {
+          this.router.navigate(['teacherDashboard/teachersDashboard']);
+        }
+        if (res.current_user.dashboard === 'create dashboard') {
+          this.router.navigate(['teacherDashboard/creatCourseDashboard']);
+        }
+        if (res.current_user.roles[1] === 'student') {
+          sessionStorage.setItem('student', res.current_user.roles[1]);
+          this.router.navigate(['dashboard/studentDashboard']);
+        }
+        sessionStorage.setItem('token', res.current_user.csrf_token);
+        sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
+        sessionStorage.setItem('username', res.current_user.name);
+        sessionStorage.setItem('uid', res.current_user.uid);
+        localStorage.setItem('image', res.current_user.image_link);
+        localStorage.setItem('images', res.current_user.image_link);
       }
-      if (res.current_user.roles[1] === 'student') {
-        sessionStorage.setItem('student', res.current_user.roles[1])
-        this.router.navigate(['dashboard/studentDashboard']);
-      }
-      sessionStorage.setItem('token', res.current_user.csrf_token);
-      sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
-      sessionStorage.setItem('username', res.current_user.name);
-      sessionStorage.setItem('uid', res.current_user.uid);
-      localStorage.setItem('image', res.current_user.image_link)
-      localStorage.setItem('images', res.current_user.image_link)
-
-    })
+    });
   }
   signInWithGoogle(): void {
     // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(socialusers => {
-      this.role = sessionStorage.getItem('userRoles')
-      this.userName = socialusers.email,
-        this.email = socialusers.email
-      setTimeout(() => {
-        this.socialLogin();
-      }, 100);
-    },
-      err => {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+      (socialusers) => {
+        this.role = sessionStorage.getItem('userRoles');
+        (this.userName = socialusers.email), (this.email = socialusers.email);
+        setTimeout(() => {
+          this.socialLogin();
+        }, 100);
+      },
+      (err) => {
         if (err.error == 'idpiframe_initialization_failed') {
           $('#invitesuccess').modal('show');
         }
@@ -218,17 +232,21 @@ export class LoginComponent implements OnInit {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    window['FB'].login((response) => {
-      if (response.authResponse) {
-
-        window['FB'].api('/me', {
-          fields: 'last_name, first_name, email'
-        }, (userInfo) => {
-        });
-
-      } else {
-      }
-    }, { scope: 'email' });
+    window['FB'].login(
+      (response) => {
+        if (response.authResponse) {
+          window['FB'].api(
+            '/me',
+            {
+              fields: 'last_name, first_name, email',
+            },
+            (userInfo) => {}
+          );
+        } else {
+        }
+      },
+      { scope: 'email' }
+    );
   }
   // set password
   setPassword() {
