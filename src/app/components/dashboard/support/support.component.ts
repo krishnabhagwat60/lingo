@@ -63,6 +63,8 @@ export class SupportComponent implements OnInit {
   }
   // logout
   logout(){
+    sessionStorage.clear();
+    localStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('question_title');
     sessionStorage.removeItem('radio_title');

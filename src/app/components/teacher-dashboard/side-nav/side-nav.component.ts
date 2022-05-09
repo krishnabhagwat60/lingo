@@ -48,7 +48,6 @@ export class SideNavComponent implements OnInit {
   }
   logout() {
     localStorage.clear();
-
     sessionStorage.clear();
     this.frontServices.vm.sidebarData = null;
 

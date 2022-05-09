@@ -73,6 +73,7 @@ export class ThankYouComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    localStorage.clear();
     this.signOutFunc();
     this.router.navigate(['/login']);
     // this.signOut();

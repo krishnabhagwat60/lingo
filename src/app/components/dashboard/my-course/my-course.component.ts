@@ -52,6 +52,7 @@ export class MyCourseComponent implements OnInit {
   }
   logout(){
 sessionStorage.clear();
+localStorage.clear();
 this.frontServices.vm.sidebarData =null;
 
     this.signOut();

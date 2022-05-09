@@ -485,6 +485,7 @@ export class ContentStyleComponent implements OnInit {
 
   logout() {
     sessionStorage.clear();
+    localStorage.clear();
 
     this.frontServices.vm.sidebarData = null;
     this.router.navigate(['/login']);
