@@ -85,7 +85,7 @@ export class AcceptCourseComponent implements OnInit {
     }
     this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
+     
     })
   }
 

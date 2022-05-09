@@ -48,8 +48,7 @@ export class ThankYouComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.invokeMenuList.subscribe(
         () => {
-          debugger;
-
+       
           this.studentSideBar();
         }
       );
@@ -85,7 +84,6 @@ export class ThankYouComponent implements OnInit {
     this.authService.signOut();
   }
   studentSideBar() {
-    console.log(' thank you view', this.frontServices.vm);
 
     if (
       this.frontServices == null ||

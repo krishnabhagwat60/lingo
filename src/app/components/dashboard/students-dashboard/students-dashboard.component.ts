@@ -167,7 +167,6 @@ export class StudentsDashboardComponent implements OnInit {
     this.buttonColor = i;
     this.service.post('get-course', data, 1).subscribe((res) => {
       this.courseDetail = res.body.data;
-      console.log(this.courseDetail);
       this.mainpageLoder = false;
       if (i == 1) {
         this.questionButton = true;
@@ -325,7 +324,7 @@ export class StudentsDashboardComponent implements OnInit {
   // enroll api
 
   enrollId(data, i) {
-    debugger;
+  
     this.msgShow = '';
     this.enrollID = data;
     this.enroll = data.id;

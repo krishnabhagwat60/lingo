@@ -41,7 +41,6 @@ export class MyCourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
     this.getCourseData(1, 0);
     // this.username();
   }
@@ -101,7 +100,7 @@ this.frontServices.vm.sidebarData =null;
       for (let i = 0; i < res.body.total; i++) {
         this.totalPages.push(i + 1);
       }
-      // console.log(this.courseData);
+     
     })
   }
   // pagination

@@ -65,7 +65,6 @@ export class CreatCourseDashboardComponent implements OnInit {
     this.currentCardIndex = activeIndex;
   }
   prev() {
-    console.log('prev')
     this.currentCardIndex = this.currentCardIndex--;
     if (this.currentCardIndex != 0) {
 
@@ -74,11 +73,9 @@ export class CreatCourseDashboardComponent implements OnInit {
     else {
       this.currentCardIndex =2;
     }
-    console.log(this.currentCardIndex)
 
   }
   next() {
-    console.log('next')
     if (this.currentCardIndex >= 0 && this.currentCardIndex < 2) {
 
       this.currentCardIndex = this.currentCardIndex + 1;
@@ -86,7 +83,6 @@ export class CreatCourseDashboardComponent implements OnInit {
     else {
       this.currentCardIndex = 0;
     }
-    console.log(this.currentCardIndex)
   }
   toggleSubTitle(event, index, data) {
     for (let i = 0; i < this.sidebarData.length; i++) {
@@ -110,23 +106,20 @@ export class CreatCourseDashboardComponent implements OnInit {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }
   subscription(planid) {
-    debugger
+   
     const data = {
       plan_id: planid,
       current_user_id: sessionStorage.getItem('uid')
     }
-    debugger
+  
     this.service.post('Applied-Subscription-plan', data, 1).subscribe(res => {
       if (res.body.user_login_status == 1 && res.body.result == 'success')
-        debugger
+     
       {
         this.router.navigate(['/teacherDashboard/thank-you-teacher']);
       }
     });
 
   }
-  // btnClick(){
-  //   debugger
-  //   this.router.navigateByUrl('/teacherDashboard/plansAndPricing');
-  // };
+  
 }

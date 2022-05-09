@@ -53,7 +53,6 @@ export class TeacherCourseDetailComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -94,7 +93,6 @@ export class TeacherCourseDetailComponent implements OnInit {
     }
     this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
 
@@ -153,13 +151,11 @@ export class TeacherCourseDetailComponent implements OnInit {
         this.fqButton = true
       }
 
-      // console.log(this.courseData);
     })
   }
  //enroll api
  enrollId(data) {
   this.enrollID = data
-  // console.log(this.enrollID);
   this.enroll = data.id
 }
 submitEnroll() {

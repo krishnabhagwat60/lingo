@@ -46,7 +46,6 @@ export class TeacherSupportComponent implements OnInit {
     }
     this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   getSubTitle(parent) {
@@ -55,7 +54,6 @@ export class TeacherSupportComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }

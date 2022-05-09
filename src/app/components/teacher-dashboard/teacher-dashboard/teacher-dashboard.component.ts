@@ -75,7 +75,7 @@ export class TeacherDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
+    
     this.getTeacherCourse(1, 0);
     this.AccordionInitialForms(0);
     this.username();
@@ -217,18 +217,7 @@ export class TeacherDashboardComponent implements OnInit {
     
     return this.inviteFormData.controls[index].invalid;
   }
-  // setForm(event) {
-  //   debugger
-  //  let email =event.value
-  //  console.log(email)
-
-  // }
-  // onKey(event: any) {
-  //   debugger
-  //   let shiv = event.target.value
-  //   console.log(shiv);
-
-  // }
+ 
   setVisibilityUploader() {
     return this.inviteFormData.value.every(x => x.email != '') && this.inviteFormData.controls.every(x => x.status == "VALID");
   }
@@ -264,9 +253,6 @@ export class TeacherDashboardComponent implements OnInit {
     if (event.target.files[0]) {
       this.enabledDisabled = true;
       let file: File = event.target.files[0];
-      console.log(file.name);
-      console.log(file.size);
-      console.log(file.type);
       let reader: FileReader = new FileReader();
       reader.readAsText(file);
       reader.onload = (e) => {
@@ -357,7 +343,7 @@ export class TeacherDashboardComponent implements OnInit {
       this.browseDisabled = false;
 
     }
-    //   console.log(shiv);
+   
 
 
 

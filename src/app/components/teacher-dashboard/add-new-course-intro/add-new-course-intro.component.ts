@@ -141,7 +141,7 @@ export class AddNewCourseIntroComponent implements OnInit {
   }
   onTeacherSelect(item: any) {
     this.selectedArrr.push(item);
-    console.log(this.selectedArrr)
+   
   }
   showValue(event) {
     this.courseFee = false;
@@ -173,7 +173,6 @@ export class AddNewCourseIntroComponent implements OnInit {
       "title_id": parent
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -184,7 +183,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   // view page
@@ -355,7 +353,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
     this.service.post('get-category', data, 1).subscribe(res => {
       this.level = res.body.result;
-      // console.log(this.level);
     })
   }
   time() {
@@ -364,7 +361,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
     this.service.post('get-category', data, 1).subscribe(res => {
       this.timeData = res.body.result;
-      // console.log(this.course);
     })
   }
   // language api
@@ -395,7 +391,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   editSubmit() {
-    debugger
     this.submitted = true;
     if (this.addCourseForm.invalid) {
       return;
@@ -451,7 +446,7 @@ export class AddNewCourseIntroComponent implements OnInit {
 
   // patch data
   updateData() {
-    debugger
+   
     this.employees().clear();
     this.faq().clear();
 

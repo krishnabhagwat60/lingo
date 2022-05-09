@@ -40,8 +40,7 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    ;
+   
     this.username();
     this.walletData();
     this.profile();
@@ -80,12 +79,10 @@ export class SideNavComponent implements OnInit {
       avatar: localStorage.getItem('image'),
     };
     this.service.post('get_profile_by_id', data, 1).subscribe((res) => {
-      console.log('res app-side-nav',res)
       this.updateNewDataImage = res.body.profile.avatar;
       if (this.updateNewDataImage == null) {
         this.updateNewDataImage = '';
       }
-      console.log('updateNewDataImage',this.updateNewDataImage.length)
     });
   }
 }

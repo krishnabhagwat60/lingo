@@ -133,7 +133,6 @@ export class FillTheResultComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -170,7 +169,6 @@ export class FillTheResultComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   sub() {
@@ -280,7 +278,22 @@ export class FillTheResultComponent implements OnInit {
     this.route.navigate(['/teacherDashboard/fillWordSolution'], { queryParams: { titleid: this.titleid } });
 
   }
+
+
+       isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+}
   gotoBack() {
-    this._location.back();
+    if (this.isStudent()) {
+      this.route.navigateByUrl(this.frontServices.navigation.url);
+    } else {
+      this.route.navigate(['/multimedia/contentStyle'], {
+        queryParams: { id: sessionStorage.getItem('subId') },
+      });
+    }
   }
 }

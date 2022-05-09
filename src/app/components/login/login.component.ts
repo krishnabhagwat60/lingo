@@ -162,7 +162,7 @@ export class LoginComponent implements OnInit {
     };
     this.service.post('get-teacher-course', data, 1).subscribe((res) => {
       this.getCourse = res.body.data;
-      // console.log(this.getCourse);
+     
     });
   }
 

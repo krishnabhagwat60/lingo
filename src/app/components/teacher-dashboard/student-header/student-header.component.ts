@@ -35,8 +35,6 @@ export class StudentHeaderComponent implements OnInit {
     this.studentSideBar()
   }
   studentSideBar() {
-    console.log(' student header view', this.frontServices.vm);
-
     if ( this.frontServices == null ||
       this.frontServices.vm == null ||
       this.frontServices.vm.sidebarData == null ||
@@ -103,7 +101,6 @@ export class StudentHeaderComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }

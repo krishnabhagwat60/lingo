@@ -44,7 +44,7 @@ export class AffiliationRetryComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
         invokeMenuList.subscribe(() => {
-          debugger
+       
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
         });
@@ -150,7 +150,6 @@ export class AffiliationRetryComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   // get exercise data api

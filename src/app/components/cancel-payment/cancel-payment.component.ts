@@ -43,7 +43,6 @@ export class CancelPaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger
     this.studentSideBar()
     this.submitEnroll();
     this.user = sessionStorage.getItem('username');
@@ -58,7 +57,7 @@ export class CancelPaymentComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
-    console.log('cancel payment view', this.frontServices.vm);
+    
 
     // if (this.frontServices != null && this.frontServices.vm == null && this.frontServices.vm.sidebarData == null && this.frontServices.vm.sidebarData.length == 0) {
 

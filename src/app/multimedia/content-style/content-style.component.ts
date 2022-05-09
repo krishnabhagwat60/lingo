@@ -472,7 +472,6 @@ export class ContentStyleComponent implements OnInit {
     };
     this.service.post('teacher_sidebar', data, 1).subscribe((res) => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     });
   }
 
@@ -517,7 +516,6 @@ export class ContentStyleComponent implements OnInit {
     }
   }
   deleteRadioDatas(empIndex) {
-    // console.log(this.questionRadioFormData)
     var arr = this.questionRadioFormData as FormArray;
     var item = arr.at(empIndex);
     if (
@@ -532,7 +530,6 @@ export class ContentStyleComponent implements OnInit {
   }
 
   deleteAccordionDatas(empIndex) {
-    // console.log(this.questionRadioFormData)
     var arr = this.serviceForm as FormArray;
     var item = arr.at(empIndex);
     if (
@@ -665,7 +662,6 @@ export class ContentStyleComponent implements OnInit {
   // get multimedia data api
 
   affiliationList() {
-    debugger;
     this.titless = sessionStorage.getItem('title');
     this.subtitless = sessionStorage.getItem('subtitle');
     this.courseNameData = sessionStorage.getItem('course_name');
@@ -674,7 +670,6 @@ export class ContentStyleComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
-      debugger;
       this.fillTheBlanksData = res.body.result;
       if (res.body.result) {
         this.fillTheBlank = true;
@@ -856,7 +851,6 @@ export class ContentStyleComponent implements OnInit {
     };
     this.service.post('course-details', data, 1).subscribe((res) => {
       this.courseSubdata = res.body.result.subdata;
-      // console.log(this.courseData);
     });
   }
   getChildData(child) {
@@ -1841,7 +1835,6 @@ export class ContentStyleComponent implements OnInit {
       name: this.imageData.image_name,
     };
     this.service.post('edit-course-multimedia', data, 1).subscribe((res) => {
-      debugger;
       this.closePicture.nativeElement.click();
       this.affiliationList();
     });
@@ -1862,7 +1855,6 @@ export class ContentStyleComponent implements OnInit {
   }
   // update pdf
   updateOtherlink() {
-    debugger;
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.otherLinkForm.value.otherLinkText
     );
@@ -1919,14 +1911,22 @@ export class ContentStyleComponent implements OnInit {
     return final;
   }
 
-  // go to back
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+}
   gotoBack() {
-    console.log(' this.subIds', this.subIds);
-    console.log('this.route.queryParams', this.route.queryParams);
-    //this._location.back();
-    this.router.navigate(['/teacherDashboard/editCourse'], {
-      queryParams: { id: sessionStorage.getItem('course_id') },
-    });
+    debugger
+    if (this.isStudent()) {
+      this.router.navigateByUrl(this.frontServices.navigation.url);
+    } else {
+      this.router.navigate(['/teacherDashboard/editCourse'], {
+       // queryParams: { id: sessionStorage.getItem('subId') },
+      });
+    }
   }
 
   getSubTitles(data) {
@@ -2489,7 +2489,6 @@ export class ContentStyleComponent implements OnInit {
     }
     this.mainpageLoder = true;
     const titleForm = this.employees().getRawValue();
-    // console.log(Dragemployee);
     const data = {
       title_data: titleForm,
       title_id: this.updateId,
@@ -2713,7 +2712,6 @@ export class ContentStyleComponent implements OnInit {
           this.imagebox = true;
           this.audiobox = false;
         }
-        console.log(this.audioData);
         this.addImageData.at(j).patchValue({
           p_id: titleData.p_id,
           fid: titleData.fid,

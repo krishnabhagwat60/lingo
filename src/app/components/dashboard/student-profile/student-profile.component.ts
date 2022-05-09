@@ -224,7 +224,7 @@ export class StudentProfileComponent implements OnInit {
   }
 
   studentProfile() {
-    debugger
+   
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -316,14 +316,12 @@ export class StudentProfileComponent implements OnInit {
     });
   }
   studentImage() {
-    debugger;
     const datas = {
       user_id: sessionStorage.getItem('uid'),
     };
     this.mainpageLoder = true;
     this.service.post('get_profile_by_id', datas, 1).subscribe((res) => {
       var ress = res.body.profile;
-      debugger;
 
       let selectedknownLanguages = [];
       let selectedMainLanguages = [];
@@ -445,7 +443,7 @@ export class StudentProfileComponent implements OnInit {
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
-      debugger;
+    
       this.updateNewData = res.body.profile;
       this.updateNewDataImage = res.body.profile.avatar;
       localStorage.setItem('image', this.updateNewDataImage);
@@ -588,7 +586,7 @@ export class StudentProfileComponent implements OnInit {
       .subscribe((result) => {
         this.isImageShow = false;
         this.allStateList = result;
-        // console.log(result)
+      
         let el: HTMLElement = this.studentProfileDiv.nativeElement;
         el.click();
       });
@@ -608,7 +606,7 @@ export class StudentProfileComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
-      // console.log(res);
+     
       this.subTitle = res.body.result;
     });
   }

@@ -108,7 +108,7 @@ export class MyWalletComponent implements OnInit {
       if (this.historyData.length === 0) {
         this.buttonShow = false;
       }
-      // console.log(res)
+     
       if (res.body.result.message === 'No Transaction Yet.') {
         this.ErrMsg = 'No Transaction Yet';
       }

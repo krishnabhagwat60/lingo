@@ -34,7 +34,7 @@ export class ForgetPasswordComponent implements OnInit {
       email : this.forgetPasswordForm.value.email
     }
     this.service.post('password-forget',data , 0 ).subscribe(res =>{
-      // console.log(res);
+     
       if(res.result.message === 'Change Password Link Send Your Mail Id.'){
         this.Msg = 'Change password link has been sent in to your registered mail ID.'
         this.mainpageLoder = false

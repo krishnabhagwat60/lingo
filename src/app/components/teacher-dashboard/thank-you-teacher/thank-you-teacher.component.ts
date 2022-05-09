@@ -74,7 +74,6 @@ export class ThankYouTeacherComponent implements OnInit {
     // this.signOut();
   }
   studentSideBar() {
-    console.log(' thank you view', this.frontServices.vm);
 
     if (
       this.frontServices == null ||
