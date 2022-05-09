@@ -105,6 +105,7 @@ export class StudentViewComponent implements OnInit {
   subTitle: any;
   mainpageLoder = true;
   errMsg: string;
+  isStudents : boolean;
   uniqueArray: any[];
   radioUniqueArray: any[];
   coursesName: void;
@@ -152,6 +153,7 @@ export class StudentViewComponent implements OnInit {
 
   ngOnInit(): void {
     $('p>span').click(function (event) {});
+    this.isStudents = this.isStudent();
     this.studentDetail();
     this.sidebar();
     this.username();
@@ -745,7 +747,13 @@ export class StudentViewComponent implements OnInit {
     };
     this.service.post('show_result', data1, 1).subscribe((res) => {});
   }
-
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   studentDetail() {
     (this.courseId = sessionStorage.getItem('course_id')),
       (this.teacherName = sessionStorage.getItem('teacher_name')),
@@ -899,8 +907,8 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    
-    this.router.navigateByUrl(this.frontServices.navigation.url);
+    debugger
+    this.router.navigateByUrl("/multimedia/contentStyle");
   }
 
   // open pdf in new tab

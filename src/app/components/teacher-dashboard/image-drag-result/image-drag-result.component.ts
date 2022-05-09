@@ -84,6 +84,7 @@ export class ImageDragResultComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('student_sidebar', data, 1).subscribe((res) => {
+      debugger
       this.sidebarData2 = res.body.result;
       if (this.sidebarData2 != null && this.sidebarData2.length > 0) {
         var filteredData = this.unique(this.sidebarData2, ['course_id']);

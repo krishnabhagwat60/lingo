@@ -65,6 +65,7 @@ export class ImageDragSolutionComponent implements OnInit {
   }
 
   gotoBack(){
+    debugger
     this.router.navigateByUrl(this.frontServices.navigation.url);
   }
   studentSideBar() {

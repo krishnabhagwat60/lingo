@@ -1,3 +1,17 @@
 .main {
     height: calc(500px + 314px) !important;
 }
+.back {
+    float: right;
+    width: 78px;
+    height: 40px;
+    background-color: #008ad2;
+    font-size: 12px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
