@@ -127,13 +127,21 @@ export class AffiliationResultComponent implements OnInit {
       this.courses = true;
     }
   }
-  // gotoBack() {
-  //   this._location.back();
-  // }
-  gotoBack(){
-    this.router.navigateByUrl(this.frontServices.navigation.url);
-
-    // this.router.navigate(['/multimedia/contentStyle']);
+  gotoBack() {
+    if (this.isStudent()) {
+      this.router.navigateByUrl(this.frontServices.navigation.url);
+    } else {
+      this.router.navigate(['/multimedia/contentStyle'], {
+        queryParams: { id: sessionStorage.getItem('subId') },
+      });
+    }
+  }
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
   }
   getSubTitle(parent) {
     const data = {
