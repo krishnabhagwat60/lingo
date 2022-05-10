@@ -38,20 +38,20 @@ export class NavbarComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription =
         this.eventEmitterService.invokeProfileChange.subscribe(() => {
-     
+
           this.profile();
         });
     }
   }
 
   ngOnInit(): void {
-   
+
     this.walletData();
     this.usernameData();
     this.profile();
   }
   profile() {
-  
+
     const data = {
       user_id: sessionStorage.getItem('uid'),
     };
@@ -63,7 +63,7 @@ export class NavbarComponent implements OnInit {
     });
     setInterval(() => {
       if (this.updateNewDataImage) {
-       
+
       }
     }, 5000);
   }
