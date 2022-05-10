@@ -74,7 +74,7 @@ export class QuesRadioSolutionComponent implements OnInit {
     })
   }
 
-       isStudent() {
+   isStudent() {
     if ('student' in sessionStorage) {
       return true;
     } else {

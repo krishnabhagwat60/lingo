@@ -134,15 +134,12 @@ export class AffiliationResultComponent implements OnInit {
       return false;
     }
 }
-  // gotoBack() {
-  //   this._location.back();
-  // }
   gotoBack() {
     if (this.isStudent()) {
       this.router.navigateByUrl(this.frontServices.navigation.url);
     } else {
-      this.router.navigate(['/multimedia/contentStyle'], {
-        queryParams: { id: sessionStorage.getItem('subId') },
+      this.router.navigate(['/teacherDashboard/student-view'], {
+   //     queryParams: { id: sessionStorage.getItem('subId') },
       });
     }
   }
