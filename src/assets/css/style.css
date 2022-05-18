@@ -2682,6 +2682,13 @@ a {
     font-weight: 500;
 }
 
+#view-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #136980;
+    cursor: pointer;
+}
+
 .right-btn {
     height: auto;
     width: 50px;
@@ -7523,4 +7530,18 @@ input:checked+.slider:before {
 .dashboard-custom a:hover,
 .dashboard-custom a.visited {
     background-color: #3c96cc !important;
+}
+
+#view-student-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+#t-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #9dd0e7;
+    cursor: pointer;
 }

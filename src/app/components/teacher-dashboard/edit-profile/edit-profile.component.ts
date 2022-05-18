@@ -607,6 +607,7 @@ export class EditProfileComponent implements OnInit {
   }
   reseted() {
     this.updateNewDataImage = "";
+    this.teacherImage();
   }
   // show change password
   passwordChange() {

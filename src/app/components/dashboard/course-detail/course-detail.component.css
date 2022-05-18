@@ -61,10 +61,6 @@
     position: relative;
 }
 
-.main {
-    height: calc(500px + 400px) !important;
-}
-
 .row-accordian .faq-box .faq-wrap2 .card-header h5 a .accord-content {
     font-size: 16px;
     letter-spacing: 1px;

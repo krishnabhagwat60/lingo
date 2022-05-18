@@ -209,6 +209,7 @@ export class StudentViewComponent implements OnInit {
     // console.log(logic needed);
   }
   getHtmlText(url) {
+    debugger
     return this._sanitizer.bypassSecurityTrustHtml(url);
   }
   // get question with dropdown

@@ -74,6 +74,7 @@ export class StudentProfileComponent implements OnInit {
   coursesName: void;
   updateNewDataImage: string;
   imageSrc: string;
+  isMsg = false;
   @Output() loadImageFailed = new EventEmitter<void>();
   constructor(
     private service: ServiceService,
@@ -316,6 +317,8 @@ export class StudentProfileComponent implements OnInit {
     });
   }
   studentImage() {
+    this.isMsg = true;
+    this.msg = 'Profile Updated Successfully';
     const datas = {
       user_id: sessionStorage.getItem('uid'),
     };
@@ -418,11 +421,12 @@ export class StudentProfileComponent implements OnInit {
       };
      
       this.service.post('profile-update', data, 1).subscribe((res) => {
+        
         if (res.body.result === 'success') {
           this.mainpageLoder = false;
-          this.msg = 'Profile Updated Successfully';
           this.eventEmitterService.onProfileChanged();
           this.submitted = false;
+          this.isMsg = false;
         }
       });
     });
@@ -433,6 +437,7 @@ export class StudentProfileComponent implements OnInit {
   }
   reseted() {
     this.updateNewDataImage = '';
+    this.studentImage();
   }
   // patch data
   updateData() {
