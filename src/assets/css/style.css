@@ -170,7 +170,6 @@ a {
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    height: 100%;
 }
 
 @media(max-width: 767px) {
@@ -185,7 +184,6 @@ a {
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    /* height: calc(500px + 74px) !important; */
     position: relative;
 }
 

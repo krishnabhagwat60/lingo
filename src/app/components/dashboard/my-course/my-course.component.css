@@ -26,3 +26,7 @@
     padding-left: 25px;
     border: 2px solid #efeef4;
 }
+
+.main {
+    height: calc(725px + 74px) !important;
+}

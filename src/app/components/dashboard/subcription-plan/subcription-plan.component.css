@@ -9,7 +9,3 @@
 .active-plan-data tr th {
     width: 40% !important;
 }
-
-.main {
-    height: calc(500px + 900px) !important;
-}

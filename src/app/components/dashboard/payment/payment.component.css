@@ -93,6 +93,10 @@
     width: 30%;
 }
 
+.main {
+    height: 85vh;
+}
+
 .sumry-sectn .enroll-detl ul li p {
     font-size: 12px;
     font-weight: 600;

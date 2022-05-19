@@ -10,10 +10,6 @@
     font-weight: bold;
 }
 
-.main {
-    height: calc(500px + 3000px) !important;
-}
-
 .image-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
@@ -46,6 +42,10 @@
     font-size: 13px;
     color: #4c4c4c;
     margin-left: 5px;
+}
+
+.main {
+    height: 85vh;
 }
 
 [type="radio"]:checked,

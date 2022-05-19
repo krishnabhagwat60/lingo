@@ -603,7 +603,7 @@ export class EditProfileComponent implements OnInit {
   // form reset
   reset() {
     this.updateNewDataImage = "";
-    this.profileForm.reset();
+    this.editProfileForm.reset();
   }
   reseted() {
     this.updateNewDataImage = "";
