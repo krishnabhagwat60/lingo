@@ -2652,8 +2652,7 @@ a {
     background-color: #0082DA;
     text-align: center;
     height: 30px;
-    margin-top: 8px;
-    top: 70px;
+    top: 115px;
     position: absolute;
     left: 15px;
     bottom: 0px;
@@ -5882,8 +5881,8 @@ input:checked+.slider:before {
 }
 
 #question {
-    width: 200px;
-    height: 35px;
+    width: 215px;
+    height: 45px;
     border: 2px solid rgba(51, 42, 124, 0.08);
 }
 

@@ -362,7 +362,7 @@
 }
 
 .faqs-more .card-1 {
-    width: 98%;
+    width: 95%;
     margin-right: -5px;
 }
 
@@ -402,6 +402,24 @@
     padding: 0 7px;
     text-transform: lowercase;
     font-size: 14px;
-}::ng-deep .multiselect-dropdown .dropdown-btn {
-    color: black
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: #000
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn:hover {
+    color: #aaaaaa
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret1:before {
+    position: relative;
+    right: -8px;
+    top: 61%;
+    color: #008ad2;
+    margin-top: 4px;
+    border-style: solid;
+    border-width: 7px 7px 0;
+    border-color: #008ad2 transparent;
+    content: "";
 }

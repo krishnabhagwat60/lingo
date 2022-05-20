@@ -25,13 +25,13 @@
 
                 <li>
                     <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <li *ngIf="!updateNewDataImage">
+                        <li *ngIf="updateNewDataImage">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" src="assets/images/icons/student-icon.png">
                             </a>
                         </li>
                         <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
-                        <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
+                        <li *ngIf="!updateNewDataImage || updateNewDataImage.length>10">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" [src]="updateNewDataImage">
                             </a>
@@ -886,7 +886,7 @@
                     <h4>Insert Text</h4>
                     <hr>
                     <form [formGroup]="insertTestForm">
-                        <div class="insert-section">
+                        <div class="insert-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionInsert" name="questionInsert" formControlName="questionInsert">
                         </div>
@@ -1071,7 +1071,7 @@
                     <h4>Upload PDF Files</h4>
                     <hr>
                     <form [formGroup]="pdfForm">
-                        <div class="upload-audio-section">
+                        <div class="upload-audio-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionPdf" name="questionPdf" formControlName="questionPdf">
                         </div>
@@ -1111,7 +1111,7 @@
                     <hr>
                     <p>MAX size 100 mb</p>
                     <form [formGroup]="pictureForm">
-                        <div class="picture-section">
+                        <div class="picture-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionPicture" name="questionPicture" formControlName="questionPicture">
                         </div>
@@ -1206,7 +1206,7 @@
                                     <p>What is Your Question ?
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="question" id="question" name="question" [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
+                                    <input type="" formControlName="question" name="question" [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
 
                                 </div>
                                 <div class="fieldRequired" *ngIf="affiForm.get('question').hasError('required') && submitted" style="font-size: 10px;
@@ -1980,7 +1980,7 @@
                                                 <span class="required-asterisk">*</span>
                                             </p>
                                             <!-- <textarea type="text" formControlName="question"> </textarea> -->
-                                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="question" id="question" name="question" type="divarea" [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
+                                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="question" name="question" type="divarea" [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
                                             </ckeditor>
                                             <div *ngIf="fillSubmit && fills.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="fills.question.errors.required">

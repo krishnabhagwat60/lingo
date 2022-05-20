@@ -195,7 +195,7 @@
                                     </ng-container>
                                     <a style="color: grey" *ngIf="data.review_count != '0'">({{ data.review_count }})</a>
                                     <div class="t-btn space-btn">
-                                        <button *ngIf="data.course_type == 'closed'" type="button" id="t-btn" data-target="#invite" data-toggle="modal" (click)="getInviteId(data.id, data.title)">
+                                        <button *ngIf="data.course_type == 'closed'" type="button" id="t-btn" data-target="#invite" data-toggle="modal" (click)="getInviteId(data.id, data.title)" style="margin-top: 27px;">
                       invite Students
                     </button>
                                         <button *ngIf="data.course_type == 'public'" type="button" id="disabledbutton" title="Course is public" data-target="#invite" data-toggle="modal" disabled="disabled">

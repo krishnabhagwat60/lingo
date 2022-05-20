@@ -27,13 +27,13 @@
 
                 <li>
                     <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <li *ngIf="updateNewDataImage">
+                        <li *ngIf="!updateNewDataImage">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" src="assets\images\student-icon.png">
                             </a>
                         </li>
                         <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
-                        <li *ngIf="!updateNewDataImage || updateNewDataImage.length>10">
+                        <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" [src]="updateNewDataImage">
                             </a>

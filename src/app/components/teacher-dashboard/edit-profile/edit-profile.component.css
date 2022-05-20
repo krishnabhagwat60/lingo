@@ -305,3 +305,11 @@ image-cropper {
     -ms-transform: translateZ(0);
     transform: translateZ(0);
 }
+
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: #000
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn:hover {
+    color: #6c757d
+}

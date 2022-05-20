@@ -17,12 +17,12 @@
 
             <div class="dummy-for-height">
                 <div class="teacher-sidebar left-panel-1">
-                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important;">View Course
+                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important; margin-bottom: .4em !important;">View Course
               <i class="fa fa-angle-down"></i>
             </button>
                     <div class="for-scroll">
                         <ng-container *ngFor="let data of sidebarData; index as j">
-                            <button class="sidebar-dropdown" (click)="toggleAccordian($event, j,data.course_name,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #007abb !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
+                            <button class="sidebar-dropdown" (click)="toggleAccordian($event, j,data.course_name,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #0a576c !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
                   <!-- <i class="fa fa-angle-down"></i> -->
                 </button>
                         </ng-container>
@@ -296,7 +296,7 @@
                         </div>
                         <div formArrayName="faq">
 
-                            <div class="faq-row" *ngFor="let faqData of faq().controls; let faqIndex=index">
+                            <div class="faq-row" style="margin-bottom: 15px;" *ngFor="let faqData of faq().controls; let faqIndex=index">
                                 <ng-container [formGroupName]="faqIndex">
                                     <input type="hidden" formControlName="id" id="id" name="id">
                                     <div class="faqs-more">
@@ -304,10 +304,10 @@
                                             <div id="faq-accordn" class="card-accr-1">
                                                 <a href="" [attr.data-target]="'#collapesDetail0' + faqIndex" data-toggle="collapse" data-target="#collapesDetail0" aria-expanded="false" aria-controls="accordion-1" class="collapsed">
                                                     <input type="text" id="title" class="form-control" name="title" formControlName="title" style="border: 0;">
-                                                    <i class="fa fa-angle-down"></i>
+                                                    <i class="fa fa-angle-down" style="margin-top: -30px;"></i>
                                                 </a>
                                             </div>
-                                            <div id="collapesDetail0" [attr.id]="'collapesDetail0' + faqIndex" aria-labelledby="headingOne" data-parent=".card-1" class="collapse">
+                                            <div id="collapesDetail0" style="width: 98% !important; margin-top: 15px;" [attr.id]="'collapesDetail0' + faqIndex" aria-labelledby="headingOne" data-parent=".card-1" class="collapse">
                                                 <div class="card-body-2">
                                                     <textarea id="text" name="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
                                                     <div *ngIf="submitted && faqData.get('text').invalid" class="text-danger mt-1">

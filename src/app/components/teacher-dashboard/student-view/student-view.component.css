@@ -45,7 +45,7 @@
 }
 
 .main {
-    height: 85vh;
+    min-height: 100vh;
 }
 
 [type="radio"]:checked,

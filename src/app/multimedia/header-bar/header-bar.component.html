@@ -16,12 +16,12 @@
 
             <div class="dummy-for-height">
                 <div class="teacher-sidebar left-panel-1">
-                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important;">View Course
+                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important; margin-bottom: .4em !important;">View Course
             <i class="fa fa-angle-down"></i>
           </button>
                     <div class="for-scroll">
                         <ng-container *ngFor="let data of sidebarData; index as j">
-                            <button class="sidebar-dropdown hov-drop-down" hov-drop-down (click)="toggleAccordian($event, j,data.course_name,data.course_id)">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
+                            <button class="sidebar-dropdown hov-drop-down" hov-drop-down (click)="toggleAccordian($event, j,data.course_name,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #0a576c !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
               </button>
                         </ng-container>
                     </div>

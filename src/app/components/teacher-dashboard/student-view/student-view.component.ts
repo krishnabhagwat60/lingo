@@ -255,9 +255,9 @@ export class StudentViewComponent implements OnInit {
       });
     }
   }
-  getHtml(url) {
+  getHtml(url: string) {
     var iframeStart = '<iframe' + url.split('<iframe')[1];
-    var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+    var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';   
     finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
     finalIframe = finalIframe.replace('position: absolute', '');
     return this._sanitizer.bypassSecurityTrustHtml(

@@ -18,6 +18,16 @@
     opacity: 0;
 }
 
+.filename input {
+    background-color: #fff;
+    padding: 8px;
+    height: 45px;
+    width: 493px;
+    border-bottom-left-radius: 6px;
+    color: #999;
+    border-top-left-radius: 6px;
+}
+
 .radio-question {
     display: flex;
     align-items: center;
@@ -28,6 +38,7 @@
     color: #4c4c4c;
     margin-left: 5px;
 }
+
 .back {
     float: right;
     width: 78px;
