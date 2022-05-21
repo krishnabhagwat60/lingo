@@ -2682,8 +2682,9 @@ a {
 .right-btn {
     height: auto;
     width: 50px;
-    float: right;
-    margin-top: -85px;
+    position: absolute;
+    right: 5px;
+    top: 0;
 }
 
 #edit-button {
@@ -2714,8 +2715,8 @@ a {
 }
 
 .right-btn ul {
-    margin-left: 163px;
-    margin-top: 110px;
+    margin-left: -105px;
+    margin-top: 92px;
     background-color: #fff;
     padding-bottom: 10px;
     border: 2px solid rgba(51, 42, 124, 0.08);
@@ -5157,11 +5158,6 @@ input:checked+.slider:before {
     background-color: #fff;
 }
 
-#heading {
-    position: relative;
-    padding-top: 20px;
-}
-
 #heading a {
     font-size: 16px;
     line-height: 27px;
@@ -5874,7 +5870,6 @@ input:checked+.slider:before {
 #question {
     width: 215px;
     height: 45px;
-    border: 2px solid rgba(51, 42, 124, 0.08);
 }
 
 .questions span {
@@ -5937,14 +5932,12 @@ input:checked+.slider:before {
 
 .question-radio h4 {
     border-radius: 5px;
-    border: 1px solid rgba(51, 42, 124, 0.08);
     padding: 10px;
     font-size: 18px;
     line-height: 27px;
     color: #000000;
     font-weight: 600;
     font-family: 'poppins bold';
-    background-color: #fff;
     margin-bottom: 15px;
 }
 
@@ -5952,7 +5945,6 @@ input:checked+.slider:before {
     display: flex;
     padding-bottom: 20px;
     width: 100%;
-    border-bottom: 1px solid #ddd;
 }
 
 .question-radio input[type=radio] {

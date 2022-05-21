@@ -14,7 +14,11 @@
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-btn {
-    color: black
+    color: #fff
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn:hover {
+    color: #f1f1f1
 }
 
 .prof-btns {
@@ -26,8 +30,8 @@
     width: 100%;
     font-size: inherit;
     font-family: inherit;
-    border: 2px solid rgba(51, 42, 124, 0.08);
     color: #aaaaaa;
+    background-color: #fff;
 }
 
 .prof-btns .user-cancel {

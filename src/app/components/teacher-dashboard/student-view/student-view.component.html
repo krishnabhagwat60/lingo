@@ -388,8 +388,10 @@
                                     <div class="question-radio-button">
                                         <form>
                                             <div class="question-radio" *ngFor="let data1 of data.data;index as j">
-                                                <h4 style="width: 100%; background:#fff!important; padding: 10px!important;border: 1px solid rgba(51,42,124,0.08); border-radius:5px;">
-                                                    Q - {{data1.question}}</h4>
+                                                <div>
+                                                    <h4 style="width: 100%; border: 1px solid rgba(51,42,124,0.08); padding: 10px!important;  border-radius:5px;">
+                                                        Q - {{data1.question}}</h4>
+                                                </div>
                                                 <label class="checkbox-inline" *ngFor="let data2 of data1.option;index as k">
                           <input type="radio" name="{{j}}" value="option1"
                             (click)="getRadioValue($event.target.value,data1.p_id)">

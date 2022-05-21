@@ -215,7 +215,7 @@ section {
 }
 
 .pricing .box {
-    padding: 20px;
+    padding: 17px;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     text-align: center;
     border-radius: 5px;
@@ -387,7 +387,7 @@ input {
 }
 
 .pricing .box ul li {
-    padding-bottom: 16px;
+    padding-bottom: 20px;
     font-family: 'Varela Round', sans-serif;
 }
 
@@ -502,7 +502,7 @@ section {
 
 .count-box .btn-buy20 {
     position: absolute;
-    top: 405px;
+    top: 420px;
     width: 145px;
     left: 53%;
     transform: translateX(-50%);

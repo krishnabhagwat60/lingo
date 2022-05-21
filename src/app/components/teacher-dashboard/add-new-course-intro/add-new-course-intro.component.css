@@ -36,9 +36,14 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    position: relative;
-    top: -36px;
-    left: 641px;
+    position: absolute;
+    right: 10px;
+    top: -35px;
+}
+
+#faq-accordn i {
+    font-size: 25px;
+    right: 10px;
 }
 
 .radio_FreeCourse input[type=radio]:checked+.radio-label:before {

@@ -25,13 +25,13 @@
 
                 <li>
                     <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <li *ngIf="updateNewDataImage">
+                        <li *ngIf="!updateNewDataImage">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" src="assets/images/icons/student-icon.png">
                             </a>
                         </li>
                         <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
-                        <li *ngIf="!updateNewDataImage || updateNewDataImage.length>10">
+                        <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="user-avatar" [src]="updateNewDataImage">
                             </a>
@@ -74,8 +74,8 @@
                             <p>{{courseNameData}} <span class="fa fa-angle-right"></span>{{titless}}<span class="fa fa-angle-right"></span>{{subtitless}}<span class="fa fa-angle-right"></span>
                             </p>
                         </div>
-                        <div class="student-view-btn">
-                            <button type="button" id="bck-btn" class="student-view-btn back" (click)="gotoBack()" *ngIf="backBtns == true">Back</button>
+                        <div class="student-view-btn" style="float: right; display: flex;">
+                            <button type="button" id="bck-btn" class="student-view-btn" (click)="gotoBack()" *ngIf="backBtns == true">Back</button>
                             <button type="button" id="student-view-btn" (click)="studentView()">Student
                                 View</button>
                             <button type="button" id="save-btn" (click)="backToDashboard()">Save</button>
@@ -972,7 +972,10 @@
                             <form [formGroup]="accordionForm">
                                 <div class="upload-accordion-title">
                                     <p>What Is Your Title</p>
-                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title" style="width: 600px!important;" [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
+                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title" style="width: 600px!important; height: 45px;
+                                    border-radius: 5px;
+                                    border: 2px solid #efeef4;
+                                    margin-left: 14px;" [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
                                     <div *ngIf="accorSubmit && frms.accordion_title.errors" class="invalid-feedback">
                                         <!-- <div *ngIf="frms.accordion_title.errors.required">Skills is required</div> -->
                                         <div *ngIf="frms.accordion_title.errors.maxlength">Title should be only 254 characters
@@ -992,7 +995,8 @@
                                             <button type="button" id="accordian-add-btn" (click)="deleteAccordionDatas(i)" class="fa fa-minus" style="color: #fff;"></button>
                                             <div id="accordion-1" [attr.id]="'collapesDetail' + i" aria-labelledby="headingOne" data-parent=".card-1" class="collapse show">
                                                 <div class="card-body-2">
-                                                    <textarea id="accordion-textarea" formControlName="text" id="text" name="text" [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
+                                                    <textarea id="accordion-textarea" style="    width: 100%;
+                                                    height: 100px;" formControlName="text" id="text" name="text" [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
                                                     <div *ngIf="accorSubmit && form.get('text').invalid" class="text-danger mt-1">
                                                         <div *ngIf="form.get('text').errors.required">
                                                             Text is required.
@@ -1520,7 +1524,7 @@
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="question" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <input type="" formControlName="question" id="questioninput" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
                                                 <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
@@ -1689,7 +1693,7 @@
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="question" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <input type="" formControlName="question" id="questiontest" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
                                                 <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
@@ -2065,7 +2069,7 @@
                                             <p>Textarea
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <textarea type="text" formControlName="question" id="question" name="question" [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
+                                            <textarea type="text" formControlName="question" id="questiontest" name="question" [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
                                             <div *ngIf="pickSubmit && picks.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="picks.question.errors.required">
                                                     TextArea is required.

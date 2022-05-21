@@ -74,15 +74,16 @@ export class PickWordSolutionComponent implements OnInit {
       return false;
     }
 }
-  gotoBack() {
-    if (this.isStudent()) {
-      this.router.navigateByUrl(this.frontServices.navigation.url);
-    } else {
-      this.router.navigate(['/multimedia/contentStyle'], {
-        queryParams: { id: sessionStorage.getItem('subId') },
-      });
-    }
+gotoBack() {
+  debugger
+  if (this.isStudent()) {
+    this.router.navigateByUrl(this.frontServices.navigation.url);
+  } else {
+    this.router.navigate(['/multimedia/contentStyle'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
+}
   username(){
     this.user = sessionStorage.getItem('username');
   }
