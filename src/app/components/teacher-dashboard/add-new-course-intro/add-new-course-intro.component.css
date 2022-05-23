@@ -410,7 +410,7 @@
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-btn {
-    color: #000
+    color: #fff
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-btn:hover {
