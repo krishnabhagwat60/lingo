@@ -3845,7 +3845,7 @@ input:checked+.slider:before {
 }
 
 .component-heading-top h1 {
-    font-size: 36px;
+    font-size: 30px;
     line-height: 27px;
     color: #136980;
     font-family: 'Poppins Bold';
@@ -4386,7 +4386,7 @@ input:checked+.slider:before {
     line-height: 27px;
     padding-left: 14px;
     color: #dee9eb;
-    font-weight: 400;
+    font-weight: bold;
     text-transform: uppercase;
 }
 

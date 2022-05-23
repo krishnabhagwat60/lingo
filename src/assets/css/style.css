@@ -1857,7 +1857,6 @@ a {
     position: static !important;
     overflow: hidden;
     overflow-y: scroll;
-    height: 175px;
 }
 
 #show-button img {
@@ -2691,30 +2690,11 @@ a {
     border: 1px solid #9dd0e7;
     text-align: center;
     height: 30px;
-    margin-top: 8px;
     font-size: 12px;
     text-transform: uppercase;
     color: #000000;
     font-family: 'poppins Medium';
     font-weight: 700;
-}
-
-#view-student-btn {
-    width: 160px;
-    border-radius: 30px;
-    background-color: #0082DA;
-    text-align: center;
-    height: 30px;
-    top: 103px;
-    position: absolute;
-    left: 15px;
-    bottom: 0px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #fff;
-    font-family: 'poppins Medium';
-    font-weight: 500;
 }
 
 #view-btn {
@@ -3912,7 +3892,7 @@ input:checked+.slider:before {
 }
 
 .component-heading-top h1 {
-    font-size: 36px;
+    font-size: 30px;
     line-height: 27px;
     color: #136980;
     font-family: 'Poppins Bold';
@@ -4449,7 +4429,6 @@ input:checked+.slider:before {
     line-height: 27px;
     padding-left: 14px;
     color: #dee9eb;
-    font-weight: 400;
     text-transform: uppercase;
 }
 

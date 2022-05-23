@@ -314,7 +314,7 @@
                                             </div>
                                             <div id="collapesDetail0" style="width: 98% !important; margin-top: 15px;" [attr.id]="'collapesDetail0' + faqIndex" aria-labelledby="headingOne" data-parent=".card-1" class="collapse">
                                                 <div class="card-body-2">
-                                                    <textarea id="text" name="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
+                                                    <textarea id="text" name="text" formControlName="text" class="form-control dropdown-content" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
                                                     <div *ngIf="submitted && faqData.get('text').invalid" class="text-danger mt-1">
                                                         <div *ngIf="faqData.get('text').errors.required">
                                                             Text is required.
@@ -327,7 +327,6 @@
                                     </div>
 
                                 </ng-container>
-
                             </div>
 
                             <div class="add-faq">

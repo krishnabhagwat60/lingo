@@ -367,7 +367,7 @@
 }
 
 .faqs-more .card-1 {
-    width: 95%;
+    width: 98%;
     margin-right: -5px;
 }
 
@@ -384,7 +384,7 @@
     height: 25px;
     border-radius: 50%;
     position: relative;
-    top: 7px;
+    top: 20px;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
@@ -417,14 +417,22 @@
     color: #aaaaaa
 }
 
-.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret1:before {
+#faq-accordn {
     position: relative;
-    right: -8px;
-    top: 61%;
-    color: #008ad2;
-    margin-top: 4px;
-    border-style: solid;
-    border-width: 7px 7px 0;
-    border-color: #008ad2 transparent;
-    content: "";
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid rgba(51, 42, 124, 0.08);
+}
+
+#dropdown-content {
+    display: none;
+}
+
+.multiselect-dropdown {
+    position: relative;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    color: #aaaaaa;
+    background-color: #fff;
 }

@@ -94,3 +94,21 @@
 .right-btn:hover .dropdown-menu {
     display: block;
 }
+
+#view-student-btn {
+    width: 160px;
+    border-radius: 30px;
+    background-color: #0082da;
+    text-align: center;
+    height: 30px;
+    margin-top: 8px;
+    /* position: absolute; */
+    right: 86px;
+    bottom: 0px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'poppins Medium';
+    font-weight: 500;
+}
