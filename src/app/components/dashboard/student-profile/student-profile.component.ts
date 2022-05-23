@@ -135,9 +135,23 @@ export class StudentProfileComponent implements OnInit {
       allowSearchFilter: true,
     };
     this.languageData();
+    this.removeCaret();
     // this.updateData();
 
     this.username();
+  }
+  removeCaret() {
+    debugger;
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      el['style'].display = 'none';
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[1];
+      el['style'].display = 'none';
+    }, 1500);
   }
   onItemsSelect(item: any) {
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =

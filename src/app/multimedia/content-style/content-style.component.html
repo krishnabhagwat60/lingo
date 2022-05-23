@@ -856,20 +856,22 @@
                         <div class="multimedia-content">
                             <p>Multimedia Content</p>
                             <hr>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
+                            <div class="dummy-for-height" style="height: 23.5em !important;">
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
                                 Text<span class="fa fa-text-height"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
                                 <span class="fa fa-image"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAccordion()" data-target="#accordion-upload" data-toggle="modal">Accordion
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAccordion()" data-target="#accordion-upload" data-toggle="modal">Accordion
                                 <span class="fa fa-angle-down"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
                                 <span class="fa fa-music"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
                                 <span class="fa fa-youtube"></span></button>
-                            <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()" [disabled]="!subCatSelected" data-target="#other-links-upload" data-toggle="modal">Other
+                                <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()" [disabled]="!subCatSelected" data-target="#other-links-upload" data-toggle="modal">Other
                                 Links<span class="fa fa-link"></span></button>
-                            <button type="button" id="multimediamenu-btn" (click)="resetPdf()" [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
+                                <button type="button" id="multimediamenu-btn" (click)="resetPdf()" [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
                                 <span class="fa fa-file"></span></button>
+                            </div>
                         </div>
                     </div>
                 </div>

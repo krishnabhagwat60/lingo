@@ -21,29 +21,18 @@
 
     <div class="main">
         <!-- ======= Hero Section ======= -->
-        <section id="pricing" class="pricing carousel carousel slide" data-bs-ride="carousel">
+        <section id="pricing" class="pricing carousel" data-bs-ride="carousel" data-bs-interval="5000">
             <div class="section-header">
                 <h2>Flexible Plans & Pricing</h2>
                 <h5>Choose your best Plan!</h5>
                 <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
             </div>
-
-            <!-- <div class="controls-top">
-                <a class="carousel-control-prev" href="#pricing" role="button" (click)="prev()" data-slide="prev">
-                    <span class="fa fa-angle-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#pricing" role="button" data-slide="next" (click)="next()">
-                    <span class="fa fa-angle-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div> -->
             <div class="col-6 text-right">
                 <a class="btn mb-3 mr-1" style="background: #0a576c !important; color: #fff; cursor: pointer;" href="#pricing" (click)="prev()" role="button" data-slide="prev">
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <a class="btn mb-3 " style="background: #0a576c !important; color: #fff; cursor: pointer;" href="#pricing" role="button" (click)="next()" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
+                <a class="btn mb-3 " style="background: #0a576c !important; color: #fff; " href="#pricing" role="button" (click)="next()" data-slide="next">
+                    <i class="fa fa-arrow-right" style="cursor: pointer;"></i>
                 </a>
             </div>
             <div class="carousel-item active">
@@ -65,19 +54,19 @@
                                         <ul>
                                             <li><span>● </span> <strong>Courses Allowed</strong></li>
                                             <li><i class="fa fa-check"></i> Free Open Courses <span
-                                                    class="right">10</span></li>
+                                                    class="right" style="margin: 0px 18px;">10</span></li>
                                             <li><i class="fa fa-check"></i> Paid Open Courses <span
-                                                    class="right">05</span></li>
-                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                                    class="right" style="margin: 0px 18px;">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right" style="margin: 0px 18px;">03</span>
                                             </li>
                                             <li><span>● </span> <strong>Invite Students</strong> <span
-                                                    class="right"><strong>100</strong></span></li>
-                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                    class="right" style="margin: 0px 18px;"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right" style="margin: 0px 18px;"><strong>10
                                                         GB</strong></span></li>
                                         </ul>
                                     </div>
                                     <div class="count-box span1" [class.span]="currentCardIndex==0">
-                                        <a class="btn-buy20"(click)="subscription(1)">Get Started</a>
+                                        <a class="btn-buy20" (click)="subscription(1)">Get Started</a>
                                     </div>
                                 </div>
                             </label>
@@ -97,19 +86,19 @@
                                         <ul>
                                             <li><span>● </span> <strong>Courses Allowed</strong></li>
                                             <li><i class="fa fa-check"></i> Free Open Courses <span
-                                                    class="right">10</span></li>
+                                                    class="right" style="margin: 0px 18px;">10</span></li>
                                             <li><i class="fa fa-check"></i> Paid Open Courses <span
-                                                    class="right">05</span></li>
-                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                                    class="right" style="margin: 0px 18px;">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right" style="margin: 0px 18px;">03</span>
                                             </li>
                                             <li><span>● </span> <strong>Invite Students</strong> <span
-                                                    class="right"><strong>100</strong></span></li>
-                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                    class="right" style="margin: 0px 18px;"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right" style="margin: 0px 18px;"><strong>10
                                                         GB</strong></span></li>
                                         </ul>
                                     </div>
                                     <div class="count-box">
-                                        <a class="btn-buy20" (click)="subscription(2)">Get Started</a>
+                                        <a class="btn-buy20"(click)="subscription(2)">Get Started</a>
                                     </div>
                                 </div>
                             </label>
@@ -128,19 +117,19 @@
                                         <ul>
                                             <li><span>● </span> <strong>Courses Allowed</strong></li>
                                             <li><i class="fa fa-check"></i> Free Open Courses <span
-                                                    class="right">10</span></li>
+                                                    class="right" style="margin: 0px 18px;">10</span></li>
                                             <li><i class="fa fa-check"></i> Paid Open Courses <span
-                                                    class="right">05</span></li>
-                                            <li><i class="fa fa-check"></i> Close Courses <span class="right">03</span>
+                                                    class="right" style="margin: 0px 18px;">05</span></li>
+                                            <li><i class="fa fa-check"></i> Close Courses <span class="right" style="margin: 0px 18px;">03</span>
                                             </li>
                                             <li><span>● </span> <strong>Invite Students</strong> <span
-                                                    class="right"><strong>100</strong></span></li>
-                                            <li><span>● </span> <strong>Space</strong> <span class="right"><strong>10
+                                                    class="right" style="margin: 0px 18px;"><strong>100</strong></span></li>
+                                            <li><span>● </span> <strong>Space</strong> <span class="right" style="margin: 0px 18px;"><strong>10
                                                         GB</strong></span></li>
                                         </ul>
                                     </div>
                                     <div class="count-box">
-                                        <a  class="btn-buy20" (click)="subscription(3)">Get Started</a>
+                                        <a class="btn-buy20" (click)="subscription(3)">Get Started</a>
                                     </div>
                                 </div>
                             </label>
@@ -151,76 +140,9 @@
                 </div>
             </div>
 
-            <!-- End Carousel Item -->
-
 
         </section>
         <!-- End pricing Section -->
-        <div class="container-fluid">
-            <div class="dashboard">
-                <div class="row">
-                    <div class="transaction">
-                        <div class="col-md-12 col-sm-12">
-                            <h2>Transaction History</h2>
-                            <p *ngIf="errMsg" style="text-align: center;color: red;"><b>{{errMsg}}</b></p>
-                            <div class="transaction-table" *ngIf="!errMsg">
-                                <table id="table-detail">
-                                    <tr>
-                                        <th style="border-bottom-left-radius: 5px; border-top-left-radius: 5px;">Time
-                                        </th>
-                                        <th style="width: 55%;">Course</th>
-                                        <th>Amount</th>
-                                        <th style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;">
-                                            Status</th>
-                                    </tr>
-                                    <tr *ngFor="let data of historyData">
-                                        <td>{{data.time}}</td>
-                                        <td>{{data.course}}</td>
-                                        <td [ngClass]="data.status === 'DEBIT' ? 'text-danger' : 'text-black'"><span [ngClass]="data.status === 'DEBIT' ? 'text-danger' : 'text-black'">{{data.amount}}</span> USD
-                                        </td>
-                                        <td [ngClass]="data.status === 'CREDIT' ? 'text-primary' : 'text-danger'" style="font-size: 14px;letter-spacing: 1px;line-height: 27px; font-weight: 600;text-transform: uppercase;">
-                                            {{data.status}}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="successfully">
-                            <a>If you have any transactions issue please contact with our support Team staff</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="pages">
-                        <div class="row" *ngIf="buttonShow">
-                            <div class="col-md-2">
-                                <div class="prev-btn">
-                                    <a (click)="direction(0)" style="color: #fff;">PREV</a>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                        </li>
-                                        <li class="page-item" *ngFor="let data of totalPages; index as i" (click)="getHistory(data,i)"><a class="page-link" style="color: #fff;" [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
-                                        </li>
-                                        <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="next-button">
-                                    <a (click)="direction(1)" style="color: #fff;">NEXT</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>

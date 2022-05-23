@@ -163,7 +163,6 @@ export class AddNewCourseIntroComponent implements OnInit {
   }
   visibleIndex = -1;
   showSubItem(ind) {
-    debugger
     if (this.visibleIndex === ind) {
       this.visibleIndex = -1;
     } else {

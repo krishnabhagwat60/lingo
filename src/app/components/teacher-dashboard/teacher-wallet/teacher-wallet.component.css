@@ -215,7 +215,7 @@ section {
 }
 
 .pricing .box {
-    padding: 20px;
+    padding: 17px;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
     text-align: center;
     border-radius: 5px;
@@ -253,10 +253,10 @@ section {
     content: "";
     position: absolute;
     display: block;
-    width: 50px;
+    width: 35px;
     height: 3px;
-    background: #fff;
-    left: calc(50% - 25px);
+    background: #0a576c;
+    left: calc(54% - 25px);
     margin-top: -33px;
 }
 
@@ -267,6 +267,17 @@ input[type="radio"]:checked+.span {
 input[type="radio"]:checked+.span .btn-buy20 {
     background-color: #fff;
     color: #0a576c;
+}
+
+input[type="radio"]:checked+.span .boder {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 3px;
+    background: #fff;
+    left: calc(54% - 25px);
+    margin-top: -33px;
 }
 
 input {
@@ -387,7 +398,7 @@ input {
 }
 
 .pricing .box ul li {
-    padding-bottom: 16px;
+    padding-bottom: 20px;
     font-family: 'Varela Round', sans-serif;
 }
 
@@ -502,7 +513,7 @@ section {
 
 .count-box .btn-buy20 {
     position: absolute;
-    top: 405px;
+    top: 420px;
     width: 145px;
     left: 53%;
     transform: translateX(-50%);
@@ -513,6 +524,7 @@ section {
     justify-content: center;
     padding: 5px 14px 5px 15px;
     height: 40px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 912px) {
@@ -522,17 +534,6 @@ section {
     .count-box .btn-buy20 {
         font-size: 12px;
     }
-}
-
-.section10 h3::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: #0a576c;
-    left: calc(52% - 19px);
-    margin-top: 5px;
 }
 
 .carousel-control-prev {
@@ -563,4 +564,8 @@ section {
     color: #fff;
     font-size: 30px;
     font-weight: 800;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: black
 }

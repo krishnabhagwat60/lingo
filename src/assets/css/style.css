@@ -1857,6 +1857,8 @@ a {
     position: static !important;
     overflow: hidden;
     overflow-y: scroll;
+    height: 8.5em !important;
+    overflow: auto;
 }
 
 #show-button img {
@@ -5932,14 +5934,16 @@ input:checked+.slider:before {
 .insert-question {
     width: 100%;
     height: auto;
+    display: flex;
     margin-top: 20px;
 }
 
 .insert-question input {
-    width: 77%;
+    width: 70%;
     height: 45px;
     padding: 10px;
     font-size: 14px;
+    margin-right: 10px;
     font-weight: 600;
     border-radius: 5px;
     border: 2px solid rgba(51, 42, 124, 0.08);
@@ -6406,7 +6410,7 @@ input:checked+.slider:before {
 }
 
 .fill-in-blanks-content input {
-    width: 100px;
+    width: auto;
     height: 30px;
     border-radius: 5px;
     margin: 0px 10px;
@@ -7164,8 +7168,7 @@ input:checked+.slider:before {
     position: relative;
     background-color: #fff;
     display: inline-block;
-    width: 20%;
-    margin-left: 3%;
+    width: 25%;
     margin-bottom: 20px;
 }
 
@@ -7417,7 +7420,6 @@ input:checked+.slider:before {
 }
 
 .edit-btn-1 {
-    width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
