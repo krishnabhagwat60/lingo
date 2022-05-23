@@ -353,6 +353,12 @@
     margin-block-end: auto;
 }
 
+ng-multiselect-dropdown {
+    .dropdown-multiselect__caret {
+        display: none !important;
+    }
+}
+
 .faqs-more {
     display: flex;
     flex-wrap: wrap;
@@ -385,6 +391,10 @@
     border-radius: 50%;
     position: relative;
     top: 20px;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    display: none;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
+import {
+  FormGroup,
+  FormControl,
+  FormArray,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServiceService } from '../../service.service';
 declare var $: any;
@@ -11,7 +17,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-add-new-course-intro',
   templateUrl: './add-new-course-intro.component.html',
-  styleUrls: ['./add-new-course-intro.component.css']
+  styleUrls: ['./add-new-course-intro.component.scss'],
 })
 export class AddNewCourseIntroComponent implements OnInit {
   public Editor = Editor;
@@ -35,15 +41,21 @@ export class AddNewCourseIntroComponent implements OnInit {
     },
     mediaEmbed: {
       previewsInData: true,
-      removeProviders: ['instagram', 'twitter', 'googleMaps', 'flickr', 'facebook']
+      removeProviders: [
+        'instagram',
+        'twitter',
+        'googleMaps',
+        'flickr',
+        'facebook',
+      ],
     },
-    language: 'en'
+    language: 'en',
   };
   serviceForm = new FormArray([]);
   form = new FormArray([]);
   course: any;
   newCourseData: any;
-  loder = false
+  loder = false;
   addCourseForm: FormGroup;
   timeData: any;
   studentFee: boolean = false;
@@ -63,8 +75,8 @@ export class AddNewCourseIntroComponent implements OnInit {
   dropdownSettings = {};
   selectedLanguage = [];
   selectedLanguages = [];
-  selectedArr = []
-  selectedArrr = []
+  selectedArr = [];
+  selectedArrr = [];
   getEditorData: string;
   profileShow: boolean = false;
   dashboardShow: boolean = false;
@@ -90,12 +102,17 @@ export class AddNewCourseIntroComponent implements OnInit {
   sub_titleData: any;
   deleteBttons: boolean;
   getPid: any;
-  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer, private router: Router, private service: ServiceService, private route: ActivatedRoute) {
-
-    this.route.queryParamMap.subscribe(queryParams => {
-      this.id = queryParams.get("id");
+  constructor(
+    private fb: FormBuilder,
+    private sanitizer: DomSanitizer,
+    private router: Router,
+    private service: ServiceService,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParamMap.subscribe((queryParams) => {
+      this.id = queryParams.get('id');
       this.deleteTitle();
-    })
+    });
     this.addCourseForm = this.fb.group({
       employees: this.fb.array([]),
       faq: this.fb.array([]),
@@ -104,12 +121,12 @@ export class AddNewCourseIntroComponent implements OnInit {
       level: ['', Validators.required],
       teachingLanguage: ['', Validators.required],
       courseType: ['', Validators.required],
-      radio: ['',],
+      radio: [''],
       timeDurationHr: ['', Validators.required],
       timeDurationMin: ['', Validators.required],
-      teacher_fee: ['',],
+      teacher_fee: [''],
       otherLinkTextDescription: ['', Validators.required],
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -120,7 +137,7 @@ export class AddNewCourseIntroComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.courseData();
     this.time();
@@ -129,6 +146,29 @@ export class AddNewCourseIntroComponent implements OnInit {
     this.levelData();
     this.languageData();
     this.username();
+    this.removeCaret();
+  }
+  removeCaret() {
+    debugger;
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      el['style'].display = 'none';
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[1];
+      el['style'].display = 'none';
+    }, 1500);
+  }
+  visibleIndex = -1;
+  showSubItem(ind) {
+    debugger
+    if (this.visibleIndex === ind) {
+      this.visibleIndex = -1;
+    } else {
+      this.visibleIndex = ind;
+    }
   }
   username() {
     this.user = sessionStorage.getItem('username');
@@ -141,7 +181,6 @@ export class AddNewCourseIntroComponent implements OnInit {
   }
   onTeacherSelect(item: any) {
     this.selectedArrr.push(item);
-   
   }
   showValue(event) {
     this.courseFee = false;
@@ -150,61 +189,68 @@ export class AddNewCourseIntroComponent implements OnInit {
     if (selectedValue === 'public') {
       this.courseFee = true;
     }
-    if (selectedValue === 'closed')
-      this.teacherFees = true;
+    if (selectedValue === 'closed') this.teacherFees = true;
   }
   showInput(event) {
     this.feeBox = false;
     const selectValue = event.target.value;
     if (selectValue === 'monthly') {
       if (selectValue === 'monthly') {
-        this.addCourseForm.controls['radio'].setValidators([Validators.required, Validators.pattern('[0-9]*')]);
+        this.addCourseForm.controls['radio'].setValidators([
+          Validators.required,
+          Validators.pattern('[0-9]*'),
+        ]);
       } else {
         this.addCourseForm.controls['radio'].clearValidators();
       }
       this.feeBox = true;
-    } if (selectValue === 'free') {
+    }
+    if (selectValue === 'free') {
       this.feeBox = false;
       this.addCourseForm.controls['radio'].clearValidators();
     }
   }
   getSubTitle(parent) {
     const data = {
-      "title_id": parent
-    }
-    this.service.post('submenu-listing', data, 1).subscribe(res => {
-      this.subTitle = res.body.result
-    })
+      title_id: parent,
+    };
+    this.service.post('submenu-listing', data, 1).subscribe((res) => {
+      this.subTitle = res.body.result;
+    });
   }
   // sidebar api
   sidebar() {
     const data = {
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('teacher_sidebar', data, 1).subscribe((res) => {
       this.sidebarData = res.body.result;
-    })
+    });
   }
   // view page
   view(id) {
-    this.router.navigate(['/exercise//teacherDashboard/student-view'], { queryParams: { viewpage: id } });
+    this.router.navigate(['/exercise//teacherDashboard/student-view'], {
+      queryParams: { viewpage: id },
+    });
   }
   getChildData(child) {
     sessionStorage.setItem('subId', child);
-    this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.router.navigate(['/teacherDashboard/student-view'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
   employees(): FormArray {
-    return this.addCourseForm.get("employees") as FormArray
+    return this.addCourseForm.get('employees') as FormArray;
   }
   faq(): FormArray {
-    return this.addCourseForm.get("faq") as FormArray
+    return this.addCourseForm.get('faq') as FormArray;
   }
   newFaq(): FormGroup {
     return this.fb.group({
-      title: ['',],
-      text: ['',],
-      id: ''
-    })
+      title: [''],
+      text: [''],
+      id: '',
+    });
   }
   addFaq() {
     this.faq().push(this.newFaq());
@@ -216,8 +262,8 @@ export class AddNewCourseIntroComponent implements OnInit {
     return this.fb.group({
       titleid: [''],
       title: ['', [Validators.required]],
-      sub_title: this.fb.array([])
-    })
+      sub_title: this.fb.array([]),
+    });
   }
 
   addEmployee() {
@@ -231,7 +277,7 @@ export class AddNewCourseIntroComponent implements OnInit {
       this.addButton = false;
     } else {
       this.editButoon = false;
-      this.addButton = true
+      this.addButton = true;
       this.addEmployee();
       this.addEmployeeSkill(this.employees().controls.length - 1);
       this.faq().controls.length - 1;
@@ -239,12 +285,11 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   addInitialForm() {
-    this.deleteBttons = false
+    this.deleteBttons = false;
     if (this.id) {
       this.addEmployee();
       this.addEmployeeSkill(this.employees().controls.length - 1);
       this.faq().controls.length - 1;
-
     } else {
       this.addEmployee();
       this.addEmployeeSkill(this.employees().controls.length - 1);
@@ -258,16 +303,15 @@ export class AddNewCourseIntroComponent implements OnInit {
     this.employeeSkills(empIndex).removeAt(skillIndex);
   }
   employeeSkills(empIndex: number): FormArray {
-    return this.employees().at(empIndex).get("sub_title") as FormArray
+    return this.employees().at(empIndex).get('sub_title') as FormArray;
   }
 
   newSkill(): FormGroup {
     return this.fb.group({
       sub_title: ['', [Validators.required]],
       submenuId: [''],
-      exercise: 'no'
-    })
-
+      exercise: 'no',
+    });
   }
 
   addEmployeeSkill(empIndex: number) {
@@ -289,7 +333,9 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   // submit new course form
-  get f() { return this.addCourseForm.controls; }
+  get f() {
+    return this.addCourseForm.controls;
+  }
   addSubmit() {
     this.submitted = true;
     if (this.addCourseForm.invalid) {
@@ -315,68 +361,65 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
     const data = {
       user_id: sessionStorage.getItem('uid'),
-      "coursename": this.addCourseForm.value.courseName,
-      "level": this.addCourseForm.value.level,
-      "language": this.selectedLanguage,
-      "teaching_language": this.selectedLanguages,
-      "course_fee": this.addCourseForm.value.radio,
-      "course_type": this.addCourseForm.value.courseType,
-      "course_fee_teacher": this.addCourseForm.value.teacher_fee,
-      "course_duration": this.addCourseForm.value.timeDuration,
-      "course_desc": this.addCourseForm.value.otherLinkTextDescription,
-      "title_data": titleForm,
-      "faq": faqForm
-    }
-    this.service.post('course-create', data, 1).subscribe(res => {
-      sessionStorage.setItem('course_id', res.body.id)
-      sessionStorage.setItem('course_name', res.body.course_name)
+      coursename: this.addCourseForm.value.courseName,
+      level: this.addCourseForm.value.level,
+      language: this.selectedLanguage,
+      teaching_language: this.selectedLanguages,
+      course_fee: this.addCourseForm.value.radio,
+      course_type: this.addCourseForm.value.courseType,
+      course_fee_teacher: this.addCourseForm.value.teacher_fee,
+      course_duration: this.addCourseForm.value.timeDuration,
+      course_desc: this.addCourseForm.value.otherLinkTextDescription,
+      title_data: titleForm,
+      faq: faqForm,
+    };
+    this.service.post('course-create', data, 1).subscribe((res) => {
+      sessionStorage.setItem('course_id', res.body.id);
+      sessionStorage.setItem('course_name', res.body.course_name);
       this.mainpageLoder = false;
       setTimeout(() => {
         this.router.navigate(['/multimedia/contentStyle']);
       }, 1000);
-    })
+    });
   }
   // get course dropdown data
   courseData() {
     const data = {
-      "name": "course_language"
-    }
-    this.service.post('get-category', data, 1).subscribe(res => {
+      name: 'course_language',
+    };
+    this.service.post('get-category', data, 1).subscribe((res) => {
       this.course = res.body.result;
-
-    })
+    });
   }
   // get course dropdown data
   levelData() {
     const data = {
-      "name": "level"
-    }
-    this.service.post('get-category', data, 1).subscribe(res => {
+      name: 'level',
+    };
+    this.service.post('get-category', data, 1).subscribe((res) => {
       this.level = res.body.result;
-    })
+    });
   }
   time() {
     const data = {
-      "name": "time_duration"
-    }
-    this.service.post('get-category', data, 1).subscribe(res => {
+      name: 'time_duration',
+    };
+    this.service.post('get-category', data, 1).subscribe((res) => {
       this.timeData = res.body.result;
-    })
+    });
   }
   // language api
   languageData() {
-    this.service.get('profile-dropdown', 1).subscribe(res => {
-      this.language = res.body.language_listing
-
-    })
+    this.service.get('profile-dropdown', 1).subscribe((res) => {
+      this.language = res.body.language_listing;
+    });
   }
   onItemDeSelect(evt) {
     const index: number = this.selectedLanguages.indexOf(evt.key);
     if (index !== -1) {
       this.selectedLanguages.splice(index, 1);
-    }
-    else{
-    const index1: number = this.updateNewData.teaching_id.indexOf(evt.key);
+    } else {
+      const index1: number = this.updateNewData.teaching_id.indexOf(evt.key);
       this.updateNewData.teaching_id.splice(index1, 1);
     }
   }
@@ -384,9 +427,8 @@ export class AddNewCourseIntroComponent implements OnInit {
     const index: number = this.selectedLanguage.indexOf(evt.key);
     if (index !== -1) {
       this.selectedLanguage.splice(index, 1);
-    }
-    else{
-    const index1: number = this.updateNewData.language_id.indexOf(evt.key);
+    } else {
+      const index1: number = this.updateNewData.language_id.indexOf(evt.key);
       this.updateNewData.language_id.splice(index1, 1);
     }
   }
@@ -419,34 +461,40 @@ export class AddNewCourseIntroComponent implements OnInit {
     for (const data of this.selectedArrr) {
       this.selectedLanguages.push(data.key);
     }
-    var teacherLanguage = this.updateNewData.teaching_id.concat(this.selectedLanguages)
-    var studentLanguage = this.updateNewData.language_id.concat(this.selectedLanguage)
+    var teacherLanguage = this.updateNewData.teaching_id.concat(
+      this.selectedLanguages
+    );
+    var studentLanguage = this.updateNewData.language_id.concat(
+      this.selectedLanguage
+    );
     const data = {
       courseid: sessionStorage.getItem('course_id'),
-      "coursename": this.addCourseForm.value.courseName,
-      "field_level": this.addCourseForm.value.level,
-      "field_language": studentLanguage,
-      "teaching_language": teacherLanguage,
-      "course_fee": this.addCourseForm.value.radio,
-      "course_type": this.addCourseForm.value.courseType,
-      "course_fee_teacher": this.addCourseForm.value.teacher_fee,
-      "course_duration": this.addCourseForm.value.timeDurationHr + ':' +this.addCourseForm.value.timeDurationMin,
-      "course_desc": this.addCourseForm.value.otherLinkTextDescription,
-      "title_data": titleForm,
-      faq: faqForm
-    }
-    this.service.post('course-update', data, 1).subscribe(res => {
-      sessionStorage.setItem('course_id', res.body.course_id)
-      sessionStorage.setItem('course_name', res.body.course_name)
-      sessionStorage.setItem('back', res.body.back)
+      coursename: this.addCourseForm.value.courseName,
+      field_level: this.addCourseForm.value.level,
+      field_language: studentLanguage,
+      teaching_language: teacherLanguage,
+      course_fee: this.addCourseForm.value.radio,
+      course_type: this.addCourseForm.value.courseType,
+      course_fee_teacher: this.addCourseForm.value.teacher_fee,
+      course_duration:
+        this.addCourseForm.value.timeDurationHr +
+        ':' +
+        this.addCourseForm.value.timeDurationMin,
+      course_desc: this.addCourseForm.value.otherLinkTextDescription,
+      title_data: titleForm,
+      faq: faqForm,
+    };
+    this.service.post('course-update', data, 1).subscribe((res) => {
+      sessionStorage.setItem('course_id', res.body.course_id);
+      sessionStorage.setItem('course_name', res.body.course_name);
+      sessionStorage.setItem('back', res.body.back);
       this.mainpageLoder = false;
       this.router.navigate(['/multimedia/contentStyle']);
-    })
+    });
   }
 
   // patch data
   updateData() {
-   
     this.employees().clear();
     this.faq().clear();
 
@@ -454,28 +502,28 @@ export class AddNewCourseIntroComponent implements OnInit {
       this.selectedLanguage.push(data.key);
     }
     const data = {
-      "course_id": sessionStorage.getItem('course_id'),
-      "user_id": sessionStorage.getItem('uid')
-    }
-    this.service.post('course-details', data, 1).subscribe(res => {
+      course_id: sessionStorage.getItem('course_id'),
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('course-details', data, 1).subscribe((res) => {
       this.updateNewData = res.body.result;
       this.updateNewDatas = res.body.result.subdata;
       var time = res.body.result.time_duration.split(':');
-      var hour = time[0]
-      var min = time[1]
+      var hour = time[0];
+      var min = time[1];
       this.addCourseForm.patchValue({
-        "level": this.updateNewData.level_id,
-        "courseName": this.updateNewData.title,
-        "selectedItems": this.updateNewData.field_language,
-        "teachingLanguage": this.updateNewData.teaching_language,
-        "radio": this.updateNewData.field_course_fees,
-        "courseType": this.updateNewData.course_type,
-        "teacher_fee": this.updateNewData.field_course_fees,
-        "timeDurationHr":hour,
-        "timeDurationMin":min,
-        "otherLinkTextDescription": this.updateNewData.field_course_description,
-        title_data: this.updateNewData.title
-      })
+        level: this.updateNewData.level_id,
+        courseName: this.updateNewData.title,
+        selectedItems: this.updateNewData.field_language,
+        teachingLanguage: this.updateNewData.teaching_language,
+        radio: this.updateNewData.field_course_fees,
+        courseType: this.updateNewData.course_type,
+        teacher_fee: this.updateNewData.field_course_fees,
+        timeDurationHr: hour,
+        timeDurationMin: min,
+        otherLinkTextDescription: this.updateNewData.field_course_description,
+        title_data: this.updateNewData.title,
+      });
       if (res.body.result.course_type === 'closed') {
         this.teacherFee = true;
       }
@@ -488,20 +536,20 @@ export class AddNewCourseIntroComponent implements OnInit {
             sub_title: this.sub_titleData.name,
             submenuId: this.sub_titleData.id,
             exercise: this.sub_titleData.exercise,
-          })
+          });
           if (this.sub_titleData.exercise == 'no') {
-            this.deleteBttons = true
+            this.deleteBttons = true;
           } else if (this.sub_titleData.exercise == 'yes') {
-            this.deleteBttons = false
+            this.deleteBttons = false;
           } else {
-            this.deleteBttons = false
+            this.deleteBttons = false;
           }
         }
         this.titleData = res.body.result.subdata[i];
         this.employees().at(i).patchValue({
           titleid: this.titleData.titleid,
-          title: this.titleData.title
-        })
+          title: this.titleData.title,
+        });
       }
       for (let i = 0; i < res.body.result.faq.length; i++) {
         this.addFaq();
@@ -509,104 +557,107 @@ export class AddNewCourseIntroComponent implements OnInit {
         this.faq().at(i).patchValue({
           id: titleData.id,
           title: titleData.title,
-          text: titleData.text
-        })
+          text: titleData.text,
+        });
       }
-    }
-    )
+    });
   }
   getHtml(url) {
     if (url.includes('<figure')) {
-      var split = url.split('<figure')
-      var prefix = ''
-      var suffix = ''
+      var split = url.split('<figure');
+      var prefix = '';
+      var suffix = '';
       if (split.length > 0) {
-        var removeLink = split[split.length - 1].split('</figure>')
-        prefix = split[0]
+        var removeLink = split[split.length - 1].split('</figure>');
+        prefix = split[0];
         if (removeLink.length > 0) {
-          suffix = removeLink[removeLink.length - 1]
+          suffix = removeLink[removeLink.length - 1];
         }
       }
       var iframeStart = '<iframe' + url.split('<iframe')[1];
       var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
       finalIframe = finalIframe.replace('position: absolute', '');
-      finalIframe = prefix + finalIframe + suffix
+      finalIframe = prefix + finalIframe + suffix;
       return this.sanitizer.bypassSecurityTrustHtml(
         finalIframe.replace(/\\"/g, '"')
       );
     } else {
-      return this.sanitizer.bypassSecurityTrustHtml(
-        url.replace(/\\"/g, '"')
-      );
+      return this.sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
     }
   }
   deleteFaqs(faqIndex) {
-    var arr = this.addCourseForm.get("faq") as FormArray
+    var arr = this.addCourseForm.get('faq') as FormArray;
     var item = arr.at(faqIndex);
-    if (item.value.id == '' || item.value.id == null || item.value.id == undefined) {
-      this.removeFaq(faqIndex)
+    if (
+      item.value.id == '' ||
+      item.value.id == null ||
+      item.value.id == undefined
+    ) {
+      this.removeFaq(faqIndex);
     } else {
-      this.deleteFaq(faqIndex)
+      this.deleteFaq(faqIndex);
     }
   }
 
-
   deleteTitles(empIndex) {
-    var arr = this.addCourseForm.get("employees") as FormArray
+    var arr = this.addCourseForm.get('employees') as FormArray;
     var item = arr.at(empIndex);
     if (item.value.titleid == '') {
-      this.removeEmployee(empIndex)
+      this.removeEmployee(empIndex);
     } else {
-      this.deleteTitleData(empIndex)
+      this.deleteTitleData(empIndex);
     }
   }
 
   deleteSubTitles(formIndex, index) {
-    var arr = this.addCourseForm.get("employees") as FormArray
+    var arr = this.addCourseForm.get('employees') as FormArray;
     var item = arr.at(formIndex);
-    var subarray = item.value.sub_title
-    var id = subarray[index].submenuId
+    var subarray = item.value.sub_title;
+    var id = subarray[index].submenuId;
     if (id == '') {
-      this.removeEmployeeSkill(formIndex, index)
+      this.removeEmployeeSkill(formIndex, index);
     } else {
-      this.deleteSubTitleData(formIndex, index)
+      this.deleteSubTitleData(formIndex, index);
     }
   }
   deleteFaq(formIndex) {
     this.mainpageLoder = true;
-    const pId = this.updateNewData.faq[formIndex]
-    this.getPid = pId.id
+    const pId = this.updateNewData.faq[formIndex];
+    this.getPid = pId.id;
     const data = {
-      p_id: this.getPid
-    }
-    this.service.post('delete-course-exercise', data, 1).subscribe(res => {
+      p_id: this.getPid,
+    };
+    this.service.post('delete-course-exercise', data, 1).subscribe((res) => {
       if (res.body.message == 'success') {
         this.mainpageLoder = false;
-        this.employees().removeAt(formIndex)
+        this.employees().removeAt(formIndex);
         // this.addInitialForms();
         this.updateData();
       }
-
-    })
-
+    });
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
-    this.route.queryParams.subscribe(c => {
-      const params = Object.assign({}, c);
-      delete params.dapp;
-      this.router.navigate([], { relativeTo: this.route, queryParams: params });
-    }).unsubscribe();
-    this.route.queryParamMap.subscribe(queryParams => {
-      var ids = sessionStorage.getItem('course_id')
+    this.route.queryParams
+      .subscribe((c) => {
+        const params = Object.assign({}, c);
+        delete params.dapp;
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: params,
+        });
+      })
+      .unsubscribe();
+    this.route.queryParamMap.subscribe((queryParams) => {
+      var ids = sessionStorage.getItem('course_id');
       this.id = queryParams.get(ids);
       this.add = false;
       setTimeout(() => {
         this.updateData();
       }, 100);
-    })
-    this.coursesName = sessionStorage.setItem('course_name', name)
-    sessionStorage.setItem('course_id', id)
+    });
+    this.coursesName = sessionStorage.setItem('course_name', name);
+    sessionStorage.setItem('course_id', id);
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -616,11 +667,11 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   toggleSubTitle(event, index, data, title) {
-    this.titlename = sessionStorage.setItem('title', title)
+    this.titlename = sessionStorage.setItem('title', title);
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
-        const id = title[j].titleid
+        const id = title[j].titleid;
         if (data === id) {
           const element = event.target;
           element.classList.toggle('active');
@@ -634,45 +685,50 @@ export class AddNewCourseIntroComponent implements OnInit {
     }
   }
   getChildSData(child, subtitle) {
-    this.subtitle = sessionStorage.setItem('subtitle', subtitle)
+    this.subtitle = sessionStorage.setItem('subtitle', subtitle);
     sessionStorage.setItem('subId', child);
-    this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
+    this.router.navigate(['/multimedia/contentStyle'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
   deleteTitleData(formIndex) {
     this.mainpageLoder = true;
-    const pId = this.updateNewDatas[formIndex]
-    this.getImagePid = pId.titleid
+    const pId = this.updateNewDatas[formIndex];
+    this.getImagePid = pId.titleid;
     const data = {
-      title_id: this.getImagePid
-    }
-    this.service.post('delete-course-title-subtitle', data, 1).subscribe(res => {
-      this.mainpageLoder = false;
-      if (res.body.message == 'success') {
-        this.employees().removeAt(formIndex)
-        // this.addInitialForms();
-        this.updateData();
-      }
-
-    })
+      title_id: this.getImagePid,
+    };
+    this.service
+      .post('delete-course-title-subtitle', data, 1)
+      .subscribe((res) => {
+        this.mainpageLoder = false;
+        if (res.body.message == 'success') {
+          this.employees().removeAt(formIndex);
+          // this.addInitialForms();
+          this.updateData();
+        }
+      });
   }
   deleteSubTitleData(formIndex, index) {
-    this.loder = true
+    this.loder = true;
     // this.mainpageLoder = true;
-    const pId = this.updateNewDatas[formIndex].submenu
-    const subid = pId[index].id
+    const pId = this.updateNewDatas[formIndex].submenu;
+    const subid = pId[index].id;
     const data = {
-      title_id: subid
-    }
-    this.service.post('delete-course-title-subtitle', data, 1).subscribe(res => {
-      if (res.body.message === 'success') {
-        this.loder = false
-        this.employeeSkills(formIndex).removeAt(index)
-        // this.addInitialForms();
-        // this.updateData();
-        setTimeout(() => {
-          this.mainpageLoder = false;
-        }, 1000);
-      }
-    })
+      title_id: subid,
+    };
+    this.service
+      .post('delete-course-title-subtitle', data, 1)
+      .subscribe((res) => {
+        if (res.body.message === 'success') {
+          this.loder = false;
+          this.employeeSkills(formIndex).removeAt(index);
+          // this.addInitialForms();
+          // this.updateData();
+          setTimeout(() => {
+            this.mainpageLoder = false;
+          }, 1000);
+        }
+      });
   }
 }
