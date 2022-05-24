@@ -313,3 +313,16 @@ image-cropper {
 ::ng-deep .multiselect-dropdown .dropdown-btn:hover {
     color: #f1f1f1
 }
+
+.select-dropdown-language:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #008ad2;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}

@@ -12,6 +12,7 @@ import { SupportComponent } from './support/support.component'
 import { SupportListComponent } from './support-list/support-list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { StudentsDashboardComponent } from './students-dashboard/students-dashboard.component';
+import { StudentViewComponent } from '../teacher-dashboard/student-view/student-view.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,13 @@ const routes: Routes = [
     component: StudentDashboardComponent,
     data: {
       title: 'StudentDashboardComponent'
+    }
+  },
+  {
+    path: 'StudentViewComponent',
+    component: StudentViewComponent,
+    data: {
+      title: 'StudentViewComponent'
     }
   },
   {

@@ -127,6 +127,7 @@ export class EditProfileComponent implements OnInit {
     this.sidebar();
     this.getNewToken();
     this.username();
+    this.removeCaret();
     // setInterval (() => {
     //   if(this.editProfileDiv !=undefined && !this.isContentloaded)
     //   {
@@ -135,6 +136,18 @@ export class EditProfileComponent implements OnInit {
     //   }
     // }, 1000);
     // this.addInitialForms();
+  }
+  removeCaret() {
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      el['style'].display = 'none';
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[1];
+      el['style'].display = 'none';
+    }, 1500);
   }
   username() {
     this.user = sessionStorage.getItem('username');

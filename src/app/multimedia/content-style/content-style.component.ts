@@ -448,6 +448,7 @@ export class ContentStyleComponent implements OnInit {
   }
 
   getHtml(url) {
+    debugger
     var iframeStart = '<iframe' + url.split('<iframe')[1];
     var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
     // finalIframe = finalIframe.replace('height: 100%', 'height : 20');

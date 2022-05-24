@@ -1857,8 +1857,7 @@ a {
     position: static !important;
     overflow: hidden;
     overflow-y: scroll;
-    height: 8.5em !important;
-    overflow: auto;
+    height: 175px;
 }
 
 #show-button img {
@@ -5936,6 +5935,17 @@ input:checked+.slider:before {
     height: auto;
     display: flex;
     margin-top: 20px;
+}
+
+.upload-accordion-title p {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 27px;
+    color: #868686;
+    padding-left: 15px;
+    margin: 0 auto;
+    font-family: 'poppins medium';
+    text-transform: uppercase;
 }
 
 .insert-question input {

@@ -105,7 +105,7 @@ export class StudentViewComponent implements OnInit {
   subTitle: any;
   mainpageLoder = true;
   errMsg: string;
-  isStudents : boolean;
+  isStudents: boolean;
   uniqueArray: any[];
   radioUniqueArray: any[];
   coursesName: void;
@@ -114,6 +114,8 @@ export class StudentViewComponent implements OnInit {
   studentRating: void;
   image: any;
   images: string;
+  currentItem = 'Television';
+  isRepeat = true;
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -209,7 +211,7 @@ export class StudentViewComponent implements OnInit {
     // console.log(logic needed);
   }
   getHtmlText(url) {
-    debugger
+    debugger;
     return this._sanitizer.bypassSecurityTrustHtml(url);
   }
   // get question with dropdown
@@ -256,15 +258,31 @@ export class StudentViewComponent implements OnInit {
     }
   }
   getHtml(url: string) {
-    var iframeStart = '<iframe' + url.split('<iframe')[1];
-    var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';   
-    finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
-    finalIframe = finalIframe.replace('position: absolute', '');
-    return this._sanitizer.bypassSecurityTrustHtml(
-      finalIframe.replace(/\\"/g, '"')
-    );
+    debugger;
+    if (url) {
+      var iframeStart = '<iframe' + url.split('<iframe')[1];
+      var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+      finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
+      finalIframe = finalIframe.replace('position: absolute', '');
+      return this._sanitizer.bypassSecurityTrustHtml(
+        finalIframe.replace(/\\"/g, '"')
+      );
+    }
     // return this._sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
   }
+  // getHtml(url: string) {
+  //   debugger;
+  //   if (url) {
+  //     var iframeStart = '<iframe' + url.split('<iframe')[1];
+  //     var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+  //     finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
+  //     finalIframe = finalIframe.replace('position: absolute', '');
+  //     return this._sanitizer.bypassSecurityTrustHtml(
+  //       finalIframe.replace(/\\"/g, '"')
+  //     );
+  //   }
+  //   return this._sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
+  // }
   // affiliation show result api
   showQuestionData() {
     sessionStorage.setItem('questiondata', JSON.stringify(this.questionArr));
@@ -548,14 +566,14 @@ export class StudentViewComponent implements OnInit {
   }
   // show result route
   showResult(titleid, title) {
-    debugger
+    debugger;
     this.imageDataTitle = sessionStorage.setItem('title', title);
     this.router.navigate(['/teacherDashboard/affiliation-result'], {
       queryParams: { id: this.id, titleid: titleid },
     });
   }
   imageShowResult(titleid, title) {
-    debugger
+    debugger;
 
     this.imageDataTitle = sessionStorage.setItem('image_title', title);
     this.router.navigate(['/teacherDashboard/image-drag-result'], {
@@ -563,7 +581,7 @@ export class StudentViewComponent implements OnInit {
     });
   }
   dragShowResult(titleid) {
-    debugger
+    debugger;
 
     this.router.navigate(['/teacherDashboard/drag-word'], {
       queryParams: { id: this.id, titleid: titleid },
@@ -909,8 +927,8 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    debugger
-    this.router.navigateByUrl("/multimedia/contentStyle");
+    debugger;
+    this.router.navigateByUrl('/multimedia/contentStyle');
   }
 
   // open pdf in new tab
@@ -942,7 +960,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getAffilitionData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -954,7 +972,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getDragDropData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -966,7 +984,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getQuesDropdownData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -978,7 +996,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getRadioData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
     const data = {
       course_id: sessionStorage.getItem('course_id'),

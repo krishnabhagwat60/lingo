@@ -68,7 +68,7 @@ export class StudentsDashboardComponent implements OnInit {
   images: string;
   searchDataBtn: boolean = false;
 
-  currentItem = 'Television';
+  currentItem = 'Television'  ;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
     if (this._frontService) {
