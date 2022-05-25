@@ -7418,10 +7418,6 @@ input:checked+.slider:before {
     padding-bottom: 25px;
 }
 
-.other-links-image-section {
-    background-color: #efeef5;
-}
-
 .other-links-image-section img {
     width: 100%;
     height: 100%;

@@ -451,7 +451,7 @@ export class ContentStyleComponent implements OnInit {
     debugger
     var iframeStart = '<iframe' + url.split('<iframe')[1];
     var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
-    // finalIframe = finalIframe.replace('height: 100%', 'height : 20');
+    finalIframe = finalIframe.replace('height: 100%', 'height : 20');
     finalIframe = finalIframe.replace('position: absolute', '');
     return this._sanitizer.bypassSecurityTrustHtml(
       finalIframe.replace(/\\"/g, '"')

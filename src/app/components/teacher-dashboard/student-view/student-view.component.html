@@ -276,18 +276,18 @@
 
                             </section>
                         </ng-container>
-                        <ng-container *ngSwitchCase="'fill_in_the_blanks'">
+                        <!--   <ng-container *ngSwitchCase="'fill_in_the_blanks'">
                             <section class="fill-in-blanks-view">
-                                <!-- <ng-container *ngFor="let data of fillTheBlanksData"> -->
+                                <ng-container *ngFor="let data of fillTheBlanksData"> 
                                 <div class="mid-title" *ngIf="data.title">
                                     <h1>{{data.title}}</h1>
-                                    <!-- <hr> -->
+                                    <hr> 
                                 </div>
                                 <div class="fill-in-blanks-content">
                                     <p [innerHtml]="data.question"></p>
                                 </div>
-                                <!-- </ng-container> -->
-                                <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+                               </ng-container>
+                              <hr style="width: 100%; height: 1px; background-color: #efeef4;">
                                 <div class="show-button">
                                     <button type="button" id="show-button" *ngIf="!courses" (click)="fillResult(data.p_id,data.title);sub(data.p_id);"><img
                       src="assets/images/icons/show.png">Show
@@ -297,7 +297,7 @@
                     Result</button>
                                 </div>
                             </section>
-                        </ng-container>
+                        </ng-container>-->
                         <div class="image-drag-section" *ngSwitchCase="'image_drag_and_drop'">
                             <!-- <ng-container *ngFor="let data of imageDrag"> -->
                             <div class="image-drag-edit-view">
@@ -561,16 +561,50 @@
                         </ng-container>
                         <ng-container *ngSwitchCase="'otherlink'">
                             <div class="other-link">
-                                <div class="mid-title" *ngIf="data.title">
+                                <div class="mid-title" *ngIf="i == 0">
                                     <h1>{{data.title}}</h1>
                                     <!-- <hr> -->
                                 </div>
                                 <div class="other-links-image-section">
-                                    <p [innerHTML]="getHtml(data.otherlink)"></p>
+                                    <!-- <p [innerHTML]="getHtml(data.otherlink)"></p> -->
                                     <!-- <p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/7vwbVb45aa6Cb26MxAVQab?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                             width="100%" height="232" frameborder="0"></iframe></p> -->
-                                    <p [innerHTML]="getHtml(data.other_link_url)"></p>
+                                    <!-- <p [innerHTML]="getHtml(data.other_link_url)"></p> -->
                                     <!-- <p><iframe src="https://learningapps.org/watch?app=12203837" style="border:0px;width:100%;height:500px" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></p> -->
+                                </div>
+                            </div>
+                            <div class="other-links-image-section" *ngIf="i == 0">
+                                <p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/episode/7vwbVb45aa6Cb26MxAVQab?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                        width="100%" height="232" frameborder="0"></iframe></p>
+                                <section class="fill-in-blanks-view">
+                                    <!-- <ng-container *ngFor="let data of fillTheBlanksData"> -->
+                                    <div class="mid-title" *ngIf="data.title">
+                                        <h1>Lari</h1>
+                                        <!-- <hr> -->
+                                    </div>
+                                    <div class="fill-in-blanks-content">
+                                        <p>Lorem <input type="text" class="answer" id="answer106391[0]"> dolor sit amet, consectetur adipiscing elit, sed do eiusmod <input type="text" class="answer" id="answer106391[1]"> incididunt ut labore et dolore magna
+                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                            <input type="text" class="answer" id="answer106391[2]"> pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est <input type="text" class="answer" id="answer106391[3]">.</p>
+                                    </div>
+                                    <!-- </ng-container> -->
+                                    <!-- <hr style="width: 100%; height: 1px; background-color: #efeef4;"> -->
+                                    <div class="show-button">
+                                        <button type="button" id="show-button" *ngIf="!courses" (click)="fillResult(data.p_id,data.title);sub(data.p_id);"><img
+                                  src="assets/images/icons/show.png">Show
+                                Result</button>
+                                        <button type="button" id="show-button" *ngIf="courses" (click)="fillResult(data.p_id,data.title);sub(data.p_id);getFillData(data.p_id)"><img
+                                  src="assets/images/icons/show.png">Show
+                                Result</button>
+                                    </div>
+                                </section>
+                                <div class="mid-title" *ngIf="data.title">
+                                    <h1>Hagalo</h1>
+                                    <!-- <hr> -->
+                                </div>
+                                <div>
+                                    <p><iframe id="frame" class="frame" allow="autoplay; fullscreen" style="border:0px;width:100%; height: 53vh;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" src="https://learningapps.org/show.php?id=p4022iaj320"
+                                            frameborder="0" width="100%" height="100%"></iframe></p>
                                 </div>
                             </div>
                         </ng-container>

@@ -4900,7 +4900,6 @@ input:checked+.slider:before {
     padding: 10px;
     background-color: #fff;
     border-radius: 5px;
-    border: 2px solid rgba(51, 42, 124, 0.08);
 }
 
 .picture img {

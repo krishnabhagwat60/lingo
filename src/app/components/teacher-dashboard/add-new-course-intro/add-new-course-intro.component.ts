@@ -154,11 +154,20 @@ export class AddNewCourseIntroComponent implements OnInit {
       var el = document.getElementsByClassName(
         'dropdown-multiselect__caret'
       )[0];
-      el['style'].display = 'none';
-      var el = document.getElementsByClassName(
+      if (el && el != undefined && el['style'] && el['style'] != undefined) {
+        el['style'].display = 'none';
+      }
+      var el1 = document.getElementsByClassName(
         'dropdown-multiselect__caret'
       )[1];
-      el['style'].display = 'none';
+      if (
+        el1 &&
+        el1 != undefined &&
+        el1['style'] &&
+        el1['style'] != undefined
+      ) {
+        el1['style'].display = 'none';
+      }
     }, 1500);
   }
   visibleIndex = -1;

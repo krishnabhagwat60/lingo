@@ -115,7 +115,7 @@ export class StudentViewComponent implements OnInit {
   image: any;
   images: string;
   currentItem = 'Television';
-  isRepeat = true;
+  isRepeat = false;
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -152,6 +152,7 @@ export class StudentViewComponent implements OnInit {
       );
     }
   }
+
 
   ngOnInit(): void {
     $('p>span').click(function (event) {});
@@ -259,30 +260,20 @@ export class StudentViewComponent implements OnInit {
   }
   getHtml(url: string) {
     debugger;
-    if (url) {
-      var iframeStart = '<iframe' + url.split('<iframe')[1];
-      var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
-      finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
-      finalIframe = finalIframe.replace('position: absolute', '');
-      return this._sanitizer.bypassSecurityTrustHtml(
-        finalIframe.replace(/\\"/g, '"')
-      );
-    }
+      if (url) {
+        var iframeStart = '<iframe' + url.split('<iframe')[1];
+        var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+        finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
+        finalIframe = finalIframe.replace('position: absolute', '');
+        return this._sanitizer.bypassSecurityTrustHtml(
+          finalIframe.replace(/\\"/g, '"')
+        );
+      }
     // return this._sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
   }
-  // getHtml(url: string) {
-  //   debugger;
-  //   if (url) {
-  //     var iframeStart = '<iframe' + url.split('<iframe')[1];
-  //     var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
-  //     finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
-  //     finalIframe = finalIframe.replace('position: absolute', '');
-  //     return this._sanitizer.bypassSecurityTrustHtml(
-  //       finalIframe.replace(/\\"/g, '"')
-  //     );
-  //   }
-  //   return this._sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
-  // }
+  iframeStart(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   // affiliation show result api
   showQuestionData() {
     sessionStorage.setItem('questiondata', JSON.stringify(this.questionArr));
@@ -298,6 +289,7 @@ export class StudentViewComponent implements OnInit {
       subtitle_id: sessionStorage.getItem('subId'),
     };
     this.service.post('text-dragdrop-get', data, 1).subscribe((res) => {
+      debugger;
       this.textDrag = res.body.result;
       this.textDataTitle = sessionStorage.setItem(
         'text_title',
@@ -472,6 +464,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
       debugger;
       this.mainpageLoder = false;
+      debugger;
       this.fillTheBlanksData = res.body.result;
       if (this.fillTheBlanksData && !this.fillTheBlanksData.length) {
         this.errMsg = 'Data Not Found';
@@ -1010,3 +1003,7 @@ export class StudentViewComponent implements OnInit {
     this.image = data;
   }
 }
+function getHtml(url: any, string: any) {
+  throw new Error('Function not implemented.');
+}
+
