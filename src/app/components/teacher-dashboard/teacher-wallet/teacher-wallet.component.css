@@ -569,3 +569,86 @@ section {
 ::ng-deep .multiselect-dropdown .dropdown-btn {
     color: black
 }
+
+
+/* @media screen and (min-width: 390px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -26%;
+    }
+} */
+
+@media (width: 390px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -26%;
+    }
+}
+
+@media (width: 375px) {
+    .pricing .box {
+        width: 150%;
+        margin-left: -25%;
+    }
+}
+
+@media (width: 414px) {
+    .pricing .box {
+        width: 140%;
+        margin-left: -15%;
+    }
+}
+
+@media (width: 393px) {
+    .pricing .box {
+        width: 156%;
+        margin-left: -23%;
+    }
+}
+
+@media (width: 360px) {
+    .pricing .box {
+        width: 175%;
+        margin-left: -43%;
+    }
+}
+
+@media (width: 412px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -25%;
+    }
+}
+
+@media (width: 820px) {
+    .count-box .btn-buy20 {
+        top: 460px;
+    }
+}
+
+@media (width: 768px) {
+    .pricing .box {
+        width: 119%;
+        margin-left: -15%;
+    }
+}
+
+@media (width: 768px) {
+    .count-box .btn-buy20 {
+        top: 461px;
+        left: 45%;
+    }
+}
+
+@media (width: 540px) {
+    .pricing .box {
+        width: 123%;
+    }
+}
+
+@media (width: 280px) {
+    .pricing .box {
+        width: 170%;
+        margin-left: -62%;
+    }
+}

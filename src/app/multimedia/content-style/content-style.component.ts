@@ -431,6 +431,7 @@ export class ContentStyleComponent implements OnInit {
     this.sidebar();
     this.courseDetail();
     this.username();
+    this.removeCaret();
     this.AccordionInitialForms();
     this.setTitleName();
     this.affiliationList();
@@ -445,6 +446,17 @@ export class ContentStyleComponent implements OnInit {
     if (sessionStorage.getItem('course_id')) {
       this.backBtn = true;
     }
+  }
+  removeCaret() {
+    debugger;
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      if (el && el != undefined && el['style'] && el['style'] != undefined) {
+        el['style'].display = 'none';
+      }
+    }, 1500);
   }
 
   getHtml(url) {
@@ -675,6 +687,7 @@ export class ContentStyleComponent implements OnInit {
       if (res.body.result) {
         this.fillTheBlank = true;
       }
+      if (res && res != undefined && res.body && res.body != undefined&& res.body.result && res.body.result != undefined) {
       if (this.fillBlanksClick != undefined && this.fillBlanksClick != null) {
         this.fillTheBlanksData.forEach((element, index) => {
           if (element.type === 'fill_in_the_blanks') {
@@ -684,6 +697,7 @@ export class ContentStyleComponent implements OnInit {
           }
         });
       }
+    }
     });
   }
 

@@ -535,38 +535,40 @@ export class AddNewCourseIntroComponent implements OnInit {
       if (res.body.result.course_type === 'closed') {
         this.teacherFee = true;
       }
-      for (let i = 0; i < res.body.result.subdata.length; i++) {
-        this.addEmployee();
-        for (let j = 0; j < res.body.result.subdata[i].submenu.length; j++) {
-          this.sub_titleData = res.body.result.subdata[i].submenu[j];
-          this.addEmployeeSkill(i);
-          this.employeeSkills(i).at(j).patchValue({
-            sub_title: this.sub_titleData.name,
-            submenuId: this.sub_titleData.id,
-            exercise: this.sub_titleData.exercise,
-          });
-          if (this.sub_titleData.exercise == 'no') {
-            this.deleteBttons = true;
-          } else if (this.sub_titleData.exercise == 'yes') {
-            this.deleteBttons = false;
-          } else {
-            this.deleteBttons = false;
+      if ( res && res != undefined && res.body.result && res.body.result != undefined&& res.body.result.result && res.body.result.result != undefined ) {
+        for (let i = 0; i < res.body.result.subdata.length; i++) {
+          this.addEmployee();
+          for (let j = 0; j < res.body.result.subdata[i].submenu.length; j++) {
+            this.sub_titleData = res.body.result.subdata[i].submenu[j];
+            this.addEmployeeSkill(i);
+            this.employeeSkills(i).at(j).patchValue({
+              sub_title: this.sub_titleData.name,
+              submenuId: this.sub_titleData.id,
+              exercise: this.sub_titleData.exercise,
+            });
+            if (this.sub_titleData.exercise == 'no') {
+              this.deleteBttons = true;
+            } else if (this.sub_titleData.exercise == 'yes') {
+              this.deleteBttons = false;
+            } else {
+              this.deleteBttons = false;
+            }
           }
+          this.titleData = res.body.result.subdata[i];
+          this.employees().at(i).patchValue({
+            titleid: this.titleData.titleid,
+            title: this.titleData.title,
+          });
         }
-        this.titleData = res.body.result.subdata[i];
-        this.employees().at(i).patchValue({
-          titleid: this.titleData.titleid,
-          title: this.titleData.title,
-        });
-      }
-      for (let i = 0; i < res.body.result.faq.length; i++) {
-        this.addFaq();
-        const titleData = res.body.result.faq[i];
-        this.faq().at(i).patchValue({
-          id: titleData.id,
-          title: titleData.title,
-          text: titleData.text,
-        });
+        for (let i = 0; i < res.body.result.faq.length; i++) {
+          this.addFaq();
+          const titleData = res.body.result.faq[i];
+          this.faq().at(i).patchValue({
+            id: titleData.id,
+            title: titleData.title,
+            text: titleData.text,
+          });
+        }
       }
     });
   }

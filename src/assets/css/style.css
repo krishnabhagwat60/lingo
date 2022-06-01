@@ -1857,7 +1857,6 @@ a {
     position: static !important;
     overflow: hidden;
     overflow-y: scroll;
-    height: 175px;
 }
 
 #show-button img {
@@ -5253,6 +5252,11 @@ input:checked+.slider:before {
     padding: 8px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.card-header {
+    height: 45px;
+    padding: 10px 40px 11px 10px;
 }
 
 .card-header-2 {

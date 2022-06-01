@@ -2207,11 +2207,6 @@ header .form-inline .search-form.close {
     }
 }
 
-.dummy-for-height {
-    height: 26.5em !important;
-    overflow: auto;
-}
-
 .dummy-for-height::-webkit-scrollbar {
     width: 6px;
     height: 1px;
