@@ -127,6 +127,7 @@ export class EditProfileComponent implements OnInit {
     this.sidebar();
     this.getNewToken();
     this.username();
+    this.removeCaret();
     // setInterval (() => {
     //   if(this.editProfileDiv !=undefined && !this.isContentloaded)
     //   {
@@ -135,6 +136,28 @@ export class EditProfileComponent implements OnInit {
     //   }
     // }, 1000);
     // this.addInitialForms();
+  }
+  removeCaret() {
+    debugger;
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      if (el && el != undefined && el['style'] && el['style'] != undefined) {
+        el['style'].display = 'none';
+      }
+      var el1 = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[1];
+      if (
+        el1 &&
+        el1 != undefined &&
+        el1['style'] &&
+        el1['style'] != undefined
+      ) {
+        el1['style'].display = 'none';
+      }
+    }, 1500);
   }
   username() {
     this.user = sessionStorage.getItem('username');
@@ -183,7 +206,6 @@ export class EditProfileComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
 
@@ -386,7 +408,6 @@ export class EditProfileComponent implements OnInit {
       status: 1
     }
 
-    // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
       localStorage.setItem('image', this.updateNewDataImage)
       this.editData = res;
@@ -482,7 +503,6 @@ export class EditProfileComponent implements OnInit {
       avatar: this.updateNewDataImage,
       status: 1
     }
-    // console.log(data);
     this.service.post('profile-update', data, 1).subscribe(res => {
       this.editData = res;
       if (res.body.result === 'success') {
@@ -606,10 +626,11 @@ export class EditProfileComponent implements OnInit {
   // form reset
   reset() {
     this.updateNewDataImage = "";
-    this.profileForm.reset();
+    this.editProfileForm.reset();
   }
   reseted() {
     this.updateNewDataImage = "";
+    this.teacherImage();
   }
   // show change password
   passwordChange() {
@@ -699,7 +720,6 @@ export class EditProfileComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }

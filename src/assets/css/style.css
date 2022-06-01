@@ -133,6 +133,7 @@ input {
     border: 2px solid #efeef4;
     color: #707070;
     font-size: 13px;
+    padding: 10px;
     outline: 0;
 }
 
@@ -170,7 +171,6 @@ a {
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    height: 100%;
 }
 
 @media(max-width: 767px) {
@@ -185,7 +185,6 @@ a {
     padding: 35px 20px;
     background-color: #f2fbff;
     border-top-left-radius: 45px;
-    /* height: calc(500px + 74px) !important; */
     position: relative;
 }
 
@@ -1596,10 +1595,48 @@ a {
 }
 
 .task-images ul li img {
-    width: 110px;
-    height: 110px;
-    margin-top: 25px;
-    display: inline-block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.radio-heading {
+    width: 100%;
+    height: auto;
+    padding: 8px;
+    background: #fff;
+    border-radius: 3px;
+    border: 2px solid #dae6e9;
+}
+
+.radio-heading p {
+    font-size: 18px;
+    font-family: 'Poppins SemiBold';
+    color: #000000;
+    line-height: 28px;
+    text-align: left;
+}
+
+.radio-solution {
+    display: flex;
+    padding: 10px 0px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #dae6e9;
+}
+
+.radio-solution .radio-retry-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.radio-solution p {
+    width: 95%;
+    padding-left: 15px;
+    display: flex;
+    padding-top: 4px;
+    align-items: center;
 }
 
 .task-images ul li span {
@@ -1779,8 +1816,9 @@ a {
 
 .show-button {
     width: 100%;
-    /* max-height: 50px; */
-    padding-top: 25px;
+    height: auto;
+    margin-bottom: 25px;
+    display: inline-block;
 }
 
 .excercises-side-bar-1 {
@@ -1800,13 +1838,25 @@ a {
     font-size: 13px;
     text-align: center;
     color: #ffffff;
-    /* margin-top: 26px; */
+    margin: 15px 0;
     font-weight: 500;
     text-transform: uppercase;
     background-color: #008ad2;
     font-family: 'Poppins Medium';
-    padding: 10px 30px 10px 45px;
-    border-radius: 25px;
+    padding: 10px 20px 10px 45px;
+    border-radius: 30px;
+}
+
+.radio-solution .radio-result-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.for-scroll {
+    position: static !important;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 #show-button img {
@@ -2640,31 +2690,11 @@ a {
     border: 1px solid #9dd0e7;
     text-align: center;
     height: 30px;
-    margin-top: 8px;
     font-size: 12px;
     text-transform: uppercase;
     color: #000000;
     font-family: 'poppins Medium';
     font-weight: 700;
-}
-
-#view-student-btn {
-    width: 160px;
-    border-radius: 30px;
-    background-color: #0082DA;
-    text-align: center;
-    height: 30px;
-    margin-top: 8px;
-    top: 70px;
-    position: absolute;
-    left: 15px;
-    bottom: 0px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #fff;
-    font-family: 'poppins Medium';
-    font-weight: 500;
 }
 
 #view-btn {
@@ -2682,11 +2712,19 @@ a {
     font-weight: 500;
 }
 
+#view-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #136980;
+    cursor: pointer;
+}
+
 .right-btn {
     height: auto;
     width: 50px;
-    float: right;
-    margin-top: -64px;
+    position: absolute;
+    right: 5px;
+    top: 0;
 }
 
 #edit-button {
@@ -2717,12 +2755,15 @@ a {
 }
 
 .right-btn ul {
-    margin-left: 160px;
-    margin-top: 130px;
+    margin-left: -105px;
     background-color: #fff;
     padding-bottom: 10px;
     border: 2px solid #fff;
     box-shadow: 0 5px 30px 0 rgb(82 63 105 / 20%);
+}
+
+.selected-item {
+    max-width: 100%!important;
 }
 
 .arrow-top-1:after {
@@ -3841,16 +3882,17 @@ input:checked+.slider:before {
 .component-heading {
     width: 100%;
     height: auto;
-    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .component-heading-top {
-    padding-left: 10px;
-    width: 100%;
+    float: left;
+    width: 80%;
 }
 
 .component-heading-top h1 {
-    font-size: 36px;
+    font-size: 30px;
     line-height: 27px;
     color: #136980;
     font-family: 'Poppins Bold';
@@ -3863,10 +3905,6 @@ input:checked+.slider:before {
     border-radius: 8px;
     background-color: #008ad2;
     margin-left: 0px;
-}
-
-.student-view-btn {
-    width: 100%;
 }
 
 .component-heading-top p {
@@ -4391,7 +4429,6 @@ input:checked+.slider:before {
     line-height: 27px;
     padding-left: 14px;
     color: #dee9eb;
-    font-weight: 400;
     text-transform: uppercase;
 }
 
@@ -5162,11 +5199,6 @@ input:checked+.slider:before {
     background-color: #fff;
 }
 
-#heading {
-    position: relative;
-    padding-top: 20px;
-}
-
 #heading a {
     font-size: 16px;
     line-height: 27px;
@@ -5220,6 +5252,11 @@ input:checked+.slider:before {
     padding: 8px;
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+.card-header {
+    height: 45px;
+    padding: 10px 40px 11px 10px;
 }
 
 .card-header-2 {
@@ -5342,8 +5379,18 @@ input:checked+.slider:before {
 }
 
 #heading {
-    margin-top: 10px;
+    position: relative;
     margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid rgba(51, 42, 124, 0.08);
+}
+
+#accordion-input-title {
+    width: 550px;
+    height: 45px;
+    border-radius: 5px;
+    border: 2px solid #efeef4;
+    margin-left: 14px;
 }
 
 #heading a {
@@ -5499,11 +5546,11 @@ input:checked+.slider:before {
 /*affilition */
 
 .save-heading h1 {
-    font-size: 30px;
-    line-height: 27px;
+    font-size: 25px;
+    line-height: 35px;
     font-family: 'Poppins Bold';
     color: #136980;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .save-heading hr {
@@ -5706,7 +5753,7 @@ input:checked+.slider:before {
     margin-top: -4px;
     position: absolute;
     right: 15px;
-    background-color: #4CAF50;
+    background-color: #18af14;
     text-align: center;
     font-family: 'Poppins Medium';
     color: #fff;
@@ -5802,7 +5849,7 @@ input:checked+.slider:before {
 
 .right-pick-student-content {
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 115px;
 }
 
 .right-pick-student-content p {
@@ -5877,9 +5924,8 @@ input:checked+.slider:before {
 }
 
 #question {
-    width: 200px;
-    height: 35px;
-    border: 2px solid rgba(51, 42, 124, 0.08);
+    width: 215px;
+    height: 45px;
 }
 
 .questions span {
@@ -5891,14 +5937,27 @@ input:checked+.slider:before {
 .insert-question {
     width: 100%;
     height: auto;
+    display: flex;
     margin-top: 20px;
 }
 
+.upload-accordion-title p {
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 27px;
+    color: #868686;
+    padding-left: 15px;
+    margin: 0 auto;
+    font-family: 'poppins medium';
+    text-transform: uppercase;
+}
+
 .insert-question input {
-    width: 77%;
+    width: 70%;
     height: 45px;
     padding: 10px;
     font-size: 14px;
+    margin-right: 10px;
     font-weight: 600;
     border-radius: 5px;
     border: 2px solid rgba(51, 42, 124, 0.08);
@@ -5942,22 +6001,32 @@ input:checked+.slider:before {
 
 .question-radio h4 {
     border-radius: 5px;
-    border: 1px solid rgba(51, 42, 124, 0.08);
     padding: 10px;
     font-size: 18px;
     line-height: 27px;
     color: #000000;
     font-weight: 600;
     font-family: 'poppins bold';
-    background-color: #fff;
     margin-bottom: 15px;
+}
+
+.fib {
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 6px;
+    min-width: 50px;
+    max-width: 100%;
+    margin-top: 20px;
+    /* border: 1px solid #000; */
+    padding: 5px;
+    /* color: #000000; */
 }
 
 .question-radio label {
     display: flex;
     padding-bottom: 20px;
     width: 100%;
-    border-bottom: 1px solid #ddd;
 }
 
 .question-radio input[type=radio] {
@@ -5978,7 +6047,7 @@ input:checked+.slider:before {
 
 .question-radio-button {
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 .question {
@@ -6355,7 +6424,7 @@ input:checked+.slider:before {
 }
 
 .fill-in-blanks-content input {
-    width: 100px;
+    width: auto;
     height: 30px;
     border-radius: 5px;
     margin: 0px 10px;
@@ -7113,8 +7182,7 @@ input:checked+.slider:before {
     position: relative;
     background-color: #fff;
     display: inline-block;
-    width: 20%;
-    margin-left: 3%;
+    width: 25%;
     margin-bottom: 20px;
 }
 
@@ -7169,7 +7237,6 @@ input:checked+.slider:before {
 .pick-the-right-view {
     width: 100%;
     height: auto;
-    padding-bottom: 25px;
 }
 
 .question-with-dropdown-view {
@@ -7212,10 +7279,29 @@ input:checked+.slider:before {
 }
 
 .dropdown-input span {
-    margin-top: 15px;
+    margin-top: 12px;
+    margin-left: -25px;
     position: absolute;
-    right: 35px;
     color: #18af14;
+}
+
+#back-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+.insert-question-view input {
+    width: 75%;
+    height: 45px;
+    padding: 10px;
+    font-size: 14px;
+    margin-right: 10px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 2px solid rgba(51, 42, 124, 0.08);
+    color: #000;
 }
 
 #pick-word-right-result {
@@ -7314,8 +7400,14 @@ input:checked+.slider:before {
 
 .youtube-video {
     width: 100%;
-    height: 315px;
     padding-bottom: 25px;
+}
+
+.multimedia-top-heading {
+    max-width: 100%;
+    /* height: 60px; */
+    display: block;
+    margin-bottom: 20px;
 }
 
 .audio-1 {
@@ -7330,10 +7422,6 @@ input:checked+.slider:before {
     padding-bottom: 25px;
 }
 
-.other-links-image-section {
-    background-color: #efeef5;
-}
-
 .other-links-image-section img {
     width: 100%;
     height: 100%;
@@ -7342,13 +7430,11 @@ input:checked+.slider:before {
 }
 
 .edit-btn-1 {
-    width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
     position: relative;
     left: 12px;
-    margin-top: -70px;
 }
 
 #delete-btn {
@@ -7438,8 +7524,43 @@ input:checked+.slider:before {
     border: 2px solid #efeef4;
 }
 
+#pre-support:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+.submit-btn a:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+#create-new-course-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+#create-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+#add-support:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
 #accordian-add-btn {
-    margin-top: -45px;
+    margin-top: -57px;
     width: 45px;
     height: 45px;
     position: absolute;
@@ -7466,7 +7587,7 @@ input:checked+.slider:before {
     font-size: 13px;
     color: #fff;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 28px;
     background-color: #6f6f6f;
 }
 
@@ -7519,4 +7640,58 @@ input:checked+.slider:before {
 .dashboard-custom a:hover,
 .dashboard-custom a.visited {
     background-color: #3c96cc !important;
+}
+
+#view-student-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+#t-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #9dd0e7;
+    cursor: pointer;
+}
+
+.question-radio-button {
+    width: 100%;
+    padding: 15px 10px 20px;
+}
+
+#affiliation-retry-answer {
+    border: 1px solid #18af14;
+    float: right;
+    width: 100%;
+    height: 40px;
+}
+
+#affiliation-retry-wrong {
+    border: 1px solid red;
+    float: right;
+    width: 100%;
+    height: 40px;
+}
+
+.next-button:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+.prev-btn:hover {
+    transform: scale(1.05);
+    transition: .5s ease-in-out;
+    box-shadow: 0 0 5px 0px #2196f3;
+    cursor: pointer;
+}
+
+.fill-in-blanks-content p {
+    font-size: 13px;
+    font-family: 'poppins Medium';
+    color: #8b8b8b;
+    line-height: 2.5;
 }

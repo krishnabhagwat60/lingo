@@ -139,7 +139,6 @@ export class PaymentComponent implements AfterViewInit, OnInit {
     this.route.queryParams.subscribe((params) => {
       this.initConfig(params['url']);
       this.enrollId = params['url'];
-      console.log(this.enrollId);
       this.id = params['id'];
     });
     this.studentCourseDetail();
@@ -181,44 +180,32 @@ export class PaymentComponent implements AfterViewInit, OnInit {
         fundingicons: false,
       },
       onApprove: (data, actions) => {
-        console.log(
-          'onApprove - transaction was approved, but not authorized',
-          data,
-          actions
-        );
         actions.order.get().then((details: any) => {
-          console.log(
-            'onApprove - you can get full order details inside onApprove: ',
-            details
-          );
+          
         });
       },
       onClientAuthorization: (data) => {
         // this.router.navigate(['/thank-you'], { queryParams: { url: data.id } })
 
         location.href = 'thank-you?url=' + data.id;
-        console.log(
-          'onClientAuthorization - you should probably inform your server about completed transaction at this point',
-          data
-        );
+       
         this.showSuccess = true;
       },
       onCancel: (data, actions) => {
         this.router.navigate(['/cancel-payment']);
 
-        console.log('OnCancel', data, actions);
+       
         this.showCancel = true;
       },
       onError: (err) => {
-        console.log('OnError', err);
         this.showError = true;
       },
       onClick: (data, actions) => {
-        console.log('onClick', data, actions);
+     
         this.resetStatus();
       },
       onInit: (data, actions) => {
-        console.log('onInit', data, actions);
+      
       },
     };
   }
@@ -247,7 +234,6 @@ export class PaymentComponent implements AfterViewInit, OnInit {
       localStorage.setItem('enrollId', this.enrollId);
     
         this.courseDetail = res?.body?.result
-      console.log(this.courseDetail);
     });
   }
 }

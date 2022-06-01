@@ -162,3 +162,7 @@
 .dashboard-custom a:hover {
     background-color: #3c96cc !important;
 }
+
+.main-height {
+    height: 85vh;
+}

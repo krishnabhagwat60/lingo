@@ -139,7 +139,7 @@ export class CourseDetailUnpaidComponent implements OnInit {
   }
   //enroll api
   enrollId(data) {
-    debugger;
+  
     this.enrollID = this.courseData;
     this.enroll = data.course_id;
     localStorage.setItem('enrollId', this.enroll);

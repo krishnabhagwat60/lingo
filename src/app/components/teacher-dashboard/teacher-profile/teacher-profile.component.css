@@ -7,16 +7,6 @@
     border-radius: 50%;
 }
 
-.main {
-    /* width: 100%; */
-    padding: 35px 20px;
-    background-color: #f2fbff;
-    border-top-left-radius: 45px;
-    /* height: calc(500px + 74px) !important; */
-    position: relative;
-    height: 85vh;
-}
-
 .display-center {
     display: flex;
     align-items: center;
@@ -40,6 +30,10 @@
     letter-spacing: 1px;
     border: 2px solid #008ad2;
     cursor: pointer;
+}
+
+.main {
+    height: calc(500px + 314px) !important;
 }
 
 .prof-btns .user-cancel:hover {

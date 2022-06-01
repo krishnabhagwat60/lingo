@@ -73,8 +73,22 @@ export class QuesRadioSolutionComponent implements OnInit {
       this.sidebarData2 = res.body.result;
     })
   }
-  gotoBack(){
-    this.router.navigateByUrl('/multimedia/contentStyle')
+
+   isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+}
+  gotoBack() {
+    if (this.isStudent()) {
+      this.router.navigateByUrl(this.frontServices.navigation.url);
+    } else {
+      this.router.navigate(['/multimedia/contentStyle'], {
+        queryParams: { id: sessionStorage.getItem('subId') },
+      });
+    }
   }
 
   toggleAccordian2(event, index) {
@@ -115,7 +129,6 @@ export class QuesRadioSolutionComponent implements OnInit {
       "title_id": parent
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -162,7 +175,6 @@ export class QuesRadioSolutionComponent implements OnInit {
     }
     this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
    // get exercise data api

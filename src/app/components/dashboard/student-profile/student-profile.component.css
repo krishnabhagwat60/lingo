@@ -14,7 +14,24 @@
 }
 
 ::ng-deep .multiselect-dropdown .dropdown-btn {
-    color: black
+    color: #fff
+}
+
+.select-dropdown-language:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #008ad2;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn:hover {
+    color: #f1f1f1
 }
 
 .prof-btns {
@@ -26,8 +43,8 @@
     width: 100%;
     font-size: inherit;
     font-family: inherit;
-    border: 2px solid rgba(51, 42, 124, 0.08);
     color: #aaaaaa;
+    background-color: #fff;
 }
 
 .prof-btns .user-cancel {

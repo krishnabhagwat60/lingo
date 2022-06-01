@@ -11,18 +11,18 @@
         <div id="main-menu" class="navbar" style="z-index: 9999;">
             <div style="display: grid;">
                 <h3 class="menu-title mt-3">
-                    <a routerLink="/teacherDashboard/addNewCourse">Add Course</a>
+                    <a style="color: #fff;">Add Course</a>
                 </h3>
             </div>
 
             <div class="dummy-for-height">
                 <div class="teacher-sidebar left-panel-1">
-                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important;">View Course
+                    <button class="sidebar-dropdown active" style="font-size: 18px; background-color: #0a576c !important; margin-bottom: .4em !important;">View Course
               <i class="fa fa-angle-down"></i>
             </button>
                     <div class="for-scroll">
                         <ng-container *ngFor="let data of sidebarData; index as j">
-                            <button class="sidebar-dropdown" (click)="toggleAccordian($event, j,data.course_name,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #007abb !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
+                            <button class="sidebar-dropdown" (click)="toggleAccordian($event, j,data.course_name,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #0a576c !important;">{{ (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
                   <!-- <i class="fa fa-angle-down"></i> -->
                 </button>
                         </ng-container>
@@ -126,7 +126,7 @@
                                 <p for="language">LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown multiselect-dropdown">
                                     <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" id="selectedItems" name="selectedItems" formControlName="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemStudentDeSelect($event)"
                                         [ngClass]="{ 'is-invalid': submitted && f.selectedItems.errors }">
                                     </ng-multiselect-dropdown>
@@ -137,12 +137,11 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-6 form-group">
                                 <p for="language">TEACHING LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown">
+                                <div class="select-dropdown multiselect-dropdown">
                                     <ng-multiselect-dropdown [placeholder]="'Language'" [settings]="dropdownSettings" [data]="language" id="teachingLanguage" name="teachingLanguage" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                                         [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>
@@ -268,8 +267,10 @@
                                             <input type="hidden" formControlName="submenuId" name="submenuId" id="submenuId">
                                             <input type="sub-menu" class="form-control" formControlName="sub_title" id="sub_title" name="sub_title" placeholder="Sub Menu" [ngClass]="{ 'is-invalid': skill.get('sub_title').hasError('required') && submitted}">
                                             <div class="fieldRequired" *ngIf="skill.get('sub_title').hasError('required') && submitted" style="font-size: 10px;
-                                               color: #ec3232; font-size: 13px; ">
-                                                Sub Title is required.
+                                               color: #ec3232; font-size: 13px; margin-bottom: -18px;">
+                                                <span>
+                                                    Sub Title is required.
+                                                </span>
                                             </div>
 
                                             <div class="sub-title-remove">
@@ -296,20 +297,24 @@
                         </div>
                         <div formArrayName="faq">
 
-                            <div class="faq-row" *ngFor="let faqData of faq().controls; let faqIndex=index">
+                            <div class="faq-row" style="margin-bottom: 15px;" *ngFor="let faqData of faq().controls; let faqIndex=index">
                                 <ng-container [formGroupName]="faqIndex">
                                     <input type="hidden" formControlName="id" id="id" name="id">
                                     <div class="faqs-more">
                                         <div class="card-1">
                                             <div id="faq-accordn" class="card-accr-1">
-                                                <a href="" [attr.data-target]="'#collapesDetail0' + faqIndex" data-toggle="collapse" data-target="#collapesDetail0" aria-expanded="false" aria-controls="accordion-1" class="collapsed">
-                                                    <input type="text" id="title" class="form-control" name="title" formControlName="title" style="border: 0;">
-                                                    <i class="fa fa-angle-down"></i>
+                                                <a (click)="showSubItem(faqIndex)" aria-controls="accordion-1" class="collapsed">
+                                                    <input type="text" id="title" class="form-control" name="title" formControlName="title" style="border: 0; width: 100%;
+                                                    height: 45px;
+                                                    border-radius: 6px;
+                                                    padding: 8px;
+                                                    border-radius: 5px;">
+                                                    <i class="fa fa-angle-down" style="margin-top: -40px; color: #000;"></i>
                                                 </a>
                                             </div>
-                                            <div id="collapesDetail0" [attr.id]="'collapesDetail0' + faqIndex" aria-labelledby="headingOne" data-parent=".card-1" class="collapse">
+                                            <div id="collapesDetail0" *ngIf="visibleIndex == faqIndex" style="width: 98% !important; margin-top: 15px;">
                                                 <div class="card-body-2">
-                                                    <textarea id="text" name="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
+                                                    <textarea id="text" name="text" formControlName="text" class="form-control dropdown-content" [ngClass]="{ 'is-invalid': submitted && faqData.get('text').errors }"></textarea>
                                                     <div *ngIf="submitted && faqData.get('text').invalid" class="text-danger mt-1">
                                                         <div *ngIf="faqData.get('text').errors.required">
                                                             Text is required.
@@ -322,7 +327,6 @@
                                     </div>
 
                                 </ng-container>
-
                             </div>
 
                             <div class="add-faq">

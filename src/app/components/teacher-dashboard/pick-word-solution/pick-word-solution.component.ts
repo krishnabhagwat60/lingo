@@ -67,10 +67,23 @@ export class PickWordSolutionComponent implements OnInit {
     this.username();
   }
 
-  gotoBack(){
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+}
+gotoBack() {
+  debugger
+  if (this.isStudent()) {
     this.router.navigateByUrl(this.frontServices.navigation.url);
-
+  } else {
+    this.router.navigate(['/multimedia/contentStyle'], {
+      queryParams: { id: sessionStorage.getItem('subId') },
+    });
   }
+}
   username(){
     this.user = sessionStorage.getItem('username');
   }
@@ -135,7 +148,6 @@ export class PickWordSolutionComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -169,7 +181,6 @@ export class PickWordSolutionComponent implements OnInit {
     }
     this.service.post('teacher_sidebar',data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   

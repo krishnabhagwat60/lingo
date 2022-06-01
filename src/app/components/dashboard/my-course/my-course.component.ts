@@ -36,12 +36,11 @@ export class MyCourseComponent implements OnInit {
     if (this._frontService) { return this._frontService };
     return this._frontService = this.injector.get(FrontService);
   }
-  constructor(private service: ServiceService, private router: Router,private authService: SocialAuthService,private injector: Injector) { 
+  constructor(private service: ServiceService, private router: Router, private authService: SocialAuthService, private injector: Injector) {
     this.user = sessionStorage.getItem('username');
   }
 
   ngOnInit(): void {
-    debugger
     this.getCourseData(1, 0);
     // this.username();
   }
@@ -50,9 +49,10 @@ export class MyCourseComponent implements OnInit {
   view(id) {
     this.router.navigate(['/teacherDashboard/student-view'], { queryParams: { viewpage: id } });
   }
-  logout(){
-sessionStorage.clear();
-this.frontServices.vm.sidebarData =null;
+  logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.frontServices.vm.sidebarData = null;
 
     this.signOut();
     this.router.navigate(['/login'])
@@ -77,11 +77,11 @@ this.frontServices.vm.sidebarData =null;
       if (res.body.total === 1 || res.body.total === 0) {
         this.buttonShow = false;
       }
-      if(i == 1 ){
+      if (i == 1) {
         this.questionButton = true;
-        
+
         // this.questionButtons = true
-      }else if(i == 0){
+      } else if (i == 0) {
         this.questionButton = false;
         this.questionButtons = false
 
@@ -89,7 +89,7 @@ this.frontServices.vm.sidebarData =null;
       if (i + 1 == res.body.total) {
         this.questionButtons = true
         this.questionButton = true;
-      }else if(i = !res.body.total){
+      } else if (i = !res.body.total) {
         this.questionButtons = false
       }
       if (res.body.data) {
@@ -100,7 +100,7 @@ this.frontServices.vm.sidebarData =null;
       for (let i = 0; i < res.body.total; i++) {
         this.totalPages.push(i + 1);
       }
-      // console.log(this.courseData);
+
     })
   }
   // pagination
@@ -125,10 +125,10 @@ this.frontServices.vm.sidebarData =null;
     this.router.navigate(['/dashboard/course_detail'], { queryParams: { id: id } });
   }
   searchform = new FormGroup({
-    searchData : new FormControl('')
+    searchData: new FormControl('')
   })
   searchDatas() {
-    
+
     // this.mainpageLoder = true;
     const data =
     {
@@ -146,7 +146,7 @@ this.frontServices.vm.sidebarData =null;
 
       for (let i = 0; i < res.body.total_course; i++) {
         this.totalPages.push(i + 1);
-        
+
       }
       if (res.body.total_course === 1 || res.body.total_course === 0) {
         this.buttonShow = false;

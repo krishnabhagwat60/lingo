@@ -14,14 +14,29 @@
         <div class="col-md-2" style="padding: 0;">
             <ul class="user-area">
                 <li class="markus">
-                    <a href="">{{user | titlecase}}</a>
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-wallet" viewBox="0 0 16 16" style="fill:#000000; font-weight: bold;">
-                   <path d="M0 3a2 2 0 0 1 2-2h13.5a.5.5 0 0 1 0 1H15v2a1 1 0 0 1 1 1v8.5a1.5 1.5 0 0 1-1.5 1.5h-12A2.5 2.5 0 0 1 0 12.5V3zm1 1.732V12.5A1.5 1.5 0 0 0 2.5 14h12a.5.5 0 0 0 .5-.5V5H2a1.99 1.99 0 0 1-1-.268zM1 3a1 1 0 0 0 1 1h12V2H2a1 1 0 0 0-1 1z"/> </svg> -->
-                    <!-- <p><span>{{wallet}} cent</span></p>                               -->
+                    <a class="context-menu">{{user | titlecase}}</a>
                 </li>
+                <!-- <li>
+                    <a  class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets/images/student-icon.png"></span>
+                        <span *ngIf="updateNewDataImage" class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span>
+                    </a>
+                </li> -->
+
                 <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="user-avatar" [src]="images">
+                    <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li *ngIf="!updateNewDataImage">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="user-avatar" src="assets/images/icons/student-icon.png">
+                            </a>
+                        </li>
+                        <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
+                        <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="user-avatar" [src]="updateNewDataImage">
+                            </a>
+                        </li>
+                        <!-- <span  class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span> -->
                     </a>
                 </li>
                 <li>
@@ -59,8 +74,8 @@
                             <p>{{courseNameData}} <span class="fa fa-angle-right"></span>{{titless}}<span class="fa fa-angle-right"></span>{{subtitless}}<span class="fa fa-angle-right"></span>
                             </p>
                         </div>
-                        <div class="student-view-btn">
-                            <button type="button" id="bck-btn" (click)="gotoBack()" *ngIf="backBtns == true">Back</button>
+                        <div class="student-view-btn" style="float: right; display: flex;">
+                            <button type="button" id="bck-btn" class="student-view-btn" (click)="gotoBack()" *ngIf="backBtns == true">Back</button>
                             <button type="button" id="student-view-btn" (click)="studentView()">Student
                                 View</button>
                             <button type="button" id="save-btn" (click)="backToDashboard()">Save</button>
@@ -717,24 +732,19 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div  class="accordion"> -->
-                                            <!-- <div class="card-2" *ngFor="let data2 of data.data;let k = index">
-                        <div id="headingTwo" class="card-header"
-                          style="border: 2px solid rgba(51,42,124,0.08);background: transparent;padding: 15px;">
-                          <a data-toggle="collapse" data-target="#accordions"
-                            [attr.data-target]="'#collapesDetails' + k +data2.id" aria-expanded="true"
-                            aria-controls="accordion-2">{{data2.title}} <i class="fa fa-angle-down"
+                                            <!-- <div class="accordion">
+                                                <div class="card-2" *ngFor="let data2 of data.data;let k = index">
+                                                    <div id="headingTwo" class="card-header" style="border: 2px solid rgba(51,42,124,0.08);background: transparent;padding: 15px;">
+                                                        <a data-toggle="collapse" data-target="#accordions" [attr.data-target]="'#collapesDetails' + k +data2.id" aria-expanded="true" aria-controls="accordion-2">{{data2.title}} <i class="fa fa-angle-down"
                               style="float: right;"></i></a>
-                        </div>
-                        <div>
-                          <div id="accordion-2" data-parent=".card-2" [attr.id]="'collapesDetails' + k +data2.id"
-                            aria-labelledby="headingTwo" class="collapse card-body"
-                            style="border: 2px solid rgba(51,42,124,0.08);">
-                            <p>{{data2.text}}</p>
-                          </div>
-                        </div>
-                      </div> -->
-                                            <!-- </div> -->
+                                                    </div>
+                                                    <div>
+                                                        <div id="accordion-2" data-parent=".card-2" [attr.id]="'collapesDetails' + k +data2.id" aria-labelledby="headingTwo" class="collapse card-body" style="border: 2px solid rgba(51,42,124,0.08);">
+                                                            <p>{{data2.text}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
                                         </div>
                                         <!-- </ng-container> -->
                                     </div>
@@ -841,20 +851,22 @@
                         <div class="multimedia-content">
                             <p>Multimedia Content</p>
                             <hr>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
+                            <div class="dummy-for-height" style="height: 23.5em !important;">
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
                                 Text<span class="fa fa-text-height"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
                                 <span class="fa fa-image"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAccordion()" data-target="#accordion-upload" data-toggle="modal">Accordion
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAccordion()" data-target="#accordion-upload" data-toggle="modal">Accordion
                                 <span class="fa fa-angle-down"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
                                 <span class="fa fa-music"></span></button>
-                            <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
                                 <span class="fa fa-youtube"></span></button>
-                            <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()" [disabled]="!subCatSelected" data-target="#other-links-upload" data-toggle="modal">Other
+                                <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()" [disabled]="!subCatSelected" data-target="#other-links-upload" data-toggle="modal">Other
                                 Links<span class="fa fa-link"></span></button>
-                            <button type="button" id="multimediamenu-btn" (click)="resetPdf()" [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
+                                <button type="button" id="multimediamenu-btn" (click)="resetPdf()" [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
                                 <span class="fa fa-file"></span></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -871,7 +883,7 @@
                     <h4>Insert Text</h4>
                     <hr>
                     <form [formGroup]="insertTestForm">
-                        <div class="insert-section">
+                        <div class="insert-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionInsert" name="questionInsert" formControlName="questionInsert">
                         </div>
@@ -957,7 +969,10 @@
                             <form [formGroup]="accordionForm">
                                 <div class="upload-accordion-title">
                                     <p>What Is Your Title</p>
-                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title" style="width: 600px!important;" [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
+                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title" style="width: 600px!important; height: 45px;
+                                    border-radius: 5px;
+                                    border: 2px solid #efeef4;
+                                    margin-left: 14px;" [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
                                     <div *ngIf="accorSubmit && frms.accordion_title.errors" class="invalid-feedback">
                                         <!-- <div *ngIf="frms.accordion_title.errors.required">Skills is required</div> -->
                                         <div *ngIf="frms.accordion_title.errors.maxlength">Title should be only 254 characters
@@ -977,7 +992,8 @@
                                             <button type="button" id="accordian-add-btn" (click)="deleteAccordionDatas(i)" class="fa fa-minus" style="color: #fff;"></button>
                                             <div id="accordion-1" [attr.id]="'collapesDetail' + i" aria-labelledby="headingOne" data-parent=".card-1" class="collapse show">
                                                 <div class="card-body-2">
-                                                    <textarea id="accordion-textarea" formControlName="text" id="text" name="text" [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
+                                                    <textarea id="accordion-textarea" style="    width: 100%;
+                                                    height: 100px;" formControlName="text" id="text" name="text" [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
                                                     <div *ngIf="accorSubmit && form.get('text').invalid" class="text-danger mt-1">
                                                         <div *ngIf="form.get('text').errors.required">
                                                             Text is required.
@@ -1056,7 +1072,7 @@
                     <h4>Upload PDF Files</h4>
                     <hr>
                     <form [formGroup]="pdfForm">
-                        <div class="upload-audio-section">
+                        <div class="upload-audio-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionPdf" name="questionPdf" formControlName="questionPdf">
                         </div>
@@ -1096,7 +1112,7 @@
                     <hr>
                     <p>MAX size 100 mb</p>
                     <form [formGroup]="pictureForm">
-                        <div class="picture-section">
+                        <div class="picture-section question-radio-title">
                             <p>What Is Your Title</p>
                             <input id="questionPicture" name="questionPicture" formControlName="questionPicture">
                         </div>
@@ -1191,7 +1207,7 @@
                                     <p>What is Your Question ?
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="question" id="question" name="question" [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
+                                    <input type="" formControlName="question" name="question" [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
 
                                 </div>
                                 <div class="fieldRequired" *ngIf="affiForm.get('question').hasError('required') && submitted" style="font-size: 10px;
@@ -1505,7 +1521,7 @@
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="question" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <input type="" formControlName="question" id="questioninput" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
                                                 <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
@@ -1674,7 +1690,7 @@
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="question" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <input type="" formControlName="question" id="questiontest" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
                                                 <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
@@ -1965,7 +1981,7 @@
                                                 <span class="required-asterisk">*</span>
                                             </p>
                                             <!-- <textarea type="text" formControlName="question"> </textarea> -->
-                                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="question" id="question" name="question" type="divarea" [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
+                                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="question" name="question" type="divarea" [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
                                             </ckeditor>
                                             <div *ngIf="fillSubmit && fills.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="fills.question.errors.required">
@@ -2050,7 +2066,7 @@
                                             <p>Textarea
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <textarea type="text" formControlName="question" id="question" name="question" [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
+                                            <textarea type="text" formControlName="question" id="questiontest" name="question" [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
                                             <div *ngIf="pickSubmit && picks.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="picks.question.errors.required">
                                                     TextArea is required.

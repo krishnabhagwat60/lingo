@@ -40,15 +40,13 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    console.log('Images', this.image);
+   
     this.username();
     this.walletData();
     this.profile();
   }
   logout() {
     localStorage.clear();
-
     sessionStorage.clear();
     this.frontServices.vm.sidebarData = null;
 
@@ -67,6 +65,13 @@ export class SideNavComponent implements OnInit {
   }
   walletData() {
     this.wallet = sessionStorage.getItem('wallet');
+  }
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
   }
   profile() {
     const data = {

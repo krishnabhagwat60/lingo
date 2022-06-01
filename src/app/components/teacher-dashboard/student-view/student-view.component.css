@@ -18,6 +18,21 @@
     opacity: 0;
 }
 
+.back {
+    float: right;
+    width: 78px;
+    height: 40px;
+    background-color: #008ad2;
+    font-size: 12px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
+
 .radio-question {
     display: flex;
     align-items: center;
@@ -36,6 +51,10 @@
     font-size: 13px;
     color: #4c4c4c;
     margin-left: 5px;
+}
+
+.main {
+    min-height: 100vh;
 }
 
 [type="radio"]:checked,
@@ -490,7 +509,6 @@
 .card-create-accrdn .card-header {
     border: 2px solid rgba(51, 42, 124, 0.08);
     background: transparent;
-    padding: 15px;
 }
 
 .card-create-accrdn .card-body {

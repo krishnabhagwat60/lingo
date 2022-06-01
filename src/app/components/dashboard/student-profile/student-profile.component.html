@@ -30,7 +30,7 @@
                         <div class="col text-center mt-5 mb-5" *ngIf="mainpageLoderOfSave">
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:50px"></i>
                         </div>
-                        <div class="row" *ngIf="!mainpageLoder">
+                        <div class="row">
                             <div class="col-md-6 form-group">
                                 <label for="name">FIRST NAME</label>
                                 <input type="text" class="form-control" id="name" placeholder="FIRST NAME" id="firstName" name="firstName" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
@@ -200,7 +200,7 @@
                                 <span class="slider round"></span>
                             </label>
                         </div>
-                        <p *ngIf="msg" style="color: #0a576c ;text-align: center;"><b>{{msg}}</b></p>
+                        <p *ngIf="isMsg" style="color: #0a576c ;text-align: center;"><b>{{msg}}</b></p>
                         <div class="save-btn" *ngIf="!passwordShow">
                             <button type="button" (click)="studentProfile()" id="save">Save</button>
                             <button type="button" id="reset" (click)="reset()">Reset</button>

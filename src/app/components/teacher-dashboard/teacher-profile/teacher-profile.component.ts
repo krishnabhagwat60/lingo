@@ -51,7 +51,6 @@ export class TeacherProfileComponent implements OnInit {
   }
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
-    console.log(this.imageChangedEvent)
 
   }
   imageCropped(event: ImageCroppedEvent) {
@@ -72,7 +71,7 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   getProfile() {
-    debugger
+  
 
     const data = {
       user_id: sessionStorage.getItem('uid')
@@ -96,7 +95,6 @@ export class TeacherProfileComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -131,7 +129,6 @@ export class TeacherProfileComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
 

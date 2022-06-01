@@ -44,19 +44,7 @@ export class SidebarComponent implements OnInit {
     
    
   ) {
-    // this.frontServices.event.subscribe((res) => {
-    //   if (res > 0) {
-    //       this.studentSideBar();
-    //   }
-    // });
-    // if (this.subscription == undefined) {
-    //   this.subscription = this.eventEmitterService.
-    //     invokeMenuList.subscribe(() => {
-    //       debugger
-    //       this.frontServices.vm.courseChanged = false;
-    //       this.studentSideBar();
-    //     });
-    // }
+   
   }
 
   ngOnInit(): void {
@@ -75,8 +63,8 @@ export class SidebarComponent implements OnInit {
    
   }
   studentSideBar() {
-    debugger
-    console.log('sidebar view', this.frontServices.vm);
+  
+   
 
   
       const data = {
@@ -93,11 +81,7 @@ export class SidebarComponent implements OnInit {
       });
     
   }
-  // sidebarChange(event : any)
-  // {
-  //   debugger
-  //     this.sidebarData =event;
-  // }
+
   unique(arr, keyProps) {
     return Object.values(
       arr.reduce((uniqueMap, entry) => {

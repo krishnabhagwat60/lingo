@@ -120,7 +120,7 @@ export class RegisterComponent implements OnInit {
       sessionStorage.setItem('uid', res.current_user.uid);
       sessionStorage.setItem('basic_key', res.current_user.basic_auth_token);
       sessionStorage.setItem('wallet', res.current_user.wallet);
-      console.log(res.body.message)
+     
       if(res.message == 'This Email Is Already Register For Other Role'){
         this.socialErr = 'This Email Is Already Register For Other Role'
       }else{

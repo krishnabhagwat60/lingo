@@ -48,7 +48,6 @@ export class TeacherViewStudentComponent implements OnInit {
       user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
       this.subTitle = res.body.result
     })
   }
@@ -82,7 +81,6 @@ export class TeacherViewStudentComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     })
   }
   viewCourseData(page = 1, i) {
@@ -93,7 +91,6 @@ export class TeacherViewStudentComponent implements OnInit {
     }
     this.buttonColor = i;
     this.service.post('view-student', data, 1).subscribe(res => {
-      // console.log(res);
       this.viewData = res.body.data;
       this.mainpageLoder = false;
       if (!this.viewData.length) {

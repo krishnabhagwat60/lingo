@@ -36,9 +36,14 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    position: relative;
-    top: -36px;
-    left: 641px;
+    position: absolute;
+    right: 10px;
+    top: -35px;
+}
+
+#faq-accordn i {
+    font-size: 25px;
+    right: 10px;
 }
 
 .radio_FreeCourse input[type=radio]:checked+.radio-label:before {
@@ -357,6 +362,12 @@
     margin-block-end: auto;
 }
 
+ng-multiselect-dropdown {
+    .dropdown-multiselect__caret {
+        display: none !important;
+    }
+}
+
 .faqs-more {
     display: flex;
     flex-wrap: wrap;
@@ -388,7 +399,11 @@
     height: 25px;
     border-radius: 50%;
     position: relative;
-    top: 7px;
+    top: 20px;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    display: none;
 }
 
 .without_ampm::-webkit-datetime-edit-ampm-field {
@@ -411,4 +426,32 @@
     padding: 0 7px;
     text-transform: lowercase;
     font-size: 14px;
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: #fff
+}
+
+::ng-deep .multiselect-dropdown .dropdown-btn:hover {
+    color: #aaaaaa
+}
+
+#faq-accordn {
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid rgba(51, 42, 124, 0.08);
+}
+
+#dropdown-content {
+    display: none;
+}
+
+.multiselect-dropdown {
+    position: relative;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    color: #aaaaaa;
+    background-color: #fff;
 }

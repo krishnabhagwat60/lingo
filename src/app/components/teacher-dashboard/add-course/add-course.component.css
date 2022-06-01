@@ -378,6 +378,9 @@
     width: 98% !important;
 }
 
+::ng-deep .multiselect-dropdown .dropdown-btn {
+    color: black
+}
 .faqs-more #accordion-textarea {
     width: 98% !important;
 }

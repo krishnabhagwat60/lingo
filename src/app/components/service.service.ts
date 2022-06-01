@@ -49,7 +49,7 @@ export class ServiceService {
        
         return this.http.post(this.baseUrl + endPoint,  data, httpOptions);
     }
-    // console.log(httpOptions);
+   
   }
   post1(endPoint, data, isHeader): Observable<any> {
     let httpOptions;

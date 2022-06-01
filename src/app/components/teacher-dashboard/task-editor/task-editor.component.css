@@ -1,10 +1,22 @@
-.teacher-sidebar{
+.teacher-sidebar {
     z-index: 1;
     overflow-x: auto;
     padding: 5px 15px;
 }
 
-.teacher-sidebar .sidebar-dropdown{
+.left-panel1::-webkit-scrollbar-thumb {
+    background: #3893ab;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+
+.left-panel1::-webkit-scrollbar {
+    width: 6px;
+    height: 1px;
+    background-color: transparent;
+}
+
+.teacher-sidebar .sidebar-dropdown {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 16px!important;
@@ -22,4 +34,17 @@
 
 .teacher-sidebar .sidebar-dropdown i {
     display: none;
+}
+
+aside.left-panel {
+    background-color: #136980;
+    height: 100%;
+    position: fixed;
+    float: left;
+    min-height: 100%;
+    vertical-align: top;
+    margin-top: 80px;
+    width: 225px;
+    border-top-right-radius: 55px;
+    overflow: auto;
 }

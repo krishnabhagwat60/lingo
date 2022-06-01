@@ -23,6 +23,7 @@ export class HeaderBarComponent implements OnInit {
   }
   logout(){
     sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login'])
     this.signOut()
   }

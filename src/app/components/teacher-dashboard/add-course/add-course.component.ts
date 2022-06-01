@@ -174,7 +174,7 @@ export class AddCourseComponent implements OnInit {
       "title_id": parent
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
-      // console.log(res);
+     
       this.subTitle = res.body.result
     })
   }
@@ -185,7 +185,7 @@ export class AddCourseComponent implements OnInit {
     }
     this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
+    
     })
   }
   // view page
@@ -347,7 +347,7 @@ export class AddCourseComponent implements OnInit {
     }
     this.service.post('get-category', data, 1).subscribe(res => {
       this.level = res.body.result;
-      // console.log(this.level);
+     
     })
   }
   time() {
@@ -356,7 +356,7 @@ export class AddCourseComponent implements OnInit {
     }
     this.service.post('get-category', data, 1).subscribe(res => {
       this.timeData = res.body.result;
-      // console.log(this.course);
+     
     })
   }
   // language api

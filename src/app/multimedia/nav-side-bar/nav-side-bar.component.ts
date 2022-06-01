@@ -17,7 +17,6 @@ export class NavSideBarComponent implements OnInit {
   }
   
   audFileSelected(event: any) {
-    // console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);

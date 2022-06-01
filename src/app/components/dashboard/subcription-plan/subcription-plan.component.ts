@@ -78,13 +78,15 @@ export class SubcriptionPlanComponent implements OnInit {
           this.errMsg = 'Data Not Found';
         }
         if (res.body.result) {
-          this.mainpageLoder = false;
           this.totalPages = [];
           for (let i = 0; i < res.body.total_plan; i++) {
             this.totalPages.push(i + 1);
           }
         }
+
       }
+      this.mainpageLoder = false;
+
     });
   }
 

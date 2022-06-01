@@ -36,7 +36,7 @@ export class FaqComponent implements OnInit {
        this.banner = res.data[0];
        this.loding = false;
 
-       // console.log(this.banner);
+      
      })
     }
 

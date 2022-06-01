@@ -115,7 +115,7 @@
         </div>
     </div>
     <div class="main main-height">
-        <button type="button" id="back-btn" (click)="gotoBack()">Back</button>
+        <button type="button" class="student-view-btn back" id="back-btn" (click)="gotoBack()">Back</button>
 
         <div class="dashboard" style="padding: 0px 10px;">
             <div class="save-heading">
@@ -139,7 +139,7 @@
                     <div class="row" *ngFor="let data of affiData">
                         <!-- <ng-container > -->
 
-                        <div class="col-md-1 sn">
+                        <div class="col-sm-1 sn">
                             <p>S.No</p>
                             <input *ngFor="let data1 of data.data; index as i" type="" name="" value="{{i+1}}" disabled>
 

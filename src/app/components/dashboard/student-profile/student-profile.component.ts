@@ -74,6 +74,7 @@ export class StudentProfileComponent implements OnInit {
   coursesName: void;
   updateNewDataImage: string;
   imageSrc: string;
+  isMsg = false;
   @Output() loadImageFailed = new EventEmitter<void>();
   constructor(
     private service: ServiceService,
@@ -134,9 +135,32 @@ export class StudentProfileComponent implements OnInit {
       allowSearchFilter: true,
     };
     this.languageData();
+    this.removeCaret();
     // this.updateData();
 
     this.username();
+  }
+  removeCaret() {
+    debugger;
+    setInterval(() => {
+      var el = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[0];
+      if (el && el != undefined && el['style'] && el['style'] != undefined) {
+        el['style'].display = 'none';
+      }
+      var el1 = document.getElementsByClassName(
+        'dropdown-multiselect__caret'
+      )[1];
+      if (
+        el1 &&
+        el1 != undefined &&
+        el1['style'] &&
+        el1['style'] != undefined
+      ) {
+        el1['style'].display = 'none';
+      }
+    }, 1500);
   }
   onItemsSelect(item: any) {
     this.knownLanguages.filter((x) => x.value == item.value)[0]['checked'] =
@@ -199,19 +223,19 @@ export class StudentProfileComponent implements OnInit {
     }
   }
   onDeSelectKnownLang(item: any, i: any) {
-    this.knownLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
-
+    this.knownLanguages.filter((x) => x.value == item['value'])[0]['checked'] =
+      false;
   }
   onDeSelectKnownLangAllItem(item: any) {
-    this.knownLanguages.map(x => x.checked = false);
+    this.knownLanguages.map((x) => (x.checked = false));
   }
   onDeSelectMainLang(item: any, i: any) {
-    this.mainLanguages.filter(x => x.value == item["value"])[0]["checked"] = false;
+    this.mainLanguages.filter((x) => x.value == item['value'])[0]['checked'] =
+      false;
   }
   onDeSelectMainLangAllItem(item: any) {
-    this.mainLanguages.map(x => x.checked = false);
+    this.mainLanguages.map((x) => (x.checked = false));
   }
-
 
   // view page
   view(id) {
@@ -224,7 +248,6 @@ export class StudentProfileComponent implements OnInit {
   }
 
   studentProfile() {
-    debugger
     this.submitted = true;
     if (this.profileForm.invalid) {
       return;
@@ -236,7 +259,7 @@ export class StudentProfileComponent implements OnInit {
       let kLang = this.knownLanguages.find((x) => x.value == data.value);
       if (kLang != null && kLang.key != null) {
         // if (!selectedknownLanguages.includes(kLang.key)) {
-          selectedknownLanguages.push(kLang.key);
+        selectedknownLanguages.push(kLang.key);
         // }
       }
 
@@ -250,7 +273,7 @@ export class StudentProfileComponent implements OnInit {
       let mLang = this.mainLanguages.find((x) => x.value == data.value);
       if (mLang != null && mLang.key != null) {
         // if (!selectedknownLanguages.includes(mLang.key)) {
-          selectedMainLanguages.push(mLang.key);
+        selectedMainLanguages.push(mLang.key);
         // }
       }
 
@@ -316,26 +339,26 @@ export class StudentProfileComponent implements OnInit {
     });
   }
   studentImage() {
-    debugger;
+    this.isMsg = true;
+    this.msg = 'Profile Updated Successfully';
     const datas = {
       user_id: sessionStorage.getItem('uid'),
     };
     this.mainpageLoder = true;
     this.service.post('get_profile_by_id', datas, 1).subscribe((res) => {
       var ress = res.body.profile;
-      debugger;
 
       let selectedknownLanguages = [];
       let selectedMainLanguages = [];
-  
+
       for (const data of this.profileForm.value.known_language) {
         let kLang = this.knownLanguages.find((x) => x.value == data.value);
         if (kLang != null && kLang.key != null) {
           // if (!selectedknownLanguages.includes(kLang.key)) {
-            selectedknownLanguages.push(kLang.key);
+          selectedknownLanguages.push(kLang.key);
           // }
         }
-  
+
         // if (data.key == null) {
         //   this.selectedLanguage.push(data);
         // } else {
@@ -346,10 +369,10 @@ export class StudentProfileComponent implements OnInit {
         let mLang = this.mainLanguages.find((x) => x.value == data.value);
         if (mLang != null && mLang.key != null) {
           // if (!selectedknownLanguages.includes(mLang.key)) {
-            selectedMainLanguages.push(mLang.key);
+          selectedMainLanguages.push(mLang.key);
           // }
         }
-  
+
         // if (data.key == null) {
         //   this.selectedMainLanguage.push(data);
         // } else {
@@ -418,13 +441,13 @@ export class StudentProfileComponent implements OnInit {
         email: ress.email,
         avatar: this.updateNewDataImage,
       };
-     
+
       this.service.post('profile-update', data, 1).subscribe((res) => {
         if (res.body.result === 'success') {
           this.mainpageLoder = false;
-          this.msg = 'Profile Updated Successfully';
           this.eventEmitterService.onProfileChanged();
           this.submitted = false;
+          this.isMsg = false;
         }
       });
     });
@@ -435,6 +458,7 @@ export class StudentProfileComponent implements OnInit {
   }
   reseted() {
     this.updateNewDataImage = '';
+    this.studentImage();
   }
   // patch data
   updateData() {
@@ -445,7 +469,7 @@ export class StudentProfileComponent implements OnInit {
       if (res.body.profile.status === '1') {
         this.activated = true;
       }
-      debugger;
+
       this.updateNewData = res.body.profile;
       this.updateNewDataImage = res.body.profile.avatar;
       localStorage.setItem('image', this.updateNewDataImage);
@@ -588,7 +612,7 @@ export class StudentProfileComponent implements OnInit {
       .subscribe((result) => {
         this.isImageShow = false;
         this.allStateList = result;
-        // console.log(result)
+
         let el: HTMLElement = this.studentProfileDiv.nativeElement;
         el.click();
       });
@@ -608,7 +632,6 @@ export class StudentProfileComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
-      // console.log(res);
       this.subTitle = res.body.result;
     });
   }

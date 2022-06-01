@@ -21,7 +21,7 @@
             </button>
                 <div class="for-scroll" style="background-color: #0187d0;">
                     <ng-container *ngFor="let data of sidebarData; index as j">
-                        <button class="dropdown-btn" (click)="toggleAccordian($event, j,data.course_id)" style="font-size: 18px;margin-bottom: .4em !important; background-color: #007abb !important;">{{data.course_name}}
+                        <button class="dropdown-btn" (click)="toggleAccordian($event, j,data.course_id)" style="font-size: 18px; padding-left: 28px; margin-bottom: .4em !important; background-color: #0a576c !important;">{{data.course_name}}
                         <i class="fa fa-angle-down"></i>
                     </button>
                         <!-- <div *ngIf="data.isActive">

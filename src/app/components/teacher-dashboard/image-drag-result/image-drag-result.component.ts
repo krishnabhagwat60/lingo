@@ -56,7 +56,6 @@ export class ImageDragResultComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.invokeMenuList.subscribe(
         () => {
-          debugger;
 
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
@@ -74,8 +73,21 @@ export class ImageDragResultComponent implements OnInit {
     this.studentSideBar();
   }
 
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return true;
+    } else {
+      return false;
+    }
+}
   gotoBack() {
-    this.route.navigateByUrl(this.frontServices.navigation.url);
+    if (this.isStudent()) {
+      this.route.navigateByUrl(this.frontServices.navigation.url);
+    } else {
+      this.route.navigate(['/multimedia/contentStyle'], {
+        queryParams: { id: sessionStorage.getItem('subId') },
+      });
+    }
   }
 
   studentSideBar() {
@@ -110,13 +122,7 @@ export class ImageDragResultComponent implements OnInit {
     }
   }
 
-  isStudent() {
-    if ('student' in sessionStorage) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+ 
   toggleSubTitle2(event, index, data) {
     for (let i = 0; i < this.sidebarData2.length; i++) {
       const title = this.sidebarData2[i].title;
@@ -147,7 +153,6 @@ export class ImageDragResultComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('submenu-listing', data, 1).subscribe((res) => {
-      // console.log(res);
       this.subTitle = res.body.result;
     });
   }
@@ -183,7 +188,6 @@ export class ImageDragResultComponent implements OnInit {
     };
     this.service.post('teacher_sidebar', data, 1).subscribe((res) => {
       this.sidebarData = res.body.result;
-      //  console.log(this.sidebarData);
     });
   }
   // get multimedia data api

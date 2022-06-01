@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="main main-height">
+    <div class="main">
 
         <div class="dashboard">
             <div class="Subcription-plan">
@@ -44,12 +44,12 @@
                             <tr id="active-plan-data">
                                 <th><span>{{data.title}}</span></th>
                                 <th style="text-transform: uppercase;color: #6b6b6b;">Course ID :
-                                    <span>{{data.course_id}}</span></th>
+                                    <span>{{data.course_id}}</span>
+                                </th>
                                 <th style="color: #6b6b6b;">Monthly Price : <span>{{data.course_fee}}</span></th>
                             </tr>
                             <tr id="active-plan-data">
-                                <td>Join - {{data.join_date | date}} <small id="expire-hide"
-                                        *ngIf="data.expire_date != ''">| Expire - {{data.expire_date |date}}</small>
+                                <td>Join - {{data.join_date | date}} <small id="expire-hide" *ngIf="data.expire_date != ''">| Expire - {{data.expire_date |date}}</small>
                                 </td>
                                 <td></td>
                                 <td></td>
@@ -57,8 +57,7 @@
                         </table>
                     </div>
                     <div class="re-sub">
-                             <button *ngIf="data.course_type == 'public' && data.button =='0'" type="submit" (click)="resubscribeId(data)"
-                              id="re-sub">re-subscribe</button>
+                        <button *ngIf="data.course_type == 'public' && data.button =='0'" type="submit" (click)="resubscribeId(data)" id="re-sub">re-subscribe</button>
                     </div>
                 </ng-container>
                 <div class="container-fluid">
@@ -74,9 +73,7 @@
                                     <ul class="pagination justify-content-center">
                                         <li class="page-item disabled">
                                         </li>
-                                        <li class="page-item" *ngFor="let data of totalPages; index as i"
-                                            (click)="getSubscription(data,i)"><a class="page-link" style="color: #fff;"
-                                                [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
+                                        <li class="page-item" *ngFor="let data of totalPages; index as i" (click)="getSubscription(data,i)"><a class="page-link" style="color: #fff;" [ngClass]="[i == buttonColor ? 'button-actives':'button-standard']">{{data}}</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -113,7 +110,8 @@
                         <tr>
                             <td><span>{{enrollID?.title}}</span></td>
                             <td style="text-transform: uppercase;border-right: transparent;">Course Id :
-                                <span>{{enrollID?.course_id}}</span></td>
+                                <span>{{enrollID?.course_id}}</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Currently Enrolled <span>{{enrollID?.total_enroll}}</span></td>
@@ -122,9 +120,9 @@
                         </tr>
                         <tr>
                             <td style="border-bottom:transparent">Approximated Duration
-                                <span>{{enrollID?.time_duration}}</span></td>
-                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span
-                                    style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{enrollID?.course_fee}}
+                                <span>{{enrollID?.time_duration}}</span>
+                            </td>
+                            <td style="border-bottom:transparent; border-right: transparent;">Monthly Price: <span style="background-color: #008ad2; border-radius: 5px;padding: 4px 6px; color: #fff; font-size: 11px;">{{enrollID?.course_fee}}
                                     USD</span></td>
                         </tr>
                     </table>
@@ -164,14 +162,12 @@
                             <div class="summary-2">
                                 <p>{{enrollID?.title}}</p>
                                 <ul>
-                                    <li
-                                        style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
+                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px; border-bottom: transparent;">
                                         {{enrollID?.teacher_name}} </li>
                                     <li style="border-bottom: transparent;"><span>{{enrollID?.course_id}}</span></li>
                                     <li style="border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
-                                        <strong>{{enrollID?.rating}}</strong><i class="fa fa-star"></i> <i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                                        <strong>{{enrollID?.rating}}</strong><i class="fa fa-star"></i> <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -180,12 +176,10 @@
                                 <div class="vl"></div>
                                 <p>Payment Review</p>
                                 <ul>
-                                    <li
-                                        style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
+                                    <li style="border-top-left-radius:8px; border-top-right-radius:8px;border-bottom: transparent;">
                                         Course fees :<span>{{enrollID?.course_fees}}</span></li>
                                     <li style="border-bottom: transparent;">Tax <span>€0.00</span></li>
-                                    <li
-                                        style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
+                                    <li style="font-weight: 700;border-bottom-left-radius:8px; border-bottom-right-radius:8px;">
                                         Total <span>{{enrollID?.course_fee}}</span></li>
                                 </ul>
                             </div>

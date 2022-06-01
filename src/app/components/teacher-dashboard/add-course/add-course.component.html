@@ -63,7 +63,7 @@
                                 <p for="language">LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown-language">
+                                <div class="select-dropdown-language multiselect-dropdown">
                                     <!-- <select formControlName="language" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && f.language.errors }">
                                         <option value="" disabled>Language</option>
@@ -85,7 +85,7 @@
                                 <p for="language">TEACHING LANGUAGE
                                     <span class="required-asterisk">*</span>
                                 </p>
-                                <div class="select-dropdown-language">
+                                <div class="select-dropdown-language multiselect-dropdown">
                                     <ng-multiselect-dropdown [placeholder]="'Teaching Language'" [settings]="dropdownSettings" [data]="language" formControlName="teachingLanguage" (onSelect)="onTeacherSelect($event,i)" (onSelectAll)="onSelectTeacherLangAll($event,i)" (onDeSelect)="onTeacherLangDeSelect($event,i)"
                                         [ngClass]="{ 'is-invalid': submitted && f.teachingLanguage.errors }">
                                     </ng-multiselect-dropdown>
@@ -276,7 +276,8 @@
                     </div>
 
                     <div class="add-faq">
-                        <div class="addmore"><button type="button" id="addmore-btn" (click)="addFaq()"><span class="fa fa-plus"></span>Add More FAQ</button></div>
+                        <div class="addmore"><button type="button" id="addmore-btn" (click)="addFaq()"><span
+                                    class="fa fa-plus"></span>Add More FAQ</button></div>
                     </div>
                     <div class="save-btn-1">
                         <button id="save-btn" (click)="submit()" style="color: #fff;">Save</button>

@@ -105,6 +105,7 @@ export class StudentViewComponent implements OnInit {
   subTitle: any;
   mainpageLoder = true;
   errMsg: string;
+  isStudents: boolean;
   uniqueArray: any[];
   radioUniqueArray: any[];
   coursesName: void;
@@ -113,6 +114,8 @@ export class StudentViewComponent implements OnInit {
   studentRating: void;
   image: any;
   images: string;
+  currentItem = 'Television';
+  isRepeat = false;
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -150,8 +153,10 @@ export class StudentViewComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     $('p>span').click(function (event) {});
+    this.isStudents = this.isStudent();
     this.studentDetail();
     this.sidebar();
     this.username();
@@ -207,6 +212,7 @@ export class StudentViewComponent implements OnInit {
     // console.log(logic needed);
   }
   getHtmlText(url) {
+    debugger;
     return this._sanitizer.bypassSecurityTrustHtml(url);
   }
   // get question with dropdown
@@ -252,15 +258,21 @@ export class StudentViewComponent implements OnInit {
       });
     }
   }
-  getHtml(url) {
-    var iframeStart = '<iframe' + url.split('<iframe')[1];
-    var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
-    finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
-    finalIframe = finalIframe.replace('position: absolute', '');
-    return this._sanitizer.bypassSecurityTrustHtml(
-      finalIframe.replace(/\\"/g, '"')
-    );
+  getHtml(url: string) {
+    debugger;
+      if (url) {
+        var iframeStart = '<iframe' + url.split('<iframe')[1];
+        var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
+        finalIframe = finalIframe.replace('height: 100%', 'height : 400px');
+        finalIframe = finalIframe.replace('position: absolute', '');
+        return this._sanitizer.bypassSecurityTrustHtml(
+          finalIframe.replace(/\\"/g, '"')
+        );
+      }
     // return this._sanitizer.bypassSecurityTrustHtml(url.replace(/\\"/g, '"'));
+  }
+  iframeStart(arg0: string) {
+    throw new Error('Method not implemented.');
   }
   // affiliation show result api
   showQuestionData() {
@@ -277,6 +289,7 @@ export class StudentViewComponent implements OnInit {
       subtitle_id: sessionStorage.getItem('subId'),
     };
     this.service.post('text-dragdrop-get', data, 1).subscribe((res) => {
+      debugger;
       this.textDrag = res.body.result;
       this.textDataTitle = sessionStorage.setItem(
         'text_title',
@@ -324,6 +337,7 @@ export class StudentViewComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    localStorage.clear();
     this.frontServices.vm.sidebarData = null;
 
     this.router.navigate(['/login']);
@@ -450,6 +464,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
       debugger;
       this.mainpageLoder = false;
+      debugger;
       this.fillTheBlanksData = res.body.result;
       if (this.fillTheBlanksData && !this.fillTheBlanksData.length) {
         this.errMsg = 'Data Not Found';
@@ -544,14 +559,14 @@ export class StudentViewComponent implements OnInit {
   }
   // show result route
   showResult(titleid, title) {
-    debugger
+    debugger;
     this.imageDataTitle = sessionStorage.setItem('title', title);
     this.router.navigate(['/teacherDashboard/affiliation-result'], {
       queryParams: { id: this.id, titleid: titleid },
     });
   }
   imageShowResult(titleid, title) {
-    debugger
+    debugger;
 
     this.imageDataTitle = sessionStorage.setItem('image_title', title);
     this.router.navigate(['/teacherDashboard/image-drag-result'], {
@@ -559,7 +574,7 @@ export class StudentViewComponent implements OnInit {
     });
   }
   dragShowResult(titleid) {
-    debugger
+    debugger;
 
     this.router.navigate(['/teacherDashboard/drag-word'], {
       queryParams: { id: this.id, titleid: titleid },
@@ -745,7 +760,13 @@ export class StudentViewComponent implements OnInit {
     };
     this.service.post('show_result', data1, 1).subscribe((res) => {});
   }
-
+  isStudent() {
+    if ('student' in sessionStorage) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   studentDetail() {
     (this.courseId = sessionStorage.getItem('course_id')),
       (this.teacherName = sessionStorage.getItem('teacher_name')),
@@ -899,8 +920,8 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    
-    this.router.navigateByUrl(this.frontServices.navigation.url);
+    debugger;
+    this.router.navigateByUrl('/multimedia/contentStyle');
   }
 
   // open pdf in new tab
@@ -932,7 +953,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getAffilitionData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -944,7 +965,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getDragDropData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -956,7 +977,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getQuesDropdownData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -968,7 +989,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getRadioData(id) {
-    debugger
+    debugger;
     this.frontServices.navigation.url = this.router['url'];
     const data = {
       course_id: sessionStorage.getItem('course_id'),
@@ -982,3 +1003,7 @@ export class StudentViewComponent implements OnInit {
     this.image = data;
   }
 }
+function getHtml(url: any, string: any) {
+  throw new Error('Function not implemented.');
+}
+

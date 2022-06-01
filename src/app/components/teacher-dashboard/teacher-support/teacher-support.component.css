@@ -1,9 +1,3 @@
 .main {
-    /* width: 100%; */
-    padding: 35px 20px;
-    background-color: #f2fbff;
-    border-top-left-radius: 45px;
-    /* height: calc(500px + 74px) !important; */
-    position: relative;
-    height: 85vh;
+    height: calc(500px + 314px) !important;
 }

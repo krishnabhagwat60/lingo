@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
      this.service.post('get-banner', data, 0).subscribe(res => {
        this.loding = false;
       this.banner = res.data[0];
-      // console.log(this.banner);
+     
     })
    }
 
