@@ -17,6 +17,7 @@ export class CreatCourseDashboardComponent implements OnInit {
   currentCardIndex = 0;
   subTitle: any;
   user: string;
+  
 
   constructor(private service: ServiceService, private router: Router) { }
 
