@@ -31,6 +31,13 @@
     background-color: #3c96cc;
 }
 
+.for-scroll {
+    position: static !important;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 175px;
+}
+
 .sidenav .title-dropdown {
     padding: 6px 8px 6px 16px;
     text-decoration: none;

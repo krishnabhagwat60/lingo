@@ -133,8 +133,8 @@ input {
     border: 2px solid #efeef4;
     color: #707070;
     font-size: 13px;
-    padding: 10px;
     outline: 0;
+    width: 100%;
 }
 
 textarea {

@@ -84,7 +84,7 @@ export class ImageDragResultComponent implements OnInit {
     if (this.isStudent()) {
       this.route.navigateByUrl(this.frontServices.navigation.url);
     } else {
-      this.route.navigate(['/multimedia/contentStyle'], {
+      this.route.navigate(['/teacherDashboard/editCourse'], {
         queryParams: { id: sessionStorage.getItem('subId') },
       });
     }

@@ -58,7 +58,7 @@ export class NavbarComponent implements OnInit {
     this.service.post('get_profile_by_id', data, 1).subscribe((res) => {
       this.updateNewDataImage = res.body.profile.avatar;
       if (this.updateNewDataImage == null) {
-        this.updateNewDataImage = false;
+        this.updateNewDataImage = '';
       }
     });
     setInterval(() => {
