@@ -333,7 +333,7 @@
 }
 
 .afiliation-speed select {
-    ont-weight: normal;
+    font-weight: normal;
     width: 200px;
     font-size: 13px;
     height: 45px;

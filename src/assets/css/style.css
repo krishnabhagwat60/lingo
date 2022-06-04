@@ -133,7 +133,6 @@ input {
     border: 2px solid #efeef4;
     color: #707070;
     font-size: 13px;
-    padding: 10px;
     outline: 0;
     width: 100%;
 }
@@ -7596,10 +7595,6 @@ input:checked+.slider:before {
     position: absolute;
     margin-left: -20px;
     margin-top: 5px;
-}
-
-.main-height {
-    height: 100%;
 }
 
 

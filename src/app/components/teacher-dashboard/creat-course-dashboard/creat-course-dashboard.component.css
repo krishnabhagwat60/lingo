@@ -569,3 +569,267 @@ section {
 ::ng-deep .multiselect-dropdown .dropdown-btn {
     color: black
 }
+
+
+/* @media screen and (min-width: 390px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -26%;
+    }
+} */
+
+@media (width: 390px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -26%;
+    }
+}
+
+@media (width: 375px) {
+    .pricing .box {
+        width: 150%;
+        margin-left: -25%;
+    }
+}
+
+@media (width: 414px) {
+    .pricing .box {
+        width: 140%;
+        margin-left: -15%;
+    }
+}
+
+@media (width: 393px) {
+    .pricing .box {
+        width: 156%;
+        margin-left: -23%;
+    }
+}
+
+@media (width: 360px) {
+    .pricing .box {
+        width: 175%;
+        margin-left: -43%;
+    }
+}
+
+@media (width: 412px) {
+    .pricing .box {
+        width: 160%;
+        margin-left: -25%;
+    }
+}
+
+@media (width: 820px) {
+    .count-box .btn-buy20 {
+        top: 460px;
+    }
+}
+
+@media (width: 768px) {
+    .pricing .box {
+        width: 119%;
+        margin-left: -15%;
+    }
+}
+
+@media (width: 768px) {
+    .count-box .btn-buy20 {
+        top: 461px;
+        left: 45%;
+    }
+}
+
+@media (width: 540px) {
+    .pricing .box {
+        width: 123%;
+    }
+}
+
+@media (width: 280px) {
+    .pricing .box {
+        width: 170%;
+        margin-left: -62%;
+    }
+}
+
+@media (width: 375px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 414px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 390px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 393px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 360px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 412px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 540px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 280px) {
+    .section-header {
+        text-align: center;
+        /* padding-bottom: 40px; */
+        color: #0a576c;
+        margin-left: 10px;
+        margin-top: 25%;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .section-header h5 {
+        margin-top: 5%;
+    }
+    .pricing .text-right {
+        margin-left: 60px;
+        margin-top: 5%;
+    }
+}
+
+@media (width: 820px) {
+    .section-header {
+        margin-left: -18px;
+    }
+    .pricing .text-right {
+        margin-left: 63px;
+    }
+}
+
+@media (width: 768px) {
+    .section-header {
+        margin-left: -46px;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .pricing .text-right {
+        margin-left: 47px;
+    }
+}

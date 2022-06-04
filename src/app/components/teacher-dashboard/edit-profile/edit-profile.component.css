@@ -264,6 +264,15 @@ image-cropper {
     background-color: #fff;
 }
 
+.main {
+    width: 97.8%;
+    margin-left: 25px;
+    padding: 35px 20px;
+    background-color: #f2fbff;
+    border-top-left-radius: 45px;
+    height: 100%;
+}
+
 .circle img {
     width: 100%;
     height: 100%;
