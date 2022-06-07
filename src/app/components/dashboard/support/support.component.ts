@@ -7,7 +7,7 @@ import { ServiceService } from '../../service.service';
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
-  styleUrls: ['./support.component.css']
+  styleUrls: ['./support.component.css'],
 })
 export class SupportComponent implements OnInit {
   supportData: any;
@@ -19,51 +19,58 @@ export class SupportComponent implements OnInit {
   dashboardShow: boolean = false;
   ismenusub: boolean = false;
   ismenu: boolean = false;
-  ismenuShow: boolean =false;
+  ismenuShow: boolean = false;
   user: string;
   coursesName: void;
 
-  constructor(private service: ServiceService,private router: Router,private authService:SocialAuthService) { }
+  constructor(
+    private service: ServiceService,
+    private router: Router,
+    private authService: SocialAuthService
+  ) {}
 
   ngOnInit(): void {
-    
     this.username();
   }
-    // username
-    username(){
-      this.user = sessionStorage.getItem('username');
-    }
-    // view page
-    view(id) {
-      this.router.navigate(['/exercise//teacherDashboard/student-view'], { queryParams: { viewpage: id } });
-    }
+  // username
+  username() {
+    this.user = sessionStorage.getItem('username');
+  }
+  // view page
+  view(id) {
+    this.router.navigate(['/exercise//teacherDashboard/student-view'], {
+      queryParams: { viewpage: id },
+    });
+  }
   // support validation
   supportForm = new FormGroup({
-    subject: new FormControl('',Validators.required),
-    message: new FormControl('',Validators.required)
-  })
-  get f() { return this.supportForm.controls; }
+    subject: new FormControl('', Validators.required),
+    message: new FormControl('', Validators.required),
+  });
+  get f() {
+    return this.supportForm.controls;
+  }
   supportSend() {
     this.submitted = true;
     if (this.supportForm.invalid) {
-        return;
+      return;
     }
     const data = {
-      "subject": this.supportForm.value.subject,
-      "message": this.supportForm.value.message,
-      user_id: sessionStorage.getItem('uid')
-    }
-    this.service.post('student-support', data, 1).subscribe(res => {
+      subject: this.supportForm.value.subject,
+      message: this.supportForm.value.message,
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('student-support', data, 1).subscribe((res) => {
       this.supportData = res;
-      if(res.body.message === 'success'){
-        this.showMsg = 'Submit Successfully'
+      if (res.body.message === 'success') {
+        this.showMsg = 'Submit Successfully';
       }
       this.supportForm.reset();
       this.submitted = false;
-    })
+    });
   }
   // logout
-  logout(){
+  logout() {
     sessionStorage.clear();
     localStorage.clear();
     sessionStorage.removeItem('token');
@@ -72,7 +79,7 @@ export class SupportComponent implements OnInit {
     sessionStorage.removeItem('title');
     sessionStorage.removeItem('course_name');
     sessionStorage.removeItem('student');
-    this.signOut()
+    this.signOut();
   }
   signOut(): void {
     this.authService.signOut();

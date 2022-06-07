@@ -16,6 +16,8 @@ export class FrontService {
     selectedCategoryId: 0,
     profileImg:'',
     sidebarData: [],
+    selectedMainMenuIndex: 0,
+    selectedSubMenuIndex: 0,
     selectedMenuId: 0,
     selectedCourseId:0,
     selectedChildId:0,

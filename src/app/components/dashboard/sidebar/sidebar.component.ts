@@ -1,10 +1,13 @@
 import {
   Component,
+  ElementRef,
   Injector,
   Input,
   OnChanges,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -35,36 +38,25 @@ export class SidebarComponent implements OnInit {
     }
     return (this._frontService = this.injector.get(FrontService));
   }
+  @ViewChildren('mainMenuBtn') mainMenus: QueryList<ElementRef>;
+  @ViewChildren('mainSubMenuBtn') mainSubMenus: QueryList<ElementRef>;
+
   subscription: Subscription;
   constructor(
     private service: ServiceService,
     private router: Router,
     private eventEmitterService: EventEmitterService,
-    private injector: Injector,
-
-
-  ) {
-
-  }
+    private injector: Injector
+  ) {}
 
   ngOnInit(): void {
     this.studentSideBar();
-
-    console.log('selectedChild',  this.frontServices.vm.selectedChildId )
-    console.log('selectedCourseId',  this.frontServices.vm.selectedCourseId )
-
   }
   ngAfterViewInit() {
     this.studentSideBar();
   }
-  ngOnChanges() {
-
-  }
+  ngOnChanges() {}
   studentSideBar() {
-
-
-
-
     const data = {
       user_id: sessionStorage.getItem('uid'),
     };
@@ -74,10 +66,20 @@ export class SidebarComponent implements OnInit {
         var filteredData = this.unique(this.sidebarData, ['course_id']);
         this.sidebarData = filteredData;
         this.frontServices.vm.sidebarData = this.sidebarData;
+
+        if (this.frontServices.vm.selectedMainMenuIndex > 0) {
+          debugger;
+          this.mainMenus.forEach((item, index) => {
+            if (index === this.frontServices.vm.selectedMainMenuIndex - 1)
+              (item.nativeElement as HTMLElement).click();
+          });
+         
+        }
+        console.log('selectedChild', this.frontServices.vm.selectedChildId);
+        console.log('selectedCourseId', this.frontServices.vm.selectedCourseId);
       }
       this.isCoursesRender = 1;
     });
-
   }
 
   unique(arr, keyProps) {
@@ -91,9 +93,10 @@ export class SidebarComponent implements OnInit {
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
-    debugger
+    debugger;
     this.coursesName = sessionStorage.setItem('course_name', name);
     this.coursesName = sessionStorage.setItem('course_id', id);
+    this.frontServices.vm.selectedMainMenuIndex = index + 1;
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -104,9 +107,15 @@ export class SidebarComponent implements OnInit {
       });
       this.sidebarData[index].isActive = true;
     }
+    if (this.frontServices.vm.selectedSubMenuIndex > 0) {
+      this.mainSubMenus.forEach((item, index) => {
+        if (index === this.frontServices.vm.selectedSubMenuIndex - 1)
+          (item.nativeElement as HTMLElement).click();
+      });
+    }
   }
   toggleSubTitle(event, index, data) {
-    debugger
+    debugger;
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
@@ -122,15 +131,18 @@ export class SidebarComponent implements OnInit {
         }
       }
     }
+    this.frontServices.vm.selectedSubMenuIndex = index+1;
   }
   getChildSData(child, id, name, rating) {
-    debugger
+    debugger;
     sessionStorage.setItem('subId', child);
     this.courseid = sessionStorage.setItem('course_id', id);
     this.name = sessionStorage.setItem('teacher_name', name);
     this.studentRating = sessionStorage.setItem('student_rating', rating);
-    this.frontServices.vm.selectedChildId = child && child.length > 0 ? parseInt(child) : 0;
-    this.frontServices.vm.selectedCourseId = id && id.length > 0 ? parseInt(id) : 0;
+    this.frontServices.vm.selectedChildId =
+      child && child.length > 0 ? parseInt(child) : 0;
+    this.frontServices.vm.selectedCourseId =
+      id && id.length > 0 ? parseInt(id) : 0;
 
     this.router.navigate(['/teacherDashboard/student-view'], {
       queryParams: { id: sessionStorage.getItem('subId') },
@@ -150,7 +162,4 @@ export class SidebarComponent implements OnInit {
   /**
    * Porfolio isotope and filter
    */
-}
-function on(arg0: string, arg1: string, arg2: (e: any) => void, arg3: boolean) {
-  throw new Error('Function not implemented.');
 }
