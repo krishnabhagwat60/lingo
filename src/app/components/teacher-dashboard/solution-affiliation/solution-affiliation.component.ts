@@ -235,7 +235,7 @@ export class SolutionAffiliationComponent implements OnInit {
     }
 }
   gotoBack() {
-    debugger
+    
     if (this.isStudent()) {
       this.router.navigateByUrl(this.frontServices.navigation.url);
     } else {

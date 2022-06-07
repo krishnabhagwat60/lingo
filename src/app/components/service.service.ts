@@ -74,6 +74,7 @@ export class ServiceService {
         return this.http.post(this.baseUrl + endPoint,  data, httpOptions);
     }
   }
+  
   getAuthToken(endPoint): Observable<any> {
     let httpOptions;
     httpOptions = {

@@ -10,7 +10,6 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular'
 import { ContentPipe } from '../multimedia/content-style/contentPipe';
 import { ProgressComponent } from './progress/progress.component';
-
 @NgModule({
     imports: [
         CommonModule,
@@ -27,7 +26,7 @@ import { ProgressComponent } from './progress/progress.component';
     ContentStyleComponent,
     HeaderBarComponent,
     ContentPipe,
-    ProgressComponent
+    ProgressComponent,
     ]
 })
 export class MultimediaModule { }

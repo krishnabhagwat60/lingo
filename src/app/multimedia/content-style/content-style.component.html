@@ -24,23 +24,27 @@
                 </li> -->
 
                 <li>
-                    <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <li *ngIf="!updateNewDataImage">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar" src="assets/images/icons/student-icon.png">
-                            </a>
-                        </li>
-                        <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
-                        <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="user-avatar" [src]="updateNewDataImage">
-                            </a>
-                        </li>
-                        <!-- <span  class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span> -->
+                    <a class="dropdown-toggle context-menu" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                <li *ngIf="!updateNewDataImage">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" src="assets/images/icons/student-icon.png">
                     </a>
                 </li>
+                <!-- <span *ngIf="updateNewDataImage==''" class="user-avatar"><img  src="assets\images\teacher-icon.png"></span> -->
+                <li *ngIf="updateNewDataImage || updateNewDataImage.length>10">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <img class="user-avatar" [src]="updateNewDataImage">
+                    </a>
+                </li>
+                <!-- <span  class="user-avatar"><img [src]="updateNewDataImage" style="width: 34px;"></span> -->
+                </a>
+                </li>
                 <li>
-                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a (click)="logout()" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <span class="logout-header"><img src="assets/images/icons/power-off.png"> </span>
                     </a>
                 </li>
@@ -71,11 +75,14 @@
                             <!-- <h1 *ngIf="courseNameDatas">{{courseNameDatas}} <span style="color: #008ad2;"></span></h1> -->
 
                             <hr>
-                            <p>{{courseNameData}} <span class="fa fa-angle-right"></span>{{titless}}<span class="fa fa-angle-right"></span>{{subtitless}}<span class="fa fa-angle-right"></span>
+                            <p>{{courseNameData}} <span class="fa fa-angle-right"></span>{{titless}}<span
+                                    class="fa fa-angle-right"></span>{{subtitless}}<span
+                                    class="fa fa-angle-right"></span>
                             </p>
                         </div>
                         <div class="student-view-btn" style="float: right; display: flex;">
-                            <button type="button" id="bck-btn" class="student-view-btn" (click)="gotoBack()" *ngIf="backBtns == true">Back</button>
+                            <button type="button" id="bck-btn" class="student-view-btn" (click)="gotoBack()"
+                                *ngIf="backBtns == true">Back</button>
                             <button type="button" id="student-view-btn" (click)="studentView()">Student
                                 View</button>
                             <button type="button" id="save-btn" (click)="backToDashboard()">Save</button>
@@ -84,7 +91,9 @@
                     </div>
                     <hr style="width: 100%;height: 1px; background-color: #efeef4; margin-left: 0px;">
                     <div class="component-images ">
-                        <button type="button" id="exescise-btn" [disabled]="!subCatSelected" title="Image Drag and Drop" class="exercise-modal" data-target="#image-drag-drop" data-toggle="modal" (click)="openImageDragModel()">
+                        <button type="button" id="exescise-btn" [disabled]="!subCatSelected" title="Image Drag and Drop"
+                            class="exercise-modal" data-target="#image-drag-drop" data-toggle="modal"
+                            (click)="openImageDragModel()">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
                                 version="1.1" width="20pt" height="20pt" x="0" y="0" viewBox="0
@@ -140,7 +149,9 @@
                             </svg>
                         </button>
 
-                        <button type="button" class="exercise-modal" id="exescise-btn" data-target="#question-radio-button" title="Question With Radio Button" (click)="openQuestionRadioModel()" [disabled]="!subCatSelected" data-toggle="modal"><svg
+                        <button type="button" class="exercise-modal" id="exescise-btn"
+                            data-target="#question-radio-button" title="Question With Radio Button"
+                            (click)="openQuestionRadioModel()" [disabled]="!subCatSelected" data-toggle="modal"><svg
                                 height="20pt" viewBox="-1 1 511 511.999" width="20pt" version="1.1" id="Capa_1"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                                 y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;"
@@ -187,7 +198,9 @@
                                 <g>
                                 </g>
                             </svg></button>
-                        <button type="button" class="exercise-modal" id="exescise-btn" title="Question With DropDown" data-target="#question-radio-text" (click)="openQuestionAddModel()" [disabled]="!subCatSelected" data-toggle="modal"><svg height="20pt"
+                        <button type="button" class="exercise-modal" id="exescise-btn" title="Question With DropDown"
+                            data-target="#question-radio-text" (click)="openQuestionAddModel()"
+                            [disabled]="!subCatSelected" data-toggle="modal"><svg height="20pt"
                                 viewBox="-1 1 511 511.999" width="20pt" version="1.1" id="Capa_1"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                                 y="0px" viewBox="0 0 512.011 512.011" style="enable-background:new 0 0 512.011 512.011;"
@@ -230,7 +243,9 @@
                                 <g>
                                 </g>
                             </svg></button>
-                        <button type="button" class="exercise-modal" id="exescise-btn" data-target="#fill-in-the-blanks" title="Fill In The Blanks" (click)="openFillModal()" [disabled]="!subCatSelected" data-toggle="modal">
+                        <button type="button" class="exercise-modal" id="exescise-btn" data-target="#fill-in-the-blanks"
+                            title="Fill In The Blanks" (click)="openFillModal()" [disabled]="!subCatSelected"
+                            data-toggle="modal">
                             <svg height="20pt" viewBox="-1 1 511 511.999" width="20pt" version="1.1" id="Capa_1"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                                 y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
@@ -291,7 +306,9 @@
                                 <g>
                                 </g>
                             </svg></button>
-                        <button type="button" class="exercise-modal" id="exescise-btn" data-target="#pick-the-right" title="Pick the Right Word" [disabled]="!subCatSelected" (click)="openPickModal()" data-toggle="modal">
+                        <button type="button" class="exercise-modal" id="exescise-btn" data-target="#pick-the-right"
+                            title="Pick the Right Word" [disabled]="!subCatSelected" (click)="openPickModal()"
+                            data-toggle="modal">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20pt" height="20pt"
                                 viewBox="0 0 459 459" style="enable-background:new 0 0 459 459;" xml:space="preserve">
@@ -332,7 +349,9 @@
                                 <g>
                                 </g>
                             </svg></button>
-                        <button type="button" class="exercise-modal" id="exescise-btn" (click)="openAddModel()" title="Affiliation" data-target="#afiliation" [disabled]="!subCatSelected" data-toggle="modal">
+                        <button type="button" class="exercise-modal" id="exescise-btn" (click)="openAddModel()"
+                            title="Affiliation" data-target="#afiliation" [disabled]="!subCatSelected"
+                            data-toggle="modal">
                             <svg height="20pt" viewBox="0 0 512.00533 512" width="20pt" id="Capa_1"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -354,7 +373,8 @@
                             </svg>
                         </button>
                     </div>
-                    <p style="color: #0a576c !important;text-align: center;" *ngIf="titles">We can not choose "Question type" before selecting Title & subtitle</p>
+                    <p style="color: #0a576c !important;text-align: center;" *ngIf="titles">We can not choose "Question
+                        type" before selecting Title & subtitle</p>
                     <div class="afiliation">
                         <ng-container [formGroup]="titleForm">
                             <div class="select-dropdown-exercise" ng-model="ak.action">
@@ -390,10 +410,14 @@
                                                     <hr *ngIf="data.title">
                                                 </div>
                                                 <div class="edit-btn-1">
-                                                    <button type="button" id="edit-btn" (click)="editAffiliationData(data?.title_id)" data-target="#afiliation" data-toggle="modal">
+                                                    <button type="button" id="edit-btn"
+                                                        (click)="editAffiliationData(data?.title_id)"
+                                                        data-target="#afiliation" data-toggle="modal">
                                                         <span class="fa fa-pencil-square-o"></span>
                                                     </button>
-                                                    <button type="button" id="delete-btn" (click)="deleteAffiId(data?.title_id)" href="#" data-target="#delete" data-toggle="modal">
+                                                    <button type="button" id="delete-btn"
+                                                        (click)="deleteAffiId(data?.title_id)" href="#"
+                                                        data-target="#delete" data-toggle="modal">
                                                         <span class="fa fa-trash"></span>
                                                     </button>
                                                 </div>
@@ -407,11 +431,14 @@
                                                             <th>Matching</th>
                                                         </tr>
                                                         <tr *ngFor="let data1 of data.data; index as j">
-                                                            <td class="afiliation-value"><input type="" name="" value="{{j+1}}" disabled></td>
-                                                            <td class="afiliation-fix"> <input type="" name="" value="{{data1.antonym}}" disabled>
+                                                            <td class="afiliation-value"><input type="" name=""
+                                                                    value="{{j+1}}" disabled></td>
+                                                            <td class="afiliation-fix"> <input type="" name=""
+                                                                    value="{{data1.antonym}}" disabled>
                                                             </td>
                                                             <td class="afiliation-speed">
-                                                                <select (change)="onChange($event.target.value, data1)" name="" id="" [(ngModel)]="data1.key">
+                                                                <select (change)="onChange($event.target.value, data1)"
+                                                                    name="" id="" [(ngModel)]="data1.key">
                                                                     <option value="">Select Right Answer</option>
                                                                     <option
                                                                         *ngFor="let optionData of data.dropdown | departure : [selected1, data1.key]">
@@ -433,10 +460,13 @@
                                                 <hr *ngIf="data.title">
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" data-target="#fill-in-the-blanks" data-toggle="modal" (click)="editFillBlanks(data.p_id,i)">
+                                                <button type="button" id="edit-btn" data-target="#fill-in-the-blanks"
+                                                    data-toggle="modal" (click)="editFillBlanks(data.p_id,i)">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" href="#" (click)="deleteFillData(data.title_id)" data-target="#deleteFill" data-toggle="modal">
+                                                <button type="button" id="delete-btn" href="#"
+                                                    (click)="deleteFillData(data.title_id)" data-target="#deleteFill"
+                                                    data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -455,10 +485,13 @@
                                                     <hr *ngIf="data.title">
                                                 </div>
                                                 <div class="edit-btn-1">
-                                                    <button type="button" id="edit-btn" data-target="#image-drag-drop" data-toggle="modal" (click)="editDragImage(data.title_id)">
+                                                    <button type="button" id="edit-btn" data-target="#image-drag-drop"
+                                                        data-toggle="modal" (click)="editDragImage(data.title_id)">
                                                         <span class="fa fa-pencil-square-o"></span>
                                                     </button>
-                                                    <button type="button" id="delete-btn" (click)="deleteImageDragId(data.title_id)" data-target="#deleteImageDrag" data-toggle="modal">
+                                                    <button type="button" id="delete-btn"
+                                                        (click)="deleteImageDragId(data.title_id)"
+                                                        data-target="#deleteImageDrag" data-toggle="modal">
                                                         <span class="fa fa-trash"></span>
                                                     </button>
                                                 </div>
@@ -497,10 +530,13 @@
                       </div> -->
                                             <div class="for-final-img">
                                                 <div class="col-lg-12" style="display: block; padding: 0;">
-                                                    <div class="col-md-3 mr-3" style="padding: 0;" *ngFor="let data1 of data.data">
+                                                    <div class="col-md-3 mr-3" style="padding: 0;"
+                                                        *ngFor="let data1 of data.data">
                                                         <ul *ngIf="data1.image">
                                                             <li class="dragging-img">
-                                                                <img [src]="data1.image" data-toggle="modal" data-target="#fullimg" (click)="getImage(data1.image)">
+                                                                <img [src]="data1.image" data-toggle="modal"
+                                                                    data-target="#fullimg"
+                                                                    (click)="getImage(data1.image)">
                                                             </li>
                                                             <li class="final-for-select">
                                                                 <select>
@@ -515,10 +551,12 @@
 
                                             <div class="final-for-audio">
                                                 <div class="col-lg-12" style="display: block; padding: 0;">
-                                                    <div class="col-md-3 mr-3 audio-square" *ngFor="let data1 of data.data">
+                                                    <div class="col-md-3 mr-3 audio-square"
+                                                        *ngFor="let data1 of data.data">
                                                         <ul *ngIf="data1.audio">
                                                             <li class="audio-file-section">
-                                                                <audio id="myAudio" controls="controls" preload="metadata">
+                                                                <audio id="myAudio" controls="controls"
+                                                                    preload="metadata">
                                                                     <source [src]="data1.audio" type="audio/ogg">
                                                                 </audio>
                                                             </li>
@@ -542,10 +580,13 @@
 
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" (click)="pickWordData(data.p_id)" data-target="#pick-the-right" data-toggle="modal">
+                                                <button type="button" id="edit-btn" (click)="pickWordData(data.p_id)"
+                                                    data-target="#pick-the-right" data-toggle="modal">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" href="#" (click)="deletePickId(data.title_id)" data-target="#deletePick" data-toggle="modal">
+                                                <button type="button" id="delete-btn" href="#"
+                                                    (click)="deletePickId(data.title_id)" data-target="#deletePick"
+                                                    data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -561,10 +602,13 @@
                                                 <hr *ngIf="data.title">
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" data-target="#question-radio-text" data-toggle="modal" (click)="editQuestionDrop(data.title_id)">
+                                                <button type="button" id="edit-btn" data-target="#question-radio-text"
+                                                    data-toggle="modal" (click)="editQuestionDrop(data.title_id)">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" (click)="deleteQues(data.title_id)" data-target="#deleteQuestionDrop" data-toggle="modal">
+                                                <button type="button" id="delete-btn"
+                                                    (click)="deleteQues(data.title_id)"
+                                                    data-target="#deleteQuestionDrop" data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -587,10 +631,14 @@
                                                 <hr *ngIf="data.title">
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" (click)="editTextDragData(data.title_id)" data-target="#text-drag-drop" data-toggle="modal">
+                                                <button type="button" id="edit-btn"
+                                                    (click)="editTextDragData(data.title_id)"
+                                                    data-target="#text-drag-drop" data-toggle="modal">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" (click)="deleteTextDragData(data.title_id)" data-target="#deleteTextDrag" data-toggle="modal">
+                                                <button type="button" id="delete-btn"
+                                                    (click)="deleteTextDragData(data.title_id)"
+                                                    data-target="#deleteTextDrag" data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -624,10 +672,14 @@
                                                 <hr *ngIf="data.title">
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" (click)="editQuestionRadio(data.title_id)" data-target="#question-radio-button-edit" data-toggle="modal">
+                                                <button type="button" id="edit-btn"
+                                                    (click)="editQuestionRadio(data.title_id)"
+                                                    data-target="#question-radio-button-edit" data-toggle="modal">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" href="#" (click)="deleteRadioData(data.title_id)" data-target="#deleteRadio" data-toggle="modal">
+                                                <button type="button" id="delete-btn" href="#"
+                                                    (click)="deleteRadioData(data.title_id)" data-target="#deleteRadio"
+                                                    data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -663,10 +715,13 @@
 
                                             </div>
                                             <div class="edit-btn-1">
-                                                <button type="button" id="edit-btn" (click)="editInsert(data?.p_id)" href="#" data-target="#insert" data-toggle="modal">
+                                                <button type="button" id="edit-btn" (click)="editInsert(data?.p_id)"
+                                                    href="#" data-target="#insert" data-toggle="modal">
                                                     <span class="fa fa-pencil-square-o"></span>
                                                 </button>
-                                                <button type="button" id="delete-btn" (click)="deleteInsertData(data?.title_id)" href="#" data-target="#deleteInsert" data-toggle="modal">
+                                                <button type="button" id="delete-btn"
+                                                    (click)="deleteInsertData(data?.title_id)" href="#"
+                                                    data-target="#deleteInsert" data-toggle="modal">
                                                     <span class="fa fa-trash"></span>
                                                 </button>
                                             </div>
@@ -683,17 +738,22 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="pictureGetApi(data?.p_id)" data-target="#picture" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="pictureGetApi(data?.p_id)" data-target="#picture"
+                                                            data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deletePictureData(data?.title_id)" href="#" data-target="#deletePicture" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deletePictureData(data?.title_id)" href="#"
+                                                            data-target="#deletePicture" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bigg-imgs">
-                                                <img [src]="data.image" data-toggle="modal" data-target="#fullimg" (click)="getImage(data.image)">
+                                                <img [src]="data.image" data-toggle="modal" data-target="#fullimg"
+                                                    (click)="getImage(data.image)">
                                             </div>
                                         </div>
                                     </ng-container>
@@ -706,32 +766,44 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="getAccordions(data?.title_id)" data-target="#accordion-upload" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="getAccordions(data?.title_id)"
+                                                            data-target="#accordion-upload" data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deleteAccordionData(data?.title_id)" href="#" data-target="#deleteAccordion" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deleteAccordionData(data?.title_id)" href="#"
+                                                            data-target="#deleteAccordion" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--  -->
 
-                                            <div id="accordion-one" *ngFor="let data2 of data.data;let k = index">
-                                                <div class="card-create-accrdn">
-                                                    <div class="card-header">
-                                                        <a class="card-link text-dark" data-toggle="collapse" data-target="#accordions" [attr.data-target]="'#collapesDetails' + k +data2.id" aria-controls="swapOne"><span class="float-right"><i
-                                                                    class="fa fa-angle-down"></i></span>
-                                                            {{data2.title}}
-                                                        </a>
-                                                    </div>
-                                                    <div id="swapOne" class="collapse" data-parent="#accordion-one" [attr.id]="'collapesDetails' + k +data2.id">
-                                                        <div class="card-body">
-                                                            {{data2.text}}
+
+
+                                            <div class="row-accordian">
+                                                <div class="faq-box">
+                                                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                                                        <div class="faq-wrap2"
+                                                            *ngFor="let data2 of data.data;let k = index">
+                                                            <div class="card-header" role="tab" id="headingTwo">
+                                                                <h5 class="mb-0">
+                                                                    <a (click)="toggleShow(k)">
+                                                                        <div class="accord-content">
+                                                                            <i class="fa fa-angle-down"></i>
+                                                                        </div>
+                                                                    </a>
+                                                                </h5>
+                                                            </div>
+                                                            <div *ngIf="expandedIndex===k">
+                                                                <div class="card-body">{{data2.text}}</div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <!-- <div class="accordion">
                                                 <div class="card-2" *ngFor="let data2 of data.data;let k = index">
                                                     <div id="headingTwo" class="card-header" style="border: 2px solid rgba(51,42,124,0.08);background: transparent;padding: 15px;">
@@ -757,10 +829,14 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="audioGetApi(data?.p_id)" data-target="#audio-upload" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="audioGetApi(data?.p_id)"
+                                                            data-target="#audio-upload" data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deleteAudioData(data?.title_id)" href="#" data-target="#deleteAudio" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deleteAudioData(data?.title_id)" href="#"
+                                                            data-target="#deleteAudio" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
@@ -780,17 +856,24 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="youtubeGetApi(data?.p_id)" data-target="#youtube" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="youtubeGetApi(data?.p_id)" data-target="#youtube"
+                                                            data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deleteYoutubeData(data?.title_id)" href="#" data-target="#deleteYoutube" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deleteYoutubeData(data?.title_id)" href="#"
+                                                            data-target="#deleteYoutube" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <iframe width="100%" height="560px" [src]="sanitizer.bypassSecurityTrustResourceUrl(data.youtube)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" webkitallowfullscreen mozallowfullscreen
-                                                allowfullscreen></iframe>
+                                            <iframe width="80%" *ngIf="data.safeURL" height="400px" [src]="data.safeURL"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
                                         </div>
                                     </ng-container>
                                     <ng-container *ngSwitchCase="'otherlink'">
@@ -802,17 +885,29 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="othrlinkGetApi(data?.p_id)" data-target="#other-links-upload" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="othrlinkGetApi(data?.p_id)"
+                                                            data-target="#other-links-upload" data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deleteOtherLinkData(data?.title_id)" href="#" data-target="#deleteOtherLink" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deleteOtherLinkData(data?.title_id)" href="#"
+                                                            data-target="#deleteOtherLink" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="other-links-image-section">
-                                                <p [innerHTML]="getHtml(data.otherlink==null?data.other_link_url:data.otherlink)"></p>
+                                                <p>
+                                                <iframe width="80%" *ngIf="data.otherlinksafeURL" height="400px" [src]="data.otherlinksafeURL"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                            </p>
+                                                <!-- <p
+                                                    [innerHTML]="   (data.otherlink==null?data.other_link_url:data.otherlink)|safepipe">
+                                                </p> -->
                                             </div>
                                         </div>
                                     </ng-container>
@@ -825,10 +920,14 @@
                                                         <hr *ngIf="data.title">
                                                     </div>
                                                     <div class="edit-btn-1">
-                                                        <button type="button" id="edit-btn" (click)="pdfGetApi(data?.p_id)" data-target="#pdf" data-toggle="modal">
+                                                        <button type="button" id="edit-btn"
+                                                            (click)="pdfGetApi(data?.p_id)" data-target="#pdf"
+                                                            data-toggle="modal">
                                                             <span class="fa fa-pencil-square-o"></span>
                                                         </button>
-                                                        <button type="button" id="delete-btn" (click)="deletePdfData(data?.title_id)" href="#" data-target="#deletePdf" data-toggle="modal">
+                                                        <button type="button" id="delete-btn"
+                                                            (click)="deletePdfData(data?.title_id)" href="#"
+                                                            data-target="#deletePdf" data-toggle="modal">
                                                             <span class="fa fa-trash"></span>
                                                         </button>
                                                     </div>
@@ -852,20 +951,29 @@
                             <p>Multimedia Content</p>
                             <hr>
                             <div class="dummy-for-height" style="height: 23.5em !important;">
-                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
-                                Text<span class="fa fa-text-height"></span></button>
-                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
-                                <span class="fa fa-image"></span></button>
-                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAccordion()" data-target="#accordion-upload" data-toggle="modal">Accordion
-                                <span class="fa fa-angle-down"></span></button>
-                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
-                                <span class="fa fa-music"></span></button>
-                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected" (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
-                                <span class="fa fa-youtube"></span></button>
-                                <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()" [disabled]="!subCatSelected" data-target="#other-links-upload" data-toggle="modal">Other
-                                Links<span class="fa fa-link"></span></button>
-                                <button type="button" id="multimediamenu-btn" (click)="resetPdf()" [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
-                                <span class="fa fa-file"></span></button>
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected"
+                                    data-target="#insert" data-toggle="modal" (click)="resetInsert()">Insert
+                                    Text<span class="fa fa-text-height"></span></button>
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected"
+                                    (click)="resetPicture()" data-target="#picture" data-toggle="modal">Picture
+                                    <span class="fa fa-image"></span></button>
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected"
+                                    (click)="resetAccordion()" data-target="#accordion-upload"
+                                    data-toggle="modal">Accordion
+                                    <span class="fa fa-angle-down"></span></button>
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected"
+                                    (click)="resetAudio()" data-target="#audio-upload" data-toggle="modal">Audio
+                                    <span class="fa fa-music"></span></button>
+                                <button type="button" id="multimediamenu-btn" [disabled]="!subCatSelected"
+                                    (click)="resetYoutube()" data-target="#youtube" data-toggle="modal">Youtube links
+                                    <span class="fa fa-youtube"></span></button>
+                                <button type="button" id="multimediamenu-btn" (click)="resetOtherLink()"
+                                    [disabled]="!subCatSelected" data-target="#other-links-upload"
+                                    data-toggle="modal">Other
+                                    Links<span class="fa fa-link"></span></button>
+                                <button type="button" id="multimediamenu-btn" (click)="resetPdf()"
+                                    [disabled]="!subCatSelected" data-target="#pdf" data-toggle="modal">Add Pdf
+                                    <span class="fa fa-file"></span></button>
                             </div>
                         </div>
                     </div>
@@ -887,15 +995,19 @@
                             <p>What Is Your Title</p>
                             <input id="questionInsert" name="questionInsert" formControlName="questionInsert">
                         </div>
-                        <ckeditor [config]="editorConfig3" [editor]="Editor" formControlName="insertText" id="insertText" name="insertText" type="divarea" required>
+                        <ckeditor [config]="editorConfig3" [editor]="Editor" formControlName="insertText"
+                            id="insertText" name="insertText" type="divarea" required>
                         </ckeditor>
                         <div class="submit">
                             <p *ngIf="insertErr" style="color: red;text-align: center;">{{insertErr}}</p>
-                            <button type="button" id="submit-button" *ngIf="!createInsertButton" [disabled]="clicked && insertTestForm.invalid" (click)="submit(); clicked = true;">Submit
+                            <button type="button" id="submit-button" *ngIf="!createInsertButton"
+                                [disabled]="clicked && insertTestForm.invalid"
+                                (click)="submit(); clicked = true;">Submit
                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                     *ngIf="mainpageLoder"></i>
                             </button>
-                            <button type="button" id="submit-button" *ngIf="createInsertButton" [disabled]="clicked && insertTestForm.invalid" (click)="updateInsert()">Submit
+                            <button type="button" id="submit-button" *ngIf="createInsertButton"
+                                [disabled]="clicked && insertTestForm.invalid" (click)="updateInsert()">Submit
                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                     *ngIf="mainpageLoder"></i>
                             </button>
@@ -904,7 +1016,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>      
 </div>
 <div id="audio-upload" class="modal fade" role="dialog" #closeAudio>
     <div class="modal-dialog">
@@ -923,7 +1035,8 @@
                     <p>mp3 maximum size 100 mb</p>
                     <div class="custom-file-wrp">
                         <div class="filename">
-                            <input type="" formControlName="audioName" id="audioName" name="audioName" placeholder="{{audioName}}" disabled>
+                            <input type="" formControlName="audioName" id="audioName" name="audioName"
+                                placeholder="{{audioName}}" disabled>
                         </div>
                         <div class="custom-file">
                             <label for="fileupload"><span class="fa fa-music"></span>Browse</label>
@@ -932,11 +1045,13 @@
                     </div>
                     <div class="submit">
                         <p style="text-align: center; color: red;">{{audioErrorMsg}}</p>
-                        <button *ngIf="!audioButton" type="button" id="submit-button" [disabled]="click" (click)="submit();click = true;">Submit
+                        <button *ngIf="!audioButton" type="button" id="submit-button" [disabled]="click"
+                            (click)="submit();click = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button *ngIf="audioButton" type="button" id="submit-button" [disabled]="click" (click)="updateAudio();click = true;">Submit
+                        <button *ngIf="audioButton" type="button" id="submit-button" [disabled]="click"
+                            (click)="updateAudio();click = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -959,7 +1074,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="fill-right">
-                                <button type="button" id="more-btn" (click)="AccordionInitialForms()"><span>&#43;</span>Add
+                                <button type="button" id="more-btn"
+                                    (click)="AccordionInitialForms()"><span>&#43;</span>Add
                                     More</button>
                             </div>
                         </div>
@@ -969,13 +1085,16 @@
                             <form [formGroup]="accordionForm">
                                 <div class="upload-accordion-title">
                                     <p>What Is Your Title</p>
-                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title" style="width: 600px!important; height: 45px;
+                                    <input id="accordion_title" name="accordion_title" formControlName="accordion_title"
+                                        style="width: 600px!important; height: 45px;
                                     border-radius: 5px;
                                     border: 2px solid #efeef4;
-                                    margin-left: 14px;" [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
+                                    margin-left: 14px;"
+                                        [ngClass]="{ 'is-invalid': accorSubmit && frms.accordion_title.errors }">
                                     <div *ngIf="accorSubmit && frms.accordion_title.errors" class="invalid-feedback">
                                         <!-- <div *ngIf="frms.accordion_title.errors.required">Skills is required</div> -->
-                                        <div *ngIf="frms.accordion_title.errors.maxlength">Title should be only 254 characters
+                                        <div *ngIf="frms.accordion_title.errors.maxlength">Title should be only 254
+                                            characters
                                         </div>
                                     </div>
                                 </div>
@@ -986,15 +1105,24 @@
                                         <input type="text" formControlName="p_id" id="p_id" name="p_id" hidden>
                                         <div class="card-1">
                                             <div id="heading" class="card-header-1" style="width: 90%!important;">
-                                                <a href="" data-toggle="collapse" data-target="#accordion-1" aria-expanded="false" [attr.data-target]="'#collapesDetail' + i" aria-controls="accordion-1">
-                                                    <input type="text" id="title" name="title" formControlName="title" style="border:0;"> <i class="fa fa-angle-down"></i></a>
+                                                <a href="" data-toggle="collapse" data-target="#accordion-1"
+                                                    aria-expanded="false" [attr.data-target]="'#collapesDetail' + i"
+                                                    aria-controls="accordion-1">
+                                                    <input type="text" id="title" name="title" formControlName="title"
+                                                        style="border:0;"> <i class="fa fa-angle-down"></i></a>
                                             </div>
-                                            <button type="button" id="accordian-add-btn" (click)="deleteAccordionDatas(i)" class="fa fa-minus" style="color: #fff;"></button>
-                                            <div id="accordion-1" [attr.id]="'collapesDetail' + i" aria-labelledby="headingOne" data-parent=".card-1" class="collapse show">
+                                            <button type="button" id="accordian-add-btn"
+                                                (click)="deleteAccordionDatas(i)" class="fa fa-minus"
+                                                style="color: #fff;"></button>
+                                            <div id="accordion-1" [attr.id]="'collapesDetail' + i"
+                                                aria-labelledby="headingOne" data-parent=".card-1"
+                                                class="collapse show">
                                                 <div class="card-body-2">
                                                     <textarea id="accordion-textarea" style="    width: 100%;
-                                                    height: 100px;" formControlName="text" id="text" name="text" [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
-                                                    <div *ngIf="accorSubmit && form.get('text').invalid" class="text-danger mt-1">
+                                                    height: 100px;" formControlName="text" id="text" name="text"
+                                                        [ngClass]="{ 'is-invalid': accorSubmit && form.get('text').errors }"></textarea>
+                                                    <div *ngIf="accorSubmit && form.get('text').invalid"
+                                                        class="text-danger mt-1">
                                                         <div *ngIf="form.get('text').errors.required">
                                                             Text is required.
                                                         </div>
@@ -1009,10 +1137,12 @@
                     </div>
                     <div class="row"></div>
                     <div class="submit">
-                        <button *ngIf="!createAccordionButton" type="button" id="submit-button" [disabled]="AccordClick" (click)="createAccordion();">Submit
+                        <button *ngIf="!createAccordionButton" type="button" id="submit-button" [disabled]="AccordClick"
+                            (click)="createAccordion();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px" *ngIf="loding"></i>
                         </button>
-                        <button *ngIf="createAccordionButton" type="button" id="submit-button" [disabled]="AccordClick" (click)="editAccordion();AccordClick = true;">Submit
+                        <button *ngIf="createAccordionButton" type="button" id="submit-button" [disabled]="AccordClick"
+                            (click)="editAccordion();AccordClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px" *ngIf="loding"></i>
                         </button>
                     </div>
@@ -1033,27 +1163,32 @@
                         <form [formGroup]="otherLinkForm">
                             <div class="upload-audio-section">
                                 <p>What Is Your Title</p>
-                                <input id="questionOtherLink" formControlName="questionOtherLink" name="questionOtherLink">
+                                <input id="questionOtherLink" formControlName="questionOtherLink"
+                                    name="questionOtherLink">
                             </div>
                             <p>Media Url (Please click on the media icon)</p>
                             <div class="filename">
-                                <ckeditor [config]="editorConfig2" [editor]="Editor" formControlName="mediaEmbedding" id="mediaEmbedding" name="mediaEmbedding" type="divarea">
+                                <ckeditor [config]="editorConfig2" [editor]="Editor" formControlName="mediaEmbedding"
+                                    id="mediaEmbedding" name="mediaEmbedding" type="divarea">
                                 </ckeditor>
                             </div>
                             <p>Html Embedding (Please click on HTML icon)</p>
                             <div class="filename">
-                                <ckeditor [config]="editorConfig" [editor]="Editor" formControlName="otherLinkText" id="otherLinkText" name="otherLinkText" type="divarea">
+                                <ckeditor [config]="editorConfig" [editor]="Editor" formControlName="otherLinkText"
+                                    id="otherLinkText" name="otherLinkText" type="divarea">
                                 </ckeditor>
                             </div>
                         </form>
                     </div>
                     <div class="submit">
                         <p *ngIf="otherErr" style="text-align: center;color: red;">{{otherErr}}</p>
-                        <button *ngIf="!otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick" (click)="otherLinkSubmit();">Submit
+                        <button *ngIf="!otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick"
+                            (click)="otherLinkSubmit();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button *ngIf="otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick" (click)="updateOtherlink();">Submit
+                        <button *ngIf="otherLinkButton" type="button" id="submit-button" [disabled]="OtherClick"
+                            (click)="updateOtherlink();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1079,7 +1214,8 @@
                     </form>
                     <div class="custom-file-wrp">
                         <div class="filename">
-                            <input formControlName="pdfName" name="pdfName" id="pdfName" placeholder="{{pdfName}}" disabled required>
+                            <input formControlName="pdfName" name="pdfName" id="pdfName" placeholder="{{pdfName}}"
+                                disabled required>
                         </div>
                         <div class="custom-file">
                             <label for="fileupload-pdf"><span class="fa fa-file"></span>Browse</label>
@@ -1088,11 +1224,13 @@
                     </div>
                     <div class="submit">
                         <p *ngIf="pdfErr" style="text-align: center;color: red;">{{pdfErr}}</p>
-                        <button *ngIf="!pdfButton" type="button" id="submit-button" [disabled]=" PdfClick" (click)="submitPdf();PdfClick = true;">Submit
+                        <button *ngIf="!pdfButton" type="button" id="submit-button" [disabled]=" PdfClick"
+                            (click)="submitPdf();PdfClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button type="button" *ngIf="pdfButton" id="submit-button" [disabled]="PdfClick" (click)="updatePdf();PdfClick = true;">Submit
+                        <button type="button" *ngIf="pdfButton" id="submit-button" [disabled]="PdfClick"
+                            (click)="updatePdf();PdfClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1119,7 +1257,8 @@
                     </form>
                     <div class="custom-file-wrp">
                         <div class="filename">
-                            <input type="text" formControlName="pictureName" id="pictureName" name="pictureName" placeholder="{{filename}}">
+                            <input type="text" formControlName="pictureName" id="pictureName" name="pictureName"
+                                placeholder="{{filename}}">
                         </div>
                         <div class="custom-file">
                             <label for="fileupload-image"><span class="fa fa-image"></span>Browse</label>
@@ -1128,11 +1267,13 @@
                     </div>
                     <div class="submit">
                         <p *ngIf="pictureErrorMsg" style="color: red;text-align: center;">{{pictureErrorMsg}}</p>
-                        <button *ngIf="!imageButton" type="button" id="submit-button" [disabled]="PictureClick" (click)="submitPicture();PictureClick = true;">Submit
+                        <button *ngIf="!imageButton" type="button" id="submit-button" [disabled]="PictureClick"
+                            (click)="submitPicture();PictureClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button *ngIf="imageButton" type="button" id="submit-button" [disabled]="PictureClick" (click)="updatePicture();PictureClick = true;">Submit
+                        <button *ngIf="imageButton" type="button" id="submit-button" [disabled]="PictureClick"
+                            (click)="updatePicture();PictureClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1160,15 +1301,20 @@
                         </div>
 
                         <div class="youtube-text">
-                            <textarea type="name" class="form-control" formControlName="youtubeText" id="youtubeText" name="youtubeText" placeholder=" Embed Youtube link" required></textarea>
+                            <textarea type="name" class="form-control" formControlName="youtubeText" id="youtubeText"
+                                name="youtubeText" placeholder=" Embed Youtube link" required></textarea>
                         </div>
                     </form>
                     <div class="submit">
-                        <button *ngIf="!youtubeButton" type="button" id="submit-button" [disabled]="!youtubeForm.valid || YoutubeClick" (click)="youtubeSubmit();YoutubeClick = true;">Submit
+                        <button *ngIf="!youtubeButton" type="button" id="submit-button"
+                            [disabled]="!youtubeForm.valid || YoutubeClick"
+                            (click)="youtubeSubmit();YoutubeClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button *ngIf="youtubeButton" type="button" id="submit-button" [disabled]="!youtubeForm.valid || YoutubeClick" (click)="updateYoutube();YoutubeClick = true;">Submit
+                        <button *ngIf="youtubeButton" type="button" id="submit-button"
+                            [disabled]="!youtubeForm.valid || YoutubeClick"
+                            (click)="updateYoutube();YoutubeClick = true;">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1207,10 +1353,12 @@
                                     <p>What is Your Question ?
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="question" name="question" [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
+                                    <input type="" formControlName="question" name="question"
+                                        [ngClass]="{ 'is-invalid': affiForm.get('question').hasError('required') && submitted}">
 
                                 </div>
-                                <div class="fieldRequired" *ngIf="affiForm.get('question').hasError('required') && submitted" style="font-size: 10px;
+                                <div class="fieldRequired"
+                                    *ngIf="affiForm.get('question').hasError('required') && submitted" style="font-size: 10px;
                color: #ec3232; font-size: 13px; ">
                                     Question is required.
                                 </div>
@@ -1218,7 +1366,8 @@
                         </form>
                         <ng-container *ngFor="let form of serviceFormaffiliation.controls; index as i">
                             <ng-container [formGroup]="form">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
 
                                 </div>
                                 <input type="hidden" formControlName="p_id" id="p_id" name="p_id">
@@ -1232,8 +1381,10 @@
                                     <p>Antonym
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="antonym" id="antonym" name="antonym" [ngClass]="{ 'is-invalid': form.get('antonym').hasError('required') && submitted}">
-                                    <div class="fieldRequired" *ngIf="form.get('antonym').hasError('required') && submitted" style="font-size: 10px;
+                                    <input type="" formControlName="antonym" id="antonym" name="antonym"
+                                        [ngClass]="{ 'is-invalid': form.get('antonym').hasError('required') && submitted}">
+                                    <div class="fieldRequired"
+                                        *ngIf="form.get('antonym').hasError('required') && submitted" style="font-size: 10px;
                  color: #ec3232; font-size: 13px; ">
                                         Antonym is required.
                                     </div>
@@ -1242,8 +1393,10 @@
                                     <p>Wright Match Answer
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="right_answer" id="right_answer" name="right_answer" [ngClass]="{ 'is-invalid': form.get('right_answer').hasError('required') && submitted}">
-                                    <div class="fieldRequired" *ngIf="form.get('right_answer').hasError('required') && submitted" style="font-size: 10px;
+                                    <input type="" formControlName="right_answer" id="right_answer" name="right_answer"
+                                        [ngClass]="{ 'is-invalid': form.get('right_answer').hasError('required') && submitted}">
+                                    <div class="fieldRequired"
+                                        *ngIf="form.get('right_answer').hasError('required') && submitted" style="font-size: 10px;
                  color: #ec3232; font-size: 13px; ">
                                         Right Answer is required.
                                     </div>
@@ -1252,12 +1405,15 @@
                                     <p>Score
                                         <span class="required-asterisk">*</span>
                                     </p>
-                                    <input type="" formControlName="score" id="score" name="score" [ngClass]="{ 'is-invalid': form.get('score').hasError('required') && submitted}">
-                                    <div class="fieldRequired" *ngIf="form.get('score').hasError('required') && submitted" style="font-size: 10px;
+                                    <input type="" formControlName="score" id="score" name="score"
+                                        [ngClass]="{ 'is-invalid': form.get('score').hasError('required') && submitted}">
+                                    <div class="fieldRequired"
+                                        *ngIf="form.get('score').hasError('required') && submitted" style="font-size: 10px;
                  color: #ec3232; font-size: 13px; ">
                                         Score is required.
                                     </div>
-                                    <div class="fieldRequired" *ngIf="form.get('score').hasError('pattern') && submitted" style="font-size: 10px;
+                                    <div class="fieldRequired"
+                                        *ngIf="form.get('score').hasError('pattern') && submitted" style="font-size: 10px;
                  color: #ec3232; font-size: 13px; ">
                                         Only Number Allowed.
                                     </div>
@@ -1271,11 +1427,13 @@
                     <div>
                     </div>
                     <div class="submit">
-                        <button type="button" id="submit-button" *ngIf="!createButton" [disabled]="AffiliationClick" (click)="createAffiliation();">Submit
+                        <button type="button" id="submit-button" *ngIf="!createButton" [disabled]="AffiliationClick"
+                            (click)="createAffiliation();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button type="button" id="submit-button" *ngIf="createButton" (click)="updateAffiliation()">Submit
+                        <button type="button" id="submit-button" *ngIf="createButton"
+                            (click)="updateAffiliation()">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1308,7 +1466,8 @@
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
                                     <div class="tab-pane" id="section-2" role="tabpanel">
                                         <hr style="width: 100%; height: 1px; background-color:#99a8b1;">
                                         <form [formGroup]="imageForm">
@@ -1317,8 +1476,12 @@
                                                     <p>What is Your Question ?
                                                         <span class="required-asterisk">*</span>
                                                     </p>
-                                                    <input type="" formControlName="question_title" id="question_title" name="question_title" class="form-control" [ngClass]="{ 'is-invalid': imageForm.get('question_title').hasError('required') && submitss}">
-                                                    <div class="fieldRequired" *ngIf="imageForm.get('question_title').hasError('required') && submitss" style="font-size: 10px;
+                                                    <input type="" formControlName="question_title" id="question_title"
+                                                        name="question_title" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': imageForm.get('question_title').hasError('required') && submitss}">
+                                                    <div class="fieldRequired"
+                                                        *ngIf="imageForm.get('question_title').hasError('required') && submitss"
+                                                        style="font-size: 10px;
                          color: #ec3232; font-size: 13px; ">
                                                         Title is required.
                                                     </div>
@@ -1328,11 +1491,15 @@
                                             <div class="col-lg-12 custom-img-audio">
                                                 <div class="col-md-4">
                                                     <div class="col-md-6 img-drag-radio">
-                                                        <input type="radio" id="image" (change)="getImageBox()" name="radio" [checked]=" audioData != undefined && audioData.image">
+                                                        <input type="radio" id="image" (change)="getImageBox()"
+                                                            name="radio"
+                                                            [checked]=" audioData != undefined && audioData.image">
                                                         <label for="image">Image</label>
                                                     </div>
                                                     <div class="col-md-6 audio-drag-radio">
-                                                        <input type="radio" id="audio" (change)="getAudioBox()" name="radio" [checked]="audioData != undefined && audioData.audio">
+                                                        <input type="radio" id="audio" (change)="getAudioBox()"
+                                                            name="radio"
+                                                            [checked]="audioData != undefined && audioData.audio">
                                                         <label for="audio">Audio</label>
                                                     </div>
                                                 </div>
@@ -1341,7 +1508,8 @@
                                                 </div>
                                             </div>
                                             <ng-container formArrayName="addImageData">
-                                                <ng-container *ngFor="let employee of addImageData.controls; let empIndex=index">
+                                                <ng-container
+                                                    *ngFor="let employee of addImageData.controls; let empIndex=index">
                                                     <div class="row" [formGroupName]="empIndex">
                                                         <div class="col-sm-2 add-img-aduio">
                                                             <!-- <div class="drag-image-popup" *ngIf="imagebox || audioData.image != undefined && audioData.image"> -->
@@ -1349,19 +1517,30 @@
                                                                 <p>Add Image</p>
                                                                 <div class="custom-file-wrp">
                                                                     <div class="custom-file-image">
-                                                                        <label for="{{empIndex}}" *ngIf="!employee.value.image"><span
+                                                                        <label for="{{empIndex}}"
+                                                                            *ngIf="!employee.value.image"><span
                                                                                 class="fa fa-plus"></span>
                                                                         </label>
-                                                                        <input type="file" id="{{empIndex}}" (change)="handleInputChange($event,empIndex)" multiple>
-                                                                        <input type="hidden" formControlName="image" id="image" name="image" value="{{empIndex}}">
-                                                                        <img *ngIf="employee.value.image" [src]="employee.controls.image.value">
+                                                                        <input type="file" id="{{empIndex}}"
+                                                                            (change)="handleInputChange($event,empIndex)"
+                                                                            multiple>
+                                                                        <input type="hidden" formControlName="image"
+                                                                            id="image" name="image"
+                                                                            value="{{empIndex}}">
+                                                                        <img *ngIf="employee.value.image"
+                                                                            [src]="employee.controls.image.value">
                                                                     </div>
-                                                                    <div class="edit-pencil" *ngIf="employee.value.image">
+                                                                    <div class="edit-pencil"
+                                                                        *ngIf="employee.value.image">
                                                                         <label for="{{empIndex}}">
                                                                             <span class="fas fa-pencil"></span>
                                                                         </label>
-                                                                        <input _ngcontent-wfm-c53="" type="file" multiple id="{{empIndex}}" (change)="handleInputChange($event,empIndex)">
-                                                                        <input _ngcontent-wfm-c53="" type="hidden" id="image" name="image" formcontrolname="image" value="" class="">
+                                                                        <input _ngcontent-wfm-c53="" type="file"
+                                                                            multiple id="{{empIndex}}"
+                                                                            (change)="handleInputChange($event,empIndex)">
+                                                                        <input _ngcontent-wfm-c53="" type="hidden"
+                                                                            id="image" name="image"
+                                                                            formcontrolname="image" value="" class="">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1369,28 +1548,39 @@
                                                                 <p>Add Audio</p>
                                                                 <div class="custom-file-wrp">
                                                                     <div class="custom-file-image">
-                                                                        <label for="{{empIndex}}_answer5" *ngIf="!employee.controls.audio.value"><span
+                                                                        <label for="{{empIndex}}_answer5"
+                                                                            *ngIf="!employee.controls.audio.value"><span
                                                                                 class="fa fa-plus"></span>
                                                                         </label>
-                                                                        <label for="{{empIndex}}_answer5" *ngIf="employee.controls.audio.value"><span
+                                                                        <label for="{{empIndex}}_answer5"
+                                                                            *ngIf="employee.controls.audio.value"><span
                                                                                 class="fa fa-music"
                                                                                 (change)="handleAudioChange($event,empIndex)"></span></label>
-                                                                        <input type="file" id="{{empIndex}}_answer5" (change)="handleAudioChange($event,empIndex)">
-                                                                        <input type="hidden" formControlName="audio" id="audio" name="audio" value="{{empIndex}}_answer5">
+                                                                        <input type="file" id="{{empIndex}}_answer5"
+                                                                            (change)="handleAudioChange($event,empIndex)">
+                                                                        <input type="hidden" formControlName="audio"
+                                                                            id="audio" name="audio"
+                                                                            value="{{empIndex}}_answer5">
                                                                     </div>
 
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <input type="hidden" formControlName="p_id" id="p_id" name="p_id">
-                                                        <input type="hidden" formControlName="audio_fid" id="audio_fid" name="audio_fid">
+                                                        <input type="hidden" formControlName="p_id" id="p_id"
+                                                            name="p_id">
+                                                        <input type="hidden" formControlName="audio_fid" id="audio_fid"
+                                                            name="audio_fid">
                                                         <input type="hidden" formControlName="fid" id="fid" name="fid">
                                                         <div class="col-sm-7 fill-title-image">
                                                             <p>Type Correct Answer
                                                                 <span class="required-asterisk">*</span>
                                                             </p>
-                                                            <input type="" formControlName="answer" id="answer" name="answer" class="form-control" [ngClass]="{ 'is-invalid': employee.get('answer').hasError('required') && submitss}">
-                                                            <div class="fieldRequired" *ngIf="employee.get('answer').hasError('required') && submitss" style="font-size: 10px;
+                                                            <input type="" formControlName="answer" id="answer"
+                                                                name="answer" class="form-control"
+                                                                [ngClass]="{ 'is-invalid': employee.get('answer').hasError('required') && submitss}">
+                                                            <div class="fieldRequired"
+                                                                *ngIf="employee.get('answer').hasError('required') && submitss"
+                                                                style="font-size: 10px;
                              color: #ec3232; font-size: 13px; padding-left: 88px;">
                                                                 Correct Answer is required.
                                                             </div>
@@ -1400,12 +1590,18 @@
                                                                 <p>Score Range
                                                                     <span class="required-asterisk">*</span>
                                                                 </p>
-                                                                <input type="" formControlName="score" id="score" name="score" class="form-control" [ngClass]="{ 'is-invalid': employee.get('score').hasError('required') && submitss}">
-                                                                <div class="fieldRequired" *ngIf="employee.get('score').hasError('required') && submitss" style="font-size: 10px;
+                                                                <input type="" formControlName="score" id="score"
+                                                                    name="score" class="form-control"
+                                                                    [ngClass]="{ 'is-invalid': employee.get('score').hasError('required') && submitss}">
+                                                                <div class="fieldRequired"
+                                                                    *ngIf="employee.get('score').hasError('required') && submitss"
+                                                                    style="font-size: 10px;
                                color: #ec3232; font-size: 13px; ">
                                                                     Score is required.
                                                                 </div>
-                                                                <div class="fieldRequired" *ngIf="employee.get('score').hasError('pattern') && submitss" style="font-size: 10px;
+                                                                <div class="fieldRequired"
+                                                                    *ngIf="employee.get('score').hasError('pattern') && submitss"
+                                                                    style="font-size: 10px;
                              color: #ec3232; font-size: 13px; ">
                                                                     Only Number Allowed.
                                                                 </div>
@@ -1413,7 +1609,8 @@
                                                                         class="fa fa-minus"></span></a>
                                                             </div>
                                                         </div>
-                                                        <p *ngIf="imageErrorMsg" style="color: #ec3232; text-align: center; font-size: 13px;margin-top: -18px;padding-left:15px">
+                                                        <p *ngIf="imageErrorMsg"
+                                                            style="color: #ec3232; text-align: center; font-size: 13px;margin-top: -18px;padding-left:15px">
                                                             {{imageErrorMsg}}</p>
                                                         <div class="add-audio-section">
                                                             <div class="add-wrong">
@@ -1426,16 +1623,27 @@
                                                                     </a>
                                                                 </div>
                                                                 <ng-container formArrayName="worngAnswer">
-                                                                    <ng-container *ngFor="let images of employeeImage(empIndex).controls; let imgIndex=index">
+                                                                    <ng-container
+                                                                        *ngFor="let images of employeeImage(empIndex).controls; let imgIndex=index">
                                                                         <ng-container [formGroupName]="imgIndex">
-                                                                            <input type="hidden" formControlName="wrong_ids" id="wrong_ids" name="wrong_ids">
-                                                                            <span (click)="deleteImageDragSubTitles(empIndex,imgIndex)"><i
+                                                                            <input type="hidden"
+                                                                                formControlName="wrong_ids"
+                                                                                id="wrong_ids" name="wrong_ids">
+                                                                            <span
+                                                                                (click)="deleteImageDragSubTitles(empIndex,imgIndex)"><i
                                                                                     class="fa fa-times"
                                                                                     aria-hidden="true"></i></span>
 
                                                                             <div class="add-wrong-input">
-                                                                                <input type="" formControlName="worngAnswerImage" id="worngAnswerImage" name="worngAnswerImage" class="form-control" [ngClass]="{ 'is-invalid': images.get('worngAnswerImage').hasError('required') && submitss}">
-                                                                                <div class="fieldRequired" *ngIf="images.get('worngAnswerImage').hasError('required') && submitss" style="font-size: 10px;
+                                                                                <input type=""
+                                                                                    formControlName="worngAnswerImage"
+                                                                                    id="worngAnswerImage"
+                                                                                    name="worngAnswerImage"
+                                                                                    class="form-control"
+                                                                                    [ngClass]="{ 'is-invalid': images.get('worngAnswerImage').hasError('required') && submitss}">
+                                                                                <div class="fieldRequired"
+                                                                                    *ngIf="images.get('worngAnswerImage').hasError('required') && submitss"
+                                                                                    style="font-size: 10px;
                                        color: #ec3232; font-size: 13px; ">
                                                                                     Wrong Answer is required.
                                                                                 </div>
@@ -1449,11 +1657,13 @@
                                                 </ng-container>
                                             </ng-container>
                                             <div class="submit">
-                                                <button type="button" id="submit-button" *ngIf="!createEditDragButton" [disabled]="ImageClick" (click)="addImageDragDrop();">Submit
+                                                <button type="button" id="submit-button" *ngIf="!createEditDragButton"
+                                                    [disabled]="ImageClick" (click)="addImageDragDrop();">Submit
                                                     <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                         *ngIf="mainpageLoder"></i>
                                                 </button>
-                                                <button type="button" id="submit-button" *ngIf="createEditDragButton" (click)="updateImage()">Submit
+                                                <button type="button" id="submit-button" *ngIf="createEditDragButton"
+                                                    (click)="updateImage()">Submit
                                                     <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                         *ngIf="mainpageLoder"></i>
                                                 </button>
@@ -1485,14 +1695,16 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="fill-right">
-                                <button type="button" id="more-btn" (click)="questionInitialForms()"><span>&#43;</span>Add More</button>
+                                <button type="button" id="more-btn"
+                                    (click)="questionInitialForms()"><span>&#43;</span>Add More</button>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="tab-content py-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
                                     <div class="radio-section">
                                         <div class="question-radio-title">
                                             <form [formGroup]="questionRadioForm">
@@ -1501,9 +1713,14 @@
                                                         <p>What is Your Title
                                                             <span class="required-asterisk">*</span>
                                                         </p>
-                                                        <input type="" formControlName="question_title" id="question_title" name="question_title" class="form-control" [ngClass]="{ 'is-invalid': QuesSubmitted && form.question_title.errors }">
-                                                        <div *ngIf="QuesSubmitted && form.question_title.errors" class="invalid-feedback">
-                                                            <div *ngIf="form.question_title.errors.required">Title is required
+                                                        <input type="" formControlName="question_title"
+                                                            id="question_title" name="question_title"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': QuesSubmitted && form.question_title.errors }">
+                                                        <div *ngIf="QuesSubmitted && form.question_title.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.question_title.errors.required">Title is
+                                                                required
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1515,14 +1732,19 @@
                                 </div>
 
                                 <div class="question-radio-btn-section">
-                                    <ng-container *ngFor="let questionRadioForm of questionRadioFormData.controls; index as i;">
+                                    <ng-container
+                                        *ngFor="let questionRadioForm of questionRadioFormData.controls; index as i;">
                                         <ng-container [formGroup]="questionRadioForm">
                                             <div class="question-radio-title-data">
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="questioninput" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="question" id="questioninput"
+                                                    name="question" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
                                                 </div>
@@ -1531,12 +1753,18 @@
                                                 <p>Score Range
 
                                                 </p>
-                                                <input type="" formControlName="score" id="score" name="score" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('score').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('score').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="score" id="score" name="score"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('score').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('score').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Score is required.
                                                 </div>
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('score').hasError('pattern') && QuesSubmitted" style="font-size: 10px;
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('score').hasError('pattern') && QuesSubmitted"
+                                                    style="font-size: 10px;
                      color: #ec3232; font-size: 13px; ">
                                                     Only Number Allowed.
                                                 </div>
@@ -1544,7 +1772,8 @@
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
                                                     <!-- <form [formGroup]="radioForm"> -->
-                                                    <input type="radio" id="{{i}}_answer1" formControlName="answer" id="answer" name="answer" value="option1">
+                                                    <input type="radio" id="{{i}}_answer1" formControlName="answer"
+                                                        id="answer" name="answer" value="option1">
                                                     <label for="{{i}}_answer1"></label>
                                                     <!-- </form> -->
                                                     <!-- <p>{{questionRadioForm.get('option').value == questionRadioForm.get('answer').value }}</p> -->
@@ -1556,12 +1785,17 @@
                                                 <p>Create Option
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="option" id="option" name="option" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option" id="option" name="option"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Option 1 is required.
                                                 </div>
-                                                <div *ngIf="questionRadioForm.get('option').hasError('maxlength')" style="font-size: 10px;
+                                                <div *ngIf="questionRadioForm.get('option').hasError('maxlength')"
+                                                    style="font-size: 10px;
                         color: #ec3232; font-size: 13px; ">Option should be only 254 characters</div>
                                             </div>
                                             <div class="radio-score-range">
@@ -1575,7 +1809,8 @@
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
                                                     <!-- <form [formGroup]="radioForm"> -->
-                                                    <input type="radio" id="{{i}}_answer2" formControlName="answer" id="answer" name="answer" value="option2">
+                                                    <input type="radio" id="{{i}}_answer2" formControlName="answer"
+                                                        id="answer" name="answer" value="option2">
                                                     <label for="{{i}}_answer2"></label>
                                                     <!-- </form> -->
                                                 </div>
@@ -1585,19 +1820,25 @@
                                                 <p>Create Option
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="option1" id="option1" name="option1" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option1').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option1').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option1" id="option1" name="option1"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option1').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option1').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Option 2 is required.
                                                 </div>
-                                                <div *ngIf="questionRadioForm.get('option1').hasError('maxlength')" style="font-size: 10px;
+                                                <div *ngIf="questionRadioForm.get('option1').hasError('maxlength')"
+                                                    style="font-size: 10px;
                         color: #ec3232; font-size: 13px; ">Option should be only 254 characters</div>
                                             </div>
                                             <div class="radio-score-range">
                                             </div>
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
-                                                    <input type="radio" id="{{i}}_answer3" formControlName="answer" id="answer" name="answer" value="option3">
+                                                    <input type="radio" id="{{i}}_answer3" formControlName="answer"
+                                                        id="answer" name="answer" value="option3">
                                                     <label for="{{i}}_answer3"></label>
                                                 </div>
                                             </div>
@@ -1606,12 +1847,17 @@
                                                 <p>Create Option
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="option2" id="option2" name="option2" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option2').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option2').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option2" id="option2" name="option2"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option2').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option2').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                                  color: #ec3232; font-size: 13px; ">
                                                     Option 3 is required.
                                                 </div>
-                                                <div *ngIf="questionRadioForm.get('option2').hasError('maxlength')" style="font-size: 10px;
+                                                <div *ngIf="questionRadioForm.get('option2').hasError('maxlength')"
+                                                    style="font-size: 10px;
                         color: #ec3232; font-size: 13px; ">Option should be only 254 characters</div>
                                             </div>
                                             <div class="radio-score-range">
@@ -1620,11 +1866,13 @@
                                     </ng-container>
                                 </div>
                                 <div class="submit">
-                                    <button type="button" id="submit-button" *ngIf="!createQuestionRadioButton" [disabled]="RadioClick" (click)="addQuestionRadio();">Submit
+                                    <button type="button" id="submit-button" *ngIf="!createQuestionRadioButton"
+                                        [disabled]="RadioClick" (click)="addQuestionRadio();">Submit
                                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                             *ngIf="mainpageLoder"></i>
                                     </button>
-                                    <button type="button" id="submit-button" *ngIf="createQuestionRadioButton" [disabled]="RadioClick" (click)="updateQuestionRadio()">Submit
+                                    <button type="button" id="submit-button" *ngIf="createQuestionRadioButton"
+                                        [disabled]="RadioClick" (click)="updateQuestionRadio()">Submit
                                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                             *ngIf="mainpageLoder"></i>
                                     </button>
@@ -1654,14 +1902,16 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="fill-right">
-                                <button type="button" id="more-btn" (click)="questionInitialForms()"><span>&#43;</span>Add More</button>
+                                <button type="button" id="more-btn"
+                                    (click)="questionInitialForms()"><span>&#43;</span>Add More</button>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="tab-content py-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
                                     <div class="radio-section">
                                         <div class="question-radio-title">
                                             <form [formGroup]="questionRadioForm">
@@ -1670,9 +1920,14 @@
                                                         <p>What is Your Title
                                                             <span class="required-asterisk">*</span>
                                                         </p>
-                                                        <input type="" formControlName="question_title" id="question_title" name="question_title" class="form-control" [ngClass]="{ 'is-invalid': QuesSubmitted && form.question_title.errors }">
-                                                        <div *ngIf="QuesSubmitted && form.question_title.errors" class="invalid-feedback">
-                                                            <div *ngIf="form.question_title.errors.required">Title is required
+                                                        <input type="" formControlName="question_title"
+                                                            id="question_title" name="question_title"
+                                                            class="form-control"
+                                                            [ngClass]="{ 'is-invalid': QuesSubmitted && form.question_title.errors }">
+                                                        <div *ngIf="QuesSubmitted && form.question_title.errors"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="form.question_title.errors.required">Title is
+                                                                required
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1684,14 +1939,19 @@
                                 </div>
 
                                 <div class="question-radio-btn-section">
-                                    <ng-container *ngFor="let questionRadioForm of questionRadioFormData.controls; index as i;">
+                                    <ng-container
+                                        *ngFor="let questionRadioForm of questionRadioFormData.controls; index as i;">
                                         <ng-container [formGroup]="questionRadioForm">
                                             <div class="question-radio-title-data">
                                                 <p>What is Your Question ?
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="question" id="questiontest" name="question" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="question" id="questiontest"
+                                                    name="question" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('question').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('question').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Question is required.
                                                 </div>
@@ -1700,12 +1960,18 @@
                                                 <p>Score Range
 
                                                 </p>
-                                                <input type="" formControlName="score" id="score" name="score" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('score').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('score').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="score" id="score" name="score"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('score').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('score').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Score is required.
                                                 </div>
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('score').hasError('pattern') && QuesSubmitted" style="font-size: 10px;
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('score').hasError('pattern') && QuesSubmitted"
+                                                    style="font-size: 10px;
                      color: #ec3232; font-size: 13px; ">
                                                     Only Number Allowed.
                                                 </div>
@@ -1713,7 +1979,10 @@
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
                                                     <!-- <form [formGroup]="radioForm"> -->
-                                                    <input type="radio" id="{{i}}answer1" [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option').value == questionRadioForm.get('answer').value)" value="option1" (click)="radio(questionRadioForm.get('option').value,i,'option1')">
+                                                    <input type="radio" id="{{i}}answer1"
+                                                        [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option').value == questionRadioForm.get('answer').value)"
+                                                        value="option1"
+                                                        (click)="radio(questionRadioForm.get('option').value,i,'option1')">
                                                     <label for="{{i}}answer1"></label>
                                                     <!-- </form> -->
                                                     <!-- <p>{{ questionRadioForm.get('option').value }}</p> -->
@@ -1725,8 +1994,12 @@
                                                 <p>Create Option
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="option" id="option" name="option" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option" id="option" name="option"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Option 1 is required.
                                                 </div>
@@ -1740,7 +2013,10 @@
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
                                                     <!-- <form [formGroup]="radioForm"> -->
-                                                    <input type="radio" id="{{i}}answer2" [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option1').value == questionRadioForm.get('answer').value)" value="option2" (click)="radio(questionRadioForm.get('option1').value,i,'option2')">
+                                                    <input type="radio" id="{{i}}answer2"
+                                                        [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option1').value == questionRadioForm.get('answer').value)"
+                                                        value="option2"
+                                                        (click)="radio(questionRadioForm.get('option1').value,i,'option2')">
                                                     <label for="{{i}}answer2"></label>
                                                     <!-- </form> -->
                                                 </div>
@@ -1751,8 +2027,12 @@
                                                     <span class="required-asterisk">*</span>
                                                 </p>
 
-                                                <input type="" formControlName="option1" id="option1" name="option1" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option1').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option1').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option1" id="option1" name="option1"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option1').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option1').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Option 2 is required.
                                                 </div>
@@ -1762,7 +2042,10 @@
                                             <div class="question-radio-btn">
                                                 <div class="radio-question">
                                                     <!-- <form [formGroup]="radioForm"> -->
-                                                    <input type="radio" id="{{i}}answer3" [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option2').value == questionRadioForm.get('answer').value)" value="option3" (click)="radio(questionRadioForm.get('option2').value,i,'option3')">
+                                                    <input type="radio" id="{{i}}answer3"
+                                                        [checked]="(questionRadioForm.get('answer').value != '' && questionRadioForm.get('option2').value == questionRadioForm.get('answer').value)"
+                                                        value="option3"
+                                                        (click)="radio(questionRadioForm.get('option2').value,i,'option3')">
                                                     <label for="{{i}}answer3"></label>
                                                 </div>
                                             </div>
@@ -1774,8 +2057,12 @@
                                                 <p>Create Option
                                                     <span class="required-asterisk">*</span>
                                                 </p>
-                                                <input type="" formControlName="option2" id="option2" name="option2" class="form-control" [ngClass]="{ 'is-invalid': questionRadioForm.get('option2').hasError('required') && QuesSubmitted}">
-                                                <div class="fieldRequired" *ngIf="questionRadioForm.get('option2').hasError('required') && QuesSubmitted" style="font-size: 10px;
+                                                <input type="" formControlName="option2" id="option2" name="option2"
+                                                    class="form-control"
+                                                    [ngClass]="{ 'is-invalid': questionRadioForm.get('option2').hasError('required') && QuesSubmitted}">
+                                                <div class="fieldRequired"
+                                                    *ngIf="questionRadioForm.get('option2').hasError('required') && QuesSubmitted"
+                                                    style="font-size: 10px;
                        color: #ec3232; font-size: 13px; ">
                                                     Option 3 is required.
                                                 </div>
@@ -1787,11 +2074,13 @@
                                 </div>
 
                                 <div class="submit">
-                                    <button type="button" id="submit-button" *ngIf="!createQuestionRadioButton" [disabled]="RadioClick" (click)="addQuestionRadio();">Submit
+                                    <button type="button" id="submit-button" *ngIf="!createQuestionRadioButton"
+                                        [disabled]="RadioClick" (click)="addQuestionRadio();">Submit
                                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                             *ngIf="mainpageLoder"></i>
                                     </button>
-                                    <button type="button" id="submit-button" *ngIf="createQuestionRadioButton" [disabled]="RadioClick" (click)="updateQuestionRadio()">Submit
+                                    <button type="button" id="submit-button" *ngIf="createQuestionRadioButton"
+                                        [disabled]="RadioClick" (click)="updateQuestionRadio()">Submit
                                         <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                             *ngIf="mainpageLoder"></i>
                                     </button>
@@ -1831,7 +2120,8 @@
                             <p>What is Your Title
                                 <span class="required-asterisk">*</span>
                             </p>
-                            <input type="" formControlName="question_title" id="question_title" name="question_title" class="form-control" [ngClass]="{ 'is-invalid': submits && fs.question_title.errors }">
+                            <input type="" formControlName="question_title" id="question_title" name="question_title"
+                                class="form-control" [ngClass]="{ 'is-invalid': submits && fs.question_title.errors }">
                             <div *ngIf="submits && fs.question_title.errors" class="invalid-feedback">
                                 <div *ngIf="fs.question_title.errors.required">Title is required</div>
                             </div>
@@ -1848,8 +2138,11 @@
 
                                             <span class="required-asterisk">*</span>
                                         </p>
-                                        <input type="" formControlName="question" id="question" name="question" class="form-control" [ngClass]="{ 'is-invalid': employee.get('question').hasError('required') && submits}">
-                                        <div class="fieldRequired" *ngIf="employee.get('question').hasError('required') && submits" style="font-size: 10px;
+                                        <input type="" formControlName="question" id="question" name="question"
+                                            class="form-control"
+                                            [ngClass]="{ 'is-invalid': employee.get('question').hasError('required') && submits}">
+                                        <div class="fieldRequired"
+                                            *ngIf="employee.get('question').hasError('required') && submits" style="font-size: 10px;
                    color: #ec3232; font-size: 13px; ">
                                             Question is required.
                                         </div>
@@ -1859,8 +2152,11 @@
                                         <p>Right Answer
                                             <span class="required-asterisk">*</span>
                                         </p>
-                                        <input type="" formControlName="answer" id="answer" name="answer" class="form-control" [ngClass]="{ 'is-invalid': employee.get('answer').hasError('required') && submits}">
-                                        <div class="fieldRequired" *ngIf="employee.get('answer').hasError('required') && submits" style="font-size: 10px;
+                                        <input type="" formControlName="answer" id="answer" name="answer"
+                                            class="form-control"
+                                            [ngClass]="{ 'is-invalid': employee.get('answer').hasError('required') && submits}">
+                                        <div class="fieldRequired"
+                                            *ngIf="employee.get('answer').hasError('required') && submits" style="font-size: 10px;
                    color: #ec3232; font-size: 13px; ">
                                             Right Answer is required.
                                         </div>
@@ -1870,16 +2166,21 @@
                                         <p>Score Range
                                             <span class="required-asterisk">*</span>
                                         </p>
-                                        <input type="" formControlName="score" id="score" name="score" class="form-control" [ngClass]="{ 'is-invalid': employee.get('score').hasError('required') && submits}">
-                                        <div class="fieldRequired" *ngIf="employee.get('score').hasError('required') && submits" style="font-size: 10px;
+                                        <input type="" formControlName="score" id="score" name="score"
+                                            class="form-control"
+                                            [ngClass]="{ 'is-invalid': employee.get('score').hasError('required') && submits}">
+                                        <div class="fieldRequired"
+                                            *ngIf="employee.get('score').hasError('required') && submits" style="font-size: 10px;
                    color: #ec3232; font-size: 13px; ">
                                             Score is required.
                                         </div>
-                                        <div class="fieldRequired" *ngIf="employee.get('score').hasError('pattern') && submits" style="font-size: 10px;
+                                        <div class="fieldRequired"
+                                            *ngIf="employee.get('score').hasError('pattern') && submits" style="font-size: 10px;
                  color: #ec3232; font-size: 13px; ">
                                             Only Number Allowed.
                                         </div>
-                                        <a (click)="deleteQuestionTitles(empIndex)" class="fa fa-minus" style="color: #fff;"></a>
+                                        <a (click)="deleteQuestionTitles(empIndex)" class="fa fa-minus"
+                                            style="color: #fff;"></a>
 
                                     </div>
                                 </div>
@@ -1892,15 +2193,21 @@
                                         </a>
                                     </div>
                                     <ng-container formArrayName="worng_answer">
-                                        <ng-container *ngFor="let skill of employeeSkills(empIndex).controls; let skillIndex=index">
+                                        <ng-container
+                                            *ngFor="let skill of employeeSkills(empIndex).controls; let skillIndex=index">
                                             <ng-container [formGroupName]="skillIndex">
-                                                <input type="hidden" formControlName="wrong_id" id="wrong_id" name="wrong_id">
+                                                <input type="hidden" formControlName="wrong_id" id="wrong_id"
+                                                    name="wrong_id">
                                                 <span (click)="deleteQuestionSubTitles(empIndex,skillIndex)"><i
                                                         class="fa fa-times" aria-hidden="true"></i></span>
 
                                                 <div class="add-wrong-input">
-                                                    <input type="" formControlName="worng_answer" id="worng_answer" name="worng_answer" class="form-control" [ngClass]="{ 'is-invalid': skill.get('worng_answer').hasError('required') && submits}">
-                                                    <div class="fieldRequired" *ngIf="skill.get('worng_answer').hasError('required') && submits" style="font-size: 10px;
+                                                    <input type="" formControlName="worng_answer" id="worng_answer"
+                                                        name="worng_answer" class="form-control"
+                                                        [ngClass]="{ 'is-invalid': skill.get('worng_answer').hasError('required') && submits}">
+                                                    <div class="fieldRequired"
+                                                        *ngIf="skill.get('worng_answer').hasError('required') && submits"
+                                                        style="font-size: 10px;
                          color: #ec3232; font-size: 13px; ">
                                                         Wrong Answer is required.
                                                     </div>
@@ -1913,11 +2220,13 @@
                         </ng-container>
                     </ng-container>
                     <div class="submit">
-                        <button type="button" id="submit-button" *ngIf="!createQuestionButton" [disabled]="dropdownClick" (click)="addQuestionDropDrag();">Submit
+                        <button type="button" id="submit-button" *ngIf="!createQuestionButton"
+                            [disabled]="dropdownClick" (click)="addQuestionDropDrag();">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
-                        <button type="button" id="submit-button" *ngIf="createQuestionButton" (click)="updateQuestion()">Submit
+                        <button type="button" id="submit-button" *ngIf="createQuestionButton"
+                            (click)="updateQuestion()">Submit
                             <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                 *ngIf="mainpageLoder"></i>
                         </button>
@@ -1939,7 +2248,8 @@
                             <h4>Fill in The Blanks</h4>
                             <hr>
                         </div>
-                        <button type="button" *ngIf="createFillButton" id="fill-plus-btn" (click)="deleteFillFieldData()">
+                        <button type="button" *ngIf="createFillButton" id="fill-plus-btn"
+                            (click)="deleteFillFieldData()">
                             <span class="fa fa-minus"></span>
                         </button>
                     </div>
@@ -1947,7 +2257,8 @@
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
 
                                     <form [formGroup]="fillTheBlanksForm">
                                         <!-- <div class="radio-section">
@@ -1961,7 +2272,9 @@
                                             <p>Title
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <input type="" formControlName="title" id="title" name="title" class="form-control" [ngClass]="{ 'is-invalid': fillSubmit && fills.title.errors }">
+                                            <input type="" formControlName="title" id="title" name="title"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': fillSubmit && fills.title.errors }">
                                             <div *ngIf="fillSubmit && fills.title.errors" class="invalid-feedback">
                                                 <div *ngIf="fills.title.errors.required">Title is required</div>
                                             </div>
@@ -1970,7 +2283,9 @@
                                             <p>Score Range
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <input type="" class="form-control" formControlName="score" id="score" name="score" [ngClass]="{ 'is-invalid': fillSubmit && fills.score.errors }">
+                                            <input type="" class="form-control" formControlName="score" id="score"
+                                                name="score"
+                                                [ngClass]="{ 'is-invalid': fillSubmit && fills.score.errors }">
                                             <div *ngIf="fillSubmit && fills.score.errors" class="invalid-feedback">
                                                 <div *ngIf="fills.score.errors.required">Score is required</div>
                                                 <div *ngIf="fills.score.errors.pattern">Number is allowed</div>
@@ -1981,7 +2296,9 @@
                                                 <span class="required-asterisk">*</span>
                                             </p>
                                             <!-- <textarea type="text" formControlName="question"> </textarea> -->
-                                            <ckeditor [config]="editorConfig1" [editor]="Editor" formControlName="question" name="question" type="divarea" [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
+                                            <ckeditor [config]="editorConfig1" [editor]="Editor"
+                                                formControlName="question" name="question" type="divarea"
+                                                [ngClass]="{ 'is-invalid': fillSubmit && fills.question.errors }">
                                             </ckeditor>
                                             <div *ngIf="fillSubmit && fills.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="fills.question.errors.required">
@@ -1991,7 +2308,8 @@
                                         </div>
 
                                         <div class="fill-note">
-                                            <p><span>Note:-</span>Blanks are added with an asterisk (*) in front and behind the correct wordpIC/phrase.
+                                            <p><span>Note:-</span>Blanks are added with an asterisk (*) in front and
+                                                behind the correct wordpIC/phrase.
                                             </p>
                                             <div class="fill-example">
                                                 <p style="width: 100px; border-right: 1px solid #fff;">Example</p>
@@ -1999,11 +2317,13 @@
                                             </div>
                                         </div>
                                         <div class="submit">
-                                            <button type="button" id="submit-button" *ngIf="!createFillButton" [disabled]="fillBlanksClick" (click)="fillTheBlanks();">Submit
+                                            <button type="button" id="submit-button" *ngIf="!createFillButton"
+                                                [disabled]="fillBlanksClick" (click)="fillTheBlanks();">Submit
                                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                     *ngIf="mainpageLoder"></i>
                                             </button>
-                                            <button type="button" id="submit-button" *ngIf="createFillButton" (click)="updateFill()">Submit
+                                            <button type="button" id="submit-button" *ngIf="createFillButton"
+                                                (click)="updateFill()">Submit
                                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                     *ngIf="mainpageLoder"></i>
                                             </button>
@@ -2031,7 +2351,8 @@
                             <h4>Pick The Right Words</h4>
                             <hr>
                         </div>
-                        <button type="button" *ngIf="createPickRightButton" id="fill-plus-btn" (click)="deletePickFieldData()">
+                        <button type="button" *ngIf="createPickRightButton" id="fill-plus-btn"
+                            (click)="deletePickFieldData()">
                             <span class="fa fa-minus"></span>
                         </button>
                     </div>
@@ -2039,7 +2360,8 @@
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="section-1" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="tab-pane fade show active" id="section-1" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
                                     <form [formGroup]="pickRightForm">
 
                                         <input type="hidden" formControlName="p_id" id="p_id" name="p_id">
@@ -2047,7 +2369,9 @@
                                             <p>Title
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <input type="" formControlName="title" id="title" name="title" class="form-control" [ngClass]="{ 'is-invalid': pickSubmit && picks.title.errors }">
+                                            <input type="" formControlName="title" id="title" name="title"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': pickSubmit && picks.title.errors }">
                                             <div *ngIf="pickSubmit && picks.title.errors" class="invalid-feedback">
                                                 <div *ngIf="picks.title.errors.required">Title is required</div>
                                             </div>
@@ -2056,7 +2380,9 @@
                                             <p>Score Range
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <input type="" formControlName="scoreRange" id="scoreRange" name="scoreRange" class="form-control" [ngClass]="{ 'is-invalid': pickSubmit && picks.scoreRange.errors }">
+                                            <input type="" formControlName="scoreRange" id="scoreRange"
+                                                name="scoreRange" class="form-control"
+                                                [ngClass]="{ 'is-invalid': pickSubmit && picks.scoreRange.errors }">
                                             <div *ngIf="pickSubmit && picks.scoreRange.errors" class="invalid-feedback">
                                                 <div *ngIf="picks.scoreRange.errors.required">Score is required</div>
                                                 <div *ngIf="picks.scoreRange.errors.pattern">Number are allowed</div>
@@ -2066,7 +2392,9 @@
                                             <p>Textarea
                                                 <span class="required-asterisk">*</span>
                                             </p>
-                                            <textarea type="text" formControlName="question" id="questiontest" name="question" [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
+                                            <textarea type="text" formControlName="question" id="questiontest"
+                                                name="question"
+                                                [ngClass]="{ 'is-invalid': pickSubmit && picks.question.errors }"> </textarea>
                                             <div *ngIf="pickSubmit && picks.question.invalid" class="text-danger mt-1">
                                                 <div *ngIf="picks.question.errors.required">
                                                     TextArea is required.
@@ -2075,7 +2403,8 @@
                                         </div>
 
                                         <div class="fill-note">
-                                            <p><span>Note:-</span>Blanks are added with an asterisk (*) in front and behind the correct word/phrase.
+                                            <p><span>Note:-</span>Blanks are added with an asterisk (*) in front and
+                                                behind the correct word/phrase.
                                             </p>
                                             <div class="fill-example">
                                                 <p style="width: 100px; border-right: 1px solid #fff;">Example</p>
@@ -2083,11 +2412,13 @@
                                             </div>
                                         </div>
                                         <div class="submit">
-                                            <button type="button" id="submit-button" *ngIf="!createPickRightButton" [disabled]="pickWordClick" (click)="createRightPick();">Submit
+                                            <button type="button" id="submit-button" *ngIf="!createPickRightButton"
+                                                [disabled]="pickWordClick" (click)="createRightPick();">Submit
                                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                     *ngIf="mainpageLoder"></i>
                                             </button>
-                                            <button type="button" id="submit-button" *ngIf="createPickRightButton" (click)="updateRightPick()">Submit
+                                            <button type="button" id="submit-button" *ngIf="createPickRightButton"
+                                                (click)="updateRightPick()">Submit
                                                 <i class="fa fa-spinner fa-spin loder-color" style="font-size:10px"
                                                     *ngIf="mainpageLoder"></i>
                                             </button>

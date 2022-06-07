@@ -49,7 +49,7 @@ export class AcceptCourseComponent implements OnInit {
   getSubTitle(parent) {
     const data = {
       "title_id": parent,
-      user_id: sessionStorage.getItem('uid') 
+      user_id: sessionStorage.getItem('uid')
     }
     this.service.post('submenu-listing', data, 1).subscribe(res => {
       this.subTitle = res.body.result
@@ -80,12 +80,12 @@ export class AcceptCourseComponent implements OnInit {
   }
   // sidebar api
   sidebar() {
-    const data ={
-      user_id : sessionStorage.getItem('uid')
+    const data = {
+      user_id: sessionStorage.getItem('uid')
     }
-    this.service.post('teacher_sidebar',data, 1).subscribe(res => {
+    this.service.post('teacher_sidebar', data, 1).subscribe(res => {
       this.sidebarData = res.body.result;
-     
+
     })
   }
 
@@ -105,28 +105,30 @@ export class AcceptCourseComponent implements OnInit {
   getCourseData(page = 1, i) {
     this.current_page = Number(page);
     const data = {
-      user_id : sessionStorage.getItem('uid'),
+      user_id: sessionStorage.getItem('uid'),
       "course_id": this.id,
       "page": page
     }
     this.buttonColor = i;
     this.service.post('accept-student', data, 1).subscribe(res => {
       this.courseData = res.body.data;
-      if (!this.courseData.length) {
-        this.msgShow = "No Data Found"
-      }
-      if (res.body.data === 1 || res.body.data === 0) {
-        this.buttonShow = false;
-      } else {
-        // this.mainpageLoder = true;
-      }
-      if (res.body.total === 1 || res.body.total === 0) {
-        this.buttonShow = false;
-      }
-      this.totalPages = [];
+      if (this.courseData) {
+        if (!this.courseData.length) {
+          this.msgShow = "No Data Found"
+        }
+        if (res.body.data === 1 || res.body.data === 0) {
+          this.buttonShow = false;
+        } else {
+          // this.mainpageLoder = true;
+        }
+        if (res.body.total === 1 || res.body.total === 0) {
+          this.buttonShow = false;
+        }
+        this.totalPages = [];
 
-      for (let i = 0; i < res.body.total; i++) {
-        this.totalPages.push(i + 1);
+        for (let i = 0; i < res.body.total; i++) {
+          this.totalPages.push(i + 1);
+        }
       }
     })
   }
@@ -176,7 +178,7 @@ export class AcceptCourseComponent implements OnInit {
     this.current_page = Number(page);
     const data = {
       page: page,
-      user_id : sessionStorage.getItem('uid')
+      user_id: sessionStorage.getItem('uid')
     }
     this.buttonColor = i;
     this.service.post('all-accept-student-listing', data, 1).subscribe(res => {
@@ -184,7 +186,7 @@ export class AcceptCourseComponent implements OnInit {
       this.buttonShow = false;
       if (!this.courseData.length) {
         this.msgShow = "No Data Found"
-      }else if(res.message == 'No data Found'){
+      } else if (res.message == 'No data Found') {
         this.msgShow = "No Data Found"
       }
       if (res.body.total === 1 || res.body.total === 0) {
@@ -198,10 +200,10 @@ export class AcceptCourseComponent implements OnInit {
     })
   }
   //sidebar accordion
-  toggleAccordian(event, index,name,id) {
-     this.coursesName = sessionStorage.setItem('course_name',name)
-     sessionStorage.setItem('course-id',id)
-   this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
+  toggleAccordian(event, index, name, id) {
+    this.coursesName = sessionStorage.setItem('course_name', name)
+    sessionStorage.setItem('course-id', id)
+    this.router.navigate(['/teacherDashboard/editCourse'], { queryParams: { id: id } });
     const element = event.target;
     element.classList.toggle('active');
     if (this.sidebarData[index].isActive) {
@@ -210,7 +212,7 @@ export class AcceptCourseComponent implements OnInit {
       this.sidebarData[index].isActive = true;
     }
   }
-  toggleSubTitle(event, index, data,title) {
+  toggleSubTitle(event, index, data, title) {
     this.titlename = sessionStorage.setItem('title', title)
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
@@ -228,8 +230,8 @@ export class AcceptCourseComponent implements OnInit {
       }
     }
   }
-  getChildSData(child,subtitle) {
-    this.subtitle = sessionStorage.setItem('subtitle',subtitle)
+  getChildSData(child, subtitle) {
+    this.subtitle = sessionStorage.setItem('subtitle', subtitle)
     sessionStorage.setItem('subId', child);
     this.router.navigate(['/multimedia/contentStyle'], { queryParams: { id: sessionStorage.getItem('subId') } });
   }

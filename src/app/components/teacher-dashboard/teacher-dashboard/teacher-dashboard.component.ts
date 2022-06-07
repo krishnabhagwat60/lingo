@@ -128,7 +128,6 @@ export class TeacherDashboardComponent implements OnInit {
     this.service.post('get-teacher-course', data, 1).subscribe(res => {
       this.isShowLoader = false;
       this.getCourse = res.body.data;
-      console.log(this.getCourse)
       if (!this.getCourse.length && this.getCourse != undefined) {
         this.err = 'No Data Found'
       }

@@ -138,7 +138,6 @@ export class EditProfileComponent implements OnInit {
     // this.addInitialForms();
   }
   removeCaret() {
-    debugger;
     setInterval(() => {
       var el = document.getElementsByClassName(
         'dropdown-multiselect__caret'

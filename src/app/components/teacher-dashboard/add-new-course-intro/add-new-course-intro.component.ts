@@ -149,7 +149,6 @@ export class AddNewCourseIntroComponent implements OnInit {
     this.removeCaret();
   }
   removeCaret() {
-    debugger;
     setInterval(() => {
       var el = document.getElementsByClassName(
         'dropdown-multiselect__caret'

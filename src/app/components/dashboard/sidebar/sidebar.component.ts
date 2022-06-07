@@ -41,45 +41,43 @@ export class SidebarComponent implements OnInit {
     private router: Router,
     private eventEmitterService: EventEmitterService,
     private injector: Injector,
-    
-   
+
+
   ) {
-   
+
   }
 
   ngOnInit(): void {
     this.studentSideBar();
-    // alert(this.itemShow);
-    // this.subscription = this.frontServices.contactArrived$.subscribe((data) => {
-    //   if (data == 1) {
-    //     this.studentSideBar();
-    //   }
-    // });
+
+    console.log('selectedChild',  this.frontServices.vm.selectedChildId )
+    console.log('selectedCourseId',  this.frontServices.vm.selectedCourseId )
+
   }
   ngAfterViewInit() {
     this.studentSideBar();
   }
   ngOnChanges() {
-   
+
   }
   studentSideBar() {
-  
-   
 
-  
-      const data = {
-        user_id: sessionStorage.getItem('uid'),
-      };
-      this.service.post('student_sidebar', data, 1).subscribe((res) => {
-        this.sidebarData = res.body.result;
-        if (this.sidebarData != null && this.sidebarData.length > 0) {
-          var filteredData = this.unique(this.sidebarData, ['course_id']);
-          this.sidebarData = filteredData;
-          this.frontServices.vm.sidebarData = this.sidebarData;
-        }
-        this.isCoursesRender = 1;
-      });
-    
+
+
+
+    const data = {
+      user_id: sessionStorage.getItem('uid'),
+    };
+    this.service.post('student_sidebar', data, 1).subscribe((res) => {
+      this.sidebarData = res.body.result;
+      if (this.sidebarData != null && this.sidebarData.length > 0) {
+        var filteredData = this.unique(this.sidebarData, ['course_id']);
+        this.sidebarData = filteredData;
+        this.frontServices.vm.sidebarData = this.sidebarData;
+      }
+      this.isCoursesRender = 1;
+    });
+
   }
 
   unique(arr, keyProps) {
@@ -93,6 +91,7 @@ export class SidebarComponent implements OnInit {
   }
   //sidebar accordion
   toggleAccordian(event, index, name, id) {
+    debugger
     this.coursesName = sessionStorage.setItem('course_name', name);
     this.coursesName = sessionStorage.setItem('course_id', id);
     const element = event.target;
@@ -107,6 +106,7 @@ export class SidebarComponent implements OnInit {
     }
   }
   toggleSubTitle(event, index, data) {
+    debugger
     for (let i = 0; i < this.sidebarData.length; i++) {
       const title = this.sidebarData[i].title;
       for (let j = 0; j < title.length; j++) {
@@ -124,12 +124,14 @@ export class SidebarComponent implements OnInit {
     }
   }
   getChildSData(child, id, name, rating) {
+    debugger
     sessionStorage.setItem('subId', child);
     this.courseid = sessionStorage.setItem('course_id', id);
     this.name = sessionStorage.setItem('teacher_name', name);
     this.studentRating = sessionStorage.setItem('student_rating', rating);
-    sessionStorage.getItem('course_id');
-    sessionStorage.getItem('teacher_name');
+    this.frontServices.vm.selectedChildId = child && child.length > 0 ? parseInt(child) : 0;
+    this.frontServices.vm.selectedCourseId = id && id.length > 0 ? parseInt(id) : 0;
+
     this.router.navigate(['/teacherDashboard/student-view'], {
       queryParams: { id: sessionStorage.getItem('subId') },
     });

@@ -52,6 +52,7 @@ import { FrontService } from './services/front.service';
     ThankYouComponent,
     CancelPaymentComponent,
    
+   
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [

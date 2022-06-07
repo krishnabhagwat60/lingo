@@ -141,7 +141,6 @@ export class StudentProfileComponent implements OnInit {
     this.username();
   }
   removeCaret() {
-    debugger;
     setInterval(() => {
       var el = document.getElementsByClassName(
         'dropdown-multiselect__caret'

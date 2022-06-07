@@ -144,7 +144,7 @@ export class StudentViewComponent implements OnInit {
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.invokeMenuList.subscribe(
         () => {
-          debugger;
+          ;
 
           this.frontServices.vm.courseChanged = false;
           this.studentSideBar();
@@ -212,7 +212,7 @@ export class StudentViewComponent implements OnInit {
     // console.log(logic needed);
   }
   getHtmlText(url) {
-    debugger;
+    ;
     return this._sanitizer.bypassSecurityTrustHtml(url);
   }
   // get question with dropdown
@@ -259,7 +259,7 @@ export class StudentViewComponent implements OnInit {
     }
   }
   getHtml(url: string) {
-    debugger;
+    ;
       if (url) {
         var iframeStart = '<iframe' + url.split('<iframe')[1];
         var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
@@ -289,7 +289,7 @@ export class StudentViewComponent implements OnInit {
       subtitle_id: sessionStorage.getItem('subId'),
     };
     this.service.post('text-dragdrop-get', data, 1).subscribe((res) => {
-      debugger;
+      ;
       this.textDrag = res.body.result;
       this.textDataTitle = sessionStorage.setItem(
         'text_title',
@@ -354,8 +354,6 @@ export class StudentViewComponent implements OnInit {
     this.wallet = sessionStorage.getItem('wallet');
   }
   sidebar() {
-    console.log(' student  view', this.frontServices.vm);
-
     if (
       this.frontServices == null ||
       this.frontServices.vm == null ||
@@ -462,9 +460,9 @@ export class StudentViewComponent implements OnInit {
       user_id: sessionStorage.getItem('uid'),
     };
     this.service.post('allexercises-get', data, 1).subscribe((res) => {
-      debugger;
+      ;
       this.mainpageLoder = false;
-      debugger;
+      ;
       this.fillTheBlanksData = res.body.result;
       if (this.fillTheBlanksData && !this.fillTheBlanksData.length) {
         this.errMsg = 'Data Not Found';
@@ -559,14 +557,14 @@ export class StudentViewComponent implements OnInit {
   }
   // show result route
   showResult(titleid, title) {
-    debugger;
+    ;
     this.imageDataTitle = sessionStorage.setItem('title', title);
     this.router.navigate(['/teacherDashboard/affiliation-result'], {
       queryParams: { id: this.id, titleid: titleid },
     });
   }
   imageShowResult(titleid, title) {
-    debugger;
+    ;
 
     this.imageDataTitle = sessionStorage.setItem('image_title', title);
     this.router.navigate(['/teacherDashboard/image-drag-result'], {
@@ -574,7 +572,7 @@ export class StudentViewComponent implements OnInit {
     });
   }
   dragShowResult(titleid) {
-    debugger;
+    ;
 
     this.router.navigate(['/teacherDashboard/drag-word'], {
       queryParams: { id: this.id, titleid: titleid },
@@ -852,7 +850,6 @@ export class StudentViewComponent implements OnInit {
     }
   }
   studentSideBar() {
-    console.log('sidebar -student view', this.frontServices.vm);
     if (
       this.frontServices == null ||
       this.frontServices.vm == null ||
@@ -920,7 +917,7 @@ export class StudentViewComponent implements OnInit {
   }
   // go to back
   gotoBack() {
-    debugger;
+    ;
     this.router.navigateByUrl('/multimedia/contentStyle');
   }
 
@@ -953,7 +950,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getAffilitionData(id) {
-    debugger;
+    ;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -965,7 +962,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getDragDropData(id) {
-    debugger;
+    ;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -977,7 +974,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getQuesDropdownData(id) {
-    debugger;
+    ;
     this.frontServices.navigation.url = this.router['url'];
 
     const data = {
@@ -989,7 +986,7 @@ export class StudentViewComponent implements OnInit {
     this.service.post('user_results', data, 1).subscribe((res) => {});
   }
   getRadioData(id) {
-    debugger;
+    ;
     this.frontServices.navigation.url = this.router['url'];
     const data = {
       course_id: sessionStorage.getItem('course_id'),

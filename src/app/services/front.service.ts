@@ -17,6 +17,8 @@ export class FrontService {
     profileImg:'',
     sidebarData: [],
     selectedMenuId: 0,
+    selectedCourseId:0,
+    selectedChildId:0,
   };
   navigation={
     url:''

@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  Inject,
   Injector,
   OnInit,
   ViewChild,
@@ -18,11 +17,9 @@ import { ServiceService } from 'src/app/components/service.service';
 import * as $ from 'jquery';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as Editor from 'ckeditor5/build/ckeditor';
 import { Location } from '@angular/common';
 import { SocialAuthService } from 'angularx-social-login';
-import { isGeneratedFile } from '@angular/compiler/src/aot/util';
 import { FrontService } from 'src/app/services/front.service';
 
 @Component({
@@ -378,6 +375,7 @@ export class ContentStyleComponent implements OnInit {
   backBtns: boolean;
   audioData: any;
   updateNewDataImage: any;
+  expandedIndex: number;
 
   private _frontService: FrontService;
   public get frontServices(): FrontService {
@@ -435,9 +433,9 @@ export class ContentStyleComponent implements OnInit {
     this.AccordionInitialForms();
     this.setTitleName();
     this.affiliationList();
+
     this.updateNewDataImage = localStorage.getItem('image');
-    if(this.updateNewDataImage == null)
-    {
+    if (this.updateNewDataImage == null) {
       this.updateNewDataImage = false;
     }
 
@@ -448,7 +446,6 @@ export class ContentStyleComponent implements OnInit {
     }
   }
   removeCaret() {
-    debugger;
     setInterval(() => {
       var el = document.getElementsByClassName(
         'dropdown-multiselect__caret'
@@ -460,14 +457,25 @@ export class ContentStyleComponent implements OnInit {
   }
 
   getHtml(url) {
-    debugger
     var iframeStart = '<iframe' + url.split('<iframe')[1];
     var finalIframe = iframeStart.split('</iframe>')[0] + '</iframe>';
     finalIframe = finalIframe.replace('height: 100%', 'height : 20');
     finalIframe = finalIframe.replace('position: absolute', '');
-    return this._sanitizer.bypassSecurityTrustHtml(
-      finalIframe.replace(/\\"/g, '"')
-    );
+    var getEmbedlink = ''
+    if (url.includes('embed')) {
+      getEmbedlink = finalIframe.split('src=')[1].split(/[ >]/)[0].split('embed')[1].substring(1);
+    }
+    else {
+      getEmbedlink = url.split('watch?v=')[0];
+    }
+    var linkUrl = this.getEmbedUrl(getEmbedlink);
+    return linkUrl;
+    // var formatted_url = this.sanitizer.bypassSecurityTrustHtml(linkUrl["changingThisBreaksApplicationSecurity"]);
+
+    // finalIframe = finalIframe.replace('src=', 'src=' + formatted_url);
+    // return this._sanitizer.bypassSecurityTrustHtml(
+    //   finalIframe.replace(/\\"/g, '"')
+    // );
   }
 
   getHtmlText(url) {
@@ -673,6 +681,7 @@ export class ContentStyleComponent implements OnInit {
     });
   }
   // get multimedia data api
+  urlLikn = "https://www.youtube.com/embed/";
 
   affiliationList() {
     this.titless = sessionStorage.getItem('title');
@@ -687,20 +696,39 @@ export class ContentStyleComponent implements OnInit {
       if (res.body.result) {
         this.fillTheBlank = true;
       }
-      if (res && res != undefined && res.body && res.body != undefined&& res.body.result && res.body.result != undefined) {
-      if (this.fillBlanksClick != undefined && this.fillBlanksClick != null) {
-        this.fillTheBlanksData.forEach((element, index) => {
-          if (element.type === 'fill_in_the_blanks') {
-            if (element.question.includes('*')) {
-              element.question = this.findStarWord(element.question, index);
+      if (res && res != undefined && res.body && res.body != undefined && res.body.result && res.body.result != undefined) {
+        if (this.fillBlanksClick != undefined && this.fillBlanksClick != null) {
+          this.fillTheBlanksData.forEach((element, index) => {
+            if (element.type === 'youtube') {
+              
+              if (this.fillTheBlanksData[index].youtube && this.fillTheBlanksData[index].youtube != null) {
+                if (this.fillTheBlanksData[index].youtube.includes('embed')) {
+                  this.fillTheBlanksData[index]['safeURL'] =
+                    this.getEmbedUrl(this.fillTheBlanksData[index].youtube.split('embed/')[1])
+                }
+              }
             }
-          }
-        });
+            if (element.type === 'fill_in_the_blanks') {
+              if (element.question.includes('*')) {
+                element.question = this.findStarWord(element.question, index);
+              }
+            }
+            if (element.type === 'otherlink') {
+              if (this.fillTheBlanksData[index].otherlink && this.fillTheBlanksData[index].otherlink != null) {
+                let youtubeStrappedURL = this.getHtml(this.fillTheBlanksData[index].otherlink)["changingThisBreaksApplicationSecurity"];
+                this.fillTheBlanksData[index]['otherlinksafeURL'] =
+
+                  this.getEmbedUrl(youtubeStrappedURL.split('embed/')[1].slice(0, -1))
+              }
+            }
+          });
+        }
       }
-    }
     });
   }
-
+  getEmbedUrl(itemurl) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.urlLikn + itemurl);
+  }
   affiliationLists() {
     const data = {
       subtitle_id: this.subIds,
@@ -1840,6 +1868,12 @@ export class ContentStyleComponent implements OnInit {
     });
   }
 
+  //fgggdfsgfdsgdfsgfgfdg
+
+  toggleShow(index) {
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
+  }
+
   // update picture
   updatePicture() {
     const data = {
@@ -1932,14 +1966,13 @@ export class ContentStyleComponent implements OnInit {
     } else {
       return false;
     }
-}
+  }
   gotoBack() {
-    debugger
     if (this.isStudent()) {
       this.router.navigateByUrl(this.frontServices.navigation.url);
     } else {
       this.router.navigate(['/teacherDashboard/editCourse'], {
-       // queryParams: { id: sessionStorage.getItem('subId') },
+        // queryParams: { id: sessionStorage.getItem('subId') },
       });
     }
   }

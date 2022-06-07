@@ -26,6 +26,7 @@ export class SupportComponent implements OnInit {
   constructor(private service: ServiceService,private router: Router,private authService:SocialAuthService) { }
 
   ngOnInit(): void {
+    
     this.username();
   }
     // username
