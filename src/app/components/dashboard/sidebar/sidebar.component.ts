@@ -68,15 +68,12 @@ export class SidebarComponent implements OnInit {
         this.frontServices.vm.sidebarData = this.sidebarData;
 
         if (this.frontServices.vm.selectedMainMenuIndex > 0) {
-          debugger;
           this.mainMenus.forEach((item, index) => {
             if (index === this.frontServices.vm.selectedMainMenuIndex - 1)
               (item.nativeElement as HTMLElement).click();
           });
          
         }
-        console.log('selectedChild', this.frontServices.vm.selectedChildId);
-        console.log('selectedCourseId', this.frontServices.vm.selectedCourseId);
       }
       this.isCoursesRender = 1;
     });
@@ -107,12 +104,14 @@ export class SidebarComponent implements OnInit {
       });
       this.sidebarData[index].isActive = true;
     }
-    if (this.frontServices.vm.selectedSubMenuIndex > 0) {
-      this.mainSubMenus.forEach((item, index) => {
-        if (index === this.frontServices.vm.selectedSubMenuIndex - 1)
-          (item.nativeElement as HTMLElement).click();
-      });
-    }
+    setTimeout(() => {
+      if (this.frontServices.vm.selectedSubMenuIndex > 0) {
+        this.mainSubMenus.forEach((item, index) => {
+          if (index === this.frontServices.vm.selectedSubMenuIndex - 1)
+            (item.nativeElement as HTMLElement).click();
+        });
+      }
+    }, 500);
   }
   toggleSubTitle(event, index, data) {
     debugger;
