@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, ElementRef, Injector, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventEmitterService } from 'src/app/services/event-emitter.service';
@@ -17,9 +17,14 @@ export class StudentHeaderComponent implements OnInit {
   subscription: Subscription;
   private _frontService: FrontService;
   public get frontServices(): FrontService {
-    if (this._frontService) { return this._frontService };
-    return this._frontService = this.injector.get(FrontService);
+    if (this._frontService) {
+      return this._frontService;
+    }
+    return (this._frontService = this.injector.get(FrontService));
   }
+  @ViewChildren('mainMenuBtn') mainMenus: QueryList<ElementRef>;
+  @ViewChildren('mainSubMenuBtn') mainSubMenus: QueryList<ElementRef>;
+  @ViewChildren('subAnchorMenu') subAnchorMenu: QueryList<ElementRef>;
   constructor(private service: ServiceService,   private eventEmitterService: EventEmitterService, private router: Router, private injector: Injector) { 
     if (this.subscription == undefined) {
       this.subscription = this.eventEmitterService.
@@ -46,6 +51,14 @@ export class StudentHeaderComponent implements OnInit {
       this.service.post('student_sidebar', data, 1).subscribe(res => {
         this.sidebarData = res.body.result;
         this.frontServices.vm.sidebarData=this.sidebarData;
+        this.frontServices.vm.sidebarData = this.sidebarData;
+          if (this.frontServices.vm.selectedMainMenuIndex > 0) {
+            this.mainMenus.forEach((item, index) => {
+              if (index === this.frontServices.vm.selectedMainMenuIndex - 1)
+                (item.nativeElement as HTMLElement).click();
+            });
+  
+          }
       })
     }
     else{

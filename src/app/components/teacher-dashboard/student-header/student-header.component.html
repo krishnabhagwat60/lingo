@@ -19,27 +19,43 @@
                         <i class="fa fa-angle-down"></i>
                     </button>
                     <div class="for-scroll" id="std-courses">
-                        <ng-container *ngFor="let data of sidebarData ; index as j">
-                            <button class="title-dropdown" *ngIf="data && data.course_name" (click)="toggleAccordian($event, j,data.course_name)" style="font-size: 18px; border-radius: 0; margin-top: .4em; background-color: #0a576c !important;">{{
-                                (data.course_name.length>15)? (data.course_name | slice:0:15)+'..':(data.course_name) }}
-                                <i class="fa fa-angle-down"></i>
+                        <ng-container *ngFor="let data of sidebarData; index as j">
+                            <button class="title-dropdown" *ngIf="data && data.course_name" #mainMenuBtn (click)="
+                                toggleAccordian($event, j, data.course_name, data.course_id)
+                              ">
+                              {{
+                              data.course_name.length > 13
+                              ? (data.course_name | slice: 0:13) + ".."
+                              : data.course_name
+                              }}
+                              <i class="fa fa-angle-down"></i>
                             </button>
                             <div *ngIf="data.isActive">
-                                <ng-container *ngFor="let data1 of data?.title; index as k">
-                                    <!-- <a href="#">Sub Menu 1</a>
-                    <a href="#">Sub Menu 2</a> -->
-                                    <button class="subt-dropdown" (click)="toggleSubTitle($event,k,data1.titleid);getSubTitle(data1?.titleid)" style="font-size: 14px; border-radius: 0; background-color: #007abb !important; padding-left: 28px">{{data1?.title}}
-                                        <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <div *ngIf="data1.isActive" class="dashboard-custom">
-                                        <ng-container *ngFor="let data2 of data1?.submenu">
-                                            <a (click)="getChildSData(data2.id)" style="color: #fff; padding-left: 28px; font-size: 12px !important; border-radius: 0; background-color: #007abb !important;
-                                    margin-bottom: .4em;">{{data2.name}}</a>
-                                        </ng-container>
-                                    </div>
-                                </ng-container>
+                              <ng-container *ngFor="let data1 of data?.title; index as k">
+                                <button class="subt-dropdown" #mainSubMenuBtn (click)="
+                                    toggleSubTitle($event, k, data1.titleid);
+                                    getSubTitle(data1?.titleid)
+                                  ">
+                                  <span>{{ k + 1 }}.</span>
+                                  {{ data1?.title }}
+                                  <i class="fa fa-angle-down"></i>
+                                </button>
+                                <div *ngIf="data1.isActive" class="dashboard-custom portfolio-container" id="portfolio-flters">
+                                  <ng-container *ngFor="let data2 of data1?.submenu; index as s">
+                                    <a #subAnchorMenu (click)="
+                                        getChildSData(
+                                          data2.id,
+                                          data.course_id,
+                                          data.teacher_name,
+                                          data.rating,
+                                          s
+                                        )
+                                      " ><span>{{ data2.s_no }})</span> {{ data2.name }}</a>
+                                  </ng-container>
+                                </div>
+                              </ng-container>
                             </div>
-                        </ng-container>
+                          </ng-container>
                     </div>
                 </div>
                 <div class="sidenav left-panel">
