@@ -54,7 +54,7 @@
           </button>
                     <div class="for-scroll">
                         <ng-container *ngFor="let data of sidebarData2 ; index as j">
-                            <button class="title-dropdown" *ngIf="data && data.course_name" (click)="toggleAccordian2($event, j,data.course_name,data.course_id)">
+                            <button  class="title-dropdown" *ngIf="data && data.course_name" (click)="toggleAccordian2($event, j,data.course_name,data.course_id)">
                 {{ (data.course_name.length>13)? (data.course_name | slice:0:13)+'..':(data.course_name)
                 }}
                 <i class="fa fa-angle-down"></i>
