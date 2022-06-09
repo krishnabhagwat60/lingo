@@ -70,8 +70,25 @@
                                         <ng-container *ngFor="let data2 of data1?.submenu">
                                             <!-- <a (click)="getChildSData(data2.id,data.course_id,data.teacher_name,data.rating)" style="color: #fff; padding-left: 28px; font-size: 12px !important; border-radius: 0;"><span>{{data2.s_no}})</span>
                                                 {{data2.name}}</a> -->
-                                            <button (click)="getChildSData(data2.id,data.course_id,data.teacher_name,data.rating)" class='btn dashboard-custom20 shadow-none'><span>{{data2.s_no}})</span>
-                                                {{data2.name}}</button>
+                                                <label class="custom-radio">
+                                                    
+                                                    <div  class="radio-btn">
+                                                        <input type="radio" name="radio" />
+                                                        <button (click)="
+                                                        getChildSData(
+                                                          data2.id, 
+                                                          data.course_id,
+                                                          data.teacher_name,
+                                                          data.rating
+                                                        )
+                                                      " class="btn shadow-none">
+                                                      
+                                                      <div class="custom"><span>{{ data2.s_no }})</span>
+                                                       
+                                                         {{ data2.name }}</div>
+                                                    </button>
+                                                </div>
+                                                </label>
                                         </ng-container>
                                     </div>
                                 </ng-container>
