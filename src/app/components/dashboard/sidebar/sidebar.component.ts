@@ -6,6 +6,7 @@ import {
   OnChanges,
   OnInit,
   QueryList,
+  Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -40,14 +41,16 @@ export class SidebarComponent implements OnInit {
   }
   @ViewChildren('mainMenuBtn') mainMenus: QueryList<ElementRef>;
   @ViewChildren('mainSubMenuBtn') mainSubMenus: QueryList<ElementRef>;
+  @ViewChildren('subAnchorMenu') subAnchorMenu: QueryList<ElementRef>;
 
   subscription: Subscription;
   constructor(
     private service: ServiceService,
     private router: Router,
+    private renderer: Renderer2,
     private eventEmitterService: EventEmitterService,
     private injector: Injector
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.studentSideBar();
@@ -55,7 +58,7 @@ export class SidebarComponent implements OnInit {
   ngAfterViewInit() {
     this.studentSideBar();
   }
-  ngOnChanges() {}
+  ngOnChanges() { }
   studentSideBar() {
     const data = {
       user_id: sessionStorage.getItem('uid'),
@@ -72,7 +75,7 @@ export class SidebarComponent implements OnInit {
             if (index === this.frontServices.vm.selectedMainMenuIndex - 1)
               (item.nativeElement as HTMLElement).click();
           });
-         
+
         }
       }
       this.isCoursesRender = 1;
@@ -111,6 +114,7 @@ export class SidebarComponent implements OnInit {
             (item.nativeElement as HTMLElement).click();
         });
       }
+
     }, 500);
   }
   toggleSubTitle(event, index, data) {
@@ -130,9 +134,21 @@ export class SidebarComponent implements OnInit {
         }
       }
     }
-    this.frontServices.vm.selectedSubMenuIndex = index+1;
+    setTimeout(() => {
+
+      if (this.frontServices.vm.selectedCourseIndex > 0) {
+        this.subAnchorMenu.forEach((item, index) => {
+          if (index === this.frontServices.vm.selectedCourseIndex - 1){
+
+            (item.nativeElement as HTMLElement).style.backgroundColor = '#3C96CC !important;';
+          }
+        });
+      }
+    }, 500);
+
+    this.frontServices.vm.selectedSubMenuIndex = index + 1;
   }
-  getChildSData(child, id, name, rating) {
+  getChildSData(child, id, name, rating, index) {
     debugger;
     sessionStorage.setItem('subId', child);
     this.courseid = sessionStorage.setItem('course_id', id);
@@ -143,6 +159,7 @@ export class SidebarComponent implements OnInit {
     this.frontServices.vm.selectedCourseId =
       id && id.length > 0 ? parseInt(id) : 0;
 
+    this.frontServices.vm.selectedCourseIndex = index + 1;
     this.router.navigate(['/teacherDashboard/student-view'], {
       queryParams: { id: sessionStorage.getItem('subId') },
     });

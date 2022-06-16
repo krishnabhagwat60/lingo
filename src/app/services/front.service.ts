@@ -20,6 +20,7 @@ export class FrontService {
     selectedSubMenuIndex: 0,
     selectedMenuId: 0,
     selectedCourseId:0,
+    selectedCourseIndex:0,
     selectedChildId:0,
   };
   navigation={
